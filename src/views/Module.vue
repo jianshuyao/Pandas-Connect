@@ -10,10 +10,10 @@
 
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLongTitle">BT1101: Introduction to Business Analytics</h5>
-              </div>
+              </div><br/>
             <nav-tabs-card no-label>
               <template slot="content">
-                <md-tabs md-sync-route class="md-primary" md-alignment="justify-content-center">
+                  <md-tabs md-sync-route class="md-primary" md-alignment="justify-content-center">
 
                   <md-tab id="tab-grade" md-label="Grade Distribution" md-icon="face">
                   </md-tab>
@@ -28,16 +28,15 @@
                   </md-tab>
 
                 </md-tabs>
-              </template>
-    </nav-tabs-card>
 
-            <mdb-card>
-                    <mdb-card-body>
+                <mdb-card-body>
                         <div style="display: block">
                           <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="500" :width="300"/>
                         </div>
-                    </mdb-card-body>
-            </mdb-card>
+                </mdb-card-body>
+
+              </template>
+    </nav-tabs-card>
 
         </div>
       </section>
