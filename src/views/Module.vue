@@ -6,14 +6,39 @@
       <div><br/></div>
       <section class="mt-lg-5">
         
-          <div class="row justify-content-center">
+          <div class="col justify-content-center">
+
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">BT1101: Introduction to Business Analytics</h5>
+              </div>
+            <nav-tabs-card no-label>
+              <template slot="content">
+                <md-tabs md-sync-route class="md-primary" md-alignment="justify-content-center">
+
+                  <md-tab id="tab-home" md-label="Grade Distribution" md-icon="face">
+                  </md-tab>
+
+                  <md-tab id="tab-pages" md-label="Faculty Distribution" md-icon="chat">
+                  </md-tab>
+
+                  <md-tab id="tab-posts" md-label="Student Feedback" md-icon="build">
+                  </md-tab>
+
+                  <md-tab id="tab-posts" md-label="Teaching Feedback" md-icon="build">
+                  </md-tab>
+
+                </md-tabs>
+              </template>
+    </nav-tabs-card>
+
             <mdb-card>
                     <mdb-card-body>
                         <div style="display: block">
-                          <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="500"/>
+                          <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="500" :width="300"/>
                         </div>
                     </mdb-card-body>
-                </mdb-card>
+            </mdb-card>
+
         </div>
       </section>
     </section>
@@ -22,6 +47,10 @@
 
 <script>
 import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter } from 'mdbvue'
+
+import {
+  NavTabsCard
+} from '@/components'
 
 export default {
   name: 'Dashboard',
@@ -40,6 +69,7 @@ export default {
     }
   },
   components: {
+    NavTabsCard,
     mdbRow,
     mdbCol,
     mdbBtn,
