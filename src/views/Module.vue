@@ -1,24 +1,24 @@
-<template>
-  <div class="wrapper">
-  <section id="dashboard">
-
-    <mdb-container fluid class="text-white">
-      <mdb-row>
-        <mdb-col md="9" class="mb-4">
-          <mdb-card>
-              <mdb-card-body>
-                  <div style="display: block">
-                        <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="500"/>
-                  </div>
-              </mdb-card-body>
-          </mdb-card>
-        </mdb-col>
-      </mdb-row>
-    </mdb-container>
- 
-  </section>
-  </div>
-</template>
+  <template>
+    <div class="wrapper">
+    <section id="dashboard">
+      <mdb-card class="mb-4">
+      </mdb-card>
+      <div><br/></div>
+      <section class="mt-lg-5">
+        
+          <div class="row justify-content-center">
+            <mdb-card>
+                    <mdb-card-body>
+                        <div style="display: block">
+                          <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="500"/>
+                        </div>
+                    </mdb-card-body>
+                </mdb-card>
+        </div>
+      </section>
+    </section>
+    </div>
+  </template>
 
 <script>
 import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter } from 'mdbvue'
