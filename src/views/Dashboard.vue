@@ -1,15 +1,7 @@
 <template>
+  <div class="wrapper">
   <section id="dashboard">
     <mdb-card class="mb-4">
-      <mdb-card-body class="d-sm-flex justify-content-between">
-        <h4 class="mb-sm-0 pt-2">
-          <a href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">Home Page</a><span>/</span><span>Dashboard</span>
-        </h4>
-        <form class="d-flex md-form justify-content-center" style="margin:0;">
-          <input aria-label="Search" class="form-control" placeholder="Type your query" type="search" />
-          <mdb-btn color="primary" size="sm" class="my-0" type="submit"><i class="fa fa-search"></i></mdb-btn>
-        </form>
-      </mdb-card-body>
     </mdb-card>
     <section class="mt-lg-5">
       <mdb-row>
@@ -534,6 +526,7 @@
       </mdb-row>
     </section>
   </section>
+  </div>
 </template>
 
 <script>
@@ -541,6 +534,20 @@ import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardTex
 
 export default {
   name: 'Dashboard',
+  bodyClass: "landing-page",
+  props: {
+    header: {
+      type: String,
+      default: require("@/assets/img/bg7.jpg")
+    }
+  },
+  computed: {
+    headerStyle() {
+      return {
+        backgroundImage: `url(${this.header})`
+      };
+    }
+  },
   components: {
     mdbRow,
     mdbCol,
@@ -717,12 +724,15 @@ export default {
     }
   }
 }
+
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .cascading-admin-card {
-  margin: 20px 0;
+  margin: 100px 0;
 }
 .cascading-admin-card .admin-up {
   margin-left: 4%;
@@ -760,5 +770,16 @@ export default {
 }
 .classic-admin-card .card-body h4 {
   margin-top: 10px;
+}
+.md-card-actions.text-center {
+  display: flex;
+  justify-content: center !important;
+}
+.contact-form {
+  margin-top: 30px;
+}
+
+.md-has-textarea + .md-layout {
+  margin-top: 15px;
 }
 </style>
