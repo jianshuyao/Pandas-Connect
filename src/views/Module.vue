@@ -11,6 +11,7 @@
                   <h5 class="modal-title" id="exampleModalLongTitle">BT1101: Introduction to Business Analytics</h5>
                   </div>
 
+
     <div class="row justify-content-center" >
     <div class="w-50 p-3" style="background-color: #eee;"><nav-tabs-card no-label>
                   <template slot="content">
