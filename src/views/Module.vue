@@ -15,16 +15,16 @@
               <template slot="content">
                 <md-tabs md-sync-route class="md-primary" md-alignment="justify-content-center">
 
-                  <md-tab id="tab-home" md-label="Grade Distribution" md-icon="face">
+                  <md-tab id="tab-grade" md-label="Grade Distribution" md-icon="face">
                   </md-tab>
 
-                  <md-tab id="tab-pages" md-label="Faculty Distribution" md-icon="chat">
+                  <md-tab id="tab-faulty" md-label="Faculty Distribution" md-icon="chat">
                   </md-tab>
 
-                  <md-tab id="tab-posts" md-label="Student Feedback" md-icon="build">
+                  <md-tab id="tab-student" md-label="Student Feedback" md-icon="build">
                   </md-tab>
 
-                  <md-tab id="tab-posts" md-label="Teaching Feedback" md-icon="build">
+                  <md-tab id="tab-teaching" md-label="Teaching Feedback" md-icon="build">
                   </md-tab>
 
                 </md-tabs>
