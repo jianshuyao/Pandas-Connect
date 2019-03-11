@@ -8,6 +8,7 @@ import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 import testing from "./views/testing.vue"
 import dashboard from "./views/Dashboard.vue"
+import module from "./views/Module.vue"
 
 Vue.use(Router);
 
@@ -61,6 +62,15 @@ export default new Router({
       path: "/dashboard",
       name: "dashboard",
       components: { default: dashboard, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/module",
+      name: "module",
+      components: { default: module, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
