@@ -1,4 +1,3 @@
-<<<<<<< HEAD
     <template>
       <div class="wrapper">
       <section id="dashboard">
@@ -26,27 +25,6 @@
                       </mdb-modal-footer>
                   </mdb-modal>
               </div>
-
-  <div class="row justify-content-center" >
-  <div class="w-75 p-3" style="background-color: #eee;"><nav-tabs-card no-label>
-                <template slot="content">
-                    <div class="row justify-content-center">
-                    <md-tabs md-sync-route class="md-warning" md-alignment="justify-content-center">
-=======
-          <template>
-            <div class="wrapper">
-            <section id="dashboard">
-              <div><br/></div>
-              
-              <section class="mt-lg-5">
-                
-                  <div class="col justify-content-center">
-
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLongTitle">BT1101: Introduction to Business Analytics</h5>
-                      </div>
->>>>>>> 95b0611158bb9351dac5638a5ed1d5feb0561386
-
 
         <div class="row justify-content-center" >
         <div class="w-75 p-3" style="background-color: #eee;"><nav-tabs-card no-label>
@@ -89,7 +67,6 @@
           NavTabsCard
         } from '@/components'
 
-<<<<<<< HEAD
   export default {
     name: 'Dashboard',
     bodyClass: "landing-page",
@@ -166,83 +143,7 @@
               data: [12, 25, 54, 3, 15, 44, 3],
               backgroundColor: 'rgba(245, 192, 50, 0.5)',
               borderWidth: 1
-=======
-        export default {
-          name: 'Dashboard',
-          bodyClass: "landing-page",
-          props: {
-            header: {
-              type: String,
-              default: require("@/assets/img/bg7.jpg")
->>>>>>> 95b0611158bb9351dac5638a5ed1d5feb0561386
-            }
-          },
-          computed: {
-            headerStyle() {
-              return {
-                backgroundImage: `url(${this.header})`
-              };
-            }
-          },
-          components: {
-            NavTabsCard,
-            mdbRow,
-            mdbCol,
-            mdbBtn,
-            mdbCard,
-            mdbCardBody,
-            mdbCardHeader,
-            mdbCardText,
-            mdbIcon,
-            mdbTbl,
-            mdbBarChart,
-            mdbPieChart,
-            mdbLineChart,
-            mdbRadarChart,
-            mdbDoughnutChart,
-            mdbListGroup,
-            mdbListGroupItem,
-            mdbBadge,
-            mdbModal,
-            mdbModalHeader,
-            mdbModalTitle,
-            mdbModalBody,
-            mdbModalFooter
-          },
-          data () {
-            return {
-              showFrameModalTop: false,
-              showFrameModalBottom: false,
-              showSideModalTopRight: false,
-              showSideModalTopLeft: false,
-              showSideModalBottomRight: false,
-              showSideModalBottomLeft: false,
-              showCentralModalSmall: false,
-              showCentralModalMedium: false,
-              showCentralModalLarge: false,
-              showCentralModalFluid: false,
-              showFluidModalRight: false,
-              showFluidModalLeft: false,
-              showFluidModalTop: false,
-              showFluidModalBottom: false,
-              barChartData: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-                datasets: [
-                  {
-                    label: '#1',
-                    data: [12, 39, 3, 50, 2, 32, 84],
-                    backgroundColor: 'rgba(245, 74, 85, 0.5)',
-                    borderWidth: 1
-                  }, {
-                    label: '#2',
-                    data: [56, 24, 5, 16, 45, 24, 8],
-                    backgroundColor: 'rgba(90, 173, 246, 0.5)',
-                    borderWidth: 1
-                  }, {
-                    label: '#3',
-                    data: [12, 25, 54, 3, 15, 44, 3],
-                    backgroundColor: 'rgba(245, 192, 50, 0.5)',
-                    borderWidth: 1
+
                   }
                 ]
               },
