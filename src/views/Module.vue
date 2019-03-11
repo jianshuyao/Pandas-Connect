@@ -12,8 +12,9 @@
                 </div>
 
   <div class="row justify-content-center" >
-  <div class="w-50 p-3" style="background-color: #eee;"><nav-tabs-card no-label>
+  <div class="w-75 p-3" style="background-color: #eee;"><nav-tabs-card no-label>
                 <template slot="content">
+                    <div class="row justify-content-center">
                     <md-tabs md-sync-route class="md-warning" md-alignment="justify-content-center">
 
                     <md-tab id="tab-grade" md-label="Grade Distribution" md-icon="face">
@@ -29,6 +30,7 @@
                     </md-tab>
 
                   </md-tabs>
+                  </div>
 
                   <mdb-card-body>
                           <div style="display: block">
