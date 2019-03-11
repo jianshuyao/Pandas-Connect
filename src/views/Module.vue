@@ -2,14 +2,29 @@
       <div class="wrapper">
       <section id="dashboard">
         <div><br/></div>
+        <div><br/></div>
         
         <section class="mt-lg-5">
           
             <div class="col justify-content-center">
 
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">BT1101: Introduction to Business Analytics</h5>
+                <h1 class="card-title" id="exampleModalLongTitle">BT1101</h1>
+                
                 </div>
+              <div>
+                <mdb-btn color="primary" @click.native="showModal2 = true">More Info</mdb-btn>
+                  <mdb-modal v-if="showModal2" @close="showModal2 = false">
+                      <mdb-modal-header>
+                          <mdb-modal-title>Modal title</mdb-modal-title>
+                      </mdb-modal-header>
+                      <mdb-modal-body>...</mdb-modal-body>
+                      <mdb-modal-footer>
+                          <mdb-btn color="secondary" size="sm" @click.native="showModal2 = false">Close</mdb-btn>
+                          <mdb-btn color="primary" size="sm">Save changes</mdb-btn>
+                      </mdb-modal-footer>
+                  </mdb-modal>
+              </div>
 
   <div class="row justify-content-center" >
   <div class="w-75 p-3" style="background-color: #eee;"><nav-tabs-card no-label>
@@ -98,6 +113,7 @@
     },
     data () {
       return {
+        modal: false,
         showFrameModalTop: false,
         showFrameModalBottom: false,
         showSideModalTopRight: false,
