@@ -9,6 +9,7 @@
               class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto text-center"
             >
               <h2>BT1101</h2>
+              <h3>Introduction to Business Analytics</h3>
               <h5 class="description">
                 This module provides students with an introduction to the fundamental concepts and tools needed to understand the emerging role of business analytics in business and non-profit organizations. The module aims to demonstrate to students how to apply basic business analytics tools in a spreadsheet environment, and how to communicate with analytics professionals to effectively use and interpret analytic models and results for making better and more well-informed business decisions.
               </h5>
