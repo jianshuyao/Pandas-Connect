@@ -11,6 +11,7 @@ import dashboard from "./views/Dashboard.vue"
 import module from "./views/Module.vue"
 import testing2 from "./views/testing2.vue"
 import modlist from "./views/ModsList.vue"
+import search from "./views/Search.vue"
 
 Vue.use(Router);
 
@@ -91,6 +92,15 @@ export default new Router({
       path: "/modlist",
       name: "modlist",
       components: { default: modlist, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/search",
+      name: "search",
+      components: { default: search, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }

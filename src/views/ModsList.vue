@@ -3,37 +3,139 @@
       <section id="ModsList">
          <div><br/></div>
          <section class="mt-lg-5">
-           <mdb-container>
-              <div class="row">
-                <div class="col-sm">
-                  <div class="card">
-                    <div class="card-body">
-                      <modal-header-title class="card-title">CS1010S</modal-header-title>
-                      <p class="card-text">BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH </p>
-                      <a href="#" class="btn btn-outline-orange btn-md waves-effect">Button</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm">
-                  <div class="card">
-                    <div class="card-body">
-                      <h4 class="card-title">CS1010S</h4>
-                      <p class="card-text">BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH </p>
-                      <a href="#" class="btn btn-primary">Button</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm">
-                  <div class="card">
-                    <div class="card-body">
-                      <h4 class="card-title">CS1010S</h4>
-                      <p class="card-text">BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH </p>
-                      <a href="#" class="btn btn-primary">Button</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-           </mdb-container>
+         <mdb-row md="4" center>
+                  <mdb-modal-title>
+                     <h1 class="card-title">School of Computing 
+                     </h1>
+                     <hr class="hr-dark"/>
+                     <br/>
+                  </mdb-modal-title>
+               </mdb-row>
+               <mdb-container center>
+                  <nav-tabs-card no-label>
+                     <template slot="content" >
+                        <mdb-row center>
+                           <md-tabs md-sync-route class="md-warning" md-alignment="centered">
+                              <md-tab id="tab-grade" md-label="1000" md-icon="laptop_chromebook">
+                              </md-tab>
+                              <md-tab id="tab-grade1" md-label="2000" md-icon="laptop_chromebook">
+                              </md-tab>
+                              <md-tab id="tab-grade2" md-label="3000" md-icon="laptop_chromebook">
+                              </md-tab>
+                              <md-tab id="tab-grade3" md-label="4000" md-icon="laptop_chromebook">
+                              </md-tab>
+                              <md-tab id="tab-grade4" md-label="5000" md-icon="laptop_chromebook">
+                              </md-tab>
+                              <md-tab id="tab-grade5" md-label="6000" md-icon="laptop_chromebook">
+                              </md-tab>
+                           </md-tabs>
+                        </mdb-row>
+                        <mdb-card-body 
+                        <mdb-row><br/></mdb-row>
+                        <mdb-col>
+                          <mdb-row>
+                <mdb-col md="4">
+                  <mdb-card>
+                      <mdb-card-header>
+                      <mdb-row center>
+                      <h2 class="card-title" center>
+                    BT1101</h2>
+                        </mdb-row>
+                      </mdb-card-header> 
+                    <mdb-card-body center>
+                      <mdb-row center>
+                      This is a nice module
+                      </mdb-row>
+                    </mdb-card-body>
+                  </mdb-card>
+                </mdb-col>
+                <mdb-col md="4">
+                  <mdb-card>
+                      <mdb-card-header>
+                      <mdb-row center>
+                      <h2 class="card-title" center>
+                    BT1101</h2>
+                        </mdb-row>
+                      </mdb-card-header> 
+                    <mdb-card-body center>
+                      <mdb-row center>
+                      This is a nice module
+                      </mdb-row>
+                    </mdb-card-body>
+                  </mdb-card>
+                </mdb-col>
+                <mdb-col md="4">
+                  <mdb-card>
+                      <mdb-card-header>
+                      <mdb-row center>
+                      <h2 class="card-title" center>
+                    BT1101</h2>
+                        </mdb-row>
+                      </mdb-card-header> 
+                    <mdb-card-body center>
+                      <mdb-row center>
+                      This is a nice module
+                      </mdb-row>
+                    </mdb-card-body>
+                  </mdb-card>
+                </mdb-col>
+              </mdb-row>
+              <mdb-row><br/></mdb-row>
+              <mdb-row>
+                <mdb-col md="4">
+                  <mdb-card>
+                      <mdb-card-header>
+                      <mdb-row center>
+                      <h2 class="card-title" center>
+                    BT1101</h2>
+                        </mdb-row>
+                      </mdb-card-header> 
+                    <mdb-card-body center>
+                      <mdb-row center>
+                      This is a nice module
+                      </mdb-row>
+                    </mdb-card-body>
+                  </mdb-card>
+                </mdb-col>
+                <mdb-col md="4">
+                  <mdb-card>
+                      <mdb-card-header>
+                      <mdb-row center>
+                      <h2 class="card-title" center>
+                    BT1101</h2>
+                        </mdb-row>
+                      </mdb-card-header> 
+                    <mdb-card-body center>
+                      <mdb-row center>
+                      This is a nice module
+                      </mdb-row>
+                    </mdb-card-body>
+                  </mdb-card>
+                </mdb-col>
+                <mdb-col md="4">
+                  <mdb-card>
+                      <mdb-card-header>
+                      <mdb-row center>
+                      <h2 class="card-title" center>
+                    BT1101</h2>
+                        </mdb-row>
+                      </mdb-card-header> 
+                    <mdb-card-body center>
+                      <mdb-row center>
+                      This is a nice module
+                      </mdb-row>
+                    </mdb-card-body>
+                  </mdb-card>
+                </mdb-col>
+              </mdb-row>
+              <mdb-row><br/></mdb-row>
+
+                        </mdb-col>
+                        
+                        </mdb-card-body>
+                     </template>
+                  </nav-tabs-card>
+            </mdb-container>
          </section>
       </section>
    </div>
