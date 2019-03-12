@@ -6,7 +6,19 @@
             <mdb-col center>
                      <mdb-row md="4" center>
                         <mdb-modal-title>
-                           <h1 class="card-title">BT1101</h1>
+                           <h1 class="card-title">BT1101 
+                           </h1>
+                           <mdb-modal size v-if="modal" @close="modal = false">
+                                <mdb-modal-header>
+                                    <mdb-modal-title>Module Information</mdb-modal-title>
+                                </mdb-modal-header>
+                                <mdb-modal-body><p>This module provides students with an introduction to the fundamental concepts and tools needed to understand the emerging role of business analytics in business and non-profit organizations. The module aims to demonstrate to students how to apply basic business analytics tools in a spreadsheet environment, and how to communicate with analytics professionals to effectively use and interpret analytic models and results for making better and more well-informed business decisions.</p></mdb-modal-body>
+                                <mdb-modal-footer>
+                                    <mdb-btn color="secondary" size="sm" @click.native="modal = false">Close</mdb-btn>
+                                    <mdb-btn color="primary" size="sm">Save changes</mdb-btn>
+                                </mdb-modal-footer>
+                            </mdb-modal>
+
                         </mdb-modal-title> 
                      </mdb-row>
                      <mdb-row md="4" center>
@@ -14,13 +26,13 @@
                         <mdb-col center>
                         Introduction to Business Analytics
                         <mdb-row md="4" center>
-                      <h4>
-                       <i class="fas fa-star" style="height:1px;width:20px"></i>
-                       <i class="fas fa-star"></i>
-                       <i class="fas fa-star"></i>
-                       <i class="far fa-star"></i>
-                       <i class="far fa-star"></i>
-                     </h4>
+                      <h5>
+                       <mdb-icon icon="fas fa-star" size="2x"/>
+                       <mdb-icon icon="fas fa-star" size="2x"/>
+                       <mdb-icon icon="fas fa-star" size="2x"/>
+                       <mdb-icon icon="fas fa-star" size="2x"/>
+                       <mdb-icon icon="far fa-star" size="2x"/>
+                     </h5>
                      </mdb-row>
                    </mdb-col>
                       </mdb-modal-footer>
@@ -321,7 +333,6 @@
    min-height: 16.42857143px;
    padding: 10px;
    border-bottom: 1px solid #e5e5e5;
-   font:"card-title";
    }
    .modal-footer {
    padding: 10px;
