@@ -6,8 +6,8 @@
           <div
             class="md-layout-item md-small-size-70 md-xsmall-size-100 text-center"
           >
-            <h1 style ='font-size:50px;'>Pandas Connect</h1>
-            <h2><i>
+            <h1 style ='font-size:60px;color:black;'>Pandas Connect</h1>
+            <h2 class="text_bg"><i>
               Professional Academics and Careers Advisory
             </i></h2>
             <button class="button button5">Academics</button>
@@ -311,6 +311,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.text_bg 
+{
+  opacity: 0.8;
+  background-color: #3A7C80;
+  text-align: center;
+  margin: auto;
+  border-radius: 10px;
+  float:center;
+  width:800px;
+}
 .button {
   opacity: 0.8;
   background-color: #4CAF50; 
@@ -321,7 +331,7 @@ export default {
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
-  margin: 4px 2px;
+  margin: 10px 2px;
   cursor: pointer;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
