@@ -2,13 +2,14 @@
   <md-toolbar
     id="toolbar"
     md-elevation="0"
-    class="md-info md-absolute"
+    class="md-warning md-absolute"
     :class="extraNavClasses"
     :color-on-scroll="colorOnScroll"
   >
     <div class="md-toolbar-row md-collapse-lateral">
       <div class="md-toolbar-section-start">
-        <h3 class="md-title">Pandas Connect</h3>
+        <img src="Panda.png" style="width:60px;height:50px">
+        <h3 class="md-title" style="font-weight:bold; font-size:23px">Pandas Connect</h3>
       </div>
       <div class="md-toolbar-section-end">
         <md-button

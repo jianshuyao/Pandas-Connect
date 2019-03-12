@@ -1,54 +1,64 @@
-<div class="md-layout">
-  <div class="md-layout-item md-size-100">
-    <nav-tabs-card no-label>
-      <template slot="content">
-        <md-tabs md-sync-route class="md-primary" md-alignment="left">
+<template>
+  <mdb-container>
+    <mdb-bar-chart :data="barChartData" :options="barChartOptions" :width="600" :height="300"></mdb-bar-chart>
+  </mdb-container>
+</template>
 
-          <md-tab id="tab-home" md-label="Profile" md-icon="face">
-            <p>I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
-          </md-tab>
-
-          <md-tab id="tab-pages" md-label="Messages" md-icon="chat">
-            <p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
-          </md-tab>
-
-          <md-tab id="tab-posts" md-label="Settings" md-icon="build">
-            <p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
-          </md-tab>
-        </md-tabs>
-      </template>
-    </nav-tabs-card>
-  </div>
-</div>
 <script>
-import {
-  NavTabsCard
-} from '@/components'
+import { mdbBarChart, mdbContainer } from 'mdbvue';
 
-export default{
+export default {
+  name: 'ChartPage',
   components: {
-    NavTabsCard
+    mdbBarChart,
+    mdbContainer
   },
-  data () {
+  data() {
     return {
-      selected: [],
-      firstTabs: [
-        { tab: 'Sign contract for "What are conference organizers afraid of?"' },
-        { tab: 'Lines From Great Russian Literature? Or E-mails From My Boss?' },
-        { tab: 'Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit' }
-      ],
-      secondTabs: [
-        { tab: 'Sign contract for "What are conference organizers afraid of?"' },
-        { tab: 'Lines From Great Russian Literature? Or E-mails From My Boss?' },
-        { tab: 'Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit' }
-      ],
-      thirdTabs: [
-        { tab: 'Sign contract for "What are conference organizers afraid of?"' },
-        { tab: 'Lines From Great Russian Literature? Or E-mails From My Boss?' },
-        { tab: 'Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit' }
-      ]
-    }
+      barChartData: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+          label: '# of Votes',
+          data: [12, 19, 3, 5, 2, 3],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1,
+        }]
+      },
+      barChartOptions: {
+        responsive: false,
+        maintainAspectRatio: false,
+        scales: {
+          xAxes: [{
+            barPercentage: 1,
+            gridLines: {
+              display: true,
+              color: "rgba(0, 0, 0, 0.1)",
+            }
+          }],
+          yAxes: [{
+            gridLines: {
+              display: true,
+              color: "rgba(0, 0, 0, 0.1)",
+            }
+          }],
+        }
+      }
+    };
   }
-
-}
+};
 </script>

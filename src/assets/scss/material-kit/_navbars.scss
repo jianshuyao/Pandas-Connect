@@ -1,6 +1,6 @@
 .md-toolbar {
   min-height: 56px;
-  padding: 10px 15px;
+  padding: 5px 5px;
   justify-content: center;
   border-radius: 3px;
   margin-bottom: 20px;
@@ -132,7 +132,7 @@
     @include dropdown-colors($brand-primary);
     @include toolbar-colors($brand-primary, $white-color);
   }
-  &.md-danger{
+  &.md-danger{  
     @include dropdown-colors($brand-danger);
     @include toolbar-colors($brand-danger, $white-color);
   }
