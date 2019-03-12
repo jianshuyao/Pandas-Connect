@@ -3,37 +3,22 @@
       <section id="dashboard">
          <div><br/></div>
          <section class="mt-lg-5">
-            <div class="col justify-content-center">
-               <mdb-container center>
-                  <mdb-col center>
+            <mdb-col center>
                      <mdb-row md="4" center>
                         <mdb-modal-title>
                            <h1 class="card-title">BT1101</h1>
-                        </mdb-modal-title>
+                        </mdb-modal-title> 
                      </mdb-row>
                      <mdb-row md="4" center>
                         <mdb-modal-footer center>Introduction to Business Analytics</mdb-modal-footer>
                      </mdb-row>
                   </mdb-col>
-               </mdb-container>
-               <!-- <div>
-                  <mdb-btn color="primary" @click.native="modal = true">More Info</mdb-btn>
-                    <mdb-modal v-if="modal" @close="modal = false">
-                        <mdb-modal-header>
-                            <mdb-modal-title>Modal title</mdb-modal-title>
-                        </mdb-modal-header>
-                        <mdb-modal-body>...</mdb-modal-body>
-                        <mdb-modal-footer>
-                            <mdb-btn color="secondary" size="sm" @click.native="modal = false">Close</mdb-btn>
-                            <mdb-btn color="primary" size="sm">Save changes</mdb-btn>
-                        </mdb-modal-footer>
-                    </mdb-modal>
-                  </div> -->
-               <div class="row justify-content-center" >
+               
+               <mdb-row center>
                   <div class="w-75 p-3" style="background-color: #eee;">
                      <nav-tabs-card no-label>
                         <template slot="content">
-                           <div class="row justify-content-center">
+                           <mdb-row center>
                               <md-tabs md-sync-route class="md-warning" md-alignment="justify-content-center">
                                  <md-tab id="tab-grade" md-label="Grade Distribution" md-icon="face">
                                  </md-tab>
@@ -44,17 +29,16 @@
                                  <md-tab id="tab-teaching" md-label="Teaching Feedback" md-icon="build">
                                  </md-tab>
                               </md-tabs>
-                           </div>
+                           </mdb-row>
                            <mdb-card-body>
-                              <div style="display: block">
+                              <div style="display: block" justify-content-center>
                                  <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="500" :width="300"/>
                               </div>
                            </mdb-card-body>
                         </template>
                      </nav-tabs-card>
                   </div>
-               </div>
-            </div>
+               </mdb-row>
          </section>
       </section>
    </div>
