@@ -10,6 +10,7 @@ import testing from "./views/testing.vue"
 import dashboard from "./views/Dashboard.vue"
 import module from "./views/Module.vue"
 import testing2 from "./views/testing2.vue"
+import modlist from "./views/ModsList.vue"
 
 Vue.use(Router);
 
@@ -81,6 +82,15 @@ export default new Router({
       path: "/testing2",
       name: "testing2",
       components: { default: testing2, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/modlist",
+      name: "modlist",
+      components: { default: modlist, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
