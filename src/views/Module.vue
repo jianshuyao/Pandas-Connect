@@ -10,8 +10,24 @@
                         </mdb-modal-title> 
                      </mdb-row>
                      <mdb-row md="4" center>
-                        <mdb-modal-footer center>Introduction to Business Analytics</mdb-modal-footer>
+                      <mdb-modal-footer center>
+                        <mdb-col center>
+                        Introduction to Business Analytics
+                        <mdb-row md="4" center>
+                      <h4>
+                       <i class="fas fa-star" style="height:1px;width:20px"></i>
+                       <i class="fas fa-star"></i>
+                       <i class="fas fa-star"></i>
+                       <i class="far fa-star"></i>
+                       <i class="far fa-star"></i>
+                     </h4>
                      </mdb-row>
+                   </mdb-col>
+                      </mdb-modal-footer>
+
+                     </mdb-row>
+
+                     
                   </mdb-col>
                
                <mdb-row center>
