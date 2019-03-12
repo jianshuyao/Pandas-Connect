@@ -4,22 +4,15 @@
       <div class="container">
         <div class="md-layout">
           <div
-            class="md-layout-item md-size-50 md-small-size-70 md-xsmall-size-100"
+            class="md-layout-item md-small-size-70 md-xsmall-size-100 text-center"
           >
-            <h1 class="title">Your Story Starts With Us.</h1>
-            <h4>
-              Every landing page needs a small description after the big bold
-              title, that's why we added this text here. Add here all the
-              information that can make you or your product create the first
-              impression.
-            </h4>
-            <br />
-            <md-button
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-              class="md-success md-lg"
-              target="_blank"
-              ><i class="fas fa-play"></i> Watch video</md-button
-            >
+            <h1 style ='font-size:50px;'>Pandas Connect</h1>
+            <h2><i>
+              Professional Academics and Careers Advisory
+            </i></h2>
+            <button class="button button5">Academics</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="button button5">Careers</button>
           </div>
         </div>
       </div>
@@ -285,7 +278,7 @@ export default {
   props: {
     header: {
       type: String,
-      default: require("@/assets/img/bg7.jpg")
+      default: require("@/assets/img/main.jpg")
     },
     teamImg1: {
       type: String,
@@ -318,6 +311,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.button {
+  opacity: 0.8;
+  background-color: #4CAF50; 
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+.button5 {
+  background-color: #555555;
+  border-radius: 12px;
+}
+.button5:hover {
+  background-color: white;
+  color: black;
+  border-radius: 12px;
+}
 .md-card-actions.text-center {
   display: flex;
   justify-content: center !important;
