@@ -1,6 +1,6 @@
 <template>
    <div class="wrapper">
-      <section id="dashboard">
+      <section id="module">
          <div><br/></div>
          <section class="mt-lg-5">
           <mdb-container>
