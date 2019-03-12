@@ -13,14 +13,14 @@
                 
                 </div>
               <div>
-                <mdb-btn color="primary" @click.native="showModal2 = true">More Info</mdb-btn>
-                  <mdb-modal v-if="showModal2" @close="showModal2 = false">
+                <mdb-btn color="primary" @click.native="modal = true">More Info</mdb-btn>
+                  <mdb-modal v-if="modal" @close="modal = false">
                       <mdb-modal-header>
                           <mdb-modal-title>Modal title</mdb-modal-title>
                       </mdb-modal-header>
                       <mdb-modal-body>...</mdb-modal-body>
                       <mdb-modal-footer>
-                          <mdb-btn color="secondary" size="sm" @click.native="showModal2 = false">Close</mdb-btn>
+                          <mdb-btn color="secondary" size="sm" @click.native="modal = false">Close</mdb-btn>
                           <mdb-btn color="primary" size="sm">Save changes</mdb-btn>
                       </mdb-modal-footer>
                   </mdb-modal>
