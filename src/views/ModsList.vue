@@ -1,77 +1,39 @@
 <template>
    <div class="wrapper">
-      <section id="dashboard">
+      <section id="ModsList">
          <div><br/></div>
          <section class="mt-lg-5">
-          <mdb-container>
-            <mdb-row class="justify-content-end">
-            <mdb-col col="4">
-               <mdb-row md="4" center>
-                  <mdb-modal-title>
-                     <h1 class="card-title">BT1101 
-                     </h1>
-                     <mdb-modal size v-if="modal" @close="modal = false">
-                        <mdb-modal-header>
-                           <mdb-modal-title>Module Information</mdb-modal-title>
-                        </mdb-modal-header>
-                        <mdb-modal-body>
-                           <p>This module provides students with an introduction to the fundamental concepts and tools needed to understand the emerging role of business analytics in business and non-profit organizations. The module aims to demonstrate to students how to apply basic business analytics tools in a spreadsheet environment, and how to communicate with analytics professionals to effectively use and interpret analytic models and results for making better and more well-informed business decisions.</p>
-                        </mdb-modal-body>
-                        <mdb-modal-footer>
-                           <mdb-btn color="secondary" size="sm" @click.native="modal = false">Close</mdb-btn>
-                           <mdb-btn color="primary" size="sm">Save changes</mdb-btn>
-                        </mdb-modal-footer>
-                     </mdb-modal>
-                  </mdb-modal-title>
-               </mdb-row>
-               <mdb-row md="4" center>
-                  <mdb-modal-footer center>
-                     <mdb-col center>
-                        Introduction to Business Analytics 
-                        <mdb-row md="4" center>
-                           <h5>
-                              <mdb-icon icon="fas fa-star" size="2x"/>
-                              <mdb-icon icon="fas fa-star" size="2x"/>
-                              <mdb-icon icon="fas fa-star" size="2x"/>
-                              <mdb-icon icon="fas fa-star" size="2x"/>
-                              <mdb-icon icon="far fa-star" size="2x"/>
-                           </h5>
-                        </mdb-row>
-                     </mdb-col>
-                  </mdb-modal-footer>
-               </mdb-row>
-            </mdb-col>
-            <mdb-col col="4">
-              <br/><br/><br/><br/><br/><br/>
-              <mdb-btn size = "sm" outline="warning" @click.native="modal = true"><mdb-icon size="2x" far icon="question-circle" /></mdb-btn>
-            </mdb-col>
-          </mdb-row>
-          </mdb-container>
-            <mdb-row center>
-               <div class="w-75 p-3" style="background-color: #eee;">
-                  <nav-tabs-card no-label>
-                     <template slot="content" >
-                        <mdb-row center>
-                           <md-tabs md-sync-route class="md-warning" md-alignment="justify-content-center">
-                              <md-tab id="tab-grade" md-label="Grade Distribution" md-icon="laptop_chromebook">
-                              </md-tab>
-                              <md-tab id="tab-faulty" md-label="Faculty Distribution" md-icon="format_list_numbered">
-                              </md-tab>
-                              <md-tab id="tab-student" md-label="Student Feedback" md-icon="feedback">
-                              </md-tab>
-                              <md-tab id="tab-teaching" md-label="Teaching Feedback" md-icon="face">
-                              </md-tab>
-                           </md-tabs>
-                        </mdb-row>
-                        <mdb-card-body>
-                           <div style="display: block" justify-content-center>
-                              <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="500" :width="300"/>
-                           </div>
-                        </mdb-card-body>
-                     </template>
-                  </nav-tabs-card>
-               </div>
-            </mdb-row>
+           <mdb-container>
+              <div class="row">
+                <div class="col-sm">
+                  <div class="card">
+                    <div class="card-body">
+                      <modal-header-title class="card-title">CS1010S</modal-header-title>
+                      <p class="card-text">BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH </p>
+                      <a href="#" class="btn btn-outline-orange btn-md waves-effect">Button</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">CS1010S</h4>
+                      <p class="card-text">BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH </p>
+                      <a href="#" class="btn btn-primary">Button</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">CS1010S</h4>
+                      <p class="card-text">BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH </p>
+                      <a href="#" class="btn btn-primary">Button</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+           </mdb-container>
          </section>
       </section>
    </div>
