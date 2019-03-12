@@ -3,6 +3,7 @@
       <section id="module">
          <div><br/></div>
          <section class="mt-lg-5">
+          <mdb-container>
             <mdb-row class="justify-content-end">
             <mdb-col col="4">
                <mdb-row md="4" center>
@@ -45,45 +46,27 @@
               <mdb-btn size = "sm" outline="warning" @click.native="modal = true"><mdb-icon size="2x" far icon="question-circle" /></mdb-btn>
             </mdb-col>
           </mdb-row>
+          </mdb-container>
             <mdb-row center>
                <div class="w-75 p-3" style="background-color: #eee;">
                   <nav-tabs-card no-label>
                      <template slot="content" >
                         <mdb-row center>
-                           <md-tabs md-sync-route class="md-warning" md-alignment="centered">
-                              <md-tab @click="currentViz='GradeDistribution'" id="tab-grade" md-label="Grade Distribution" md-icon="laptop_chromebook">
+                           <md-tabs md-sync-route class="md-warning" md-alignment="justify-content-center">
+                              <md-tab id="tab-grade" md-label="Grade Distribution" md-icon="laptop_chromebook">
                               </md-tab>
-                              <md-tab @click="currentViz='FacultyDistribution'" id="tab-faulty" md-label="Faculty Distribution" md-icon="format_list_numbered">
+                              <md-tab id="tab-faulty" md-label="Faculty Distribution" md-icon="format_list_numbered">
                               </md-tab>
-                              <md-tab @click="currentViz='StudentFeedback'" id="tab-student" md-label="Student Feedback" md-icon="feedback">
+                              <md-tab id="tab-student" md-label="Student Feedback" md-icon="feedback">
                               </md-tab>
-                              <md-tab @click="currentViz='TeachingFeedback'" id="tab-teaching" md-label="Teaching Feedback" md-icon="face">
+                              <md-tab id="tab-teaching" md-label="Teaching Feedback" md-icon="face">
                               </md-tab>
                            </md-tabs>
                         </mdb-row>
-                        <mdb-card-body v-if="currentViz == 'GradeDistribution'">
+                        <mdb-card-body>
                            <div style="display: block" justify-content-center>
                               <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="500" :width="300"/>
                            </div>
-                        </mdb-card-body>
-
-                        <mdb-card-body v-if="currentViz == 'FacultyDistribution'">
-                          <div style="display: block">
-                            <mdb-pie-chart :data="pieChartData" :options="pieChartOptions" :height="200"/>
-                          </div>
-
-                        </mdb-card-body>
-
-                        <mdb-card-body v-if="currentViz == 'StudentFeedback'">
-                          <div style="display: block">
-                            <mdb-line-chart :data="lineChartData" :options="lineChartOptions" :height="200"/>
-                          </div>
-                        </mdb-card-body>
-
-                        <mdb-card-body v-if="currentViz == 'TeachingFeedback'">
-                          <div style="display: block">
-                            <mdb-radar-chart :data="radarChartData" :options="radarChartOptions" :height="300"/>
-                          </div>
                         </mdb-card-body>
                      </template>
                   </nav-tabs-card>
@@ -158,15 +141,6 @@
    showFluidModalLeft: false,
    showFluidModalTop: false,
    showFluidModalBottom: false,
-   currentViz: "GradeDistribution",
-
-   vizs: [
-    'GradeDistribution',
-    'FacultyDistribution',
-    'StudentFeedback',
-    'TeachingFeedback'
-   ],
-
    barChartData: {
      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
      datasets: [
@@ -303,7 +277,6 @@
          }
        }
      }
-
    }
    
    
