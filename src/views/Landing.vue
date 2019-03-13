@@ -12,7 +12,7 @@
             <h2 class="text_bg" style="font-family: 'Nunito'"><i>
               Professional Academics and Careers Advisory
             </i></h2>
-            <button class="button button5">Academics</button>
+            <a href="#/Search"><button class="button button5">Academics</button></a>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <button class="button button5">Careers</button>
           </div>
@@ -20,6 +20,7 @@
       </div>
     </parallax>
     <div class="main main-raised">
+      <div class="about2">
       <div class="section">
         <div class="container">
           <div class="features">
@@ -38,7 +39,7 @@
                   </p>
                 </div>
               </div>
-              <div class="md-layout-item md-medium-size-40 md-medium-size-100">
+              <div class="md-layout-item md-medium-size-50 md-medium-size-100">
                 <div class="info mw-90">
                   <hr align="left" style="width:15%;height:2px;color:#333;background-color:#333;" />
                   <h2 class="info-title" style="line-height:25px;font-size:30px">What is Pandas Connect?</h2>
@@ -61,96 +62,72 @@
             </div>
           </div>
         </div>
+        </div>
       </div>
+      <div class="about">
       <div class="section text-center">
         <div class="container">
-          <h2 class="title">Here is our team</h2>
+          <hr align="center" style="width:10%;height:2px;color:#333;background-color:#333;" />
+          <h2 class="title" style="line-height:15px;">Team Pandas</h2>
           <div class="team">
             <div class="md-layout">
-              <div class="md-layout-item md-medium-size-33 md-small-size-100">
+              <div class="md-layout-item md-medium-size-25 md-small-size-100">
                 <div class="team-player">
                   <md-card class="md-card-plain">
-                    <div class="md-layout-item md-size-50 mx-auto">
+                    <div class="md-layout-item md-size-85 mx-auto">
                       <img
-                        :src="teamImg1"
+                        :src="teamImg4"
                         alt="Thumbnail Image"
                         class="img-raised rounded-circle img-fluid"
+                        style="border:2px solid white"
                       />
                     </div>
                     <h4 class="card-title">
-                      Gigi Hadid
+                      Joel Sim
                       <br />
-                      <small class="card-description text-muted">Model</small>
+                      <small class="card-description text-muted">Web Developer</small>
                     </h4>
-
-                    <md-card-content>
-                      <p class="card-description">
-                        You can write here details about one of your team
-                        members. You can give more details about what they do.
-                        Feel free to add some <a href="#">links</a> for people
-                        to be able to follow them outside the site.
-                      </p>
-                    </md-card-content>
 
                     <md-card-actions class="text-center">
                       <md-button
-                        href="javascript:void(0)"
+                        href="https://github.com/halfeatenorange" 
+                        target="_blank"
                         class="md-just-icon md-simple"
                       >
-                        <i class="fab fa-twitter"></i>
-                      </md-button>
-                      <md-button
-                        href="javascript:void(0)"
-                        class="md-just-icon md-simple"
-                      >
-                        <i class="fab fa-instagram"></i>
-                      </md-button>
-                      <md-button
-                        href="javascript:void(0)"
-                        class="md-just-icon md-simple"
-                      >
-                        <i class="fab fa-facebook-square"></i>
+                        <i class="fab fa-github"></i>
                       </md-button>
                     </md-card-actions>
                   </md-card>
                 </div>
               </div>
-              <div class="md-layout-item md-medium-size-33 md-small-size-100">
+              <div class="md-layout-item md-medium-size-25 md-small-size-100">
                 <div class="team-player">
                   <md-card class="md-card-plain">
-                    <div class="md-layout-item md-size-50 mx-auto">
+                    <div class="md-layout-item md-size-85 mx-auto">
                       <img
-                        :src="teamImg2"
+                        :src="teamImg1"
                         alt="Thumbnail Image"
                         class="img-raised rounded-circle img-fluid"
+                        style="border:2px solid white"
                       />
                     </div>
                     <h4 class="card-title">
-                      Carla Hortensia
+                      Jeremy Denzel Lim 
                       <br />
-                      <small class="card-description text-muted"
-                        >Designer</small
-                      >
+                      <small class="card-description text-muted">Front End Developer</small>
                     </h4>
-
-                    <md-card-content>
-                      <p class="card-description">
-                        You can write here details about one of your team
-                        members. You can give more details about what they do.
-                        Feel free to add some <a href="#">links</a> for people
-                        to be able to follow them outside the site.
-                      </p>
-                    </md-card-content>
 
                     <md-card-actions class="text-center">
                       <md-button
-                        href="javascript:void(0)"
+                        href="https://github.com/JeremyDenzelLim" 
+                        target="_blank"
                         class="md-just-icon md-simple"
                       >
-                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-github"></i>
                       </md-button>
                       <md-button
-                        href="javascript:void(0)"
+                        href="https://www.linkedin.com/in/jeremy-denzel-lim-63616816b/" 
+                        target="_blank"
                         class="md-just-icon md-simple"
                       >
                         <i class="fab fa-linkedin"></i>
@@ -159,49 +136,68 @@
                   </md-card>
                 </div>
               </div>
-              <div class="md-layout-item md-medium-size-33 md-small-size-100">
+              <div class="md-layout-item md-medium-size-25 md-small-size-100">
                 <div class="team-player">
                   <md-card class="md-card-plain">
-                    <div class="md-layout-item md-size-50 mx-auto">
+                    <div class="md-layout-item md-size-85 mx-auto">
+                      <img
+                        :src="teamImg2"
+                        alt="Thumbnail Image"
+                        class="img-raised rounded-circle img-fluid"
+                        style="border:2px solid white"
+                      />
+                    </div>
+                    <h4 class="card-title">
+                      Sung Zheng Jie
+                      <br />
+                      <small class="card-description text-muted"
+                        >Front End Developer</small
+                      >
+                    </h4>
+
+                    <md-card-actions class="text-center">
+                      <md-button
+                      href="https://github.com/zhengjiesung" 
+                        target="_blank"
+                        class="md-just-icon md-simple"
+                      >
+                        <i class="fab fa-github"></i>
+                      </md-button>
+                      <md-button
+                        href="https://www.linkedin.com/in/zheng-jie-sung/" 
+                        target="_blank"
+                        class="md-just-icon md-simple"
+                      >
+                        <i class="fab fa-linkedin"></i>
+                      </md-button>
+                    </md-card-actions>
+                  </md-card>
+                </div>
+              </div>
+              <div class="md-layout-item md-medium-size-25 md-small-size-100">
+                <div class="team-player">
+                  <md-card class="md-card-plain">
+                    <div class="md-layout-item md-size-85 mx-auto">
                       <img
                         :src="teamImg3"
                         alt="Thumbnail Image"
                         class="img-raised rounded-circle img-fluid"
+                        style="border:2px solid white"
                       />
                     </div>
                     <h4 class="card-title">
-                      Kendall Jenner
+                      Andrew Tham
                       <br />
-                      <small class="card-description text-muted">Model</small>
+                      <small class="card-description text-muted">Web Developer</small>
                     </h4>
-
-                    <md-card-content>
-                      <p class="card-description">
-                        You can write here details about one of your team
-                        members. You can give more details about what they do.
-                        Feel free to add some <a href="#">links</a> for people
-                        to be able to follow them outside the site.
-                      </p>
-                    </md-card-content>
 
                     <md-card-actions class="text-center">
                       <md-button
-                        href="javascript:void(0)"
+                        href="https://github.com/movingcastle888" 
+                        target="_blank"
                         class="md-just-icon md-simple"
                       >
-                        <i class="fab fa-twitter"></i>
-                      </md-button>
-                      <md-button
-                        href="javascript:void(0)"
-                        class="md-just-icon md-simple"
-                      >
-                        <i class="fab fa-instagram"></i>
-                      </md-button>
-                      <md-button
-                        href="javascript:void(0)"
-                        class="md-just-icon md-simple"
-                      >
-                        <i class="fab fa-facebook-square"></i>
+                        <i class="fab fa-github"></i>
                       </md-button>
                     </md-card-actions>
                   </md-card>
@@ -211,16 +207,21 @@
           </div>
         </div>
       </div>
+      </div>
+      <div class="about3">
       <div class="section section-contacts">
         <div class="container">
           <div class="md-layout">
             <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto">
-              <h2 class="text-center title">Work with us</h2>
-              <h4 class="text-center description">
-                Divide details about your product or agency work into parts.
-                Write a few lines about each one and contact us about any
-                further collaboration. We will responde get back to you in a
-                couple of hours.
+              <div class="md-layout-item md-size-25 mx-auto">
+                      <img
+                        :src="panda"
+                        alt="Thumbnail Image"
+                      />
+                    </div>
+              <h2 class="text-center title" style="line-height:20px;">Contact Us!</h2>
+              <h4 class="text-center description" >
+                Feel free to drop any feedback or suggestions to improve our site! You can also drop us a message for collaboration work :)
               </h4>
               <form class="contact-form">
                 <div class="md-layout">
@@ -243,7 +244,7 @@
                 </md-field>
                 <div class="md-layout">
                   <div class="md-layout-item md-size-33 mx-auto text-center">
-                    <md-button class="md-success">Send Message</md-button>
+                    <button class="button6">Send Message</button>
                   </div>
                 </div>
               </form>
@@ -251,6 +252,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -270,15 +272,23 @@ export default {
     ,
     teamImg1: {
       type: String,
-      default: require("@/assets/img/faces/avatar.jpg")
+      default: require("@/assets/img/faces/jeremy.png")
     },
     teamImg2: {
       type: String,
-      default: require("@/assets/img/faces/christian.jpg")
+      default: require("@/assets/img/faces/zhengjie.png")
     },
     teamImg3: {
       type: String,
-      default: require("@/assets/img/faces/kendall.jpg")
+      default: require("@/assets/img/faces/Andrew.png")
+    },
+    teamImg4: {
+      type: String,
+      default: require("@/assets/img/faces/joel.png")
+    },
+    panda: {
+      type: String,
+      default: require("@/assets/img/dabpanda2.png")
     }
   },
   data() {
@@ -299,6 +309,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.about3{
+background-image: linear-gradient(to right, #E0EAFC,#CFDEF3); 
+}
+.about2{
+}
+.about{
+  background-image: linear-gradient(to right, #B2EBF2,#20BDFF,#B2EBF2); 
+  padding: 40px;
+}
 .text_bg 
 {
   opacity: 0.8;
@@ -310,6 +329,15 @@ export default {
   width:775px;
 }
 .button {
+  a {
+    text-decoration: none;
+  }
+  a:link, a:visited {
+    color: white;
+  }
+  a:hover {
+    color: black;
+  }
   opacity: 0.8;
   background-color: #4CAF50; 
   border: none;
