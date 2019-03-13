@@ -2,12 +2,14 @@
   <div class="wrapper">
     <parallax class="section page-header header-filter" :style="headerStyle">
       <div class="container">
+            <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Nunito:300|Megrim|Monoton">
         <div class="md-layout">
           <div
             class="md-layout-item md-small-size-70 md-xsmall-size-100 text-center"
           >
-            <h1 style ='font-size:60px;color:black;'>Pandas Connect</h1>
-            <h2 class="text_bg"><i>
+            <h1 style ="font-size:60px;color:black;font-family: 'Monoton', cursive;">Pandas Connect</h1>
+            <h2 class="text_bg" style="font-family: 'Nunito'"><i>
               Professional Academics and Careers Advisory
             </i></h2>
             <button class="button button5">Academics</button>
@@ -20,59 +22,40 @@
     <div class="main main-raised">
       <div class="section">
         <div class="container">
-          <div class="md-layout">
-            <div
-              class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto text-center"
-            >
-              <h2 class="title text-center">Let's talk product</h2>
-              <h5 class="description">
-                This is the paragraph where you can write more details about
-                your product. Keep you user engaged by providing meaningful
-                information. Remember that by this time, the user is curious,
-                otherwise he wouldn't scroll to get here. Add a button if you
-                want the user to see more.
-              </h5>
-            </div>
-          </div>
-          <div class="features text-center">
+          <div class="features">
             <div class="md-layout">
-              <div class="md-layout-item md-medium-size-33 md-small-size-100">
-                <div class="info">
-                  <div class="icon icon-info">
-                    <md-icon>chat</md-icon>
-                  </div>
-                  <h4 class="info-title">Free Chat</h4>
-                  <p>
-                    Divide details about your product or agency work into parts.
-                    Write a few lines about each one. A paragraph describing a
-                    feature will be enough.
+              <div class="md-layout-item md-large-size-50 md-medium-size-100">
+                <div class="info mw-100">
+                  <hr align="left" style="width:10%;height:2px;color:#333;background-color:#333;" />
+                  <h2 class="info-title" style="line-height:25px;font-size:30px;">Our Advisor</h2>
+                      <img 
+                        :src="profImg"
+                        alt="Thumbnail Image"
+                      />
+                      <div><br></div>
+                  <p> 
+                    <b>Professor Chris Boesch</b> is an Associate Professor at the NUS School of Computing and Deputy Director of the Translational Research Unit at ALSET. With over twenty years of experience in engineering and management roles at leading global technology firms, he oversees the ALSET Educational Data Lake and various translational research initiatives.
                   </p>
                 </div>
               </div>
-              <div class="md-layout-item md-medium-size-33 md-small-size-100">
-                <div class="info">
-                  <div class="icon icon-success">
-                    <md-icon>verified_user</md-icon>
-                  </div>
-                  <h4 class="info-title">Verified Users</h4>
+              <div class="md-layout-item md-medium-size-40 md-medium-size-100">
+                <div class="info mw-90">
+                  <hr align="left" style="width:15%;height:2px;color:#333;background-color:#333;" />
+                  <h2 class="info-title" style="line-height:25px;font-size:30px">What is Pandas Connect?</h2>
                   <p>
-                    Divide details about your product or agency work into parts.
-                    Write a few lines about each one. A paragraph describing a
-                    feature will be enough.
+                    Pandas Connect is a joint project by the NUS Institution for Application of Learning Science and Educational Technology(ALSET) and Pandas. It is an academic and career guidance application designed BY students FOR students. Utilizing on the ALSET Educational Data Lake, key analytics insights are shared to aid student make more informed decisions in their University life in NUS.
                   </p>
-                </div>
-              </div>
-              <div class="md-layout-item md-medium-size-33 md-small-size-100">
-                <div class="info">
-                  <div class="icon icon-danger">
-                    <md-icon>fingerprint</md-icon>
-                  </div>
-                  <h4 class="info-title">Fingerprint</h4>
+                  <div><br></div>
+                  <h2 class="info-title" style="line-height:25px;font-size:30px">Our Mission</h2>
                   <p>
-                    Divide details about your product or agency work into parts.
-                    Write a few lines about each one. A paragraph describing a
-                    feature will be enough.
+                  To empower the students of NUS with the best information to make better decisions to realise their full potential.
                   </p>
+                    <div><br></div>
+                    <h2 class="info-title" style="line-height:25px;font-size:30px">Our Vision</h2>
+                  <p>
+                  To organize the University’s data and make it universally accessible and useful.
+                  </p>
+                  <button class="button6">Read More</button>
                 </div>
               </div>
             </div>
@@ -280,6 +263,11 @@ export default {
       type: String,
       default: require("@/assets/img/main.jpg")
     },
+    profImg: {
+      type: String,
+      default: require("@/assets/img/faces/prof.png")
+    }
+    ,
     teamImg1: {
       type: String,
       default: require("@/assets/img/faces/avatar.jpg")
@@ -319,7 +307,7 @@ export default {
   margin: auto;
   border-radius: 10px;
   float:center;
-  width:800px;
+  width:775px;
 }
 .button {
   opacity: 0.8;
@@ -331,7 +319,7 @@ export default {
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
-  margin: 10px 2px;
+  margin: 12px 2px;
   cursor: pointer;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
@@ -344,6 +332,17 @@ export default {
   background-color: white;
   color: black;
   border-radius: 12px;
+}
+.button6{
+  background-color: #555555;
+  border: none;
+  color: white;
+  padding: 10px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 12px 2px;
 }
 .md-card-actions.text-center {
   display: flex;
