@@ -50,7 +50,7 @@
                   <nav-tabs-card no-label>
                      <template slot="content" >
                         <mdb-row center>
-                           <md-tabs md-sync-route class="md-warning" md-alignment="centered">
+                           <md-tabs md-sync-route class="md-primary" md-alignment="centered">
                               <md-tab @click="currentViz='GradeDistribution'" id="tab-grade" md-label="Grade Distribution" md-icon="laptop_chromebook">
                               </md-tab>
                               <md-tab @click="currentViz='FacultyDistribution'" id="tab-faulty" md-label="Faculty Distribution" md-icon="format_list_numbered">
