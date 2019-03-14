@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <parallax class="section page-header header-filter" :style="headerStyle">
+    <parallax class="mask flex-center rgba-black-light section page-header header-filter" :style="headerStyle">
       <div class="container">
             <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Nunito:300|Megrim|Monoton">
