@@ -5,6 +5,7 @@ import Landing from "./views/Landing.vue";
 import Login from "./views/Login.vue";
 import Profile from "./views/Profile.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
+import LandingNavbar from "./layout/LandingNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 import testing from "./views/testing.vue"
 import dashboard from "./views/Dashboard.vue"
@@ -12,6 +13,9 @@ import module from "./views/Module.vue"
 import testing2 from "./views/testing2.vue"
 import modlist from "./views/ModsList.vue"
 import search from "./views/Search.vue"
+import search2 from "./views/search_careers.vue"
+import industry from "./views/Industry.vue"
+import major from "./views/Major.vue"
 
 Vue.use(Router);
 
@@ -29,7 +33,7 @@ export default new Router({
     {
       path: "/landing",
       name: "landing",
-      components: { default: Landing, header: MainNavbar, footer: MainFooter },
+      components: { default: Landing, header: LandingNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
@@ -98,6 +102,15 @@ export default new Router({
       }
     },
     {
+      path: "/search_careers",
+      name: "search_careers",
+      components: { default: search2, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
       path: "/search",
       name: "search",
       components: { default: search, header: MainNavbar, footer: MainFooter },
@@ -105,7 +118,26 @@ export default new Router({
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
       }
+    },
+    {
+      path: "/industry",
+      name: "industry",
+      components: { default: industry, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/major",
+      name: "major",
+      components: { default: major, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
     }
+    
   ],
   scrollBehavior: to => {
     if (to.hash) {
