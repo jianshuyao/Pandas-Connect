@@ -3,6 +3,7 @@ import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbvue/build/css/mdb.css';
 import App from "./App.vue";
 import router from "./router";
+import 'vue-material/dist/theme/default-dark.css'
 
 import MaterialKit from "./plugins/material-kit";
 

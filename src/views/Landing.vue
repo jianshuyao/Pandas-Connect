@@ -8,13 +8,14 @@
           <div
             class="md-layout-item md-small-size-70 md-xsmall-size-100 text-center"
           >
-            <h1 style ="font-size:60px;color:black;font-family: 'Monoton', cursive;">Pandas Connect</h1>
-            <h2 class="text_bg" style="font-family: 'Nunito'"><i>
-              Professional Academics and Careers Advisory
-            </i></h2>
-            <a href="#/Search"><button class="button button5">Academics</button></a>
+            <h1 style ="font-size:60px;color:white;font-family: 'Monoton', cursive; letter-spacing: 10px;">PANDAS CONNECT</h1>
+            <hr align="center" style="width:30%;height:2px;color:white;background-color:white;" />
+            <h2 class="text_bg" style="font-size:30px;font-family: 'Nunito'; font-weight:bold;color:white">
+              <i>Professional Academics & Careers Advisory</i>
+            </h2>
+            <a href="#/Search"><button class="button button5"><i class="fas fa-book"></i> ACADEMICS</button></a>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="button button5">Careers</button>
+            <button class="button button5"><i class="fas fa-graduation-cap"></i> CAREERS</button>
           </div>
         </div>
       </div>
@@ -63,6 +64,14 @@
           </div>
         </div>
         </div>
+      </div>
+      <div class="about4">
+      <div class="section text-center">
+        <div class="container">
+          <hr align="center" style="width:10%;height:2px;color:#333;background-color:#333;" />
+          <h2 class="title" style="line-height:15px;">Why Pandas Connect?</h2>
+          </div>
+      </div>
       </div>
       <div class="about">
       <div class="section text-center">
@@ -312,16 +321,18 @@ export default {
 .about3{
 background-image: linear-gradient(to right, #E0EAFC,#CFDEF3); 
 }
+.about4{
+background-image: linear-gradient(to right, #E0EAFC,#CFDEF3); 
+}
 .about2{
 }
 .about{
-  background-image: linear-gradient(to right, #B2EBF2,#20BDFF,#B2EBF2); 
+  background-image: linear-gradient(to right, #e8eaf6,#e1f5fe,#e8eaf6); 
   padding: 40px;
 }
 .text_bg 
 {
   opacity: 0.8;
-  background-color: #3A7C80;
   text-align: center;
   margin: auto;
   border-radius: 10px;
@@ -340,14 +351,14 @@ background-image: linear-gradient(to right, #E0EAFC,#CFDEF3);
   }
   opacity: 0.8;
   background-color: #4CAF50; 
-  border: none;
+  border: 2px solid white;
   color: white;
-  padding: 10px 22px;
+  padding: 15px 22px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 14px;
-  margin: 12px 2px;
+  font-size: 20px;
+  margin: 20px 10px;
   cursor: pointer;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;

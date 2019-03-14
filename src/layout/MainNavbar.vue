@@ -2,14 +2,14 @@
   <md-toolbar
     id="toolbar"
     md-elevation="0"
-    class="md-warning md-absolute"
+    class="md-primary md-absolute"
     :class="extraNavClasses"
     :color-on-scroll="colorOnScroll"
   >
     <div class="md-toolbar-row md-collapse-lateral">
       <div class="md-toolbar-section-start mw-100">
         <img src="Panda.png" style="width:60px;height:50px"> 
-        <h3 class="md-title" style="font-weight:bold; font-size:22px">Pandas Connect</h3>
+        <h3 class="md-title" style="font-weight:bold; font-size:22px">PANDAS CONNECT</h3>
       </div>
       <div class="md-toolbar-section-end mw-100">
         <md-button
@@ -40,7 +40,7 @@
                         slot="title"
                         class="md-button md-button-link md-white md-simple"
                       >
-                        <i class="material-icons">home</i>
+                        <i class="material-icons md-48">home</i>
                         <p>Home</p>
                       </md-button>
                     </drop-down>
@@ -168,7 +168,7 @@ export default {
   },
   computed: {
     showDownload() {
-      const excludedRoutes = ["login", "landing", "profile"];
+      const excludedRoutes = ["login", "profile"];
       return excludedRoutes.every(r => r !== this.$route.name);
     }
   },
