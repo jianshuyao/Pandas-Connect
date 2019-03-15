@@ -30,7 +30,7 @@
             <md-list>
               <li class="md-list-item">
                 <a
-                  href="javascript:void(0)"
+                  href="#/landing"
                   class="md-list-item-router md-list-item-container md-button-clean dropdown"
                 >
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -49,7 +49,7 @@
               </li>
               <li class="md-list-item">
                 <a
-                  href="javascript:void(0)"
+                  href="#/landing#about_tag"
                   class="md-list-item-router md-list-item-container md-button-clean dropdown"
                 >
                   <div class="md-list-item-content">
@@ -67,7 +67,7 @@
               </li>
               <li class="md-list-item">
                 <a
-                  href="javascript:void(0)"
+                  href="#/landing#team_tag"
                   class="md-list-item-router md-list-item-container md-button-clean dropdown"
                 >
                   <div class="md-list-item-content">
@@ -85,7 +85,7 @@
               </li>
               <li class="md-list-item">
                 <a
-                  href="javascript:void(0)"
+                  href="#/landing#contact_tag"
                   class="md-list-item-router md-list-item-container md-button-clean dropdown"
                 >
                   <div class="md-list-item-content">

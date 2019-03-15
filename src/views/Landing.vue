@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <div id="landing_tag">
     <parallax class="mask flex-center rgba-black-light section page-header header-filter" :style="headerStyle">
       <div class="container">
             <link rel="stylesheet"
@@ -15,12 +16,14 @@
             </h2>
             <a href="#/Search"><button class="button button5"><i class="fas fa-book"></i> ACADEMICS</button></a>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="button button5"><i class="fas fa-graduation-cap"></i> CAREERS</button>
+            <a href="#/search_careers"><button class="button button5"><i class="fas fa-graduation-cap"></i> CAREERS</button></a>
           </div>
         </div>
       </div>
     </parallax>
+  </div>
     <div class="main main-raised">
+      <div id="about_tag">
       <div class="about2">
       <div class="section">
         <div class="container">
@@ -63,6 +66,7 @@
             </div>
           </div>
         </div>
+      </div>
         </div>
       </div>
       <div class="about4">
@@ -73,6 +77,7 @@
           </div>
       </div>
       </div>
+      <div id = "team_tag">
       <div class="about">
       <div class="section text-center">
         <div class="container">
@@ -217,6 +222,8 @@
         </div>
       </div>
       </div>
+      </div>
+      <div id="contact_tag">
       <div class="about3">
       <div class="section section-contacts">
         <div class="container">
@@ -261,6 +268,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
     </div>
   </div>

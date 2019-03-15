@@ -30,9 +30,8 @@
             <md-list>
               <li class="md-list-item">
                 <a
-                  href="javascript:void(0)"
-                  class="md-list-item-router md-list-item-container md-button-clean dropdown"
-                >
+                  href="#landing_tag"
+                  class="md-list-item-router md-list-item-container md-button-clean dropdown">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <div class="md-list-item-content">
                     <drop-down direction="down">
@@ -49,7 +48,7 @@
               </li>
               <li class="md-list-item">
                 <a
-                  href="javascript:void(0)"
+                  href="#about_tag"
                   class="md-list-item-router md-list-item-container md-button-clean dropdown"
                 >
                   <div class="md-list-item-content">
@@ -67,7 +66,7 @@
               </li>
               <li class="md-list-item">
                 <a
-                  href="javascript:void(0)"
+                  href="#team_tag"
                   class="md-list-item-router md-list-item-container md-button-clean dropdown"
                 >
                   <div class="md-list-item-content">
@@ -85,7 +84,7 @@
               </li>
               <li class="md-list-item">
                 <a
-                  href="javascript:void(0)"
+                  href="#contact_tag"
                   class="md-list-item-router md-list-item-container md-button-clean dropdown"
                 >
                   <div class="md-list-item-content">
@@ -216,7 +215,13 @@ export default {
       if (element_id) {
         element_id.scrollIntoView({ block: "end", behavior: "smooth" });
       }
-    }
+    },
+    scrollMeTo(refName) {
+      var element = this.$refs[refName];
+      var top = element.offsetTop;
+
+    window.scrollTo(0, top);
+  }
   },
   mounted() {
     document.addEventListener("scroll", this.scrollListener);
