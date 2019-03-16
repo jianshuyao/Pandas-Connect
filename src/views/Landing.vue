@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div id="landing_tag">
+    <div id="landing">
     <parallax class="mask flex-center rgba-black-light section page-header header-filter" :style="headerStyle">
       <div class="container">
             <link rel="stylesheet"

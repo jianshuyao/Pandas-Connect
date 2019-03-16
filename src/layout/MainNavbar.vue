@@ -6,10 +6,13 @@
     :class="extraNavClasses"
     :color-on-scroll="colorOnScroll"
   >
-    <div class="md-toolbar-row md-collapse-lateral">
+    <div class="md-toolbar-section-start md-collapse-lateral">
       <div class="md-toolbar-section-start mw-100">
         <img src="Panda.png" style="width:60px;height:50px"> 
         <h3 class="md-title" style="font-weight:bold; font-size:22px">PANDAS CONNECT</h3>
+        <a href="#/Search"><button class="button button5"><i class="fas fa-book"></i> ACADEMICS</button></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#/search_careers"><button class="button button5"><i class="fas fa-graduation-cap"></i> CAREERS</button></a>
       </div>
       <div class="md-toolbar-section-end mw-100">
         <md-button
@@ -226,3 +229,50 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.button {
+  a {
+    text-decoration: none;
+  }
+  a:link, a:visited {
+    color: white;
+  }
+  a:hover {
+    color: black;
+  }
+  opacity: 0.8;
+  background-color: #4CAF50; 
+  border: 2px solid white;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 5px 3px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+.button5 {
+  background-color: #555555;
+  border-radius: 12px;
+}
+.button5:hover {
+  background-color: white;
+  color: black;
+  border-radius: 12px;
+}
+.button6{
+  background-color: #555555;
+  border: none;
+  color: white;
+  padding: 10px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 12px 2px;
+}
+</style>
