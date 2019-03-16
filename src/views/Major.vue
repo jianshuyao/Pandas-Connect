@@ -74,7 +74,7 @@
                                 </mdb-row>
                                  <mdb-row>
                                    <div style="display: block" justify-content-center>
-                                      <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="500" :width="1000"/>
+                                      <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="500" :width="1500"/>
                                    </div>
                                    </mdb-row>
                                    </mdb-col>
@@ -87,7 +87,7 @@
                                 </mdb-row>
                                  <mdb-row>
                                    <div style="display: block">
-                                  <mdb-line-chart :data="lineChartData" :options="lineChartOptions" :height="500" :width="1000"/>
+                                  <mdb-line-chart :data="lineChartData" :options="lineChartOptions" :height="500" :width="1500"/>
                                 </div>
                                    </mdb-row>
                                    </mdb-col>
@@ -100,7 +100,7 @@
                                 </mdb-row>
                                  <mdb-row>
                                    <div style="display: block">
-                                  <mdb-pie-chart :data="pieChartData" :options="pieChartOptions" :height="500" :width="1000"/>
+                                  <mdb-pie-chart :data="pieChartData" :options="pieChartOptions" :height="500" :width="1500"/>
                                 </div>
                                    </mdb-row>
                                    </mdb-col>
