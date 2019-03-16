@@ -16,7 +16,6 @@
             </mdb-col>
           </mdb-row>
             <mdb-row center>
-               <div class="w-75 p-3" style="background-color: #eee;">
                   <nav-tabs-card no-label>
                      <template slot="content" >
                         <mdb-row center>
@@ -61,7 +60,6 @@
                         </mdb-card-body>
                      </template>
                   </nav-tabs-card>
-               </div>
             </mdb-row>
          </section>
       </section>
