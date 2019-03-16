@@ -7,8 +7,7 @@
             <mdb-col col="4">
                <mdb-row md="4" center>
                   <mdb-modal-title>
-                     <h1 class="card-title">BT1101 
-                     </h1>
+                    <h1 class="card-title">BT1101 </h1>
                      <mdb-modal size v-if="modal" @close="modal = false">
                         <mdb-modal-header>
                            <mdb-modal-title>Module Information</mdb-modal-title>
@@ -42,7 +41,7 @@
             </mdb-col>
             <mdb-col col="4">
               <br/><br/><br/><br/><br/><br/>
-              <mdb-btn size = "sm" outline="warning" @click.native="modal = true"><mdb-icon size="2x" far icon="question-circle" /></mdb-btn>
+              <mdb-btn size = "sm" outline="primary" @click.native="modal = true"><mdb-icon size="2x" far icon="question-circle" /></mdb-btn>
             </mdb-col>
           </mdb-row>
             <mdb-row center>

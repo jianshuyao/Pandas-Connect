@@ -15,7 +15,7 @@
                   <nav-tabs-card no-label>
                      <template slot="content" >
                         <mdb-row center>
-                           <md-tabs md-sync-route class="md-warning" md-alignment="centered">
+                           <md-tabs md-sync-route class="md-primary" md-alignment="centered">
                               <md-tab id="tab-grade" md-label="1000" md-icon="laptop_chromebook">
                               </md-tab>
                               <md-tab id="tab-grade1" md-label="2000" md-icon="laptop_chromebook">
