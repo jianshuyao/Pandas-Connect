@@ -31,6 +31,7 @@
               <li class="md-list-item">
                 <a
                   href="#landing_tag"
+                  v-smooth-scroll
                   class="md-list-item-router md-list-item-container md-button-clean dropdown">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <div class="md-list-item-content">
@@ -50,6 +51,7 @@
                 <a
                   href="#about_tag"
                   class="md-list-item-router md-list-item-container md-button-clean dropdown"
+                  v-smooth-scroll
                 >
                   <div class="md-list-item-content">
                     <drop-down direction="down">
@@ -68,6 +70,7 @@
                 <a
                   href="#team_tag"
                   class="md-list-item-router md-list-item-container md-button-clean dropdown"
+                  v-smooth-scroll
                 >
                   <div class="md-list-item-content">
                     <drop-down direction="down">
@@ -86,6 +89,7 @@
                 <a
                   href="#contact_tag"
                   class="md-list-item-router md-list-item-container md-button-clean dropdown"
+                  v-smooth-scroll
                 >
                   <div class="md-list-item-content">
                     <drop-down direction="down">
@@ -211,9 +215,9 @@ export default {
       resizeThrottler(this.handleScroll);
     },
     scrollToElement() {
-      let element_id = document.getElementById("downloadSection");
+      let element_id = document.getElementById("about_tag");
       if (element_id) {
-        element_id.scrollIntoView({ block: "end", behavior: "smooth" });
+        element_id.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
       }
     },
     scrollMeTo(refName) {
