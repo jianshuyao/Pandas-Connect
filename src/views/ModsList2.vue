@@ -30,109 +30,29 @@
                               </md-tab>
                            </md-tabs>
                         </mdb-row>
-                        <mdb-card-body 
+                        <div 
+                        v-for="mod in mod_list"
+                        class="mod_cards"
+                        v-if="modFiltering(mod)"
+                        >
+                        <mdb-card-body> 
                         <mdb-row><br/></mdb-row>
-                        <mdb-col>
-                          <mdb-row>
                 <mdb-col md="4">
                   <mdb-card>
                       <mdb-card-header>
                       <mdb-row center>
-                      <h2 class="card-title" center>
-                    BT1101</h2>
+                      <h2 class="card-title" center>{{ mod.ModuleCode }}</h2>
                         </mdb-row>
                       </mdb-card-header> 
                     <mdb-card-body center>
                       <mdb-row center>
-                      This is a nice module
+                      {{ mod.ModuleTitle }}
                       </mdb-row>
                     </mdb-card-body>
                   </mdb-card>
-                </mdb-col>
-                <mdb-col md="4">
-                  <mdb-card>
-                      <mdb-card-header>
-                      <mdb-row center>
-                      <h2 class="card-title" center>
-                    BT1101</h2>
-                        </mdb-row>
-                      </mdb-card-header> 
-                    <mdb-card-body center>
-                      <mdb-row center>
-                      This is a nice module
-                      </mdb-row>
-                    </mdb-card-body>
-                  </mdb-card>
-                </mdb-col>
-                <mdb-col md="4">
-                  <mdb-card>
-                      <mdb-card-header>
-                      <mdb-row center>
-                      <h2 class="card-title" center>
-                    BT1101</h2>
-                        </mdb-row>
-                      </mdb-card-header> 
-                    <mdb-card-body center>
-                      <mdb-row center>
-                      This is a nice module
-                      </mdb-row>
-                    </mdb-card-body>
-                  </mdb-card>
-                </mdb-col>
-              </mdb-row>
-              <mdb-row><br/></mdb-row>
-              <mdb-row>
-                <mdb-col md="4">
-                  <mdb-card>
-                      <mdb-card-header>
-                      <mdb-row center>
-                      <h2 class="card-title" center>
-                    BT1101</h2>
-                        </mdb-row>
-                      </mdb-card-header> 
-                    <mdb-card-body center>
-                      <mdb-row center>
-                      This is a nice module
-                      </mdb-row>
-                    </mdb-card-body>
-                  </mdb-card>
-                </mdb-col>
-                <mdb-col md="4">
-                  <mdb-card>
-                      <mdb-card-header>
-                      <mdb-row center>
-                      <h2 class="card-title" center>
-                    BT1101</h2>
-                        </mdb-row>
-                      </mdb-card-header> 
-                    <mdb-card-body center>
-                      <mdb-row center>
-                      This is a nice module
-                      </mdb-row>
-                    </mdb-card-body>
-                  </mdb-card>
-                </mdb-col>
-                <mdb-col md="4">
-                  <mdb-card>
-                      <mdb-card-header>
-                      <mdb-row center>
-                      <h2 class="card-title" center>
-                    BT1101</h2>
-                        </mdb-row>
-                      </mdb-card-header> 
-                    <mdb-card-body center>
-                      <mdb-row center>
-                      This is a nice module
-                      </mdb-row>
-                    </mdb-card-body>
-                  </mdb-card>
-                </mdb-col>
-              </mdb-row>
-              <mdb-row><br/></mdb-row>
-
-                        </mdb-col>
-                        
+                </mdb-col>                        
                         </mdb-card-body>
+                      </div>
                      </template>
                   </nav-tabs-card>
             </mdb-container>
@@ -158,14 +78,6 @@
    default: require("@/assets/img/bg7.jpg")
    }
    },
-   mounted() {
-    db.ref("/modules")
-      .once('value') //need smaller dataset to quicken loading
-      .then(snapshot => {
-        this.mod_list = snapshot.val();
-      });
-    }
-   ,
    computed: {
    headerStyle() {
    return {
@@ -349,9 +261,26 @@
          doughnutChartOptions: {
            responsive: true,
            maintainAspectRatio: false
-         }
+         },
+        category:"cs1",
+       search:"test2"
        }
-     }
+     },
+     mounted() {
+    db.ref("/modules")
+      .once("value") //need smaller dataset to quicken loading
+      .then(snapshot => {
+        this.mod_list = snapshot.val();
+      });
+    },
+    methods:{
+      modFiltering(mod) {
+      let catMatch = mod.ModuleCode
+        .toLowerCase()
+        .includes(this.category.toLowerCase());
+      return catMatch;
+    }
+    }
    }
    
    

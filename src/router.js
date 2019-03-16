@@ -12,6 +12,7 @@ import dashboard from "./views/Dashboard.vue"
 import module from "./views/Module.vue"
 import testing2 from "./views/testing2.vue"
 import modlist from "./views/ModsList.vue"
+import modlist2 from "./views/ModsList2.vue"
 import search from "./views/Search.vue"
 import search2 from "./views/search_careers.vue"
 import industry from "./views/Industry.vue"
@@ -101,6 +102,16 @@ export default new Router({
         footer: { backgroundColor: "black" }
       }
     },
+    {
+      path: "/modlist2",
+      name: "modlist2",
+      components: { default: modlist2, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    }
+    ,
     {
       path: "/search_careers",
       name: "search_careers",
