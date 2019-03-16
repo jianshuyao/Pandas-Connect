@@ -38,11 +38,8 @@
                                       <md-tab @click="currentViz='Degree Classification'" id="tab-degree" md-label="Degree Classification" md-icon="category">
                                       </md-tab>
                                    </md-tabs>
-                                   
                                 </mdb-row>
                                 <mdb-card-body>
-                                <mdb-row>
-                                </mdb-row>
                                   <mdb-row>
                                     <div class="w-10 p-3">
                                     <mdb-col center>
@@ -68,45 +65,47 @@
                                     </mdb-stepper>
                                     </mdb-col>
                                     </div>
-                                <mdb-col>
+                                <mdb-col center v-if="currentViz == 'Median Salary'">
                                   <mdb-row center>
                                   <mdb-btn-group>
                                   <mdb-btn color="pink" @click.native="currentViz='Median Salary'" :active="active">Industry</mdb-btn>
                                   <mdb-btn color="pink" @click.native="currentViz='Median Salary'" :active="active2">Job Title</mdb-btn>
                                 </mdb-btn-group>
                                 </mdb-row>
-                                 <mdb-row center v-if="currentViz == 'Median Salary'">
-                                  
+                                 <mdb-row>
                                    <div style="display: block" justify-content-center>
-                                      <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="500" :width="850"/>
+                                      <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="500" :width="1000"/>
                                    </div>
                                    </mdb-row>
-                                    <mdb-btn-group>
-                                  <mdb-btn color="pink" @click.native="currentViz='Median Salary'" :active="active">Industry</mdb-btn>
-                                  <mdb-btn color="pink" @click.native="currentViz='Median Salary'" :active="active2">Job Title</mdb-btn>
+                                   </mdb-col>
+                                   <mdb-col center v-if="currentViz == 'Hiring Statistics'">
+                                  <mdb-row center>
+                                  <mdb-btn-group>
+                                  <mdb-btn color="pink" @click.native="currentViz='Hiring Statistics'" :active="active">Industry</mdb-btn>
+                                  <mdb-btn color="pink" @click.native="currentViz='Hiring Statistics'" :active="active2">Job Title</mdb-btn>
                                 </mdb-btn-group>
-                                   <mdb-row center v-if="currentViz == 'Hiring Statistics'">
-                                  <div style="display: block">
-                                    <mdb-line-chart :data="lineChartData" :options="lineChartOptions" :height="500" :width="850"/>
-                                  </div>
-
                                 </mdb-row>
+                                 <mdb-row>
+                                   <div style="display: block">
+                                  <mdb-line-chart :data="lineChartData" :options="lineChartOptions" :height="500" :width="1000"/>
+                                </div>
+                                   </mdb-row>
+                                   </mdb-col>
+<mdb-col center v-if="currentViz == 'Degree Classification'">
+                                  <mdb-row center>
                                   <mdb-btn-group>
                                   <mdb-btn color="pink" @click.native="currentViz='Degree Classification'" :active="active">Industry</mdb-btn>
-                                  <mdb-btn color="pink" @click.native="currentViz='Degree Classification'" :active="active2">Job Title</mdb-btn>
+                                  <mdb-btn color="pink" @click.native="currentViz='Median Salary'" :active="active2">Job Title</mdb-btn>
                                 </mdb-btn-group>
-                                <mdb-row center v-if="currentViz == 'Degree Classification'">
-                                  
-                                  <div style="display: block">
-                                    <mdb-pie-chart :data="pieChartData" :options="pieChartOptions" :height="500" :width="850"/>
-                                  </div>
                                 </mdb-row>
-                                </mdb-col>
-                                  </mdb-row>
-
+                                 <mdb-row>
+                                   <div style="display: block">
+                                  <mdb-pie-chart :data="pieChartData" :options="pieChartOptions" :height="500" :width="1000"/>
+                                </div>
+                                   </mdb-row>
+                                   </mdb-col>
+                                   </mdb-row>
                                 </mdb-card-body>
-
-                                
                              </template>
                           </nav-tabs-card>
                     </mdb-row>
