@@ -81,23 +81,22 @@
                                       <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="500" :width="850"/>
                                    </div>
                                    </mdb-row>
-
-                                   <mdb-row center v-if="currentViz == 'Hiring Statistics'">
                                     <mdb-btn-group>
-                                  <mdb-btn color="pink" @click.native="currentViz='Hiring Statistics'" :active="active">Industry</mdb-btn>
-                                  <mdb-btn color="pink" @click.native="currentViz='Hiring Statistics'" :active="active2">Job Title</mdb-btn>
+                                  <mdb-btn color="pink" @click.native="currentViz='Median Salary'" :active="active">Industry</mdb-btn>
+                                  <mdb-btn color="pink" @click.native="currentViz='Median Salary'" :active="active2">Job Title</mdb-btn>
                                 </mdb-btn-group>
+                                   <mdb-row center v-if="currentViz == 'Hiring Statistics'">
                                   <div style="display: block">
                                     <mdb-line-chart :data="lineChartData" :options="lineChartOptions" :height="500" :width="850"/>
                                   </div>
 
                                 </mdb-row>
-
-                                <mdb-row center v-if="currentViz == 'Degree Classification'">
                                   <mdb-btn-group>
                                   <mdb-btn color="pink" @click.native="currentViz='Degree Classification'" :active="active">Industry</mdb-btn>
                                   <mdb-btn color="pink" @click.native="currentViz='Degree Classification'" :active="active2">Job Title</mdb-btn>
                                 </mdb-btn-group>
+                                <mdb-row center v-if="currentViz == 'Degree Classification'">
+                                  
                                   <div style="display: block">
                                     <mdb-pie-chart :data="pieChartData" :options="pieChartOptions" :height="500" :width="850"/>
                                   </div>
