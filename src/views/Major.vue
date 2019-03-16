@@ -70,13 +70,13 @@
                                     </div>
                                 <mdb-col>
                                   <mdb-row center>
-                                
-                                </mdb-row>
-                                 <mdb-row center v-if="currentViz == 'Median Salary'">
                                   <mdb-btn-group>
                                   <mdb-btn color="pink" @click.native="currentViz='Median Salary'" :active="active">Industry</mdb-btn>
                                   <mdb-btn color="pink" @click.native="currentViz='Median Salary'" :active="active2">Job Title</mdb-btn>
                                 </mdb-btn-group>
+                                </mdb-row>
+                                 <mdb-row center v-if="currentViz == 'Median Salary'">
+                                  
                                    <div style="display: block" justify-content-center>
                                       <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="500" :width="850"/>
                                    </div>
