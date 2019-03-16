@@ -44,24 +44,24 @@
                                     <aside  class="w-10 p-3">
                                     
                                       <div class="col-md-4">
-                                        <ul class="nav nav-pills nav-pills-icons flex-column" role="tablist">
+                                        <ul class="nav nav-pills nav-pills-icons flex-column" role="tablist" >
                                           <!--
                                               color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
                                           -->
                                           <li class="nav-item">
-                                              <a class="nav-link" href="#dashboard-1" role="tab" data-toggle="tab">
+                                              <a class="nav-link" @click="toggleActiveState5" :active="overview" role="tab" data-toggle="tab">
                                                   Overview
                                                   <i class="material-icons">dashboard</i>
                                               </a>
                                           </li>
                                           <li class="nav-item">
-                                              <a class="nav-link active" href="#schedule-1" role="tab" data-toggle="tab">
+                                              <a class="nav-link active" @click="toggleActiveState5" :active="overview" role="tab" data-toggle="tab">
                                                   CAP
                                                   <i class="material-icons">dashboard</i>
                                               </a>
                                           </li>
                                           <li class="nav-item">
-                                              <a class="nav-link" href="#tasks-1" role="tab" data-toggle="tab">
+                                              <a class="nav-link" @click="toggleActiveState5" :active="overview"role="tab" data-toggle="tab">
                                                   Year
                                                   <i class="material-icons">dashboard</i>
                                               </a>
