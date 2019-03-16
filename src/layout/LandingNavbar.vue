@@ -30,7 +30,7 @@
             <md-list>
               <li class="md-list-item">
                 <a
-                  href="#landing_tag"
+                  href="#landing"
                   v-smooth-scroll
                   class="md-list-item-router md-list-item-container md-button-clean dropdown">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

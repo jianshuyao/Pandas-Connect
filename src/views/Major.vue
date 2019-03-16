@@ -41,30 +41,35 @@
                                 </mdb-row>
                                 <mdb-card-body>
                                   <mdb-row>
-                                    <div class="w-10 p-3">
-                                    <mdb-col center>
-                                      <mdb-stepper simpleV>
-                                      <li class="completed" slot="simple">
-                                        <a>
-                                          <span class="label">Overview</span>
-                                        </a>
-                                      </li>
-                                      <li class="active" slot="simple">
-                                        <a>
-                                          <span class="label">CAP</span>
-                                        </a>
-                                          <div class="step-content grey lighten-3">
-                                            
-                                        </div>
-                                      </li>
-                                      <li class="warning" slot="simple">
-                                        <a></span>
-                                          <span class="label">Year</span>
-                                        </a>
-                                      </li>
-                                    </mdb-stepper>
-                                    </mdb-col>
-                                    </div>
+                                    <aside  class="w-10 p-3">
+                                    
+                                      <div class="col-md-4">
+                                        <ul class="nav nav-pills nav-pills-icons flex-column" role="tablist" >
+                                          <!--
+                                              color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
+                                          -->
+                                          <li class="nav-item">
+                                              <a class="nav-link" @click="toggleActiveState5" :active="overview" role="tab" data-toggle="tab">
+                                                  Overview
+                                                  <i class="material-icons">dashboard</i>
+                                              </a>
+                                          </li>
+                                          <li class="nav-item">
+                                              <a class="nav-link active" @click="toggleActiveState5" :active="overview" role="tab" data-toggle="tab">
+                                                  CAP
+                                                  <i class="material-icons">dashboard</i>
+                                              </a>
+                                          </li>
+                                          <li class="nav-item">
+                                              <a class="nav-link" @click="toggleActiveState5" :active="overview"role="tab" data-toggle="tab">
+                                                  Year
+                                                  <i class="material-icons">dashboard</i>
+                                              </a>
+                                          </li>
+                                      </ul>
+                                      </div>
+                                    
+                                    </aside>
                                 <mdb-col center v-if="currentViz == 'Median Salary'">
                                   <mdb-row center>
                                   <mdb-btn-group>
@@ -100,7 +105,8 @@
                                 </mdb-row>
                                  <mdb-row>
                                    <div style="display: block">
-                                  <mdb-pie-chart :data="pieChartData" :options="pieChartOptions" :height="500" :width="1500"/>
+                                  <mdb-pie-chart :data="pieChartData" :options="pieChartOptions"
+                                  :height="500" :width="1500"/>
                                 </div>
                                    </mdb-row>
                                    </mdb-col>
@@ -117,7 +123,7 @@
            </div>
         </template>
         <script>
-           import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter } from 'mdbvue'
+           import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbBtnGroup } from 'mdbvue'
            
            import {
              NavTabsCard
@@ -138,6 +144,23 @@
              backgroundImage: `url(${this.header})`
            };
            }
+           },
+           methods:{
+            toggleActiveState5() {
+      this.overview = true;
+      this.cap = false;
+      this.year = false;
+    },
+    toggleActiveState6() {
+      this.overview = false;
+      this.cap = true;
+      this.year = false;
+    },
+    toggleActiveState7() {
+      this.overview = false;
+      this.cap = false;
+      this.year = true;
+    }
            },
            components: {
            NavTabsCard,
@@ -182,13 +205,14 @@
            showFluidModalTop: false,
            showFluidModalBottom: false,
            currentViz: "Median Salary",
-
+          overview: true,
+          cap: false,
+          year: false,
            vizs: [
             'Median Salary',
             'Hiring Statistics',
             'Degree Classification'
            ],
-
            barChartData: {
              labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
              datasets: [
