@@ -289,11 +289,11 @@ export default {
     ,
     teamImg1: {
       type: String,
-      default: require("@/assets/img/faces/jeremy.png")
+      default: require("@/assets/img/faces/jeremy.jpg")
     },
     teamImg2: {
       type: String,
-      default: require("@/assets/img/faces/zhengjie.png")
+      default: require("@/assets/img/faces/zhengjie.jpg")
     },
     teamImg3: {
       type: String,
