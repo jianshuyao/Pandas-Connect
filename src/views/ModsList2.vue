@@ -30,28 +30,59 @@
                               </md-tab>
                            </md-tabs>
                         </mdb-row>
-                        <div 
-                        v-for="mod in mod_list"
-                        class="mod_cards"
-                        v-if="modFiltering(mod)"
-                        >
+                        <div v-for="(mod,index) in mod_list" v-if="modFiltering(mod)">
+                        <div v-if="index == 0 || index % 3 == 0" class="columns">
                         <mdb-card-body> 
                         <mdb-row><br/></mdb-row>
+                        <mdb-row>
                 <mdb-col md="4">
                   <mdb-card>
                       <mdb-card-header>
                       <mdb-row center>
-                      <h2 class="card-title" center>{{ mod.ModuleCode }}</h2>
+                      <h2 class="card-title" center>{{ mod_list[index].ModuleCode }}</h2>
                         </mdb-row>
                       </mdb-card-header> 
                     <mdb-card-body center>
                       <mdb-row center>
-                      {{ mod.ModuleTitle }}
+                      {{ mod_list[index].ModuleTitle }}
                       </mdb-row>
                     </mdb-card-body>
                   </mdb-card>
-                </mdb-col>                        
+                        </mdb-col>
+                        <mdb-row><br/></mdb-row>
+                                       <mdb-col md="4">
+                  <mdb-card>
+                      <mdb-card-header>
+                      <mdb-row center>
+                      <h2 class="card-title" center>{{ mod_list.length > index+1 ? mod_list[index+1].ModuleCode : '' }}</h2>
+                        </mdb-row>
+                      </mdb-card-header> 
+                    <mdb-card-body center>
+                      <mdb-row center>
+                      {{ mod_list.length > index+1 ? mod_list[index+1].ModuleTitle : '' }}
+                      </mdb-row>
+                    </mdb-card-body>
+                  </mdb-card>
+                        </mdb-col>
+                        <mdb-row><br/></mdb-row>
+                                       <mdb-col md="4">
+                  <mdb-card>
+                      <mdb-card-header>
+                      <mdb-row center>
+                      <h2 class="card-title" center>{{ mod_list.length > index+2 ? mod_list[index+2].ModuleCode : '' }}</h2>
+                        </mdb-row>
+                      </mdb-card-header> 
+                    <mdb-card-body center>
+                      <mdb-row center>
+                      {{ mod_list.length > index+2 ? mod_list[index+2].ModuleTitle : '' }}
+                      </mdb-row>
+                    </mdb-card-body>
+                  </mdb-card>
+                        </mdb-col>
+                      </mdb-row>
                         </mdb-card-body>
+
+                      </div>
                       </div>
                      </template>
                   </nav-tabs-card>
@@ -288,6 +319,23 @@
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.column {
+  float: left;
+  width: 33.3333%;
+}
+.row {margin: 0 -5px;}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
    .cascading-admin-card {
    margin: 100px 0;
    }
