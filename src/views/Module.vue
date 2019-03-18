@@ -67,20 +67,84 @@
 
                         <mdb-card-body v-if="currentViz == 'FacultyDistribution'">
                           <div style="display: block">
-                            <mdb-pie-chart :data="pieChartData" :options="pieChartOptions" :height="200"/>
+                            <mdb-pie-chart :data="pieChartData" :options="pieChartOptions" :height="500"/>
                           </div>
 
                         </mdb-card-body>
 
-                        <mdb-card-body v-if="currentViz == 'StudentFeedback'">
+                        
+
+                        <mdb-card-body v-if="currentViz == 'StudentFeedback'" class="justify-content-center">
                           <div style="display: block">
-                            <mdb-line-chart :data="lineChartData" :options="lineChartOptions" :height="200"/>
+                            <mdb-row class="justify-content-center">
+                              <mdb-col md="12" lg="4" class="mb-4">
+                            <mdb-card class="mb-4">
+                              <mdb-card-header> RadarChart </mdb-card-header>
+                              <mdb-card-body>
+                                <div style="display: block">
+                                  <mdb-radar-chart :data="radarChartData" :options="radarChartOptions" :height="300"/>
+                                </div>
+                              </mdb-card-body>
+                            </mdb-card>
+                          </mdb-col>
+                            <mdb-col md="12" lg="4" class="mb-4">
+                            <mdb-card class="mb-4">
+                              <mdb-card-header> Questions </mdb-card-header>
+                              <mdb-card-body>
+                                <p>Q1: What is your overall opinion of the module? </p>
+                                <p>Q2: The grade that I am most likely to get in the module is ____:</p>
+                                <p>Q3: I rate this module as ____:</p>
+                              </mdb-card-body>
+                            </mdb-card>
+
+                            <mdb-card class="mb-4">
+                              <mdb-card-header> WordCloud </mdb-card-header>
+                              <mdb-card-body class="justify-content-center">
+                                <div style="display: block">
+                                  <IEcharts :option="wordcloud" @ready="onReady" style="height:300px"/>
+                                </div>
+                              </mdb-card-body>
+                            </mdb-card>
+                          </mdb-col>
+                        </mdb-row>
                           </div>
                         </mdb-card-body>
 
                         <mdb-card-body v-if="currentViz == 'TeachingFeedback'">
                           <div style="display: block">
-                            <mdb-radar-chart :data="radarChartData" :options="radarChartOptions" :height="300"/>
+                            <mdb-row class="justify-content-center">
+                              <mdb-col md="12" lg="4" class="mb-4">
+                            <mdb-card class="mb-4">
+                              <mdb-card-header> RadarChart </mdb-card-header>
+                              <mdb-card-body>
+                                <div style="display: block">
+                                  <mdb-radar-chart :data="radarChartData" :options="radarChartOptions" :height="300"/>
+                                </div>
+                              </mdb-card-body>
+                            </mdb-card>
+                          </mdb-col>
+                            <mdb-col md="12" lg="4" class="mb-4">
+                              <mdb-card class="mb-4">
+                              <mdb-card-header> Questions </mdb-card-header>
+                              <mdb-card-body>
+                                <p>Q1: The teacher has enhanced my thinking ability.</p>
+                                <p>Q2: The teacher provided timely and useful feedback.</p>
+                                <p>Q3: The teacher has increased my interest in the subject.</p>
+                              </mdb-card-body>
+                            </mdb-card>
+                            <mdb-card class="mb-4">
+                              <mdb-card-header> Teacher Rating </mdb-card-header>
+                              <mdb-card-body>
+                                <div style="display: block">
+                                  <div>
+                                    <b-progress :value="counter" :max="max" show-progress animated  style="height:35px"/>
+                                    <h5 style="text-align:center">The teacher has an average rating of {{counter}}</h5>
+                                  </div>
+                                </div>
+                              </mdb-card-body>
+                            </mdb-card>
+                          </mdb-col>
+                        </mdb-row>
                           </div>
                         </mdb-card-body>
                      </template>
@@ -92,6 +156,9 @@
 </template>
 <script>
    import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter } from 'mdbvue'
+
+   import "echarts-wordcloud"
+   import IEcharts from "vue-echarts-v3/src/lite.js"
    
    import {
      NavTabsCard
@@ -114,6 +181,7 @@
    }
    },
    components: {
+   IEcharts,
    NavTabsCard,
    mdbRow,
    mdbCol,
@@ -140,6 +208,11 @@
    },
    data () {
    return {
+    counter: 45,
+        max: 100,
+    ins: null,
+      echarts: null,
+      wordcloud: {},
    modal: false,
    showFrameModalTop: false,
    showFrameModalBottom: false,
@@ -299,7 +372,139 @@
            maintainAspectRatio: false
          }
        }
-     }
+     },
+       methods: {
+    onReady (instance, echarts) {
+      const that = this
+      that.ins = instance
+      that.echarts = echarts
+
+      that.wordcloud = {
+        tooltip: {},
+        series: [
+          {
+            type: 'wordCloud',
+            gridSize: 2,
+            sizeRange: [12, 50],
+            rotationRange: [-90, 90],
+            shape: 'pentagon',
+            width: 600,
+            height: 400,
+            drawOutOfBound: true,
+            textStyle: {
+              normal: {
+                color: function () {
+                  return (
+                    'rgb(' +
+                    [
+                      Math.round(Math.random() * 160),
+                      Math.round(Math.random() * 160),
+                      Math.round(Math.random() * 160)
+                    ].join(',') +
+                    ')'
+                  )
+                }
+              },
+              emphasis: {
+                shadowBlur: 10,
+                shadowColor: '#333'
+              }
+            },
+            data: [
+              {
+                name: 'Sam S Club',
+                value: 10000,
+                textStyle: {
+                  normal: {
+                    color: 'black'
+                  },
+                  emphasis: {
+                    color: 'red'
+                  }
+                }
+              },
+              {
+                name: 'Macys',
+                value: 6181
+              },
+              {
+                name: 'Amy Schumer',
+                value: 4386
+              },
+              {
+                name: 'Jurassic World',
+                value: 4055
+              },
+              {
+                name: 'Charter Communications',
+                value: 2467
+              },
+              {
+                name: 'Chick Fil A',
+                value: 2244
+              },
+              {
+                name: 'Planet Fitness',
+                value: 1898
+              },
+              {
+                name: 'Pitch Perfect',
+                value: 1484
+              },
+              {
+                name: 'Express',
+                value: 1112
+              },
+              {
+                name: 'Home',
+                value: 965
+              },
+              {
+                name: 'Johnny Depp',
+                value: 847
+              },
+              {
+                name: 'Lena Dunham',
+                value: 582
+              },
+              {
+                name: 'Lewis Hamilton',
+                value: 555
+              },
+              {
+                name: 'KXAN',
+                value: 550
+              },
+              {
+                name: 'Mary Ellen Mark',
+                value: 462
+              },
+              {
+                name: 'Farrah Abraham',
+                value: 366
+              },
+              {
+                name: 'Rita Ora',
+                value: 360
+              },
+              {
+                name: 'Serena Williams',
+                value: 282
+              },
+              {
+                name: 'NCAA baseball tournament',
+                value: 273
+              },
+              {
+                name: 'Point Break',
+                value: 265
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
 
    }
    
