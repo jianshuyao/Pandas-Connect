@@ -30,11 +30,19 @@
                                 </md-tab>
                              </md-tabs>
                           </mdb-row>
+
+                          <mdb-col>
                           <mdb-card-body v-if="currentViz == 'HiringTrend'">
                              <div style="display: block" justify-content-center>
                                 <mdb-line-chart :data="lineChartData" :options="lineChartOptions" :height="300"/>
                              </div>
                           </mdb-card-body>
+                          <mdb-card-body v-if="currentViz == 'HiringTrend'">
+                              <div style="display: block" justify-content-center>
+                                <mdb-line-chart :data="lineChartJob" :options="lineChartOptions" :height="300"/>
+                             </div>
+                           </mdb-card-body>
+                          </mdb-col>
 
                           <mdb-card-body v-if="currentViz == 'SalaryDistribution'">
                             <div style="display: block">
@@ -102,9 +110,24 @@
         this.industry = snapshot.val();
       })
       .then(()=>{
-        this.lineChartData['labels'] = this.industry['overallhiringtrend']['Year'];
-        this.lineChartData['datasets'][0]['data'] = this.industry['overallhiringtrend']['Number Hired']
+          this.renderChart();
       })
+     },
+     methods:{
+      renderChart(){
+        this.lineChartData['labels'] = this.industry['overallhiringtrend']['Year'];
+        this.lineChartData['datasets'][0]['data'] = this.industry['overallhiringtrend']['Number Hired'];
+        let jobtrend = this.industry['jobtrend']
+        console.log(typeof jobtrend);
+        this.lineChartJob['labels'] = this.industry['overallhiringtrend']['Year']
+        for (let [jobs,value] of Object.entries(jobtrend)){
+          var temp = {
+            'label': jobs,
+            'data':jobtrend[jobs]['Number Hired']
+          };
+          this.lineChartJob['datasets'].push(temp);
+        }
+      }
      },
      components: {
      NavTabsCard,
@@ -265,6 +288,10 @@
               data:[],
               backgroundColor: 'rgba(245, 74, 85, 0.5)',
             }]
+           },
+           lineChartJob: {
+            labels:[],
+            datasets:[]
            },
            lineChartOptions: {
              responsive: true,

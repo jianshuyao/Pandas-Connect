@@ -32,8 +32,13 @@
                         </mdb-row>
                         <mdb-card-body v-if="currentViz == 'HiringTrend'">
                            <div style="display: block" justify-content-center>
+                              <div>
+                              <mdb-line-chart :data="lineChartData" :options="lineChartOptions" :height="300"/>
+                            </div>
+                            <div>
                               <mdb-line-chart :data="lineChartData" :options="lineChartOptions" :height="300"/>
                            </div>
+                         </div>
                         </mdb-card-body>
 
                         <mdb-card-body v-if="currentViz == 'SalaryDistribution'">
