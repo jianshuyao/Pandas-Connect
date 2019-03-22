@@ -17,6 +17,7 @@ import search from "./views/Search.vue"
 import search2 from "./views/search_careers.vue"
 import industry from "./views/Industry.vue"
 import industry2 from "./views/industry2.vue"
+import industry3 from "./views/industry3.vue"
 import major from "./views/Major.vue"
 
 Vue.use(Router);
@@ -136,6 +137,15 @@ export default new Router({
       path: "/industry",
       name: "industry",
       components: { default: industry2, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/industry3",
+      name: "industry3",
+      components: { default: industry3, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }

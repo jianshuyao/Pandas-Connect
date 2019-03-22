@@ -16,58 +16,7 @@
               </mdb-col>
             </mdb-row>
               <mdb-row center>
-                    <nav-tabs-card no-label>
-                       <template slot="content" >
-                          <mdb-row center>
-                             <md-tabs md-sync-route class="md-primary" md-alignment="centered">
-                                <md-tab @click="currentViz='HiringTrend'" id="tab-grade" md-label="Hiring Trend" md-icon="work_outline">
-                                </md-tab>
-                                <md-tab @click="currentViz='SalaryDistribution'" id="tab-faulty" md-label="Salary Distribution" md-icon="monetization_on">
-                                </md-tab>
-                                <md-tab @click="currentViz='Organisations'" id="tab-student" md-label="Organisations" md-icon="account_balance">
-                                </md-tab>
-                                <md-tab @click="currentViz='CAPDistribution'" id="tab-teaching" md-label="CAP Distribution" md-icon="assessment">
-                                </md-tab>
-                             </md-tabs>
-                          </mdb-row>
-
-                          <mdb-col>
-                          <mdb-card-body v-if="currentViz == 'HiringTrend'">
-                             <div style="display: block" justify-content-center>
-                                <mdb-line-chart :data="lineChartData" :options="lineChartOptions" :height="300"/>
-                             </div>
-                          </mdb-card-body>
-                          <mdb-card-body v-if="currentViz == 'HiringTrend'">
-                              <div style="display: block" justify-content-center>
-                                <mdb-line-chart :data="lineChartJob" :options="lineChartOptions" :height="300"/>
-                             </div>
-                           </mdb-card-body>
-                          </mdb-col>
-
-                          <mdb-card-body v-if="currentViz == 'SalaryDistribution'">
-                            <div style="display: block">
-                              <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="500"/>
-                            </div>
-
-                          </mdb-card-body>
-
-                          <mdb-card-body v-if="currentViz == 'Organisations'">
-                            <div style="display: block">
-                              <mdb-datatable
-                                :data="tableData"
-                                striped
-                                bordered
-                              />
-                            </div>
-                          </mdb-card-body>
-
-                          <mdb-card-body v-if="currentViz == 'CAPDistribution'">
-                            <div style="display: block">
-                              <mdb-pie-chart :data="pieChartData" :options="pieChartOptions" :height="300"/>
-                            </div>
-                          </mdb-card-body>
-                       </template>
-                    </nav-tabs-card>
+                    
               </mdb-row>
            </section>
         </section>
