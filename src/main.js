@@ -17,6 +17,8 @@ import VueSlider from 'vue-slider-component'
 import 'vue-slider-component/theme/default.css'
 
 
+
+
 Vue.config.productionTip = false;
 
 Vue.use(VueFire)
@@ -24,6 +26,7 @@ Vue.use(BootstrapVue);
 Vue.use(MaterialKit);
 Vue.use(vueSmoothScroll);
 Vue.component('VueSlider',VueSlider);
+
 
 const NavbarStore = {
   showNavbar: false

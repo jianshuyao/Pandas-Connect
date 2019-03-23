@@ -29,6 +29,7 @@
     "vue-material": "1.0.0-beta-10.2",
     "vue-router": "3.0.2",
     "vue-slider-component": "^3.0.16",
+    "vue-simple-search-dropdown": "^1.0.0",
     "vue2-smooth-scroll": "^1.0.5",
     "vuefire": "^1.4.5",
     "vuetify": "^1.5.7"
