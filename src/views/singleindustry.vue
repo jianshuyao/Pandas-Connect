@@ -3,19 +3,23 @@
       <section id="module">
          <div><br/></div>
          <section class="mt-lg-5">
-            <mdb-row class="justify-content-end">
-               <mdb-col col="4">
-                  <mdb-row md="4" center>
-                     <select class="custom-select custom-select-sm">
-                        <option selected>Select Particular Industry of Interest</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                     </select>
-                  </mdb-row>
-               </mdb-col>
-               <mdb-col col="4">
-               </mdb-col>
+            <mdb-row class="justify-content-start">
+               <mdb-col col="3" class="align-self-center">
+               <select class="custom-select custom-select-sm" style="margin-left: 20px;">
+                  <option selected>Select Another Industry of Interest</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+               </select>
+             </mdb-col>
+             <mdb-col col="6">
+              <mdb-row center>
+                  <mdb-modal-title>
+                    <p class="card-title" style="font-size:30px;letter-spacing: 2px;">FINANCE INDUSTRY</p>
+                    <hr align="center" style="width:50%;height:2px;color:white;background-color:black;" />
+                  </mdb-modal-title>
+                </mdb-row>
+             </mdb-col>
             </mdb-row>
             <div><br/></div>
             <mdb-row class="justify-content-center d-flex align-items-stretch">
