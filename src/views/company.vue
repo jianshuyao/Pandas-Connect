@@ -1,22 +1,13 @@
 <template>
    <div class="wrapper">
-      <section id="module">
+      <section id="company">
          <div><br/></div>
          <section class="mt-lg-5">
             <mdb-row class="justify-content-start">
-               <mdb-col col="3" class="align-self-center">
-               <select class="custom-select custom-select-sm" style="margin-left: 20px;">
-                  <option selected>Select Another Industry of Interest</option>
-                  <!--<option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>-->
-                  <option v-for="ind in this.industryname">{{ind}}</option>
-               </select>
-             </mdb-col>
-             <mdb-col col="6">
+             <mdb-col>
               <mdb-row center>
                   <mdb-modal-title>
-                    <p class="card-title" style="font-size:30px;letter-spacing: 2px;">{{this.currname}}</p>
+                    <p class="card-title" style="font-size:30px;letter-spacing: 2px;">J.P. MORGAN</p>
                     <hr align="center" style="width:50%;height:2px;color:white;background-color:black;" />
                   </mdb-modal-title>
                 </mdb-row>
@@ -26,62 +17,64 @@
             <mdb-row class="justify-content-center d-flex align-items-stretch">
                <mdb-col md="1" lg="6">
                   <mdb-card class="cascading-admin-card">
-                     <mdb-card-header> Hiring Trend </mdb-card-header>
-                     <mdb-card-body>
-                        <div v-if='this.loaded' style="display: block" justify-content-center>
-                           <mdb-line-chart :data="lineChartData" :options="lineChartOptions" :height="300"/>
-                        </div>
-                     </mdb-card-body>
+                     <mdb-card-header> Pie chart </mdb-card-header>
+                      <mdb-card-body>
+                          <div style="display: block">
+                            <mdb-pie-chart :data="pieChartData" :options="pieChartOptions" :height="300"/>
+                          </div>
+                      </mdb-card-body>
                   </mdb-card>
                </mdb-col>
                <mdb-col md="2" lg="6">
                 <mdb-card class="cascading-admin-card">
-                     <mdb-card-header> Salary Trend </mdb-card-header>
-                     <mdb-card-body>
-                        <div v-if='this.loaded' style="display: block" justify-content-center>
-                              <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="300"/>
-                           </div>
-                     </mdb-card-body>
-                  </mdb-card>
+                     <mdb-card-header> Chance Meter </mdb-card-header>
+                  <mdb-card-body>
+                      <div class="justify-content-center d-flex align-items-stretch">
+                          <mdb-col class="align-self-center">
+                            <label for="customRange1">Expected Cap</label>
+                            <vue-slider
+                              ref="slider"
+                              v-model="value"
+                              v-bind="options"
+                            ></vue-slider>
+                          </mdb-col>
+                          <mdb-col class="align-self-center">
+                            <label></label>
+                            <select class="custom-select custom-select-sm" style="margin-left: 20px;">
+                              <option selected>Select Interested Position</option>
+                              <option value="1">One</option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                           </select>
+                          </mdb-col>
+
+                      </div>
+                      <br/>
+                      <div>
+                        <b-progress :value="counter" :max="max" show-progress animated  style="height:35px"/>
+                        <h5 style="text-align:center">Your chance for the position is rated at {{counter}}</h5>
+                      </div>
+                  </mdb-card-body>
+                </mdb-card>
                </mdb-col>
              </mdb-row>
-               <mdb-row class="justify-content-center d-flex align-items-stretch">
-                <mdb-col>
-                  <mdb-card class="cascading-admin-card">
-                     <mdb-card-header> Companies </mdb-card-header>
+             <mdb-row class="justify-content-center d-flex align-items-stretch">
+                  <mdb-col md="1" lg="6">
+                    <mdb-card class="cascading-admin-card" style="height:100%">
+                     <mdb-card-header> CAP Distribution </mdb-card-header>
                      <mdb-card-body>
                         <div v-if='this.loaded' style="display: block">
-                           <mdb-datatable
-                              :data="tableData"
-                              striped
-                              bordered
-                              />
-                        </div>
-                     </mdb-card-body>
-                  </mdb-card>
-                </mdb-col>
-                </mdb-row>
-                <mdb-row class="justify-content-center d-flex align-items-stretch">
-                  <mdb-col md="1" lg="7">
-                    <mdb-card class="cascading-admin-card" style="height:100%">
-                     <mdb-card-header> Recommended Modules </mdb-card-header>
-                     <mdb-card-body class="align-items-center justify-content-center">
-                        <div style="display: block">
-                           <mdb-datatable
-                              :data="tableSuggestedData"
-                              striped
-                              bordered
-                              />
+                          <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="400"/>
                         </div>
                      </mdb-card-body>
                   </mdb-card>
                   </mdb-col>
-                  <mdb-col md="2" lg="5">
+                  <mdb-col md="2" lg="6">
                     <mdb-card class="cascading-admin-card" style="height:100%">
-                     <mdb-card-header> Recommended Skillsets </mdb-card-header>
-                     <mdb-card-body class="align-items-center justify-content-center">
-                        <div style="display: block">
-                           <IEcharts :option="wordcloud" @ready="onReady" style="height:450px"/>
+                     <mdb-card-header> Salary Distribution </mdb-card-header>
+                     <mdb-card-body>
+                        <div v-if='this.loaded' style="display: block">
+                          <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="400"/>
                         </div>
                      </mdb-card-body>
                   </mdb-card>
@@ -115,25 +108,14 @@
    }
    },
    mounted: function(){
-    db.ref('major/'+this.majorname+'/industries')
+    db.ref('industry/'+"Accounting and Auditing")
     .once('value')
     .then(snapshot=>{
-      this.industry= snapshot.val();
-      this.major = this.industry[this.currname]
+      this.industry = snapshot.val();
     })
     .then(()=>{
-        this.updateindustry();
         this.renderChart();
     })
-    db.ref('industrymod/'+this.currname)
-      .once('value')
-      .then(snapshot=>{
-        this.suggestedmods = snapshot.val()
-      })
-      .then(()=>{
-        this.recommendmods();
-      })
-    
    },
    computed: {
    headerStyle() {
@@ -144,17 +126,9 @@
    },
    created(){
     this.industryref = db.ref('industry/'+this.industryname);
-    this.suggestref = db.ref('industrymod/'+this.currname);
    },
    methods:{
-    updateindustry(){
-      let newref = this.industry
-      for (let [ind, val] of Object.entries(newref)){
-        this.industryname.push(ind);
-      }
-      console.log(this.industryname)
-    },
-    onReady (instance, echarts) {
+        onReady (instance, echarts) {
       const that = this
       that.ins = instance
       that.echarts = echarts
@@ -190,7 +164,96 @@
                 shadowColor: '#333'
               }
             },
-            data: this.wordclouddata
+            data: [
+              {
+                name: 'Sam S Club',
+                value: 10000,
+                textStyle: {
+                  normal: {
+                    color: 'black'
+                  },
+                  emphasis: {
+                    color: 'red'
+                  }
+                }
+              },
+              {
+                name: 'Macys',
+                value: 6181
+              },
+              {
+                name: 'Amy Schumer',
+                value: 4386
+              },
+              {
+                name: 'Jurassic World',
+                value: 4055
+              },
+              {
+                name: 'Charter Communications',
+                value: 2467
+              },
+              {
+                name: 'Chick Fil A',
+                value: 2244
+              },
+              {
+                name: 'Planet Fitness',
+                value: 1898
+              },
+              {
+                name: 'Pitch Perfect',
+                value: 1484
+              },
+              {
+                name: 'Express',
+                value: 1112
+              },
+              {
+                name: 'Home',
+                value: 965
+              },
+              {
+                name: 'Johnny Depp',
+                value: 847
+              },
+              {
+                name: 'Lena Dunham',
+                value: 582
+              },
+              {
+                name: 'Lewis Hamilton',
+                value: 555
+              },
+              {
+                name: 'KXAN',
+                value: 550
+              },
+              {
+                name: 'Mary Ellen Mark',
+                value: 462
+              },
+              {
+                name: 'Farrah Abraham',
+                value: 366
+              },
+              {
+                name: 'Rita Ora',
+                value: 360
+              },
+              {
+                name: 'Serena Williams',
+                value: 282
+              },
+              {
+                name: 'NCAA baseball tournament',
+                value: 273
+              },
+              {
+                name: 'Point Break',
+                value: 265
+              }
+            ]
           }
         ]
       }
@@ -199,65 +262,36 @@
         console.log(value);
       },
     renderChart(){
-
-      let top5h = this.major['top5hiringtrend'];
-      let top5s = this.major['top5salarytrend'];
-      let top5c = this.major['top5companies'];
-
-      let wordcloudtext = this.major['wordcloud'];
-      let wordvalues = wordcloudtext['values'];
-      let words = wordcloudtext['words']
-      for (let i in words){
-        this.wordclouddata.push({
-          'name':words[i], 'value':wordvalues[i]
-        })
+      this.lineChartData['labels'] = this.industry['overallhiringtrend']['Year'];
+      this.lineChartData['datasets'][0]['data'] = this.industry['overallhiringtrend']['Number Hired'];
+      let jobtrend = this.industry['jobtrend']
+      console.log(typeof jobtrend);
+      this.lineChartJob['labels'] = this.industry['overallhiringtrend']['Year']
+      for (let [jobs,value] of Object.entries(jobtrend)){
+        var temp = {
+          'label': jobs,
+          'data':jobtrend[jobs]['Number Hired']
+        };
+        this.lineChartJob['datasets'].push(temp);
       }
-      for (let [ind, val] of Object.entries(top5h)){
-        this.lineChartData['labels'] = top5h[ind]['year'];
-        this.lineChartData['datasets'].push({
-          'label': ind,
-          'data': top5h[ind]['numhired']
-        })
-      };
-
-      for (let [ind, val] of Object.entries(top5s)){
-        this.barChartData['labels'] = top5s[ind]['salary'];
-        this.barChartData['datasets'].push({
-          'label': ind,
-          'data': top5s[ind]['count']
-        })
-      };
-
-      let organisation = top5c;
+      let salary = this.industry['salary'];
+      this.barChartData['labels'] = salary['range'];
+      this.barChartData['datasets'][0]['data']=salary['count'];
+      let organisation = this.industry['organisation'];
       let cap = organisation['cap'];
       let name = organisation['name'];
-      let numgrads = organisation['numgrad'];
+      let numgrads = organisation['numgrads'];
       let sal = organisation['salary'];
       for (let i in cap){
-          let temp = {
+          temp = {
             'organisation': name[i],
             'cap': cap[i],
             'sal': sal[i],
-            'numGrads': numgrads[i],
+            'numGrads': numgrads[i]
           }
           this.tableData['rows'].push(temp);
       };
       this.loaded = true;
-    },
-    recommendmods(){
-      let mods = this.suggestedmods;
-      console.log(this.suggestedmods)
-      let code = mods['modcode'];
-      let mname = mods['modname'];
-      let nGrads = mods['numgrad'];
-      for (let i in code){
-          let temp = {
-            'modcode': code[i],
-            'modname': mname[i],
-            'numgrads': nGrads[i],
-          }
-          this.tableSuggestedData['rows'].push(temp);
-      };
     }
    },
    components: {
@@ -291,13 +325,10 @@
    },
    data () {
    return {
-    wordclouddata:[],
+    counter: 45,
     wordcloud: {},
-    majorname:'Accountacy',
-    major : {},
-    suggestedmods:{},
-    currname: 'Accounting and Auditing',
-    industryname : [],
+    industryname:'Accounting and Auditing',
+    industry : {},
     loaded: false,
    modal: false,
    showFrameModalTop: false,
@@ -348,30 +379,13 @@
         ],
         rows: []
    },
-   tableSuggestedData: {
-        columns: [
-          {
-            label: 'Module Code',
-            field: 'modcode',
-            sort: 'asc'
-          },
-          {
-            label: 'Module Name',
-            field: 'modname',
-            sort: 'asc'
-          },
-          {
-            label: 'Number of Graduates',
-            field: 'numgrad',
-            sort: 'asc'
-          }
-        ],
-        rows: []
-   },
    
           barChartData: {
           labels:[],
-          datasets:[]
+          datasets:[{
+            data:[],
+            backgroundColor: 'rgba(245, 74, 85, 0.5)',
+          }]
          },
          barChartOptions: {
            responsive: true,
@@ -395,14 +409,26 @@
              }]
            }
          },
-         pieChartData: {},
-         pieChartOptions: {
-           responsive: true,
-           maintainAspectRatio: false
-         },
+               pieChartData: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        datasets: [
+          {
+            data: [300, 50, 100, 40, 120, 24, 52],
+            backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360', '#ac64ad'],
+            hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774', '#da92db']
+          }
+        ]
+      },
+      pieChartOptions: {
+        responsive: true,
+        maintainAspectRatio: false
+      },
          lineChartData: {
           labels:[],
-          datasets:[]
+          datasets:[{
+            data:[],
+            backgroundColor: 'rgba(245, 74, 85, 0.5)',
+          }]
          },
          lineChartJob: {
           labels:[],
