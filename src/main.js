@@ -13,7 +13,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import MaterialKit from "./plugins/material-kit";
 
 import vueSmoothScroll from 'vue2-smooth-scroll'
-import Vuetify from 'vuetify'
+import VueSlider from 'vue-slider-component'
+import 'vue-slider-component/theme/default.css'
 
 
 Vue.config.productionTip = false;
@@ -22,7 +23,7 @@ Vue.use(VueFire)
 Vue.use(BootstrapVue);
 Vue.use(MaterialKit);
 Vue.use(vueSmoothScroll);
-Vue.use(Vuetify);
+Vue.component('VueSlider',VueSlider);
 
 const NavbarStore = {
   showNavbar: false

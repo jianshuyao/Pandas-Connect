@@ -21,6 +21,7 @@ import industry3 from "./views/industry3.vue"
 import major from "./views/Major.vue"
 import top5industries from "./views/top5industries.vue"
 import singleindustry from "./views/singleindustry.vue"
+import company from "./views/company.vue"
 
 Vue.use(Router);
 
@@ -175,6 +176,15 @@ export default new Router({
       path: "/singleindustry",
       name: "singleindustry",
       components: { default: singleindustry, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/company",
+      name: "company",
+      components: { default: company, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
