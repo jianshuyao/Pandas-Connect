@@ -19,8 +19,8 @@
             </mdb-row>
             <div><br/></div>
             <mdb-row class="justify-content-center d-flex align-items-stretch">
-               <mdb-col md="1" lg="6" class="mb-4">
-                  <mdb-card class="cascading-admin-card" style="border:'#546e7a'">
+               <mdb-col md="1" lg="6">
+                  <mdb-card class="cascading-admin-card">
                      <mdb-card-header> Hiring Trend </mdb-card-header>
                      <mdb-card-body>
                         <div v-if='this.loaded' style="display: block" justify-content-center>
@@ -29,7 +29,7 @@
                      </mdb-card-body>
                   </mdb-card>
                </mdb-col>
-               <mdb-col md="2" lg="6" class="mb-4">
+               <mdb-col md="2" lg="6">
                 <mdb-card class="cascading-admin-card">
                      <mdb-card-header> Salary Trend </mdb-card-header>
                      <mdb-card-body>
@@ -41,7 +41,8 @@
                </mdb-col>
              </mdb-row>
                <mdb-row class="justify-content-center d-flex align-items-stretch">
-                  <mdb-card class="cascading-admin-card" style="width:90%">
+                <mdb-col>
+                  <mdb-card class="cascading-admin-card">
                      <mdb-card-header> Companies </mdb-card-header>
                      <mdb-card-body>
                         <div style="display: block">
@@ -53,12 +54,13 @@
                         </div>
                      </mdb-card-body>
                   </mdb-card>
+                </mdb-col>
                 </mdb-row>
                 <mdb-row class="justify-content-center d-flex align-items-stretch">
-                  <mdb-col md="1" lg="6" class="mb-4">
-                    <mdb-card class="cascading-admin-card">
+                  <mdb-col md="1" lg="7">
+                    <mdb-card class="cascading-admin-card" style="height:100%">
                      <mdb-card-header> Recommended Modules </mdb-card-header>
-                     <mdb-card-body>
+                     <mdb-card-body class="align-items-center justify-content-center">
                         <div style="display: block">
                            <mdb-datatable
                               :data="tableData"
@@ -69,12 +71,12 @@
                      </mdb-card-body>
                   </mdb-card>
                   </mdb-col>
-                  <mdb-col md="2" lg="5" class="mb-4">
-                    <mdb-card class="cascading-admin-card">
+                  <mdb-col md="2" lg="5">
+                    <mdb-card class="cascading-admin-card" style="height:100%">
                      <mdb-card-header> Recommended Skillsets </mdb-card-header>
-                     <mdb-card-body class="justify-content-center">
+                     <mdb-card-body class="align-items-center justify-content-center">
                         <div style="display: block">
-                           <IEcharts :option="wordcloud" @ready="onReady" style="height:300px"/>
+                           <IEcharts :option="wordcloud" @ready="onReady" style="height:450px"/>
                         </div>
                      </mdb-card-body>
                   </mdb-card>
@@ -464,9 +466,12 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
    .cascading-admin-card {
-   margin: 5px;
+   margin: 20px;
    margin-top: 10px;
    padding: 5px;
+   border-color: #90a4ae;
+   border-width: 2px;
+   box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.2), 0 2px 13px 0 rgba(0, 0, 0, 0.19);
    }
    .cascading-admin-card .admin-up {
    margin-left: 4%;
@@ -482,6 +487,7 @@
    text-align: left;
    margin-right: 1rem;
    border-radius: 3px;
+   border-color: #546e7a;
    }
    .cascading-admin-card .admin-up .data {
    float: right;

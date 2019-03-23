@@ -20,7 +20,7 @@
             <div><br/></div>
             <mdb-row class="justify-content-center">
                <mdb-col md="1" lg="5" class="mb-4">
-                  <mdb-card class="mb-4">
+                  <mdb-card class="cascading-admin-card">
                      <mdb-card-header> Hiring Trend </mdb-card-header>
                         <mdb-card-body>
                            <div v-if='this.loaded' style="display: block" justify-content-center>
@@ -28,7 +28,7 @@
                            </div>
                         </mdb-card-body>
                   </mdb-card>
-                  <mdb-card class="mb-4">
+                  <mdb-card class="cascading-admin-card">
                     <mdb-card-header> Salary Trend </mdb-card-header>
                     <mdb-card-body>
                            <div v-if='this.loaded' style="display: block" justify-content-center>
@@ -39,7 +39,7 @@
 
                </mdb-col>
                <mdb-col md="2" lg="5" class="mb-4">
-                  <mdb-card class="mb-4">
+                  <mdb-card class="cascading-admin-card">
                      <mdb-card-header> Companies </mdb-card-header>
                      <mdb-card-body>
                         <div style="display: block">
@@ -309,7 +309,12 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
    .cascading-admin-card {
-   margin: 100px 0;
+   margin: 20px;
+   margin-top: 10px;
+   padding: 5px;
+   border-color: #90a4ae;
+   border-width: 2px;
+   box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.2), 0 2px 13px 0 rgba(0, 0, 0, 0.19);
    }
    .cascading-admin-card .admin-up {
    margin-left: 4%;
