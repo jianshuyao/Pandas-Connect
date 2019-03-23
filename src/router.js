@@ -163,7 +163,7 @@ export default new Router({
       }
     },
     {
-      path: "/top5industries",
+      path: "/top5industries/:majorName",
       name: "top5industries",
       components: { default: top5industries, header: MainNavbar, footer: MainFooter },
       props: {

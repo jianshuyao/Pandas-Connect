@@ -17,17 +17,18 @@
                         <br/>
 
                         <mdb-row md="4" center>
-  <select name="modselect" id="modselect" style="width:350px;">
+  <select @change="$router.push({ path: '/top5industries/' + maj });" name="modselect" id="modselect" v-model="maj" style="width:350px;">
    <option selected="selected" disabled class="placeholder" value=''>Choose your Major</option>
-    <option value="industry" v-for="industry in industry_list">{{industry}}</option>
+    <option v-for="industry in industry_list" :key="industry">{{industry}}</option>
   </select>
   <br><br>
   </mdb-row>
   <br/>
-<mdb-row md="4" center>
-                          <button type="button" class="btn btn-outline-warning waves-effect btn-lg" style="font-size:20px">Industries</button>
-                        </mdb-row>
 
+<mdb-row md="4" center>
+<!--
+                          <button type="button" class="btn btn-outline-warning waves-effect btn-lg" style="font-size:20px">Industries</button>-->
+                        </mdb-row>
                      </mdb-col>
                   </mdb-modal-footer>
                </mdb-row>
@@ -88,6 +89,7 @@ import { db } from "../firebase";
    },
    data () {
    return {
+   maj:"",
    modal: false,
    showFrameModalTop: false,
    showFrameModalBottom: false,
