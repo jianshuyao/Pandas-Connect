@@ -13,6 +13,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import MaterialKit from "./plugins/material-kit";
 
 import vueSmoothScroll from 'vue2-smooth-scroll'
+import Vuetify from 'vuetify'
+
 
 
 
@@ -22,6 +24,7 @@ Vue.use(VueFire)
 Vue.use(BootstrapVue);
 Vue.use(MaterialKit);
 Vue.use(vueSmoothScroll);
+Vue.use(Vuetify);
 
 
 const NavbarStore = {
