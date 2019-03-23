@@ -7,7 +7,7 @@
                <mdb-col col="4">
                   <mdb-row md="4" center>
                      <mdb-modal-title>
-                        <h1 class="card-title">Finance
+                        <h1 class="card-title">{{this.industryname}}
                         </h1>
                      </mdb-modal-title>
                   </mdb-row>
