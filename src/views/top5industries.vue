@@ -79,10 +79,10 @@
    }
    },
    mounted: function(){
-    db.ref('major/'+this.majorname)
+    db.ref('major/'+this.currentMajor)
     .once('value')
     .then(snapshot=>{
-      this.major = snapshot.val();
+      this.major = snapshot.val()
     })
     .then(()=>{
         this.updateindustry();
@@ -97,7 +97,7 @@
    }
    },
    created(){
-    this.majorref = db.ref('major/'+this.majorname);
+    this.currentMajor = this.$route.params.majorName;
    },
    methods:{
     getSelectValue(value, text) {
@@ -184,6 +184,7 @@
    },
    data () {
    return {
+    currentMajor:null,
     searchOptions: [
           { text: 'Choose your option', value: null, disabled: true, selected: true },
           { text: 'Option nr 1', value: 'Option 1' },
@@ -192,7 +193,6 @@
           { text: 'Option nr 4', value: 'Option 4' },
           { text: 'Option nr 5', value: 'Option 5' }
         ],
-    majorname:'Accountacy',
     major : {},
     industyname : [],
     loaded: false,

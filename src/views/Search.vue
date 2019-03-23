@@ -17,9 +17,9 @@
                   </mdb-row>
                   <mdb-row center>
                      <mdb-col>
-                        <select name="modselect" id="modselect" style="width:350px; height:40px">
+                        <select @change="$router.push({ path: '/top5industries/' + maj });" name="modselect" id="modselect" v-model="maj" style="width:350px; height:40px">
                            <option selected="selected" disabled class="placeholder" value=''>Choose your Major</option>
-                           <option value="industry" v-for="industry in industry_list">{{industry}}</option>
+                           <option v-for="industry in industry_list" :key="industry">{{industry}}</option>
                         </select>
                      </mdb-col>
                      <mdb-col class="align-self-center">
@@ -33,84 +33,83 @@
    </div>
 </template>
 <script>
-   import { db } from "../firebase";
-      import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter } from 'mdbvue'
-      
-      import {
-        NavTabsCard
-      } from '@/components'
-      
-      export default {
-      name: 'Dashboard',
-      bodyClass: "landing-page",
-      props: {
-      header: {
-      type: String,
-      default: require("@/assets/img/bg7.jpg")
-      }
-      },
-      computed: {
-      headerStyle() {
-      return {
-        backgroundImage: `url(${this.header})`
-      };
-      }
-      },
-      components: {
-      NavTabsCard,
-      mdbRow,
-      mdbCol,
-      mdbBtn,
-      mdbCard,
-      mdbCardBody,
-      mdbCardHeader,
-      mdbCardText,
-      mdbIcon,
-      mdbTbl,
-      mdbBarChart,
-      mdbPieChart,
-      mdbLineChart,
-      mdbRadarChart,
-      mdbDoughnutChart,
-      mdbListGroup,
-      mdbListGroupItem,
-      mdbBadge,
-      mdbModal,
-      mdbModalHeader,
-      mdbModalTitle,
-      mdbModalBody,
-      mdbModalFooter
-      },
-      data () {
-      return {
-      modal: false,
-      showFrameModalTop: false,
-      showFrameModalBottom: false,
-      showSideModalTopRight: false,
-      showSideModalTopLeft: false,
-      showSideModalBottomRight: false,
-      showSideModalBottomLeft: false,
-      showCentralModalSmall: false,
-      showCentralModalMedium: false,
-      showCentralModalLarge: false,
-      showCentralModalFluid: false,
-      showFluidModalRight: false,
-      showFluidModalLeft: false,
-      showFluidModalTop: false,
-      showFluidModalBottom: false,
-      industry_list:{} 
-      }
-      },
-       mounted() {
-       db.ref("/majname/major")
-         .once("value") //need smaller dataset to quicken loading
-         .then(snapshot => {
-           this.industry_list = snapshot.val();
-         });
-       }
+import { db } from "../firebase";
+   import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter } from 'mdbvue'
+   
+   import {
+     NavTabsCard
+   } from '@/components'
+   
+   export default {
+   name: 'Dashboard',
+   bodyClass: "landing-page",
+   props: {
+   header: {
+   type: String,
+   default: require("@/assets/img/bg7.jpg")
+   }
+   },
+   computed: {
+   headerStyle() {
+   return {
+     backgroundImage: `url(${this.header})`
+   };
+   }
+   },
+   components: {
+   NavTabsCard,
+   mdbRow,
+   mdbCol,
+   mdbBtn,
+   mdbCard,
+   mdbCardBody,
+   mdbCardHeader,
+   mdbCardText,
+   mdbIcon,
+   mdbTbl,
+   mdbBarChart,
+   mdbPieChart,
+   mdbLineChart,
+   mdbRadarChart,
+   mdbDoughnutChart,
+   mdbListGroup,
+   mdbListGroupItem,
+   mdbBadge,
+   mdbModal,
+   mdbModalHeader,
+   mdbModalTitle,
+   mdbModalBody,
+   mdbModalFooter
+   },
+   data () {
+   return {
+   maj:"",
+   modal: false,
+   showFrameModalTop: false,
+   showFrameModalBottom: false,
+   showSideModalTopRight: false,
+   showSideModalTopLeft: false,
+   showSideModalBottomRight: false,
+   showSideModalBottomLeft: false,
+   showCentralModalSmall: false,
+   showCentralModalMedium: false,
+   showCentralModalLarge: false,
+   showCentralModalFluid: false,
+   showFluidModalRight: false,
+   showFluidModalLeft: false,
+   showFluidModalTop: false,
+   showFluidModalBottom: false,
+   industry_list:{} 
+   }
+   },
+    mounted() {
+    db.ref("/majname/major")
+      .once("value") //need smaller dataset to quicken loading
+      .then(snapshot => {
+        this.industry_list = snapshot.val();
+      });
     }
-      
-      
+ }
       
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
