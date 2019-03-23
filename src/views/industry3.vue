@@ -16,7 +16,7 @@
                </mdb-col>
             </mdb-row>
             <mdb-row class="justify-content-center">
-               <mdb-col md="1" lg="6" class="mb-4">
+               <mdb-col md="1" lg="6" class="mb-4 d-flex align-items-stretch">
                   <mdb-card class="mb-4">
                      <mdb-card-header> Hiring Trend </mdb-card-header>
                      <mdb-col>
@@ -37,7 +37,7 @@
                   <mdb-card class="mb-4">
                      <mdb-card-header> Salary </mdb-card-header>
                      <div v-if='this.loaded' style="display: block">
-                        <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="500"/>
+                        <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="400"/>
                      </div>
                   </mdb-card>
                   <mdb-card class="mb-4">

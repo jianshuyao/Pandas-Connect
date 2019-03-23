@@ -1,0 +1,116 @@
+{
+	industry: {
+
+		hiringtrend: {
+
+			overallhiringtrend: {
+				year: [],
+				number_hired:[]
+			}
+
+			jobhiringtrend: {
+
+				job: {
+					year: [],
+					number_hired: []
+				}
+			}
+		},
+
+		salary: {
+			salary_range: [],
+			count: []
+		},
+
+		organization: {
+			name: [],
+			cap: [],
+			salary: [],
+			num_grads: []
+
+		},
+
+	},
+
+	major: {
+
+		median_salary: {
+			industry: {
+				overview: {
+					industry_name: [],
+					salary: []
+				},
+				cap: {
+					industry_1: {
+						salary:[],
+						median_cap:[]
+					}
+
+				},
+				year: {
+					industry_1:{
+						year: [],
+						salary: []
+					}
+
+				}
+				
+
+			},
+			job_title: {
+				overview: {
+					job_name: [],
+					salary: []
+				},
+				cap: {
+					job_1: {
+						salary: [],
+						median_cap: []
+					}
+
+				},
+				year: {
+					job_1: {
+						year:[],
+						salary: []
+					}
+
+				}
+			}
+
+		},
+
+		hiring_stats: {
+			overall_trend:{
+				year: [],
+				number_hired:[]
+			},
+
+			trend_by_industry: {
+				industry_1: {
+					year:[],
+					number_hired:[]
+				}
+
+			}
+
+		}
+
+	},
+
+	industry_new: {
+		industry_1: {
+			module_name: [],
+			module_code: [],
+			num_grads: []
+
+		}
+	},
+
+	job_recommend: {
+		module_code: module_name,
+		job_title: []
+	}
+
+
+}
