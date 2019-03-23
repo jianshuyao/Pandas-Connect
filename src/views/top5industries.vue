@@ -8,9 +8,10 @@
                   <mdb-row md="4" center>
                           <select class="custom-select custom-select-sm">
                             <option selected>Select Particular Industry of Interest</option>
-                            <option value="1">One</option>
+                            <!--<option value="1">One</option>
                             <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="3">Three</option>-->
+                            <option v-for="ind in this.industyname">{{ind}}</option>
                           </select>
                   </mdb-row>
                </mdb-col>
@@ -20,7 +21,7 @@
             <div><br/></div>
             <mdb-row class="justify-content-center">
                <mdb-col md="1" lg="5" class="mb-4">
-                  <mdb-card class="cascading-admin-card">
+                  <mdb-card class="mb-4">
                      <mdb-card-header> Hiring Trend </mdb-card-header>
                         <mdb-card-body>
                            <div v-if='this.loaded' style="display: block" justify-content-center>
@@ -28,18 +29,18 @@
                            </div>
                         </mdb-card-body>
                   </mdb-card>
-                  <mdb-card class="cascading-admin-card">
+                  <mdb-card class="mb-4">
                     <mdb-card-header> Salary Trend </mdb-card-header>
                     <mdb-card-body>
                            <div v-if='this.loaded' style="display: block" justify-content-center>
-                              <mdb-line-chart :data="lineChartJob" :options="lineChartOptions" :height="300"/>
+                              <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="300"/>
                            </div>
                         </mdb-card-body>
                       </mdb-card>
 
                </mdb-col>
                <mdb-col md="2" lg="5" class="mb-4">
-                  <mdb-card class="cascading-admin-card">
+                  <mdb-card class="mb-4">
                      <mdb-card-header> Companies </mdb-card-header>
                      <mdb-card-body>
                         <div style="display: block">
@@ -78,12 +79,13 @@
    }
    },
    mounted: function(){
-    db.ref('industry/'+"Accounting and Auditing")
+    db.ref('major/'+this.majorname)
     .once('value')
     .then(snapshot=>{
-      this.industry = snapshot.val();
+      this.major = snapshot.val();
     })
     .then(()=>{
+        this.updateindustry();
         this.renderChart();
     })
    },
@@ -95,39 +97,57 @@
    }
    },
    created(){
-    this.industryref = db.ref('industry/'+this.industryname);
+    this.majorref = db.ref('major/'+this.majorname);
    },
    methods:{
     getSelectValue(value, text) {
         console.log(value);
       },
-    renderChart(){
-      this.lineChartData['labels'] = this.industry['overallhiringtrend']['Year'];
-      this.lineChartData['datasets'][0]['data'] = this.industry['overallhiringtrend']['Number Hired'];
-      let jobtrend = this.industry['jobtrend']
-      console.log(typeof jobtrend);
-      this.lineChartJob['labels'] = this.industry['overallhiringtrend']['Year']
-      for (let [jobs,value] of Object.entries(jobtrend)){
-        var temp = {
-          'label': jobs,
-          'data':jobtrend[jobs]['Number Hired']
-        };
-        this.lineChartJob['datasets'].push(temp);
+
+    updateindustry(){
+      let newref = this.major['industries']
+      for (let [ind, val] of Object.entries(newref)){
+        this.industyname.push(ind);
       }
-      let salary = this.industry['salary'];
-      this.barChartData['labels'] = salary['range'];
-      this.barChartData['datasets'][0]['data']=salary['count'];
-      let organisation = this.industry['organisation'];
+    },
+
+    renderChart(){
+
+      let top_5 = this.major['top5'];
+      let top5 = top_5['top_5']
+      for (let [ind, val] of Object.entries(top5)){
+        console.log(ind)
+        this.lineChartData['labels'] = top5[ind]['overallhiringtrend']['year'];
+        this.lineChartData['datasets'].push({
+          'label': ind,
+          'data': top5[ind]['overallhiringtrend']['numhired']
+        })
+        console.log(this.lineChartData)
+      };
+
+      for (let [ind, val] of Object.entries(top5)){
+        console.log(ind)
+        this.barChartData['labels'] = top5[ind]['overallsalarydist']['salary'];
+        this.barChartData['datasets'].push({
+          'label': ind,
+          'data': top5[ind]['overallsalarydist']['count']
+        })
+      };
+
+      let organisation = top_5['organisations'];
       let cap = organisation['cap'];
       let name = organisation['name'];
-      let numgrads = organisation['numgrads'];
+      let numgrads = organisation['numgrad'];
       let sal = organisation['salary'];
+      let ind = organisation['industry']
       for (let i in cap){
-          temp = {
+          let temp = {
             'organisation': name[i],
             'cap': cap[i],
             'sal': sal[i],
-            'numGrads': numgrads[i]
+            'industry':ind[i],
+            'numGrads': numgrads[i],
+            
           }
           this.tableData['rows'].push(temp);
       };
@@ -172,8 +192,9 @@
           { text: 'Option nr 4', value: 'Option 4' },
           { text: 'Option nr 5', value: 'Option 5' }
         ],
-    industryname:'Accounting and Auditing',
-    industry : {},
+    majorname:'Accountacy',
+    major : {},
+    industyname : [],
     loaded: false,
    modal: false,
    showFrameModalTop: false,
@@ -213,12 +234,17 @@
           },
           {
             label: 'Salary',
-            field: 'salary',
+            field: 'sal',
+            sort: 'asc'
+          },
+          {
+            label: 'Industry',
+            field: 'ind',
             sort: 'asc'
           },
           {
             label: 'Number of Graduates',
-            field: 'numGrads',
+            field: 'numgrads',
             sort: 'asc'
           }
         ],
@@ -227,10 +253,7 @@
    
           barChartData: {
           labels:[],
-          datasets:[{
-            data:[],
-            backgroundColor: 'rgba(245, 74, 85, 0.5)',
-          }]
+          datasets:[]
          },
          barChartOptions: {
            responsive: true,
@@ -261,10 +284,7 @@
          },
          lineChartData: {
           labels:[],
-          datasets:[{
-            data:[],
-            backgroundColor: 'rgba(245, 74, 85, 0.5)',
-          }]
+          datasets:[]
          },
          lineChartJob: {
           labels:[],
@@ -309,12 +329,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
    .cascading-admin-card {
-   margin: 20px;
-   margin-top: 10px;
-   padding: 5px;
-   border-color: #90a4ae;
-   border-width: 2px;
-   box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.2), 0 2px 13px 0 rgba(0, 0, 0, 0.19);
+   margin: 100px 0;
    }
    .cascading-admin-card .admin-up {
    margin-left: 4%;
