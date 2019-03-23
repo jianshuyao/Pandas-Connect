@@ -4,119 +4,114 @@
          <div><br/></div>
          <section class="mt-lg-5">
             <mdb-row class="justify-content-center">
-            <mdb-col col="4">
-               <mdb-row md="4" center>
-                  <mdb-modal-title>
-                     <h1 class="card-title" style="font-size:80px">SEARCH </h1>
-                  </mdb-modal-title>
-               </mdb-row>
-               <mdb-row md="4" center>
-                  <mdb-modal-footer center>
-                     <mdb-col center>
-                        <p style="font-size:20px"><i>Advanced Analytics brought to you by The Pandas!</i></p>
-                        <br/>
-
-                        <mdb-row md="4" center>
-  <select name="modselect" id="modselect" style="width:350px;">
-   <option selected="selected" disabled class="placeholder" value=''>Choose your Major</option>
-    <option value="industry" v-for="industry in industry_list">{{industry}}</option>
-  </select>
-  <br><br>
-  </mdb-row>
-  <br/>
-<mdb-row md="4" center>
-                          <button type="button" class="btn btn-outline-warning waves-effect btn-lg" style="font-size:20px">Industries</button>
-                        </mdb-row>
-
+               <mdb-col col="4">
+                  <mdb-row md="4" center>
+                     <mdb-modal-title>
+                        <h1 class="card-title" style="font-size:45px">INDUSTRIES BY MAJOR</h1>
+                        <hr align="center" style="width:50%;height:2px;color:white;background-color:black;" />
+                     </mdb-modal-title>
+                  </mdb-row>
+                  <mdb-row md="4" center>
+                     <p style="font-size:18px"><i>Advanced Analytics brought to you by The Pandas!</i></p>
+                     <br/><br/>
+                  </mdb-row>
+                  <mdb-row center>
+                     <mdb-col>
+                        <select name="modselect" id="modselect" style="width:350px; height:40px">
+                           <option selected="selected" disabled class="placeholder" value=''>Choose your Major</option>
+                           <option value="industry" v-for="industry in industry_list">{{industry}}</option>
+                        </select>
                      </mdb-col>
-                  </mdb-modal-footer>
-               </mdb-row>
-            </mdb-col>
-          </mdb-row>
+                     <mdb-col class="align-self-center">
+                        <button class="button button5"><i class="fas fa-book"></i> Find Industries!</button></a>
+                     </mdb-col>
+                  </mdb-row>
+               </mdb-col>
+            </mdb-row>
          </section>
       </section>
    </div>
 </template>
 <script>
-import { db } from "../firebase";
-   import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter } from 'mdbvue'
-   
-   import {
-     NavTabsCard
-   } from '@/components'
-   
-   export default {
-   name: 'Dashboard',
-   bodyClass: "landing-page",
-   props: {
-   header: {
-   type: String,
-   default: require("@/assets/img/bg7.jpg")
-   }
-   },
-   computed: {
-   headerStyle() {
-   return {
-     backgroundImage: `url(${this.header})`
-   };
-   }
-   },
-   components: {
-   NavTabsCard,
-   mdbRow,
-   mdbCol,
-   mdbBtn,
-   mdbCard,
-   mdbCardBody,
-   mdbCardHeader,
-   mdbCardText,
-   mdbIcon,
-   mdbTbl,
-   mdbBarChart,
-   mdbPieChart,
-   mdbLineChart,
-   mdbRadarChart,
-   mdbDoughnutChart,
-   mdbListGroup,
-   mdbListGroupItem,
-   mdbBadge,
-   mdbModal,
-   mdbModalHeader,
-   mdbModalTitle,
-   mdbModalBody,
-   mdbModalFooter
-   },
-   data () {
-   return {
-   modal: false,
-   showFrameModalTop: false,
-   showFrameModalBottom: false,
-   showSideModalTopRight: false,
-   showSideModalTopLeft: false,
-   showSideModalBottomRight: false,
-   showSideModalBottomLeft: false,
-   showCentralModalSmall: false,
-   showCentralModalMedium: false,
-   showCentralModalLarge: false,
-   showCentralModalFluid: false,
-   showFluidModalRight: false,
-   showFluidModalLeft: false,
-   showFluidModalTop: false,
-   showFluidModalBottom: false,
-   industry_list:{} 
-   }
-   },
-    mounted() {
-    db.ref("/majname/major")
-      .once("value") //need smaller dataset to quicken loading
-      .then(snapshot => {
-        this.industry_list = snapshot.val();
-      });
+   import { db } from "../firebase";
+      import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter } from 'mdbvue'
+      
+      import {
+        NavTabsCard
+      } from '@/components'
+      
+      export default {
+      name: 'Dashboard',
+      bodyClass: "landing-page",
+      props: {
+      header: {
+      type: String,
+      default: require("@/assets/img/bg7.jpg")
+      }
+      },
+      computed: {
+      headerStyle() {
+      return {
+        backgroundImage: `url(${this.header})`
+      };
+      }
+      },
+      components: {
+      NavTabsCard,
+      mdbRow,
+      mdbCol,
+      mdbBtn,
+      mdbCard,
+      mdbCardBody,
+      mdbCardHeader,
+      mdbCardText,
+      mdbIcon,
+      mdbTbl,
+      mdbBarChart,
+      mdbPieChart,
+      mdbLineChart,
+      mdbRadarChart,
+      mdbDoughnutChart,
+      mdbListGroup,
+      mdbListGroupItem,
+      mdbBadge,
+      mdbModal,
+      mdbModalHeader,
+      mdbModalTitle,
+      mdbModalBody,
+      mdbModalFooter
+      },
+      data () {
+      return {
+      modal: false,
+      showFrameModalTop: false,
+      showFrameModalBottom: false,
+      showSideModalTopRight: false,
+      showSideModalTopLeft: false,
+      showSideModalBottomRight: false,
+      showSideModalBottomLeft: false,
+      showCentralModalSmall: false,
+      showCentralModalMedium: false,
+      showCentralModalLarge: false,
+      showCentralModalFluid: false,
+      showFluidModalRight: false,
+      showFluidModalLeft: false,
+      showFluidModalTop: false,
+      showFluidModalBottom: false,
+      industry_list:{} 
+      }
+      },
+       mounted() {
+       db.ref("/majname/major")
+         .once("value") //need smaller dataset to quicken loading
+         .then(snapshot => {
+           this.industry_list = snapshot.val();
+         });
+       }
     }
- }
-   
-   
-   
+      
+      
+      
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
@@ -179,5 +174,38 @@ import { db } from "../firebase";
    padding: 10px;
    text-align: center;
    border-top: 1px solid #000000;
+   }
+   .button {
+   a {
+   text-decoration: none;
+   }
+   a:link, a:visited {
+   color: white;
+   }
+   a:hover {
+   color: black;
+   }
+   opacity: 0.8;
+   background-color: #4CAF50; 
+   border: 2px solid white;
+   color: white;
+   padding: 5px 8px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 15px;
+   margin: 3px 5px;
+   cursor: pointer;
+   -webkit-transition-duration: 0.4s; /* Safari */
+   transition-duration: 0.4s;
+   }
+   .button5 {
+   background-color: #555555;
+   border-radius: 12px;
+   }
+   .button5:hover {
+   background-color: white;
+   color: black;
+   border-radius: 12px;
    }
 </style>
