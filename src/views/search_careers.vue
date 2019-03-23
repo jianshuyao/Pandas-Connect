@@ -17,17 +17,19 @@
                         <br/>
 
                         <mdb-row md="4" center>
-                          <button type="button" class="btn btn-outline-warning waves-effect btn-lg" style="font-size:20px">Industry</button>
-                          <button type="button" class="btn btn-outline-warning waves-effect btn-lg" style="font-size:20px">Major</button>
-
-                          
-                           <div class="input-group md-form form-sm form-2 pl-0">
-                            <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search Industry" aria-label="Search" style="font-size: 25px;">
-                            <div class="input-group-append">
-                              <span class="input-group-text red lighten-3" id="basic-text1"><i class="fas fa-search text-grey" aria-hidden="true"></i></span>
-                            </div>
-                          </div>
+  <select name="modselect" id="modselect" style="width:350px;">
+   <option selected="selected" disabled class="placeholder" value=''>Choose your Major</option>
+    <option value="industry" v-for="industry in industry_list">{{industry}}</option>
+  </select>
+  <br><br>
+  </mdb-row>
+  <br/>
+<mdb-row md="4" center>
+                          <button type="button" class="btn btn-outline-warning waves-effect btn-lg" style="font-size:20px">Industries</button>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <button type="button" class="btn btn-outline-warning waves-effect btn-lg" style="font-size:20px">Companies</button>
                         </mdb-row>
+
                      </mdb-col>
                   </mdb-modal-footer>
                </mdb-row>
@@ -38,6 +40,7 @@
    </div>
 </template>
 <script>
+import { db } from "../firebase";
    import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter } from 'mdbvue'
    
    import {
@@ -102,10 +105,16 @@
    showFluidModalLeft: false,
    showFluidModalTop: false,
    showFluidModalBottom: false,
- 
+   industry_list:{} 
    }
-
-   }
+   },
+    mounted() {
+    db.ref("/majname/major")
+      .once("value") //need smaller dataset to quicken loading
+      .then(snapshot => {
+        this.industry_list = snapshot.val();
+      });
+    }
  }
    
    

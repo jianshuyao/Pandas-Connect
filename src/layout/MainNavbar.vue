@@ -10,9 +10,9 @@
       <div class="md-toolbar-section-start mw-100">
         <img src="Panda.png" style="width:60px;height:50px"> 
         <h3 class="md-title" style="font-weight:bold; font-size:22px">PANDAS CONNECT</h3>
-        <a href="#/Search"><button class="button button5"><i class="fas fa-book"></i> ACADEMICS</button></a>
+        <a href="#/Search"><button class="button button5"><i class="fas fa-book"></i> Industries</button></a>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#/search_careers"><button class="button button5"><i class="fas fa-graduation-cap"></i> CAREERS</button></a>
+            <a href="#/search_careers"><button class="button button5"><i class="fas fa-graduation-cap"></i> Companies</button></a>
       </div>
       <div class="md-toolbar-section-end mw-100">
         <md-button
