@@ -17,17 +17,20 @@
                         <br/>
 
                         <mdb-row md="4" center>
-  <select name="modselect" id="modselect" style="width:350px;">
+  <select @change="updateCareer" name="modselect" id="modselect" v-model="maj" style="width:350px;">
    <option selected="selected" disabled class="placeholder" value=''>Choose your Major</option>
-    <option value="industry" v-for="industry in industry_list">{{industry}}</option>
+    <option v-for="industry in industry_list" :key="industry">{{industry}}</option>
   </select>
   <br><br>
   </mdb-row>
   <br/>
 <mdb-row md="4" center>
-                          <button type="button" class="btn btn-outline-warning waves-effect btn-lg" style="font-size:20px">Industries</button>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <button type="button" class="btn btn-outline-warning waves-effect btn-lg" style="font-size:20px">Companies</button>
+<div>
+    <datalist id="suggestions" style="width:350px;">
+        <option v-for="career in career_list">{{career}}</option>
+    </datalist>
+    <input autoComplete="on" list="suggestions" style="width:350px;height:40px" placeholder="Choose your Career"/> 
+</div>
                         </mdb-row>
 
                      </mdb-col>
@@ -39,6 +42,8 @@
       </section>
    </div>
 </template>
+
+
 <script>
 import { db } from "../firebase";
    import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter } from 'mdbvue'
@@ -90,6 +95,7 @@ import { db } from "../firebase";
    },
    data () {
    return {
+   maj:"",
    modal: false,
    showFrameModalTop: false,
    showFrameModalBottom: false,
@@ -105,7 +111,8 @@ import { db } from "../firebase";
    showFluidModalLeft: false,
    showFluidModalTop: false,
    showFluidModalBottom: false,
-   industry_list:{} 
+   industry_list:{},
+   career_list:{} 
    }
    },
     mounted() {
@@ -114,6 +121,15 @@ import { db } from "../firebase";
       .then(snapshot => {
         this.industry_list = snapshot.val();
       });
+    },
+    methods:{
+      updateCareer(){
+         db.ref("/majwithcompany/" + this.maj)
+         .once("value")
+         .then(snapshot => {
+        this.career_list = snapshot.val();
+      });
+      }
     }
  }
    

@@ -14,12 +14,15 @@ import MaterialKit from "./plugins/material-kit";
 
 import vueSmoothScroll from 'vue2-smooth-scroll'
 
+
+
 Vue.config.productionTip = false;
 
 Vue.use(VueFire)
 Vue.use(BootstrapVue);
 Vue.use(MaterialKit);
 Vue.use(vueSmoothScroll);
+
 
 const NavbarStore = {
   showNavbar: false
