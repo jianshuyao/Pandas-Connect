@@ -6,42 +6,41 @@
             <mdb-row class="justify-content-end">
                <mdb-col col="4">
                   <mdb-row md="4" center>
-                     <mdb-modal-title>
-                        <h1 class="card-title">{{this.industryname}}
-                        </h1>
-                     </mdb-modal-title>
+                          <select class="custom-select custom-select-sm">
+                            <option selected>Select Particular Industry of Interest</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select>
                   </mdb-row>
                </mdb-col>
                <mdb-col col="4">
                </mdb-col>
             </mdb-row>
+            <div><br/></div>
             <mdb-row class="justify-content-center">
-               <mdb-col md="6" lg="6" class="mb-4 d-flex align-items-stretch">
+               <mdb-col md="1" lg="5" class="mb-4">
                   <mdb-card class="mb-4">
                      <mdb-card-header> Hiring Trend </mdb-card-header>
-                     <mdb-col>
                         <mdb-card-body>
                            <div v-if='this.loaded' style="display: block" justify-content-center>
                               <mdb-line-chart :data="lineChartData" :options="lineChartOptions" :height="300"/>
                            </div>
                         </mdb-card-body>
-                        <mdb-card-body>
+                  </mdb-card>
+                  <mdb-card class="mb-4">
+                    <mdb-card-header> Salary Trend </mdb-card-header>
+                    <mdb-card-body>
                            <div v-if='this.loaded' style="display: block" justify-content-center>
                               <mdb-line-chart :data="lineChartJob" :options="lineChartOptions" :height="300"/>
                            </div>
                         </mdb-card-body>
-                     </mdb-col>
-                  </mdb-card>
+                      </mdb-card>
+
                </mdb-col>
-               <mdb-col md="6" lg="5" class="mb-4">
+               <mdb-col md="2" lg="5" class="mb-4">
                   <mdb-card class="mb-4">
-                     <mdb-card-header> Salary </mdb-card-header>
-                     <div v-if='this.loaded' style="display: block">
-                        <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="400"/>
-                     </div>
-                  </mdb-card>
-                  <mdb-card class="mb-4">
-                     <mdb-card-header> Organisations </mdb-card-header>
+                     <mdb-card-header> Companies </mdb-card-header>
                      <mdb-card-body>
                         <div style="display: block">
                            <mdb-datatable
@@ -59,7 +58,7 @@
    </div>
 </template>
 <script>
-   import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter } from 'mdbvue'
+   import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbSelect, mdbContainer } from 'mdbvue'
    
    import {
      NavTabsCard
@@ -99,6 +98,9 @@
     this.industryref = db.ref('industry/'+this.industryname);
    },
    methods:{
+    getSelectValue(value, text) {
+        console.log(value);
+      },
     renderChart(){
       this.lineChartData['labels'] = this.industry['overallhiringtrend']['Year'];
       this.lineChartData['datasets'][0]['data'] = this.industry['overallhiringtrend']['Number Hired'];
@@ -133,6 +135,8 @@
     }
    },
    components: {
+     mdbSelect,
+      mdbContainer,
    NavTabsCard,
    mdbRow,
    mdbCol,
@@ -160,6 +164,14 @@
    },
    data () {
    return {
+    searchOptions: [
+          { text: 'Choose your option', value: null, disabled: true, selected: true },
+          { text: 'Option nr 1', value: 'Option 1' },
+          { text: 'Option nr 2', value: 'Option 2' },
+          { text: 'Option nr 3', value: 'Option 3' },
+          { text: 'Option nr 4', value: 'Option 4' },
+          { text: 'Option nr 5', value: 'Option 5' }
+        ],
     industryname:'Accounting and Auditing',
     industry : {},
     loaded: false,
