@@ -218,6 +218,7 @@
    },
    created(){
     this.currentMajor = this.$route.params.majorName;
+    this.tableData = [];
    },
    methods:{
 
@@ -261,23 +262,33 @@
 
       let top_5 = this.major['top5'];
       let top5 = top_5['top_5']
+      let count = 0;
       for (let [ind, val] of Object.entries(top5)){
         console.log(ind)
         this.lineChartData['labels'] = top5[ind]['overallhiringtrend']['year'];
         this.lineChartData['datasets'].push({
           'label': ind,
-          'data': top5[ind]['overallhiringtrend']['numhired']
+          'data': top5[ind]['overallhiringtrend']['numhired'],
+          'backgroundColor': this.backgroundColor[count],
+          'borderColor': this.borderColor[count],
+          'borderWidth': this.borderWidth
         })
+        count++;
         console.log(this.lineChartData)
       };
 
+      count = 0;
       for (let [ind, val] of Object.entries(top5)){
         console.log(ind)
         this.barChartData['labels'] = top5[ind]['overallsalarydist']['salary'];
         this.barChartData['datasets'].push({
           'label': ind,
-          'data': top5[ind]['overallsalarydist']['count']
+          'data': top5[ind]['overallsalarydist']['count'],
+          'backgroundColor': this.backgroundColor[count],
+          'borderColor': this.borderColor[count],
+          'borderWidth': this.borderWidth
         })
+        count++;
       };
 
       let organisation = top_5['organisations'];
@@ -332,6 +343,23 @@
    },
    data () {
    return {
+
+    backgroundColor: [
+              'rgba(255, 99, 132, 0.4)',
+              'rgba(54, 162, 235, 0.4)',
+              'rgba(255, 206, 86, 0.4)',
+              'rgba(75, 192, 192, 0.4)',
+              'rgba(153, 102, 255, 0.4)'
+            ],
+    borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)'
+            ],
+    borderWidth: 1,
+
     currentMajor:null,
     searchOptions: [
           { text: 'Choose your option', value: null, disabled: true, selected: true },

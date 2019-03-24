@@ -342,6 +342,8 @@
    created(){
     this.industryref = db.ref('industry/'+this.industryname);
     this.suggestref = db.ref('industrymod/'+this.currname);
+    this.tableSuggestedData = [];
+    this.tableData = [];
    },
 
    methods:{
