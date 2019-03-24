@@ -37,7 +37,7 @@
                </mdb-col>
                <mdb-col md="2" lg="6">
                 <mdb-card class="cascading-admin-card">
-                     <mdb-card-header> Salary Trend </mdb-card-header>
+                     <mdb-card-header> Salary Distribution </mdb-card-header>
                      <mdb-card-body>
                         <div v-if='this.loaded' style="display: block" justify-content-center>
                               <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="300"/>
@@ -52,11 +52,105 @@
                      <mdb-card-header> Companies </mdb-card-header>
                      <mdb-card-body>
                         <div v-if='this.loaded' style="display: block">
-                           <mdb-datatable
-                              :data="tableData"
-                              striped
-                              bordered
+                           
+                          <b-row>
+                            <b-col md="6" class="my-1">
+                              <b-form-group label-cols-sm="3" label="Filter" class="mb-0">
+                                <b-input-group>
+                                  <b-form-input v-model="filter" placeholder="Type to Search" />
+                                </b-input-group>
+                              </b-form-group>
+                            </b-col>
+
+                            <b-col md="6" class="my-1">
+                              <b-form-group label-cols-sm="3" label="Sort" class="mb-0">
+                                <b-input-group>
+                                  <b-form-select v-model="sortBy" :options="sortOptions">
+                                    <option slot="first" :value="null">-- none --</option>
+                                  </b-form-select>
+                                  <b-form-select :disabled="!sortBy" v-model="sortDesc" slot="append">
+                                    <option :value="false">Asc</option> <option :value="true">Desc</option>
+                                  </b-form-select>
+                                </b-input-group>
+                              </b-form-group>
+                            </b-col>
+
+                            <b-col md="6" class="my-1">
+                              <b-form-group label-cols-sm="3" label="Per page" class="mb-0">
+                                <b-form-select :options="pageOptions" v-model="perPage" />
+                              </b-form-group>
+                            </b-col>
+                          </b-row>
+
+                          <!-- Main table element -->
+                          <b-table
+                            show-empty
+                            stacked="md"
+                            :items="tableData"
+                            :fields="fields"
+                            :current-page="currentPage"
+                            :per-page="perPage"
+                            :filter="filter"
+                            :sort-by.sync="sortBy"
+                            :sort-desc.sync="sortDesc"
+                            :sort-direction="sortDirection"
+                            :bordered=true
+                            :fixed=true
+                            :hover=true
+                            @filtered="onFiltered"
+                          >
+                            <template slot="organisation" slot-scope="row">
+                              {{ row.value }}
+                            </template>
+
+                            <template slot="cap" slot-scope="row">
+                              {{ row.value }}
+                            </template>
+
+                            <template slot="sal" slot-scope="row">
+                              {{ row.value }}
+                            </template>
+
+                            <template slot="industry" slot-scope="row">
+                              {{ row.value }}
+                            </template>
+
+                            <template slot="numGrads" slot-scope="row">
+                              {{ row.value }}
+                            </template>
+
+                            <template slot="actions" slot-scope="row">
+                              <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
+                                Learn More
+                              </b-button>
+                            </template>
+
+                            <template slot="row-details" slot-scope="row">
+                              <b-card>
+                                <ul>
+                                  <li v-for="(value, key) in row.item" :key="key">{{ key }}: {{ value }}</li>
+                                </ul>
+                              </b-card>
+                            </template>
+                          </b-table>
+
+                          <b-row>
+                            <b-col md="6" class="my-1">
+                              <b-pagination
+                                :total-rows="totalRows"
+                                :per-page="perPage"
+                                v-model="currentPage"
+                                class="my-0"
                               />
+                            </b-col>
+                          </b-row>
+
+                          <!-- Info modal -->
+                          <b-modal id="modalInfo" @hide="resetModal" :title="modalInfo.title" ok-only>
+                            <pre>{{ modalInfo.content }}</pre>
+                          </b-modal>
+
+
                         </div>
                      </mdb-card-body>
                   </mdb-card>
@@ -76,6 +170,8 @@
    import { mdbDatatable } from 'mdbvue';
    
    import {db} from '../firebase';
+
+   const items = [];
    
    export default {
    name: 'Dashboard',
@@ -98,16 +194,56 @@
     })
    },
    computed: {
-   headerStyle() {
-   return {
-     backgroundImage: `url(${this.header})`
-   };
-   }
+      headerStyle() {
+        return {
+          backgroundImage: `url(${this.header})`
+        };
+      },
+      sortOptions() {
+        // Create an options list from our fields
+        return this.fields
+          .filter(f => f.sortable)
+          .map(f => {
+            return { text: f.label, value: f.key }
+          })
+      },
+      sortOptionsSuggest() {
+        // Create an options list from our fields
+        return this.fieldsSuggest
+          .filter(f => f.sortable)
+          .map(f => {
+            return { text: f.label, value: f.key }
+          })
+      }
    },
    created(){
     this.currentMajor = this.$route.params.majorName;
    },
    methods:{
+
+    info(item, index, button) {
+        this.modalInfo.title = `Row index: ${index}`
+        this.modalInfo.content = JSON.stringify(item, null, 2)
+        this.$root.$emit('bv::show::modal', 'modalInfo', button)
+      },
+
+    resetModal() {
+        this.modalInfo.title = ''
+        this.modalInfo.content = ''
+    },
+
+    onFiltered(filteredItems) {
+        // Trigger pagination to update the number of buttons/pages due to filtering
+        this.totalRows = filteredItems.length
+        this.currentPage = 1
+    },
+
+    genCapCol(cap){
+      return cap<3.75?'success':(cap<4.5?'warning':'danger');
+    },
+
+
+
     getSelectValue(value, text) {
         console.log(value);
       },
@@ -118,7 +254,9 @@
         this.industyname.push(ind);
       }
     },
-
+    genCapCol(cap){
+      return cap<3.75?'success':(cap<4.5?'warning':'danger');
+    },
     renderChart(){
 
       let top_5 = this.major['top5'];
@@ -155,10 +293,12 @@
             'sal': sal[i],
             'industry':ind[i],
             'numGrads': numgrads[i],
+            '_rowVariant':this.genCapCol(cap[i])
             
           }
-          this.tableData['rows'].push(temp);
+          this.tableData.push(temp);
       };
+      this.totalRows = this.tableData.length;
       this.loaded = true;
     }
    },
@@ -220,6 +360,27 @@
    showFluidModalTop: false,
    showFluidModalBottom: false,
    currentViz: "HiringTrend",
+
+   //TableData
+    tableData: items,
+     fields: [
+      { key: 'organisation', label: 'Organisation', sortable: true, sortDirection: 'desc' },
+      { key: 'cap', label: 'CAP', sortable: true },
+      { key: 'sal', label: 'Salary', sortable: true, sortDirection: 'desc'},
+      { key: 'industry', label: 'Industry',sortable: true, sortDirection: 'desc' },
+      { key: 'numGrads', label: 'Number of Graduates',sortable: true, sortDirection: 'desc' },
+      { key: 'actions', label: 'Actions', class: 'text-center' }
+    ],
+    currentPage: 1,
+    perPage: 5,
+    totalRows: items.length,
+    pageOptions: [5, 10, 15],
+    sortBy: null,
+    sortDesc: false,
+    sortDirection: 'asc',
+    filter: null,
+    modalInfo: { title: '', content: '' },
+
    
    vizs: [
     'HiringTrend',
@@ -227,37 +388,6 @@
     'Organisations',
     'CAPDistribution'
    ],
-   
-   tableData: {
-        columns: [
-          {
-            label: 'Organisation',
-            field: 'organisation',
-            sort: 'asc'
-          },
-          {
-            label: 'CAP',
-            field: 'cap',
-            sort: 'asc'
-          },
-          {
-            label: 'Salary',
-            field: 'sal',
-            sort: 'asc'
-          },
-          {
-            label: 'Industry',
-            field: 'ind',
-            sort: 'asc'
-          },
-          {
-            label: 'Number of Graduates',
-            field: 'numgrads',
-            sort: 'asc'
-          }
-        ],
-        rows: []
-   },
    
           barChartData: {
           labels:[],

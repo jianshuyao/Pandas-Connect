@@ -98,6 +98,7 @@
                             :bordered=true
                             :fixed=true
                             :hover=true
+                            :small=true
                             @filtered="onFiltered"
                           >
                             <template slot="organisation" slot-scope="row">
@@ -569,10 +570,10 @@
     tableData: items,
      fields: [
       { key: 'organisation', label: 'Organisation', sortable: true, sortDirection: 'desc' },
-      { key: 'cap', label: 'CAP', sortable: true, class: 'text-center' },
+      { key: 'cap', label: 'CAP', sortable: true },
       { key: 'sal', label: 'Salary', sortable: true, sortDirection: 'desc'},
       { key: 'numGrads', label: 'Number of Graduates',sortable: true, sortDirection: 'desc' },
-      { key: 'actions', label: 'Actions' }
+      { key: 'actions', label: 'Actions', class: 'text-center' }
     ],
     currentPage: 1,
     perPage: 5,
@@ -588,9 +589,9 @@
     tableSuggestedData: items2,
     fieldsSuggest: [
       { key: 'modcode', label: 'Module Code', sortable: true, sortDirection: 'desc' },
-      { key: 'modname', label: 'Module Name', sortable: true, class: 'text-center' },
+      { key: 'modname', label: 'Module Name', sortable: true },
       { key: 'numgrad', label: 'Number of Graduates', sortable: true, sortDirection: 'desc'},
-      { key: 'actions', label: 'Actions' }
+      { key: 'actions', label: 'Actions', class: 'text-center' }
     ],
     currentPageSuggest: 1,
     perPageSuggest: 5,
