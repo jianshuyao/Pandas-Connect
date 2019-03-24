@@ -4,16 +4,42 @@
          <div><br/></div>
          <section class="mt-lg-5">
             <mdb-row class="justify-content-start">
-             <mdb-col>
+              <mdb-col col="3" class="align-self-center">
+                <select class="custom-select custom-select-sm" style="margin-left: 20px;">
+                  <option selected>Select Another Company of Interest</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+               </select>
+             </mdb-col>
+             <mdb-col col="6">
               <mdb-row center>
                   <mdb-modal-title>
-                    <p class="card-title" style="font-size:30px;letter-spacing: 2px;">{{this.companyname}}</p>
+                      <p v-b-popover.hover="'I am popover content!'" class="card-title" style="font-size:30px;letter-spacing: 2px;">
+                        {{this.companyname}}
+                      </p>
                     <hr align="center" style="width:50%;height:2px;color:white;background-color:black;" />
                   </mdb-modal-title>
                 </mdb-row>
              </mdb-col>
             </mdb-row>
-            <div><br/></div>
+            <mdb-row class="justify-content-center d-flex align-items-stretch">
+              <mdb-col>
+              <mdb-carousel class="cascading-admin-card" :interval="8000" showControls showIndicators style="height:400px">
+                <mdb-carousel-item img src="https://prodcmscdn.azureedge.net/careerconnectresources/p/MICRUS/en_us/mobile/assets/images/University_students_hero_1920x600.jpg" mask="black-light" alt="First slide" href="www.google.com">
+                  <mdb-carousel-caption title="Summer Internship Program" text="Click here to learn more!" content="Testing"></mdb-carousel-caption>
+                </mdb-carousel-item>
+                <mdb-carousel-item img src="https://www.symrise.com/fileadmin/symrise/corporate/your_career/students/Your-career-students-and-interns-how-to-apply02.jpg" mask="black-light" alt="Second slide">
+                  <mdb-carousel-caption title="Graduate Program" text="Click here to learn more!">
+                    <a class="btn btn-large pull-right" href="http://lebonheur.org/our-services/emergency-medicine/">Emergency Medicine</a>
+                  </mdb-carousel-caption>
+                </mdb-carousel-item>
+                <mdb-carousel-item img src="http://latestblogs.in/wp-content/uploads/2018/08/busy-modern-office.jpg" mask="black-light" alt="Third slide">
+                  <mdb-carousel-caption title="Our Core Values" text="Click here to learn more!" href="www.google.com"></mdb-carousel-caption>
+                </mdb-carousel-item>
+              </mdb-carousel>
+            </mdb-col>
+            </mdb-row>
             <mdb-row class="justify-content-center d-flex align-items-stretch">
                <mdb-col md="1" lg="6">
                   <mdb-card class="cascading-admin-card">
@@ -34,7 +60,7 @@
                             <label for="customRange1">Expected Cap</label>
                             <vue-slider
                               ref="slider"
-                              v-model="value"
+                              v-model="value_2"
                               v-bind="options"
                             ></vue-slider>
                           </mdb-col>
@@ -85,7 +111,7 @@
    </div>
 </template>
 <script>
-   import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbSelect, mdbContainer } from 'mdbvue'
+   import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbSelect, mdbContainer, mdbCarousel, mdbCarouselItem, mdbCarouselCaption, mdbPopover  } from 'mdbvue'
    
    import "echarts-wordcloud"
    import IEcharts from "vue-echarts-v3/src/lite.js"
@@ -152,6 +178,10 @@
     }
    },
    components: {
+    mdbPopover,
+     mdbCarousel,
+      mdbCarouselItem,
+      mdbCarouselCaption,
     IEcharts,
      mdbSelect,
       mdbContainer,
@@ -185,7 +215,9 @@
     major: 'Accountacy',
     companyname:'ANZ',
     company:{},
+    value_2: [0, 50],
     counter: 45,
+    max: 100,
     wordcloud: {},
     industryname:'Accounting and Auditing',
     industry : {},
@@ -328,6 +360,20 @@
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    .carousel-content {
+      position: absolute;
+      bottom: 10%;
+      left: 5%;
+      z-index: 20;
+      color: white;
+      font-size: 100px;
+      text-shadow: 0 1px 2px rgba(0,0,0,.6);
+    }
+    .carousel-caption {
+        font-size:20px;
+        top: 0;
+        bottom: auto;
+    }
    .cascading-admin-card {
    margin: 20px;
    margin-top: 10px;
