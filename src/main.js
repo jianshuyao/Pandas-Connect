@@ -16,7 +16,8 @@ import vueSmoothScroll from 'vue2-smooth-scroll'
 import VueSlider from 'vue-slider-component'
 import 'vue-slider-component/theme/default.css'
 
-
+import VueParticles from 'vue-particles'
+Vue.use(VueParticles)
 
 
 Vue.config.productionTip = false;

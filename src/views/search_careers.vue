@@ -3,136 +3,150 @@
       <section id="module">
          <div><br/></div>
          <section class="mt-lg-5">
-            <mdb-row class="justify-content-center">
-            <mdb-col col="6">
-               <mdb-row md="6" center><br/><br/><br/><br/><br/><br/><br/><br/><br/></mdb-row>
-               <mdb-row md="6" center>
-                  <mdb-modal-title>
-                     <h1 class="card-title" style="font-size:45px">COMPANIES BY MAJOR </h1>
-                     <hr align="center" style="width:50%;height:2px;color:white;background-color:black;" />
-                  </mdb-modal-title>
-               </mdb-row>
-               <mdb-row md="6" center>
-                        <p style="font-size:18px"><i>Advanced Analytics brought to you by The Pandas!</i></p>
-                        <br/>
-                         </mdb-row>
-                        <mdb-row md="6" center>
-  <select @change="updateCareer" name="modselect" id="modselect" v-model="maj" style="width:350px; height:40px">
-   <option selected="selected" disabled class="placeholder" value=''> Choose Your Major</option>
-    <option v-for="industry in industry_list" :key="industry">{{industry}}</option>
-  </select>
-  <br>
-  </mdb-row>
-  <br/>
-<mdb-row md="6" center>
-<div>
-    <datalist id="suggestions" style="width:350px;">
-        <option v-for="career in career_list">{{career}}</option>
-    </datalist>
-    <input @change="$router.push({ path: '/company/' + car + '/' +maj});" autoComplete="on" list="suggestions" style="width:350px;height:40px" placeholder=" Choose Your Career" v-model="car"/> 
-</div>
-                        </mdb-row>
-                        <mdb-row md="6" center><br/><br/><br/><br/><br/><br/><br/><br/><br/></mdb-row>
-            </mdb-col>
-          </mdb-row>
+            <mdb-row class="justify-content-center d-flex align-items-stretch">
+               <mdb-col col="3">
+                  <vue-particles
+                     color="#1a237e"
+                     :particleOpacity="0.6"
+                     :particlesNumber="300"
+                     shapeType="circle"
+                     :particleSize="4"
+                     linesColor="#1a237e"
+                     :linesWidth="1"
+                     :lineLinked="true"
+                     :lineOpacity="0.4"
+                     :linesDistance="150"
+                     :moveSpeed="3"
+                     :hoverEffect="true"
+                     hoverMode="grab"
+                     :clickEffect="true"
+                     clickMode="push"
+                     > </vue-particles>
+               </mdb-col>
+            </mdb-row>
+                  <mdb-row md="6" center>
+                     <mdb-modal-title>
+                        <h1 class="card-title" style="font-size:45px">COMPANIES BY MAJOR </h1>
+                        <hr align="center" style="width:50%;height:2px;color:white;background-color:black;" />
+                     </mdb-modal-title>
+                  </mdb-row>
+                  <mdb-row md="6" center>
+                     <p style="font-size:18px"><i>Advanced Analytics brought to you by The Pandas!</i></p>
+                     <br/>
+                  </mdb-row>
+                  <mdb-row md="6" center>
+                     <select @change="updateCareer" name="modselect" id="modselect" v-model="maj" style="width:350px; height:40px">
+                        <option selected="selected" disabled class="placeholder" value=''> Choose Your Major</option>
+                        <option v-for="industry in industry_list" :key="industry">{{industry}}</option>
+                     </select>
+                     <br>
+                  </mdb-row>
+                  <br/>
+                  <mdb-row md="6" center>
+                     <div>
+                        <datalist id="suggestions" style="width:350px;">
+                           <option v-for="career in career_list">{{career}}</option>
+                        </datalist>
+                        <input @change="$router.push({ path: '/company/' + car + '/' +maj});" autoComplete="on" list="suggestions" style="width:350px;height:40px" placeholder=" Choose Your Career" v-model="car"/> 
+                     </div>
+                  </mdb-row>
+                  <mdb-row md="6" center><br/><br/><br/><br/><br/><br/><br/><br/><br/></mdb-row>
          </section>
       </section>
    </div>
 </template>
-
-
 <script>
-import { db } from "../firebase";
-   import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter } from 'mdbvue'
-   
-   import {
-     NavTabsCard
-   } from '@/components'
-   
-   export default {
-   name: 'Dashboard',
-   bodyClass: "landing-page",
-   props: {
-   header: {
-   type: String,
-   default: require("@/assets/img/bg7.jpg")
-   }
-   },
-   computed: {
-   headerStyle() {
-   return {
-     backgroundImage: `url(${this.header})`
-   };
-   }
-   },
-   components: {
-   NavTabsCard,
-   mdbRow,
-   mdbCol,
-   mdbBtn,
-   mdbCard,
-   mdbCardBody,
-   mdbCardHeader,
-   mdbCardText,
-   mdbIcon,
-   mdbTbl,
-   mdbBarChart,
-   mdbPieChart,
-   mdbLineChart,
-   mdbRadarChart,
-   mdbDoughnutChart,
-   mdbListGroup,
-   mdbListGroupItem,
-   mdbBadge,
-   mdbModal,
-   mdbModalHeader,
-   mdbModalTitle,
-   mdbModalBody,
-   mdbModalFooter
-   },
-   data () {
-   return {
-   maj:"",
-   car:"",
-   modal: false,
-   showFrameModalTop: false,
-   showFrameModalBottom: false,
-   showSideModalTopRight: false,
-   showSideModalTopLeft: false,
-   showSideModalBottomRight: false,
-   showSideModalBottomLeft: false,
-   showCentralModalSmall: false,
-   showCentralModalMedium: false,
-   showCentralModalLarge: false,
-   showCentralModalFluid: false,
-   showFluidModalRight: false,
-   showFluidModalLeft: false,
-   showFluidModalTop: false,
-   showFluidModalBottom: false,
-   industry_list:{},
-   career_list:{} 
-   }
-   },
-    mounted() {
-    db.ref("/majname/major")
-      .once("value") //need smaller dataset to quicken loading
-      .then(snapshot => {
-        this.industry_list = snapshot.val();
-      });
-    },
-    methods:{
-      updateCareer(){
-         db.ref("/majwithcompany/" + this.maj)
-         .once("value")
-         .then(snapshot => {
-        this.career_list = snapshot.val();
-      });
+   import { db } from "../firebase";
+      import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter } from 'mdbvue'
+      
+      import {
+        NavTabsCard
+      } from '@/components'
+      
+      export default {
+      name: 'Dashboard',
+      bodyClass: "landing-page",
+      props: {
+      header: {
+      type: String,
+      default: require("@/assets/img/bg7.jpg")
       }
+      },
+      computed: {
+      headerStyle() {
+      return {
+        backgroundImage: `url(${this.header})`
+      };
+      }
+      },
+      components: {
+      NavTabsCard,
+      mdbRow,
+      mdbCol,
+      mdbBtn,
+      mdbCard,
+      mdbCardBody,
+      mdbCardHeader,
+      mdbCardText,
+      mdbIcon,
+      mdbTbl,
+      mdbBarChart,
+      mdbPieChart,
+      mdbLineChart,
+      mdbRadarChart,
+      mdbDoughnutChart,
+      mdbListGroup,
+      mdbListGroupItem,
+      mdbBadge,
+      mdbModal,
+      mdbModalHeader,
+      mdbModalTitle,
+      mdbModalBody,
+      mdbModalFooter
+      },
+      data () {
+      return {
+      maj:"",
+      car:"",
+      modal: false,
+      showFrameModalTop: false,
+      showFrameModalBottom: false,
+      showSideModalTopRight: false,
+      showSideModalTopLeft: false,
+      showSideModalBottomRight: false,
+      showSideModalBottomLeft: false,
+      showCentralModalSmall: false,
+      showCentralModalMedium: false,
+      showCentralModalLarge: false,
+      showCentralModalFluid: false,
+      showFluidModalRight: false,
+      showFluidModalLeft: false,
+      showFluidModalTop: false,
+      showFluidModalBottom: false,
+      industry_list:{},
+      career_list:{} 
+      }
+      },
+       mounted() {
+       db.ref("/majname/major")
+         .once("value") //need smaller dataset to quicken loading
+         .then(snapshot => {
+           this.industry_list = snapshot.val();
+         });
+       },
+       methods:{
+         updateCareer(){
+            db.ref("/majwithcompany/" + this.maj)
+            .once("value")
+            .then(snapshot => {
+           this.career_list = snapshot.val();
+         });
+         }
+       }
     }
- }
-   
-   
-   
+      
+      
+      
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
