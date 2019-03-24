@@ -1,3 +1,5 @@
+<!-- Remember to route the footer here-->
+
 <template>
   <footer
     class="footer"
@@ -8,31 +10,31 @@
       <nav>
         <ul>
           <li>
-            <a href="https://www.creative-tim.com">
-              Creative Tim
+            <a href="https://www.pandas-connect.com">
+              Pandas-Connect
             </a>
           </li>
           <li>
-            <a href="https:///presentation.creative-tim.com">
+            <a href="">
               About Us
             </a>
           </li>
           <li>
-            <a href="https:///blog.creative-tim.com">
+            <a href="">
               Blog
             </a>
           </li>
           <li>
-            <a href="https://www.creative-tim.com/license">
-              Licenses
+            <a href="">
+              Contact Us
             </a>
           </li>
         </ul>
       </nav>
       <div class="copyright">
         &copy; {{ year }}, made with <md-icon>favorite</md-icon> by
-        <a href="https://www.creative-tim.com/" target="_blank">Creative Tim</a>
-        for a better web.
+        <a href="https://nus.edu.sg/" target="_blank">Team Pandas</a>
+        for our fellow students' benefit.
       </div>
     </div>
   </footer>

@@ -3,47 +3,51 @@
       <section id="module">
          <div><br/></div>
          <section class="mt-lg-5">
-            <mdb-row class="justify-content-end">
-               <mdb-col col="4">
-                  <mdb-row md="4" center>
-                          <select class="custom-select custom-select-sm">
-                            <option selected>Select Particular Industry of Interest</option>
-                            <!--<option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>-->
-                            <option v-for="ind in this.industyname">{{ind}}</option>
-                          </select>
-                  </mdb-row>
-               </mdb-col>
-               <mdb-col col="4">
-               </mdb-col>
+            <mdb-row class="justify-content-start">
+               <mdb-col col="3" class="align-self-center">
+               <select class="custom-select custom-select-sm" style="margin-left: 20px;">
+                  <option selected>Select Particular Industry of Interest</option>
+                  <option v-for="ind in this.industyname">{{ind}}</option>
+               </select>
+             </mdb-col>
+             <mdb-col col="6">
+              <mdb-row center>
+                  <mdb-modal-title>
+                    <p class="card-title" style="font-size:30px;letter-spacing: 2px;">{{this.currentMajor}}</p>
+                    <hr align="center" style="width:50%;height:2px;color:white;background-color:black;" />
+                  </mdb-modal-title>
+                </mdb-row>
+             </mdb-col>
             </mdb-row>
             <div><br/></div>
-            <mdb-row class="justify-content-center">
-               <mdb-col md="1" lg="5" class="mb-4">
-                  <mdb-card class="mb-4">
+            <mdb-row class="justify-content-center d-flex align-items-stretch">
+               <mdb-col md="1" lg="6">
+                  <mdb-card class="cascading-admin-card">
                      <mdb-card-header> Hiring Trend </mdb-card-header>
-                        <mdb-card-body>
-                           <div v-if='this.loaded' style="display: block" justify-content-center>
-                              <mdb-line-chart :data="lineChartData" :options="lineChartOptions" :height="300"/>
-                           </div>
-                        </mdb-card-body>
+                     <mdb-card-body>
+                        <div v-if='this.loaded' style="display: block" justify-content-center>
+                           <mdb-line-chart :data="lineChartData" :options="lineChartOptions" :height="300"/>
+                        </div>
+                     </mdb-card-body>
                   </mdb-card>
-                  <mdb-card class="mb-4">
-                    <mdb-card-header> Salary Trend </mdb-card-header>
-                    <mdb-card-body>
-                           <div v-if='this.loaded' style="display: block" justify-content-center>
+               </mdb-col>
+               <mdb-col md="2" lg="6">
+                <mdb-card class="cascading-admin-card">
+                     <mdb-card-header> Salary Trend </mdb-card-header>
+                     <mdb-card-body>
+                        <div v-if='this.loaded' style="display: block" justify-content-center>
                               <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="300"/>
                            </div>
-                        </mdb-card-body>
-                      </mdb-card>
-
+                     </mdb-card-body>
+                  </mdb-card>
                </mdb-col>
-               <mdb-col md="2" lg="5" class="mb-4">
-                  <mdb-card class="mb-4">
+             </mdb-row>
+            <mdb-row class="justify-content-center d-flex align-items-stretch">
+                <mdb-col>
+                  <mdb-card class="cascading-admin-card">
                      <mdb-card-header> Companies </mdb-card-header>
                      <mdb-card-body>
-                        <div style="display: block">
+                        <div v-if='this.loaded' style="display: block">
                            <mdb-datatable
                               :data="tableData"
                               striped
@@ -52,8 +56,8 @@
                         </div>
                      </mdb-card-body>
                   </mdb-card>
-               </mdb-col>
-            </mdb-row>
+                </mdb-col>
+                </mdb-row>
          </section>
       </section>
    </div>
@@ -329,7 +333,12 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
    .cascading-admin-card {
-   margin: 100px 0;
+   margin: 20px;
+   margin-top: 10px;
+   padding: 5px;
+   border-color: #90a4ae;
+   border-width: 2px;
+   box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.2), 0 2px 13px 0 rgba(0, 0, 0, 0.19);
    }
    .cascading-admin-card .admin-up {
    margin-left: 4%;
@@ -345,6 +354,7 @@
    text-align: left;
    margin-right: 1rem;
    border-radius: 3px;
+   border-color: #546e7a;
    }
    .cascading-admin-card .admin-up .data {
    float: right;
