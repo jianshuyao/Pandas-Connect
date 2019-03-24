@@ -182,7 +182,7 @@ export default new Router({
       }
     },
     {
-      path: "/company",
+      path: "/company/:companyName",
       name: "company",
       components: { default: company, header: MainNavbar, footer: MainFooter },
       props: {

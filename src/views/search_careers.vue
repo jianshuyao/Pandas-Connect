@@ -5,23 +5,23 @@
          <section class="mt-lg-5">
             <mdb-row class="justify-content-center">
             <mdb-col col="4">
+               <mdb-row md="4" center><br/><br/><br/><br/><br/><br/><br/><br/><br/></mdb-row>
                <mdb-row md="4" center>
                   <mdb-modal-title>
-                     <h1 class="card-title" style="font-size:80px">SEARCH </h1>
+                     <h1 class="card-title" style="font-size:45px">COMPANIES BY MAJOR </h1>
+                     <hr align="center" style="width:50%;height:2px;color:white;background-color:black;" />
                   </mdb-modal-title>
                </mdb-row>
                <mdb-row md="4" center>
-                  <mdb-modal-footer center>
-                     <mdb-col center>
-                        <p style="font-size:20px"><i>Advanced Analytics brought to you by The Pandas!</i></p>
+                        <p style="font-size:18px"><i>Advanced Analytics brought to you by The Pandas!</i></p>
                         <br/>
-
+                         </mdb-row>
                         <mdb-row md="4" center>
-  <select @change="updateCareer" name="modselect" id="modselect" v-model="maj" style="width:350px;">
+  <select @change="updateCareer" name="modselect" id="modselect" v-model="maj" style="width:350px; height:40px">
    <option selected="selected" disabled class="placeholder" value=''>Choose your Major</option>
     <option v-for="industry in industry_list" :key="industry">{{industry}}</option>
   </select>
-  <br><br>
+  <br>
   </mdb-row>
   <br/>
 <mdb-row md="4" center>
@@ -29,13 +29,10 @@
     <datalist id="suggestions" style="width:350px;">
         <option v-for="career in career_list">{{career}}</option>
     </datalist>
-    <input autoComplete="on" list="suggestions" style="width:350px;height:40px" placeholder="Choose your Career"/> 
+    <input @change="$router.push({ path: '/company/' + car });" autoComplete="on" list="suggestions" style="width:350px;height:40px" placeholder="Choose your Career" v-model="car"/> 
 </div>
                         </mdb-row>
-
-                     </mdb-col>
-                  </mdb-modal-footer>
-               </mdb-row>
+                        <mdb-row md="4" center><br/><br/><br/><br/><br/><br/><br/><br/><br/></mdb-row>
             </mdb-col>
           </mdb-row>
          </section>
@@ -96,6 +93,7 @@ import { db } from "../firebase";
    data () {
    return {
    maj:"",
+   car:"",
    modal: false,
    showFrameModalTop: false,
    showFrameModalBottom: false,

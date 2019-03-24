@@ -23,22 +23,28 @@
                 </mdb-row>
              </mdb-col>
              <mdb-col col="3" class="align-self-center">
-                     <p class="text_bg" style="font-size:18px; letter-spacing:2px">Current Major: Business Analytics</p>
+                  <p class="text_bg" text.truncate style="font-size:18px; letter-spacing:2px">Current Major:<br/>{{this.major}}</p>
              </mdb-col>
             </mdb-row>
             <mdb-row class="justify-content-center d-flex align-items-stretch">
               <mdb-col>
               <mdb-carousel class="cascading-admin-card" :interval="8000" showControls showIndicators style="height:400px">
                 <mdb-carousel-item img src="https://prodcmscdn.azureedge.net/careerconnectresources/p/MICRUS/en_us/mobile/assets/images/University_students_hero_1920x600.jpg" mask="black-light" alt="First slide" href="www.google.com">
+                  <a href="https://www.google.com" target='_blank'>
                   <mdb-carousel-caption title="Summer Internship Program" text="Click here to learn more!" content="Testing"></mdb-carousel-caption>
+                  </a>
                 </mdb-carousel-item>
                 <mdb-carousel-item img src="https://www.symrise.com/fileadmin/symrise/corporate/your_career/students/Your-career-students-and-interns-how-to-apply02.jpg" mask="black-light" alt="Second slide">
+                  <a href="http://lebonheur.org/our-services/emergency-medicine/" target='_blank'>
                   <mdb-carousel-caption title="Graduate Program" text="Click here to learn more!">
                     <a class="btn btn-large pull-right" href="http://lebonheur.org/our-services/emergency-medicine/">Emergency Medicine</a>
                   </mdb-carousel-caption>
+                  </a>
                 </mdb-carousel-item>
                 <mdb-carousel-item img src="http://latestblogs.in/wp-content/uploads/2018/08/busy-modern-office.jpg" mask="black-light" alt="Third slide">
+                  <a href="https://www.google.com" target='_blank'>
                   <mdb-carousel-caption title="Our Core Values" text="Click here to learn more!" href="www.google.com"></mdb-carousel-caption>
+                 </a> 
                 </mdb-carousel-item>
               </mdb-carousel>
             </mdb-col>
@@ -59,18 +65,21 @@
                      <mdb-card-header> Chance Meter </mdb-card-header>
                   <mdb-card-body>
                       <div class="justify-content-center d-flex align-items-stretch">
-                          <mdb-col class="align-self-center">
-                            <label for="customRange1">Expected Cap</label>
+                          <mdb-col>
+                            <label for="customRange1">Expected Cap: {{this.value_2}}</label>
                             <vue-slider
                               ref="slider"
                               v-model="value_2"
                               v-bind="options"
+                              min=2.0
+                              max=5.0
+                              interval=0.01
                             ></vue-slider>
                           </mdb-col>
-                          <mdb-col class="align-self-center">
-                            <label></label>
-                            <select class="custom-select custom-select-sm" style="margin-left: 20px;">
-                              <option selected>Select Interested Position</option>
+                          <mdb-col>
+                            <label>Interested Position</label>
+                            <select class="custom-select custom-select-sm">
+                              <option selected>Select 1 Position</option>
                               <option value="1">One</option>
                               <option value="2">Two</option>
                               <option value="3">Three</option>
@@ -78,10 +87,10 @@
                           </mdb-col>
 
                       </div>
-                      <br/>
+                      <hr/>
                       <div>
                         <b-progress :value="counter" :max="max" show-progress animated  style="height:35px"/>
-                        <h5 style="text-align:center">Your chance for the position is rated at {{counter}}</h5>
+                        <h5 style="text-align:center">Your chance for the position is rated at {{counter}}%</h5>
                       </div>
                   </mdb-card-body>
                 </mdb-card>
@@ -218,7 +227,7 @@
     major: 'Accountacy',
     companyname:'ANZ',
     company:{},
-    value_2: [0, 50],
+    value_2: 3.5,
     counter: 45,
     max: 100,
     wordcloud: {},
