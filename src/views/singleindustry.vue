@@ -37,7 +37,7 @@
                </mdb-col>
                <mdb-col md="2" lg="6">
                 <mdb-card class="cascading-admin-card">
-                     <mdb-card-header> Salary Trend </mdb-card-header>
+                     <mdb-card-header> Salary Distribution </mdb-card-header>
                      <mdb-card-body>
                         <div v-if='this.loaded' style="display: block" justify-content-center>
                               <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="300"/>
