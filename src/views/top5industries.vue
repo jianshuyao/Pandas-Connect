@@ -66,7 +66,7 @@
                               <b-form-group label-cols-sm="3" label="Sort" class="mb-0">
                                 <b-input-group>
                                   <b-form-select v-model="sortBy" :options="sortOptions">
-                                    <option slot="first" :value="null">-- none --</option>
+                                    <option slot="first" :value="null">-- None --</option>
                                   </b-form-select>
                                   <b-form-select :disabled="!sortBy" v-model="sortDesc" slot="append">
                                     <option :value="false">Asc</option> <option :value="true">Desc</option>
