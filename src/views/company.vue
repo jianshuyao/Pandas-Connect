@@ -7,7 +7,7 @@
              <mdb-col>
               <mdb-row center>
                   <mdb-modal-title>
-                    <p class="card-title" style="font-size:30px;letter-spacing: 2px;">J.P. MORGAN</p>
+                    <p class="card-title" style="font-size:30px;letter-spacing: 2px;">{{this.companyname}}</p>
                     <hr align="center" style="width:50%;height:2px;color:white;background-color:black;" />
                   </mdb-modal-title>
                 </mdb-row>
@@ -19,7 +19,7 @@
                   <mdb-card class="cascading-admin-card">
                      <mdb-card-header> Pie chart </mdb-card-header>
                       <mdb-card-body>
-                          <div style="display: block">
+                          <div v-if='this.loaded' style="display: block">
                             <mdb-pie-chart :data="pieChartData" :options="pieChartOptions" :height="300"/>
                           </div>
                       </mdb-card-body>
@@ -64,7 +64,7 @@
                      <mdb-card-header> CAP Distribution </mdb-card-header>
                      <mdb-card-body>
                         <div v-if='this.loaded' style="display: block">
-                          <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="400"/>
+                          <mdb-bar-chart :data="barChartCAP" :options="barChartOptions" :height="400"/>
                         </div>
                      </mdb-card-body>
                   </mdb-card>
@@ -108,10 +108,10 @@
    }
    },
    mounted: function(){
-    db.ref('industry/'+"Accounting and Auditing")
+    db.ref('major/'+this.major+'/company/'+this.companyname)
     .once('value')
     .then(snapshot=>{
-      this.industry = snapshot.val();
+      this.company = snapshot.val();
     })
     .then(()=>{
         this.renderChart();
@@ -125,172 +125,29 @@
    }
    },
    created(){
-    this.industryref = db.ref('industry/'+this.industryname);
+    this.companyref = db.ref('major/'+this.major+'/company/'+this.companyname);
    },
    methods:{
-        onReady (instance, echarts) {
-      const that = this
-      that.ins = instance
-      that.echarts = echarts
-   
-      that.wordcloud = {
-        tooltip: {},
-        series: [
-          {
-            type: 'wordCloud',
-            gridSize: 2,
-            sizeRange: [12, 50],
-            rotationRange: [-90, 90],
-            shape: 'pentagon',
-            width: 600,
-            height: 400,
-            drawOutOfBound: true,
-            textStyle: {
-              normal: {
-                color: function () {
-                  return (
-                    'rgb(' +
-                    [
-                      Math.round(Math.random() * 160),
-                      Math.round(Math.random() * 160),
-                      Math.round(Math.random() * 160)
-                    ].join(',') +
-                    ')'
-                  )
-                }
-              },
-              emphasis: {
-                shadowBlur: 10,
-                shadowColor: '#333'
-              }
-            },
-            data: [
-              {
-                name: 'Sam S Club',
-                value: 10000,
-                textStyle: {
-                  normal: {
-                    color: 'black'
-                  },
-                  emphasis: {
-                    color: 'red'
-                  }
-                }
-              },
-              {
-                name: 'Macys',
-                value: 6181
-              },
-              {
-                name: 'Amy Schumer',
-                value: 4386
-              },
-              {
-                name: 'Jurassic World',
-                value: 4055
-              },
-              {
-                name: 'Charter Communications',
-                value: 2467
-              },
-              {
-                name: 'Chick Fil A',
-                value: 2244
-              },
-              {
-                name: 'Planet Fitness',
-                value: 1898
-              },
-              {
-                name: 'Pitch Perfect',
-                value: 1484
-              },
-              {
-                name: 'Express',
-                value: 1112
-              },
-              {
-                name: 'Home',
-                value: 965
-              },
-              {
-                name: 'Johnny Depp',
-                value: 847
-              },
-              {
-                name: 'Lena Dunham',
-                value: 582
-              },
-              {
-                name: 'Lewis Hamilton',
-                value: 555
-              },
-              {
-                name: 'KXAN',
-                value: 550
-              },
-              {
-                name: 'Mary Ellen Mark',
-                value: 462
-              },
-              {
-                name: 'Farrah Abraham',
-                value: 366
-              },
-              {
-                name: 'Rita Ora',
-                value: 360
-              },
-              {
-                name: 'Serena Williams',
-                value: 282
-              },
-              {
-                name: 'NCAA baseball tournament',
-                value: 273
-              },
-              {
-                name: 'Point Break',
-                value: 265
-              }
-            ]
-          }
-        ]
-      }
-    },
     getSelectValue(value, text) {
         console.log(value);
       },
     renderChart(){
-      this.lineChartData['labels'] = this.industry['overallhiringtrend']['Year'];
-      this.lineChartData['datasets'][0]['data'] = this.industry['overallhiringtrend']['Number Hired'];
-      let jobtrend = this.industry['jobtrend']
-      console.log(typeof jobtrend);
-      this.lineChartJob['labels'] = this.industry['overallhiringtrend']['Year']
-      for (let [jobs,value] of Object.entries(jobtrend)){
-        var temp = {
-          'label': jobs,
-          'data':jobtrend[jobs]['Number Hired']
-        };
-        this.lineChartJob['datasets'].push(temp);
-      }
-      let salary = this.industry['salary'];
-      this.barChartData['labels'] = salary['range'];
-      this.barChartData['datasets'][0]['data']=salary['count'];
-      let organisation = this.industry['organisation'];
-      let cap = organisation['cap'];
-      let name = organisation['name'];
-      let numgrads = organisation['numgrads'];
-      let sal = organisation['salary'];
-      for (let i in cap){
-          temp = {
-            'organisation': name[i],
-            'cap': cap[i],
-            'sal': sal[i],
-            'numGrads': numgrads[i]
-          }
-          this.tableData['rows'].push(temp);
-      };
+
+      let pos = this.company['positions'];
+      console.log('pos'+pos)
+      this.barChartData['labels'] = pos['salary_range'];
+      this.barChartData['datasets'].push({'data':pos['salary_count']});
+
+      this.barChartCAP['labels'] = pos['cap'];
+      this.barChartCAP['datasets'].push({'data':pos['cap_count']})
+
+      this.pieChartData['labels'] = pos['name'];
+      this.pieChartData['datasets'].push({
+        'data':pos['count'],
+        'backgroundColor': ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360', '#ac64ad'],
+        'hoverBackgroundColor': ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774', '#da92db']
+      });
+
       this.loaded = true;
     }
    },
@@ -325,6 +182,9 @@
    },
    data () {
    return {
+    major: 'Accountacy',
+    companyname:'ANZ',
+    company:{},
     counter: 45,
     wordcloud: {},
     industryname:'Accounting and Auditing',
@@ -382,10 +242,11 @@
    
           barChartData: {
           labels:[],
-          datasets:[{
-            data:[],
-            backgroundColor: 'rgba(245, 74, 85, 0.5)',
-          }]
+          datasets:[]
+         },
+         barChartCAP: {
+          labels:[],
+          datasets:[]
          },
          barChartOptions: {
            responsive: true,
@@ -409,15 +270,9 @@
              }]
            }
          },
-               pieChartData: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-        datasets: [
-          {
-            data: [300, 50, 100, 40, 120, 24, 52],
-            backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360', '#ac64ad'],
-            hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774', '#da92db']
-          }
-        ]
+      pieChartData: {
+        labels: [],
+        datasets: []
       },
       pieChartOptions: {
         responsive: true,
