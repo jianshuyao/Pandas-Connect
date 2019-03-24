@@ -11,10 +11,8 @@
         <li class="list-inline-item"><a class="btn-floating btn-sm btn-dribbble mx-1"><i class="fab fa-dribbble"> </i></a></li>
       </ul>
     </div>
-    <div class="footer-copyright text-center py-3">
-      <mdb-container fluid center>
-        <p>&copy; {{year}} Copyright: Team Pandas</p>
-      </mdb-container>
+    <div class="footer-copyright text-center py-1">
+        <p align="center">&copy; {{year}} Copyright: Team Pandas</p>
     </div>
   </mdb-footer>
   <!-- Footer -->
