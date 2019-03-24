@@ -1,3 +1,4 @@
+<!--Remove the option in dropdown for the industry the page is currently showing-->
 <template>
    <div class="wrapper">
       <section id="module">
