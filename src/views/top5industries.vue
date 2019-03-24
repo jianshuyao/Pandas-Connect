@@ -13,13 +13,17 @@
              <mdb-col col="6">
               <mdb-row center>
                   <mdb-modal-title>
-                    <p class="card-title" style="font-size:30px;letter-spacing: 2px;">{{this.currentMajor}}</p>
+                    <p class="card-title" style="font-size:30px;letter-spacing: 2px;">Top 5 Industries Overview</p>
                     <hr align="center" style="width:50%;height:2px;color:white;background-color:black;" />
                   </mdb-modal-title>
                 </mdb-row>
              </mdb-col>
+<mdb-col col="3" class="align-self-center">
+                  <mdb-row class="justify-content-end">
+                    <p class="text_bg" text.truncate style="font-size:18px; letter-spacing:2px">Current Major: {{this.currentMajor}}</p>
+                  </mdb-row>
+             </mdb-col>
             </mdb-row>
-            <div><br/></div>
             <mdb-row class="justify-content-center d-flex align-items-stretch">
                <mdb-col md="1" lg="6">
                   <mdb-card class="cascading-admin-card">
@@ -332,6 +336,21 @@
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.text_bg 
+      {
+      opacity: 0.7;
+        background-color: #00135b; 
+        border: 2px solid grey;
+        color: white;
+        padding: 15px 22px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 5px 5px;
+        margin-right: 8%;
+        border-radius: 12px;
+      }
    .cascading-admin-card {
    margin: 20px;
    margin-top: 10px;

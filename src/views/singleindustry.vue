@@ -22,7 +22,6 @@
                 </mdb-row>
              </mdb-col>
             </mdb-row>
-            <div><br/></div>
             <mdb-row class="justify-content-center d-flex align-items-stretch">
                <mdb-col md="1" lg="6">
                   <mdb-card class="cascading-admin-card">
