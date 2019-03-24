@@ -1,3 +1,4 @@
+<!--Remove the option in dropdown for the industry the page is currently showing-->
 <template>
    <div class="wrapper">
       <section id="module">
@@ -18,8 +19,12 @@
                   </mdb-modal-title>
                 </mdb-row>
              </mdb-col>
+             <mdb-col col="3" class="align-self-center">
+                  <mdb-row class="justify-content-end">
+                    <p class="text_bg" text.truncate style="font-size:18px; letter-spacing:2px">Current Major: {{this.majorname}}</p>
+                  </mdb-row>
+             </mdb-col>
             </mdb-row>
-            <div><br/></div>
             <mdb-row class="justify-content-center d-flex align-items-stretch">
                <mdb-col md="1" lg="6">
                   <mdb-card class="cascading-admin-card">
@@ -33,7 +38,7 @@
                </mdb-col>
                <mdb-col md="2" lg="6">
                 <mdb-card class="cascading-admin-card">
-                     <mdb-card-header> Salary Trend </mdb-card-header>
+                     <mdb-card-header> Salary Distribution </mdb-card-header>
                      <mdb-card-body>
                         <div v-if='this.loaded' style="display: block" justify-content-center>
                               <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="300"/>
@@ -62,7 +67,7 @@
                               <b-form-group label-cols-sm="3" label="Sort" class="mb-0">
                                 <b-input-group>
                                   <b-form-select v-model="sortBy" :options="sortOptions">
-                                    <option slot="first" :value="null">-- none --</option>
+                                    <option slot="first" :value="null">-- None --</option>
                                   </b-form-select>
                                   <b-form-select :disabled="!sortBy" v-model="sortDesc" slot="append">
                                     <option :value="false">Asc</option> <option :value="true">Desc</option>
@@ -93,6 +98,7 @@
                             :bordered=true
                             :fixed=true
                             :hover=true
+                            :small=true
                             @filtered="onFiltered"
                           >
                             <template slot="organisation" slot-scope="row">
@@ -167,7 +173,7 @@
                               <b-form-group label-cols-sm="3" label="Sort" class="mb-0">
                                 <b-input-group>
                                   <b-form-select v-model="sortBySuggest" :options="sortOptionsSuggest">
-                                    <option slot="first" :value="null">-- none --</option>
+                                    <option slot="first" :value="null">-- None --</option>
                                   </b-form-select>
                                   <b-form-select :disabled="!sortBySuggest" v-model="sortDescSuggest" slot="append">
                                     <option :value="false">Asc</option> <option :value="true">Desc</option>
@@ -336,6 +342,8 @@
    created(){
     this.industryref = db.ref('industry/'+this.industryname);
     this.suggestref = db.ref('industrymod/'+this.currname);
+    this.tableSuggestedData = [];
+    this.tableData = [];
    },
 
    methods:{
@@ -441,20 +449,30 @@
           'name':words[i], 'value':wordvalues[i]
         })
       }
+      let count = 0;
       for (let [ind, val] of Object.entries(top5h)){
         this.lineChartData['labels'] = top5h[ind]['year'];
         this.lineChartData['datasets'].push({
           'label': ind,
-          'data': top5h[ind]['numhired']
+          'data': top5h[ind]['numhired'],
+          'backgroundColor': this.backgroundColor[count],
+          'borderColor': this.borderColor[count],
+          'borderWidth': this.borderWidth
         })
+        count++;
       };
 
+      count = 0;
       for (let [ind, val] of Object.entries(top5s)){
         this.barChartData['labels'] = top5s[ind]['salary'];
         this.barChartData['datasets'].push({
           'label': ind,
-          'data': top5s[ind]['count']
+          'data': top5s[ind]['count'],
+          'backgroundColor': this.backgroundColor[count],
+          'borderColor': this.borderColor[count],
+          'borderWidth': this.borderWidth
         })
+        count++;
       };
 
       let organisation = top5c;
@@ -527,6 +545,23 @@
    },
    data () {
    return {
+
+    backgroundColor: [
+              'rgba(255, 99, 132, 0.4)',
+              'rgba(54, 162, 235, 0.4)',
+              'rgba(255, 206, 86, 0.4)',
+              'rgba(75, 192, 192, 0.4)',
+              'rgba(153, 102, 255, 0.4)'
+            ],
+    borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)'
+            ],
+    borderWidth: 1,
+
     wordclouddata:[],
     wordcloud: {},
     majorname:'Accountacy',
@@ -564,10 +599,10 @@
     tableData: items,
      fields: [
       { key: 'organisation', label: 'Organisation', sortable: true, sortDirection: 'desc' },
-      { key: 'cap', label: 'CAP', sortable: true, class: 'text-center' },
+      { key: 'cap', label: 'CAP', sortable: true },
       { key: 'sal', label: 'Salary', sortable: true, sortDirection: 'desc'},
       { key: 'numGrads', label: 'Number of Graduates',sortable: true, sortDirection: 'desc' },
-      { key: 'actions', label: 'Actions' }
+      { key: 'actions', label: 'Actions', class: 'text-center' }
     ],
     currentPage: 1,
     perPage: 5,
@@ -583,9 +618,9 @@
     tableSuggestedData: items2,
     fieldsSuggest: [
       { key: 'modcode', label: 'Module Code', sortable: true, sortDirection: 'desc' },
-      { key: 'modname', label: 'Module Name', sortable: true, class: 'text-center' },
+      { key: 'modname', label: 'Module Name', sortable: true },
       { key: 'numgrad', label: 'Number of Graduates', sortable: true, sortDirection: 'desc'},
-      { key: 'actions', label: 'Actions' }
+      { key: 'actions', label: 'Actions', class: 'text-center' }
     ],
     currentPageSuggest: 1,
     perPageSuggest: 5,
@@ -676,6 +711,21 @@
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.text_bg 
+      {
+      opacity: 0.7;
+        background-color: #00135b; 
+        border: 2px solid grey;
+        color: white;
+        padding: 15px 22px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 5px 5px;
+        margin-right: 8%;
+        border-radius: 12px;
+      }
    .cascading-admin-card {
    margin: 20px;
    margin-top: 10px;

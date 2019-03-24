@@ -4,29 +4,29 @@
          <div><br/></div>
          <section class="mt-lg-5">
             <mdb-row class="justify-content-center">
-               <mdb-col col="4">
-                  <mdb-row md="4" center><br/><br/><br/><br/><br/><br/><br/><br/><br/></mdb-row>
-                  <mdb-row md="4" center>
+               <mdb-col col="6">
+                  <mdb-row md="6" center><br/><br/><br/><br/><br/><br/><br/><br/><br/></mdb-row>
+                  <mdb-row md="6" center>
                      <mdb-modal-title>
                         <h1 class="card-title" style="font-size:45px">INDUSTRIES BY MAJOR</h1>
                         <hr align="center" style="width:50%;height:2px;color:white;background-color:black;" />
                      </mdb-modal-title>
                   </mdb-row>
-                  <mdb-row md="4" center>
+                  <mdb-row md="6" center>
                      <p style="font-size:18px"><i>Advanced Analytics brought to you by The Pandas!</i></p>
                      <br/><br/>
                   </mdb-row>
-                     <mdb-row md="4" center>
+                     <mdb-row md="6" center>
                         <select name="modselect" id="modselect" v-model="maj" style="width:350px; height:40px">
                            <option selected="selected" disabled class="placeholder" value=''>Choose your Major</option>
                            <option v-for="industry in industry_list" :key="industry">{{industry}}</option>
                         </select>
                      </mdb-row>
-                     <mdb-row md="4" center><br/></mdb-row>
-                     <mdb-row md="4" center>
+                     <mdb-row md="6" center><br/></mdb-row>
+                     <mdb-row md="6" center>
                         <button class="button button5" v-on:click="$router.push({ path: '/top5industries/' + maj });"><i class="fas fa-book"></i> Find Industries!</button></a>
                      </mdb-row>
-                     <mdb-row md="4" center><br/><br/><br/><br/><br/><br/><br/><br/><br/></mdb-row>
+                     <mdb-row md="6" center><br/><br/><br/><br/><br/><br/><br/><br/><br/></mdb-row>
                </mdb-col>
             </mdb-row>
          </section>

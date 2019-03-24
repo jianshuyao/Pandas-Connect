@@ -4,35 +4,35 @@
          <div><br/></div>
          <section class="mt-lg-5">
             <mdb-row class="justify-content-center">
-            <mdb-col col="4">
-               <mdb-row md="4" center><br/><br/><br/><br/><br/><br/><br/><br/><br/></mdb-row>
-               <mdb-row md="4" center>
+            <mdb-col col="6">
+               <mdb-row md="6" center><br/><br/><br/><br/><br/><br/><br/><br/><br/></mdb-row>
+               <mdb-row md="6" center>
                   <mdb-modal-title>
                      <h1 class="card-title" style="font-size:45px">COMPANIES BY MAJOR </h1>
                      <hr align="center" style="width:50%;height:2px;color:white;background-color:black;" />
                   </mdb-modal-title>
                </mdb-row>
-               <mdb-row md="4" center>
+               <mdb-row md="6" center>
                         <p style="font-size:18px"><i>Advanced Analytics brought to you by The Pandas!</i></p>
                         <br/>
                          </mdb-row>
-                        <mdb-row md="4" center>
+                        <mdb-row md="6" center>
   <select @change="updateCareer" name="modselect" id="modselect" v-model="maj" style="width:350px; height:40px">
-   <option selected="selected" disabled class="placeholder" value=''>Choose your Major</option>
+   <option selected="selected" disabled class="placeholder" value=''> Choose Your Major</option>
     <option v-for="industry in industry_list" :key="industry">{{industry}}</option>
   </select>
   <br>
   </mdb-row>
   <br/>
-<mdb-row md="4" center>
+<mdb-row md="6" center>
 <div>
     <datalist id="suggestions" style="width:350px;">
         <option v-for="career in career_list">{{career}}</option>
     </datalist>
-    <input @change="$router.push({ path: '/company/' + car + '/' +maj});" autoComplete="on" list="suggestions" style="width:350px;height:40px" placeholder="Choose your Career" v-model="car"/> 
+    <input @change="$router.push({ path: '/company/' + car + '/' +maj});" autoComplete="on" list="suggestions" style="width:350px;height:40px" placeholder=" Choose Your Career" v-model="car"/> 
 </div>
                         </mdb-row>
-                        <mdb-row md="4" center><br/><br/><br/><br/><br/><br/><br/><br/><br/></mdb-row>
+                        <mdb-row md="6" center><br/><br/><br/><br/><br/><br/><br/><br/><br/></mdb-row>
             </mdb-col>
           </mdb-row>
          </section>
