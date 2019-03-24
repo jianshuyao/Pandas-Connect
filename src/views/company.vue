@@ -28,8 +28,10 @@
                   </mdb-row>
              </mdb-col>
             </mdb-row>
+
             <mdb-row class="justify-content-center d-flex align-items-stretch">
               <mdb-col>
+                <!--
               <mdb-carousel class="cascading-admin-card" :interval="8000" showControls showIndicators style="height:400px">
                 <mdb-carousel-item img src="https://prodcmscdn.azureedge.net/careerconnectresources/p/MICRUS/en_us/mobile/assets/images/University_students_hero_1920x600.jpg" mask="black-light" alt="First slide" href="www.google.com">
                   <a href="https://www.google.com" target='_blank'>
@@ -49,8 +51,55 @@
                  </a> 
                 </mdb-carousel-item>
               </mdb-carousel>
+              --> 
+              <mdb-card class="cascading-admin-card">
+    <b-carousel
+      id="carousel1"
+      style="text-shadow: 1px 1px 2px #333;"
+      indicators
+      background="#ababab"
+      :interval="4000"
+      v-model="slide"
+      @sliding-start="onSlideStart"
+      @sliding-end="onSlideEnd"
+    >
+      <!-- Text slides with image -->
+<a href="https://www.google.com" target='_blank'>
+      <b-carousel-slide
+        img-src="https://prodcmscdn.azureedge.net/careerconnectresources/p/MICRUS/en_us/mobile/assets/images/University_students_hero_1920x600.jpg" style="height:400px;">
+       <h2>Summer Internship Program</h2>
+       <br>
+       <p class="text_bg3">My name is Joel. I am 23 this year. I love to code websites. I want to be a full stack developer in the future. Thank you guys.</p>
+       <br><br><br>
+      </b-carousel-slide>
+</a>
+
+      <!-- Slides with custom text -->
+<a href="http://lebonheur.org/our-services/emergency-medicine/" target='_blank'>
+      <b-carousel-slide img-src="https://www.symrise.com/fileadmin/symrise/corporate/your_career/students/Your-career-students-and-interns-how-to-apply02.jpg" style="height:400px;">
+ <h2>Graduate Program</h2>
+ <br>
+       <p class="text_bg3">My name is Joel. I am 23 this year. I love to code websites. I want to be a full stack developer in the future. Thank you guys.</p>
+       <br><br><br>
+      </b-carousel-slide>
+</a>
+
+
+      <!-- Slides with image only -->
+<a href="https://www.google.com" target='_blank'>
+      <b-carousel-slide img-src="http://latestblogs.in/wp-content/uploads/2018/08/busy-modern-office.jpg" style="height:400px;">
+<h2>Our Core Values</h2>
+<br>
+       <p class="text_bg3">My name is Joel. I am 23 this year. I love to code websites. I want to be a full stack developer in the future. Thank you guys.</p>
+       <br><br><br>
+      </b-carousel-slide>
+</a>
+
+    </b-carousel>
+ </mdb-card>
             </mdb-col>
             </mdb-row>
+
             <mdb-row class="justify-content-center d-flex align-items-stretch">
                <mdb-col md="1" lg="6">
                   <mdb-card class="cascading-admin-card">
@@ -172,6 +221,12 @@
     getSelectValue(value, text) {
         console.log(value);
       },
+       onSlideStart(slide) {
+        this.sliding = true
+      },
+      onSlideEnd(slide) {
+        this.sliding = false
+      },
     renderChart(){
 
       let pos = this.company['positions'];
@@ -227,6 +282,8 @@
    },
    data () {
    return {
+    slide: 0,
+    sliding: null,
     companyRef:null,
     major: '',
     company:{},
@@ -375,6 +432,16 @@
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.carousel-item:after {
+  content:"";
+  display:block;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(0,0,0,0.6);
+}
 .text_bg 
       {
       opacity: 0.7;
@@ -390,6 +457,25 @@
         margin-right: 8%;
         border-radius: 12px;
       }
+      .text_bg2 
+        {
+          opacity: 0.8;
+          background-color: #00135b; 
+          width: 500px;
+          text-align: center;
+          display: inline-block;
+        }
+      .text_bg3
+        {
+          opacity: 0.8;
+          padding: 20px;
+          border-radius: 25px;
+          background-color: #546E7A; 
+          width: 300px;
+          height: 150px;
+          text-align: center;
+          display: inline-block;
+        }
     .carousel-content {
       position: absolute;
       bottom: 10%;
