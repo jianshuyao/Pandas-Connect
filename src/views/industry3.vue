@@ -59,9 +59,10 @@
       :sort-by.sync="sortBy"
       :sort-desc.sync="sortDesc"
       :sort-direction="sortDirection"
-      :bordered="bordered"
-      :fixed="fixed"
-      :hover="hover"
+      :bordered=true
+      :fixed=true
+      :hover=true
+
       @filtered="onFiltered"
     >
       <template slot="name" slot-scope="row">

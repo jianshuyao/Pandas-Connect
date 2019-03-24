@@ -15,12 +15,15 @@
              <mdb-col col="6">
               <mdb-row center>
                   <mdb-modal-title>
-                      <p v-b-popover.hover="'I am popover content!'" class="card-title" style="font-size:30px;letter-spacing: 2px;">
+                      <p v-b-popover.hover="'I am popover content!'" class="card-title" style="font-size:30px;letter-spacing:2px;">
                         {{this.companyname}}
                       </p>
                     <hr align="center" style="width:50%;height:2px;color:white;background-color:black;" />
                   </mdb-modal-title>
                 </mdb-row>
+             </mdb-col>
+             <mdb-col col="3" class="align-self-center">
+                     <p class="text_bg" style="font-size:18px; letter-spacing:2px">Current Major: Business Analytics</p>
              </mdb-col>
             </mdb-row>
             <mdb-row class="justify-content-center d-flex align-items-stretch">
@@ -360,6 +363,20 @@
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.text_bg 
+{
+opacity: 0.7;
+  background-color: #00135b; 
+  border: 2px solid grey;
+  color: white;
+  padding: 15px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 5px 5px;
+  border-radius: 12px;
+}
     .carousel-content {
       position: absolute;
       bottom: 10%;
