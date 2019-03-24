@@ -449,20 +449,30 @@
           'name':words[i], 'value':wordvalues[i]
         })
       }
+      let count = 0;
       for (let [ind, val] of Object.entries(top5h)){
         this.lineChartData['labels'] = top5h[ind]['year'];
         this.lineChartData['datasets'].push({
           'label': ind,
-          'data': top5h[ind]['numhired']
+          'data': top5h[ind]['numhired'],
+          'backgroundColor': this.backgroundColor[count],
+          'borderColor': this.borderColor[count],
+          'borderWidth': this.borderWidth
         })
+        count++;
       };
 
+      count = 0;
       for (let [ind, val] of Object.entries(top5s)){
         this.barChartData['labels'] = top5s[ind]['salary'];
         this.barChartData['datasets'].push({
           'label': ind,
-          'data': top5s[ind]['count']
+          'data': top5s[ind]['count'],
+          'backgroundColor': this.backgroundColor[count],
+          'borderColor': this.borderColor[count],
+          'borderWidth': this.borderWidth
         })
+        count++;
       };
 
       let organisation = top5c;
@@ -535,6 +545,23 @@
    },
    data () {
    return {
+
+    backgroundColor: [
+              'rgba(255, 99, 132, 0.4)',
+              'rgba(54, 162, 235, 0.4)',
+              'rgba(255, 206, 86, 0.4)',
+              'rgba(75, 192, 192, 0.4)',
+              'rgba(153, 102, 255, 0.4)'
+            ],
+    borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)'
+            ],
+    borderWidth: 1,
+
     wordclouddata:[],
     wordcloud: {},
     majorname:'Accountacy',
