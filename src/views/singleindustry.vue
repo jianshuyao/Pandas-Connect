@@ -18,8 +18,12 @@
                   </mdb-modal-title>
                 </mdb-row>
              </mdb-col>
+             <mdb-col col="3" class="align-self-center">
+                  <mdb-row class="justify-content-end">
+                    <p class="text_bg" text.truncate style="font-size:18px; letter-spacing:2px">Current Major: {{this.majorname}}</p>
+                  </mdb-row>
+             </mdb-col>
             </mdb-row>
-            <div><br/></div>
             <mdb-row class="justify-content-center d-flex align-items-stretch">
                <mdb-col md="1" lg="6">
                   <mdb-card class="cascading-admin-card">
@@ -62,7 +66,7 @@
                               <b-form-group label-cols-sm="3" label="Sort" class="mb-0">
                                 <b-input-group>
                                   <b-form-select v-model="sortBy" :options="sortOptions">
-                                    <option slot="first" :value="null">-- none --</option>
+                                    <option slot="first" :value="null">-- None --</option>
                                   </b-form-select>
                                   <b-form-select :disabled="!sortBy" v-model="sortDesc" slot="append">
                                     <option :value="false">Asc</option> <option :value="true">Desc</option>
@@ -167,7 +171,7 @@
                               <b-form-group label-cols-sm="3" label="Sort" class="mb-0">
                                 <b-input-group>
                                   <b-form-select v-model="sortBySuggest" :options="sortOptionsSuggest">
-                                    <option slot="first" :value="null">-- none --</option>
+                                    <option slot="first" :value="null">-- None --</option>
                                   </b-form-select>
                                   <b-form-select :disabled="!sortBySuggest" v-model="sortDescSuggest" slot="append">
                                     <option :value="false">Asc</option> <option :value="true">Desc</option>
@@ -676,6 +680,21 @@
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.text_bg 
+      {
+      opacity: 0.7;
+        background-color: #00135b; 
+        border: 2px solid grey;
+        color: white;
+        padding: 15px 22px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 5px 5px;
+        margin-right: 8%;
+        border-radius: 12px;
+      }
    .cascading-admin-card {
    margin: 20px;
    margin-top: 10px;
