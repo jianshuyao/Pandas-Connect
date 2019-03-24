@@ -232,10 +232,22 @@
       let pos = this.company['positions'];
       console.log('pos'+pos)
       this.barChartData['labels'] = pos['salary_range'];
-      this.barChartData['datasets'].push({'data':pos['salary_count']});
+      this.barChartData['datasets'].push({
+        'data':pos['salary_count'],
+        'label': 'Salary',
+        'backgroundColor':this.backgroundColor.slice(0,pos['salary_count'].length),
+        'borderColor':this.borderColor.slice(0,pos['salary_count'].length),
+        'borderWidth': this.borderWidth
+      });
 
       this.barChartCAP['labels'] = pos['cap'];
-      this.barChartCAP['datasets'].push({'data':pos['cap_count']})
+      this.barChartCAP['datasets'].push({
+        'data':pos['cap_count'],
+        'label': 'CAP',
+        'backgroundColor':this.backgroundColor.slice(0,pos['cap_count'].length),
+        'borderColor':this.borderColor.slice(0,pos['cap_count'].length),
+        'borderWidth': this.borderWidth
+      })
 
       this.pieChartData['labels'] = pos['name'];
       this.pieChartData['datasets'].push({
@@ -282,6 +294,28 @@
    },
    data () {
    return {
+
+    backgroundColor: [
+              'rgba(255, 99, 132, 0.4)',
+              'rgba(54, 162, 235, 0.4)',
+              'rgba(255, 206, 86, 0.4)',
+              'rgba(75, 192, 192, 0.4)',
+              'rgba(153, 102, 255, 0.4)',
+              'rgba(225, 25, 179, 0.4)',
+              'rgba(225, 170, 128, 0.4)'
+
+            ],
+    borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(225, 25, 179, 1)',
+              'rgba(225, 170, 128, 1)'
+            ],
+    borderWidth: 1,
+    
     slide: 0,
     sliding: null,
     companyRef:null,
