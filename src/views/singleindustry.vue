@@ -7,9 +7,6 @@
                <mdb-col col="3" class="align-self-center">
                <select class="custom-select custom-select-sm" style="margin-left: 20px;">
                   <option selected>Select Another Industry of Interest</option>
-                  <!--<option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>-->
                   <option v-for="ind in this.industryname">{{ind}}</option>
                </select>
              </mdb-col>
@@ -22,6 +19,7 @@
                 </mdb-row>
              </mdb-col>
             </mdb-row>
+            <div><br/></div>
             <mdb-row class="justify-content-center d-flex align-items-stretch">
                <mdb-col md="1" lg="6">
                   <mdb-card class="cascading-admin-card">
@@ -50,11 +48,100 @@
                      <mdb-card-header> Companies </mdb-card-header>
                      <mdb-card-body>
                         <div v-if='this.loaded' style="display: block">
-                           <mdb-datatable
-                              :data="tableData"
-                              striped
-                              bordered
+                           
+                          <b-row>
+                            <b-col md="6" class="my-1">
+                              <b-form-group label-cols-sm="3" label="Filter" class="mb-0">
+                                <b-input-group>
+                                  <b-form-input v-model="filter" placeholder="Type to Search" />
+                                </b-input-group>
+                              </b-form-group>
+                            </b-col>
+
+                            <b-col md="6" class="my-1">
+                              <b-form-group label-cols-sm="3" label="Sort" class="mb-0">
+                                <b-input-group>
+                                  <b-form-select v-model="sortBy" :options="sortOptions">
+                                    <option slot="first" :value="null">-- none --</option>
+                                  </b-form-select>
+                                  <b-form-select :disabled="!sortBy" v-model="sortDesc" slot="append">
+                                    <option :value="false">Asc</option> <option :value="true">Desc</option>
+                                  </b-form-select>
+                                </b-input-group>
+                              </b-form-group>
+                            </b-col>
+
+                            <b-col md="6" class="my-1">
+                              <b-form-group label-cols-sm="3" label="Per page" class="mb-0">
+                                <b-form-select :options="pageOptions" v-model="perPage" />
+                              </b-form-group>
+                            </b-col>
+                          </b-row>
+
+                          <!-- Main table element -->
+                          <b-table
+                            show-empty
+                            stacked="md"
+                            :items="tableData"
+                            :fields="fields"
+                            :current-page="currentPage"
+                            :per-page="perPage"
+                            :filter="filter"
+                            :sort-by.sync="sortBy"
+                            :sort-desc.sync="sortDesc"
+                            :sort-direction="sortDirection"
+                            :bordered=true
+                            :fixed=true
+                            :hover=true
+                            @filtered="onFiltered"
+                          >
+                            <template slot="organisation" slot-scope="row">
+                              {{ row.value }}
+                            </template>
+
+                            <template slot="cap" slot-scope="row">
+                              {{ row.value }}
+                            </template>
+
+                            <template slot="sal" slot-scope="row">
+                              {{ row.value }}
+                            </template>
+
+                            <template slot="numGrads" slot-scope="row">
+                              {{ row.value }}
+                            </template>
+
+                            <template slot="actions" slot-scope="row">
+                              <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
+                                Learn More
+                              </b-button>
+                            </template>
+
+                            <template slot="row-details" slot-scope="row">
+                              <b-card>
+                                <ul>
+                                  <li v-for="(value, key) in row.item" :key="key">{{ key }}: {{ value }}</li>
+                                </ul>
+                              </b-card>
+                            </template>
+                          </b-table>
+
+                          <b-row>
+                            <b-col md="6" class="my-1">
+                              <b-pagination
+                                :total-rows="totalRows"
+                                :per-page="perPage"
+                                v-model="currentPage"
+                                class="my-0"
                               />
+                            </b-col>
+                          </b-row>
+
+                          <!-- Info modal -->
+                          <b-modal id="modalInfo" @hide="resetModal" :title="modalInfo.title" ok-only>
+                            <pre>{{ modalInfo.content }}</pre>
+                          </b-modal>
+
                         </div>
                      </mdb-card-body>
                   </mdb-card>
@@ -65,12 +152,98 @@
                     <mdb-card class="cascading-admin-card" style="height:100%">
                      <mdb-card-header> Recommended Modules </mdb-card-header>
                      <mdb-card-body class="align-items-center justify-content-center">
-                        <div style="display: block">
-                           <mdb-datatable
-                              :data="tableSuggestedData"
-                              striped
-                              bordered
-                              />
+                        <div v-if='this.recommended' style="display: block">
+                           
+                          <b-row>
+                            <b-col md="6" class="my-1">
+                              <b-form-group label-cols-sm="3" label="Filter" class="mb-0">
+                                <b-input-group>
+                                  <b-form-input v-model="filterSuggest" placeholder="Type to Search" />
+                                </b-input-group>
+                              </b-form-group>
+                            </b-col>
+
+                            <b-col md="6" class="my-1">
+                              <b-form-group label-cols-sm="3" label="Sort" class="mb-0">
+                                <b-input-group>
+                                  <b-form-select v-model="sortBySuggest" :options="sortOptionsSuggest">
+                                    <option slot="first" :value="null">-- none --</option>
+                                  </b-form-select>
+                                  <b-form-select :disabled="!sortBySuggest" v-model="sortDescSuggest" slot="append">
+                                    <option :value="false">Asc</option> <option :value="true">Desc</option>
+                                  </b-form-select>
+                                </b-input-group>
+                              </b-form-group>
+                            </b-col>
+
+                            <b-col md="6" class="my-1">
+                              <b-form-group label-cols-sm="3" label="Per page" class="mb-0">
+                                <b-form-select :options="pageOptionsSuggest" v-model="perPageSuggest" />
+                              </b-form-group>
+                            </b-col>
+                          </b-row>
+
+                          <!-- Main table element -->
+                          <b-table
+                            show-empty
+                            stacked="md"
+                            :items="tableSuggestedData"
+                            :fields="fieldsSuggest"
+                            :current-page="currentPageSuggest"
+                            :per-page="perPageSuggest"
+                            :filter="filterSuggest"
+                            :sort-by.sync="sortBySuggest"
+                            :sort-desc.sync="sortDescSuggest"
+                            :sort-direction="sortDirectionSuggest"
+                            :bordered=true
+                            :fixed=true
+                            :hover=true
+                            @filtered="onFilteredSuggest"
+                          >
+                            <template slot="modcode" slot-scope="row">
+                              {{ row.value }}
+                            </template>
+
+                            <template slot="modname" slot-scope="row">
+                              {{ row.value }}
+                            </template>
+
+                            <template slot="numgrad" slot-scope="row">
+                              {{ row.value }}
+                            </template>
+
+                            <template slot="actions" slot-scope="row">
+                              <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
+                                Learn More
+                              </b-button>
+                            </template>
+
+                            <template slot="row-details" slot-scope="row">
+                              <b-card>
+                                <ul>
+                                  <li v-for="(value, key) in row.item" :key="key">{{ key }}: {{ value }}</li>
+                                </ul>
+                              </b-card>
+                            </template>
+                          </b-table>
+                          <div v-if='this.recommended'>
+                            <b-row>
+                              <b-col md="6" class="my-1">
+                                <b-pagination
+                                  :total-rows="totalRowsSuggest"
+                                  :per-page="perPageSuggest"
+                                  v-model="currentPageSuggest"
+                                  class="my-0"
+                                />
+                              </b-col>
+                            </b-row>
+                          </div>
+
+                          <!-- Info modal -->
+                          <b-modal id="modalInfoSuggest" @hide="resetModal" :title="modalInfoSuggest.title" ok-only>
+                            <pre>{{ modalInfo.content }}</pre>
+                          </b-modal>
+
                         </div>
                      </mdb-card-body>
                   </mdb-card>
@@ -103,6 +276,9 @@
    import { mdbDatatable } from 'mdbvue';
    
    import {db} from '../firebase';
+
+   const items = [];
+   const items2 = []
    
    export default {
    name: 'Dashboard',
@@ -135,17 +311,66 @@
     
    },
    computed: {
-   headerStyle() {
-   return {
-     backgroundImage: `url(${this.header})`
-   };
-   }
+      headerStyle() {
+        return {
+          backgroundImage: `url(${this.header})`
+        };
+      },
+      sortOptions() {
+        // Create an options list from our fields
+        return this.fields
+          .filter(f => f.sortable)
+          .map(f => {
+            return { text: f.label, value: f.key }
+          })
+      },
+      sortOptionsSuggest() {
+        // Create an options list from our fields
+        return this.fieldsSuggest
+          .filter(f => f.sortable)
+          .map(f => {
+            return { text: f.label, value: f.key }
+          })
+      }
    },
    created(){
     this.industryref = db.ref('industry/'+this.industryname);
     this.suggestref = db.ref('industrymod/'+this.currname);
    },
+
    methods:{
+
+    info(item, index, button) {
+        this.modalInfo.title = `Row index: ${index}`
+        this.modalInfo.content = JSON.stringify(item, null, 2)
+        this.$root.$emit('bv::show::modal', 'modalInfo', button)
+      },
+    infoSuggest(item, index, button) {
+        this.modalInfoSuggest.title = `Row index: ${index}`
+        this.modalInfoSuggest.content = JSON.stringify(item, null, 2)
+        this.$root.$emit('bv::show::modal', 'modalInfo', button)
+      },
+    resetModal() {
+        this.modalInfo.title = ''
+        this.modalInfo.content = ''
+    },
+    resetModalSuggest() {
+        this.modalInfoSuggest.title = ''
+        this.modalInfoSuggest.content = ''
+    },
+    onFiltered(filteredItems) {
+        // Trigger pagination to update the number of buttons/pages due to filtering
+        this.totalRows = filteredItems.length
+        this.currentPage = 1
+    },
+    onFilteredSuggest(filteredItems) {
+        // Trigger pagination to update the number of buttons/pages due to filtering
+        this.totalRowsSuggest = filteredItems.length
+        this.currentPageSuggest = 1
+    },
+    genCapCol(cap){
+      return cap<3.75?'success':(cap<4.5?'warning':'danger');
+    },
     updateindustry(){
       let newref = this.industry
       for (let [ind, val] of Object.entries(newref)){
@@ -197,6 +422,11 @@
     getSelectValue(value, text) {
         console.log(value);
       },
+    renderlevel(level){
+      let col = ['success','info','primary','warning','danger','active'];
+      let res = col[Math.floor(level/1000 -1)]
+      return res
+    },
     renderChart(){
 
       let top5h = this.major['top5hiringtrend'];
@@ -238,10 +468,13 @@
             'cap': cap[i],
             'sal': sal[i],
             'numGrads': numgrads[i],
+            '_rowVariant':this.genCapCol(cap[i])
           }
-          this.tableData['rows'].push(temp);
+          this.tableData.push(temp);
       };
+      this.totalRows = this.tableData.length;
       this.loaded = true;
+
     },
     recommendmods(){
       let mods = this.suggestedmods;
@@ -250,19 +483,23 @@
       let mname = mods['modname'];
       let nGrads = mods['numgrad'];
       for (let i in code){
+          let modlevel = code[i].split(/([0-9]+)/)[1]
           let temp = {
             'modcode': code[i],
             'modname': mname[i],
-            'numgrads': nGrads[i],
+            'numgrad': nGrads[i],
+            '_rowVariant':this.renderlevel(modlevel)
           }
-          this.tableSuggestedData['rows'].push(temp);
+          this.tableSuggestedData.push(temp);
       };
+      this.totalRowsSuggest = this.tableSuggestedData.length;
+      this.recommended = true;
     }
    },
    components: {
     IEcharts,
-     mdbSelect,
-      mdbContainer,
+    mdbSelect,
+    mdbContainer,
    NavTabsCard,
    mdbRow,
    mdbCol,
@@ -298,6 +535,7 @@
     currname: 'Accounting and Auditing',
     industryname : [],
     loaded: false,
+    recommended: false,
    modal: false,
    showFrameModalTop: false,
    showFrameModalBottom: false,
@@ -321,52 +559,44 @@
     'Organisations',
     'CAPDistribution'
    ],
-   
-   tableData: {
-        columns: [
-          {
-            label: 'Organisation',
-            field: 'organisation',
-            sort: 'asc'
-          },
-          {
-            label: 'CAP',
-            field: 'cap',
-            sort: 'asc'
-          },
-          {
-            label: 'Salary',
-            field: 'salary',
-            sort: 'asc'
-          },
-          {
-            label: 'Number of Graduates',
-            field: 'numGrads',
-            sort: 'asc'
-          }
-        ],
-        rows: []
-   },
-   tableSuggestedData: {
-        columns: [
-          {
-            label: 'Module Code',
-            field: 'modcode',
-            sort: 'asc'
-          },
-          {
-            label: 'Module Name',
-            field: 'modname',
-            sort: 'asc'
-          },
-          {
-            label: 'Number of Graduates',
-            field: 'numgrad',
-            sort: 'asc'
-          }
-        ],
-        rows: []
-   },
+
+   //TableData
+    tableData: items,
+     fields: [
+      { key: 'organisation', label: 'Organisation', sortable: true, sortDirection: 'desc' },
+      { key: 'cap', label: 'CAP', sortable: true, class: 'text-center' },
+      { key: 'sal', label: 'Salary', sortable: true, sortDirection: 'desc'},
+      { key: 'numGrads', label: 'Number of Graduates',sortable: true, sortDirection: 'desc' },
+      { key: 'actions', label: 'Actions' }
+    ],
+    currentPage: 1,
+    perPage: 5,
+    totalRows: items.length,
+    pageOptions: [5, 10, 15],
+    sortBy: null,
+    sortDesc: false,
+    sortDirection: 'asc',
+    filter: null,
+    modalInfo: { title: '', content: '' },
+
+    //TableSuggestedData
+    tableSuggestedData: items2,
+    fieldsSuggest: [
+      { key: 'modcode', label: 'Module Code', sortable: true, sortDirection: 'desc' },
+      { key: 'modname', label: 'Module Name', sortable: true, class: 'text-center' },
+      { key: 'numgrad', label: 'Number of Graduates', sortable: true, sortDirection: 'desc'},
+      { key: 'actions', label: 'Actions' }
+    ],
+    currentPageSuggest: 1,
+    perPageSuggest: 5,
+    totalRowsSuggest: items2.length,
+    pageOptionsSuggest: [5, 10, 15],
+    sortBySuggest: null,
+    sortDescSuggest: false,
+    sortDirectionSuggest: 'asc',
+    filterSuggest: null,
+    modalInfoSuggest: { title: '', content: '' },
+
    
           barChartData: {
           labels:[],

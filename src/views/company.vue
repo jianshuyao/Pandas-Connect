@@ -228,7 +228,7 @@
    data () {
    return {
     companyRef:null,
-    major: 'Accountacy',
+    major: '',
     company:{},
     value_2: 3.5,
     counter: 45,
