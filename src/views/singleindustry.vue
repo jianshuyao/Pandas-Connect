@@ -200,6 +200,18 @@
                             </b-col>
                           </b-row>
 
+                          <b-col md="8" class="my-1">
+
+                              <b-form-group label-cols-sm="3" label="Module Level" class="mb-0">
+                                <b-badge variant="success">1000</b-badge>
+                                <b-badge variant="info">2000</b-badge>
+                                <b-badge variant="primary">3000</b-badge>
+                                <b-badge variant="warning">4000</b-badge>
+                                <b-badge variant="danger">5000</b-badge>
+                                <b-badge variant="secondary">6000</b-badge>
+                              </b-form-group>
+
+                          </b-col>
                           <!-- Main table element -->
                           <b-table
                             show-empty
@@ -444,7 +456,7 @@
         console.log(value);
       },
     renderlevel(level){
-      let col = ['success','info','primary','warning','danger','active'];
+      let col = ['success','info','primary','warning','danger','secondary'];
       let res = col[Math.floor(level/1000 -1)]
       return res
     },
@@ -613,8 +625,8 @@
     tableData: items,
      fields: [
       { key: 'organisation', label: 'Organisation', sortable: true, sortDirection: 'desc' },
-      { key: 'cap', label: 'CAP', sortable: true },
-      { key: 'sal', label: 'Salary', sortable: true, sortDirection: 'desc'},
+      { key: 'cap', label: 'Median CAP', sortable: true },
+      { key: 'sal', label: 'Median Salary', sortable: true, sortDirection: 'desc'},
       { key: 'numGrads', label: 'Number of Graduates',sortable: true, sortDirection: 'desc' },
       { key: 'actions', label: 'Actions', class: 'text-center' }
     ],
