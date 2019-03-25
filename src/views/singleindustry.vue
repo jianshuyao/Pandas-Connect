@@ -637,8 +637,8 @@
     tableData: items,
      fields: [
       { key: 'organisation', label: 'Organisation', sortable: true, sortDirection: 'desc' },
-      { key: 'cap', label: 'CAP', sortable: true },
-      { key: 'sal', label: 'Salary', sortable: true, sortDirection: 'desc'},
+      { key: 'cap', label: 'Median CAP', sortable: true },
+      { key: 'sal', label: 'Median Salary', sortable: true, sortDirection: 'desc'},
       { key: 'numGrads', label: 'Number of Graduates',sortable: true, sortDirection: 'desc' },
       { key: 'actions', label: 'Actions', class: 'text-center' }
     ],
