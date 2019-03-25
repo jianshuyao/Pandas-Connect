@@ -138,6 +138,7 @@
             .once("value")
             .then(snapshot => {
            this.career_list = snapshot.val();
+           this.career_list.sort();
          });
          }
        }

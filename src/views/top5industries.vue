@@ -5,24 +5,27 @@
          <section class="mt-lg-5">
             <mdb-row class="justify-content-start">
                <mdb-col col="3" class="align-self-center">
-               <select class="custom-select custom-select-sm" style="margin-left: 20px;" @change="$router.push({ path: '/singleindustry/' + currentMajor + '/' +singleInd });" v-model="singleInd">
-                  <option selected>Select Particular Industry of Interest</option>
-                  <option v-for="ind in this.industyname">{{ind}}</option>
-               </select>
-             </mdb-col>
-             <mdb-col col="6">
-              <mdb-row center>
-                  <mdb-modal-title>
-                    <p class="card-title" style="font-size:30px;letter-spacing: 2px;">Top 5 Industries Overview</p>
-                    <hr align="center" style="width:50%;height:2px;color:white;background-color:black;" />
-                  </mdb-modal-title>
-                </mdb-row>
-             </mdb-col>
-<mdb-col col="3" class="align-self-center">
-                  <mdb-row class="justify-content-end">
-                    <p class="text_bg" text.truncate style="font-size:18px; letter-spacing:2px">Current Major: {{this.currentMajor}}</p>
+                  <div>
+                  <p @click="showSingleIndustry = !showSingleIndustry"class="text_bg_2" text.truncate style="font-size:14px;margin-left: 20px;">Want to learn more about an industry? Click here!</p>  
+                  <select v-show="showSingleIndustry" class="custom-select custom-select-sm" style="margin-left: 20px;" @change="$router.push({ path: '/singleindustry/' + currentMajor + '/' +singleInd });" v-model="singleInd">
+                     <option selected>Select Particular Industry of Interest</option>
+                     <option v-for="ind in this.industyname">{{ind}}</option>
+                  </select>
+                  </div>
+               </mdb-col>
+               <mdb-col col="6">
+                  <mdb-row center>
+                     <mdb-modal-title>
+                        <p class="card-title" style="font-size:30px;letter-spacing: 2px;">Top 5 Industries Overview</p>
+                        <hr align="center" style="width:50%;height:2px;color:white;background-color:black;" />
+                     </mdb-modal-title>
                   </mdb-row>
-             </mdb-col>
+               </mdb-col>
+               <mdb-col col="3" class="align-self-center">
+                  <mdb-row class="justify-content-end">
+                     <p class="text_bg" text.truncate style="font-size:16px; letter-spacing:2px">Major: {{this.currentMajor}}</p>
+                  </mdb-row>
+               </mdb-col>
             </mdb-row>
             <mdb-row class="justify-content-center d-flex align-items-stretch">
                <mdb-col md="1" lg="6">
@@ -36,126 +39,122 @@
                   </mdb-card>
                </mdb-col>
                <mdb-col md="2" lg="6">
-                <mdb-card class="cascading-admin-card">
+                  <mdb-card class="cascading-admin-card">
                      <mdb-card-header> Salary Distribution </mdb-card-header>
                      <mdb-card-body>
                         <div v-if='this.loaded' style="display: block" justify-content-center>
-                              <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="300"/>
-                           </div>
+                           <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="300"/>
+                        </div>
                      </mdb-card-body>
                   </mdb-card>
                </mdb-col>
-             </mdb-row>
+            </mdb-row>
             <mdb-row class="justify-content-center d-flex align-items-stretch">
-                <mdb-col>
+               <mdb-col>
                   <mdb-card class="cascading-admin-card">
                      <mdb-card-header> Companies </mdb-card-header>
                      <mdb-card-body>
                         <div v-if='this.loaded' style="display: block">
-                           
-                          <b-row>
-                            <b-col md="6" class="my-1">
-                              <b-form-group label-cols-sm="3" label="Filter" class="mb-0">
-                                <b-input-group>
-                                  <b-form-input v-model="filter" placeholder="Type to Search" />
-                                </b-input-group>
+                           <b-row>
+                              <b-col md="6" class="my-1">
+                                 <b-form-group label-cols-sm="3" label="Filter" class="mb-0">
+                                    <b-input-group>
+                                       <b-form-input v-model="filter" placeholder="Type to Search" />
+                                    </b-input-group>
+                                 </b-form-group>
+                              </b-col>
+                              <b-col md="6" class="my-1">
+                                 <b-form-group label-cols-sm="3" label="Sort" class="mb-0">
+                                    <b-input-group>
+                                       <b-form-select v-model="sortBy" :options="sortOptions">
+                                          <option slot="first" :value="null">-- None --</option>
+                                       </b-form-select>
+                                       <b-form-select :disabled="!sortBy" v-model="sortDesc" slot="append">
+                                          <option :value="false">Asc</option>
+                                          <option :value="true">Desc</option>
+                                       </b-form-select>
+                                    </b-input-group>
+                                 </b-form-group>
+                              </b-col>
+                              <b-col md="6" class="my-1">
+                                 <b-form-group label-cols-sm="3" label="Per page" class="mb-0">
+                                    <b-form-select :options="pageOptions" v-model="perPage" />
+                                 </b-form-group>
+                              </b-col>
+                              <b-col md="6" class="my-1">
+
+                              <b-form-group label-cols-sm="3" label="Legend" class="mb-0">
+                                <b-badge variant="success">Cap < 3.75</b-badge>
+                                <b-badge variant="warning">3.75 < Cap < 4.5</b-badge>
+                                <b-badge variant="danger">Cap > 4.5 </b-badge>
                               </b-form-group>
+
                             </b-col>
-
-                            <b-col md="6" class="my-1">
-                              <b-form-group label-cols-sm="3" label="Sort" class="mb-0">
-                                <b-input-group>
-                                  <b-form-select v-model="sortBy" :options="sortOptions">
-                                    <option slot="first" :value="null">-- None --</option>
-                                  </b-form-select>
-                                  <b-form-select :disabled="!sortBy" v-model="sortDesc" slot="append">
-                                    <option :value="false">Asc</option> <option :value="true">Desc</option>
-                                  </b-form-select>
-                                </b-input-group>
-                              </b-form-group>
-                            </b-col>
-
-                            <b-col md="6" class="my-1">
-                              <b-form-group label-cols-sm="3" label="Per page" class="mb-0">
-                                <b-form-select :options="pageOptions" v-model="perPage" />
-                              </b-form-group>
-                            </b-col>
-                          </b-row>
-
-                          <!-- Main table element -->
-                          <b-table
-                            show-empty
-                            stacked="md"
-                            :items="tableData"
-                            :fields="fields"
-                            :current-page="currentPage"
-                            :per-page="perPage"
-                            :filter="filter"
-                            :sort-by.sync="sortBy"
-                            :sort-desc.sync="sortDesc"
-                            :sort-direction="sortDirection"
-                            :bordered=true
-                            :fixed=true
-                            :hover=true
-                            @filtered="onFiltered"
-                          >
-                            <template slot="organisation" slot-scope="row">
-                              {{ row.value }}
-                            </template>
-
-                            <template slot="cap" slot-scope="row">
-                              {{ row.value }}
-                            </template>
-
-                            <template slot="sal" slot-scope="row">
-                              {{ row.value }}
-                            </template>
-
-                            <template slot="industry" slot-scope="row">
-                              {{ row.value }}
-                            </template>
-
-                            <template slot="numGrads" slot-scope="row">
-                              {{ row.value }}
-                            </template>
-
-                            <template slot="actions" slot-scope="row">
-                              <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
-                                Learn More
-                              </b-button>
-                            </template>
-
-                            <template slot="row-details" slot-scope="row">
-                              <b-card>
-                                <ul>
-                                  <li v-for="(value, key) in row.item" :key="key">{{ key }}: {{ value }}</li>
-                                </ul>
-                              </b-card>
-                            </template>
-                          </b-table>
-
-                          <b-row>
-                            <b-col md="6" class="my-1">
-                              <b-pagination
-                                :total-rows="totalRows"
-                                :per-page="perPage"
-                                v-model="currentPage"
-                                class="my-0"
-                              />
-                            </b-col>
-                          </b-row>
-
-                          <!-- Info modal -->
-                          <b-modal id="modalInfo" @hide="resetModal" :title="modalInfo.title" ok-only>
-                            <pre>{{ modalInfo.content }}</pre>
-                          </b-modal>
-
-
+                           </b-row>
+                           <!-- Main table element -->
+                           <b-table
+                              show-empty
+                              stacked="md"
+                              :items="tableData"
+                              :fields="fields"
+                              :current-page="currentPage"
+                              :per-page="perPage"
+                              :filter="filter"
+                              :sort-by.sync="sortBy"
+                              :sort-desc.sync="sortDesc"
+                              :sort-direction="sortDirection"
+                              :bordered=true
+                              :fixed=true
+                              :hover=true
+                              @filtered="onFiltered"
+                              >
+                              <template slot="organisation" slot-scope="row">
+                                 {{ row.value }}
+                              </template>
+                              <template slot="cap" slot-scope="row">
+                                 {{ row.value }}
+                              </template>
+                              <template slot="sal" slot-scope="row">
+                                 {{ row.value }}
+                              </template>
+                              <template slot="industry" slot-scope="row">
+                                 {{ row.value }}
+                              </template>
+                              <template slot="numGrads" slot-scope="row">
+                                 {{ row.value }}
+                              </template>
+                              <template slot="actions" slot-scope="row">
+                                 <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1" variant="test">
+                                    Learn More
+                                 </b-button>
+                              </template>
+                              <template slot="row-details" slot-scope="row">
+                                 <b-card>
+                                    <ul>
+                                       <li v-for="(value, key) in row.item" :key="key">{{ key }}: {{ value }}</li>
+                                    </ul>
+                                 </b-card>
+                              </template>
+                           </b-table>
+                           <b-row>
+                              <b-col md="6" class="my-1">
+                                 <b-pagination
+                                    :total-rows="totalRows"
+                                    :per-page="perPage"
+                                    v-model="currentPage"
+                                    class="my-0"
+                                    />
+                              </b-col>
+                           </b-row>
+                           <!-- Info modal -->
+                           <b-modal id="modalInfo" @hide="resetModal" :title="modalInfo.title" ok-only>
+                              <pre>{{ modalInfo.content }}</pre>
+                           </b-modal>
                         </div>
                      </mdb-card-body>
                   </mdb-card>
-                </mdb-col>
-                </mdb-row>
+               </mdb-col>
+            </mdb-row>
          </section>
       </section>
    </div>
@@ -170,7 +169,7 @@
    import { mdbDatatable } from 'mdbvue';
    
    import {db} from '../firebase';
-
+   
    const items = [];
    
    export default {
@@ -221,34 +220,34 @@
     this.tableData = [];
    },
    methods:{
-
+   
     info(item, index, button) {
         this.modalInfo.title = `Row index: ${index}`
         this.modalInfo.content = JSON.stringify(item, null, 2)
         this.$root.$emit('bv::show::modal', 'modalInfo', button)
       },
-
+   
     resetModal() {
         this.modalInfo.title = ''
         this.modalInfo.content = ''
     },
-
+   
     onFiltered(filteredItems) {
         // Trigger pagination to update the number of buttons/pages due to filtering
         this.totalRows = filteredItems.length
         this.currentPage = 1
     },
-
+   
     genCapCol(cap){
       return cap<3.75?'success':(cap<4.5?'warning':'danger');
     },
-
-
-
+   
+   
+   
     getSelectValue(value, text) {
         console.log(value);
       },
-
+   
     updateindustry(){
       let newref = this.major['industries']
       for (let [ind, val] of Object.entries(newref)){
@@ -259,7 +258,7 @@
       return cap<3.75?'success':(cap<4.5?'warning':'danger');
     },
     renderChart(){
-
+   
       let top_5 = this.major['top5'];
       let top5 = top_5['top_5']
       let count = 0;
@@ -276,7 +275,7 @@
         count++;
         console.log(this.lineChartData)
       };
-
+   
       count = 0;
       for (let [ind, val] of Object.entries(top5)){
         console.log(ind)
@@ -290,7 +289,7 @@
         })
         count++;
       };
-
+   
       let organisation = top_5['organisations'];
       let cap = organisation['cap'];
       let name = organisation['name'];
@@ -343,8 +342,9 @@
    },
    data () {
    return {
+    showSingleIndustry: false,
     singleInd:null,
-
+   
     backgroundColor: [
               'rgba(255, 99, 132, 0.4)',
               'rgba(54, 162, 235, 0.4)',
@@ -360,7 +360,7 @@
               'rgba(153, 102, 255, 1)'
             ],
     borderWidth: 1,
-
+   
     currentMajor:null,
     searchOptions: [
           { text: 'Choose your option', value: null, disabled: true, selected: true },
@@ -389,13 +389,13 @@
    showFluidModalTop: false,
    showFluidModalBottom: false,
    currentViz: "HiringTrend",
-
+   
    //TableData
     tableData: items,
      fields: [
       { key: 'organisation', label: 'Organisation', sortable: true, sortDirection: 'desc' },
-      { key: 'cap', label: 'CAP', sortable: true },
-      { key: 'sal', label: 'Salary', sortable: true, sortDirection: 'desc'},
+      { key: 'cap', label: 'Median CAP', sortable: true },
+      { key: 'sal', label: 'Median Salary', sortable: true, sortDirection: 'desc'},
       { key: 'industry', label: 'Industry',sortable: true, sortDirection: 'desc' },
       { key: 'numGrads', label: 'Number of Graduates',sortable: true, sortDirection: 'desc' },
       { key: 'actions', label: 'Actions', class: 'text-center' }
@@ -409,7 +409,7 @@
     sortDirection: 'asc',
     filter: null,
     modalInfo: { title: '', content: '' },
-
+   
    
    vizs: [
     'HiringTrend',
@@ -495,21 +495,47 @@
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.text_bg 
-      {
-      opacity: 0.7;
-        background-color: #00135b; 
-        border: 2px solid grey;
-        color: white;
-        padding: 15px 22px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 20px;
-        margin: 5px 5px;
-        margin-right: 8%;
-        border-radius: 12px;
-      }
+   .btn-test {
+      background-color: #607d8b;
+      border-color: white;
+      color: white;
+      border-radius: 10px;
+   }
+   .text_bg_2
+   {
+   opacity: 0.7;
+   background-color: #81c784; 
+   border: 3px solid green;
+   color: black;
+   padding: 7px 10px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   margin: 5px 5px;
+   border-radius: 12px;
+   cursor: pointer;
+   }
+   .text_bg_2:hover {
+  background-color: #1b5e20;
+  color: white;
+  border-radius: 12px;
+    }
+
+   .text_bg 
+   {
+   opacity: 0.7;
+   background-color: #00135b; 
+   border: 2px solid grey;
+   color: white;
+   padding: 10px 12px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 20px;
+   margin: 5px 5px;
+   margin-right: 8%;
+   border-radius: 12px;
+   }
    .cascading-admin-card {
    margin: 20px;
    margin-top: 10px;
