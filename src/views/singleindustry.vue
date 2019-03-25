@@ -348,30 +348,8 @@
     this.majorname = this.$route.params.currMaj;
    },
    watch:{
-
       '$route' (to, from) {
-    this.tableSuggestedData = [];
-    this.tableData = [];
-    this.currname = this.$route.params.indName;
-    this.majorname = this.$route.params.currMaj;
-      db.ref('major/'+this.majorname+'/industries')
-    .once('value')
-    .then(snapshot=>{
-      this.industry= snapshot.val();
-      this.major = this.industry[this.currname]
-    })
-    .then(()=>{
-        this.updateindustry();
-        this.renderChart();
-    })
-    db.ref('industrymod/'+this.currname)
-      .once('value')
-      .then(snapshot=>{
-        this.suggestedmods = snapshot.val()
-      })
-      .then(()=>{
-        this.recommendmods();
-      })
+        this.$router.go()
     }
    }
 ,
