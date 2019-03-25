@@ -8,7 +8,7 @@
                   <div>
                   <p @click="showSingleIndustry = !showSingleIndustry"class="text_bg_2" text.truncate style="font-size:14px;margin-left: 20px;">Want to learn more about an industry? Click here!</p>  
                   <select v-show="showSingleIndustry" class="custom-select custom-select-sm" style="margin-left: 20px;" @change="$router.push({ path: '/singleindustry/' + currentMajor + '/' +singleInd });" v-model="singleInd">
-                     <option selected>Select Particular Industry of Interest</option>
+                     <option disabled selected>Select Particular Industry of Interest</option>
                      <option v-for="ind in this.industyname">{{ind}}</option>
                   </select>
                   </div>
