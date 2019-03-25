@@ -243,7 +243,9 @@
                             </template>
 
                             <template slot="actions" slot-scope="row">
-                                <a href=("https://nusmods.com/modules/" + row.item['modcode'])  target='_blank'>
+                              <a v-bind:href= 
+                                "'https://nusmods.com/modules/'+row.item['modcode']+''"   target='_blank'>
+
                               <b-button size="sm" class="mr-1">
                                 Learn More
                               </b-button>
