@@ -81,6 +81,17 @@
                                 <b-form-select :options="pageOptions" v-model="perPage" />
                               </b-form-group>
                             </b-col>
+
+                            <b-col md="6" class="my-1">
+
+                              <b-form-group label-cols-sm="3" label="Legend" class="mb-0">
+                                <b-badge variant="success">Cap < 3.75</b-badge>
+                                <b-badge variant="warning">3.75 < Cap < 4.5</b-badge>
+                                <b-badge variant="danger">Cap > 4.5 </b-badge>
+                              </b-form-group>
+
+                            </b-col>
+
                           </b-row>
 
                           <!-- Main table element -->
@@ -188,6 +199,19 @@
                               </b-form-group>
                             </b-col>
                           </b-row>
+
+                          <b-col md="8" class="my-1">
+
+                              <b-form-group label-cols-sm="3" label="Module Level" class="mb-0">
+                                <b-badge variant="success">1000</b-badge>
+                                <b-badge variant="info">2000</b-badge>
+                                <b-badge variant="primary">3000</b-badge>
+                                <b-badge variant="warning">4000</b-badge>
+                                <b-badge variant="danger">5000</b-badge>
+                                <b-badge variant="secondary">6000</b-badge>
+                              </b-form-group>
+
+                          </b-col>
 
                           <!-- Main table element -->
                           <b-table
@@ -350,7 +374,7 @@
    watch:{
       '$route' (to, from) {
         this.$router.go()
-    }
+      }
    }
 ,
    methods:{
