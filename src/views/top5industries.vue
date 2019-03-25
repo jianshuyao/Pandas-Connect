@@ -391,9 +391,20 @@
         tooltip: {
             headerFormat: '<em>Experiment No {point.key}</em><br/>'
         }
-    }, {
+    },
+
+    {
+      name: "Observations_2",
+      data: [
+          [100, 200, 300, 400, 500],
+
+      ],
+
+    }, 
+
+    {
         name: 'Outlier',
-        color: Highcharts.getOptions().colors[0],
+        color: Highcharts.getOptions().colors[5],
         type: 'scatter',
         data: [ // x, y positions where 0 is the first category
             [0, 644],
@@ -402,7 +413,7 @@
             [4, 969]
         ],
         marker: {
-            fillColor: 'white',
+            fillColor: 'grey',
             lineWidth: 1,
             lineColor: Highcharts.getOptions().colors[0]
         },

@@ -6,10 +6,13 @@
          <section class="mt-lg-5">
             <mdb-row class="justify-content-start">
                <mdb-col col="3" class="align-self-center">
-               <select id="newIndustry" class="custom-select custom-select-sm" style="margin-left: 20px;" @change="$router.push({ path: '/singleindustry/' + majorname + '/' + currname});" v-model="currname">
+                <div>
+                  <p @click="showSingleIndustry = !showSingleIndustry"class="text_bg_2" text.truncate style="font-size:14px;margin-left: 20px;">CLICK HERE to learn more about another industry!</p> 
+               <select v-show="showSingleIndustry" id="newIndustry" class="custom-select custom-select-sm" style="margin-left: 20px;" @change="$router.push({ path: '/singleindustry/' + majorname + '/' + currname});" v-model="currname">
                   <option disabled>Select Another Industry of Interest</option>
                   <option v-for="ind in this.industryname">{{ind}}</option>
                </select>
+             </div>
              </mdb-col>
              <mdb-col col="6">
               <mdb-row center>
@@ -582,7 +585,7 @@
    },
    data () {
    return {
-
+    showSingleIndustry: false,
     backgroundColor: [
               'rgba(255, 99, 132, 0.4)',
               'rgba(54, 162, 235, 0.4)',
@@ -749,6 +752,20 @@
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.text_bg_2
+   {
+   opacity: 0.7;
+   background-color: #81c784; 
+   border: 3px solid green;
+   color: black;
+   padding: 7px 10px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   margin: 5px 5px;
+   border-radius: 12px;
+   cursor: pointer;
+   }
 .btn-test {
       background-color: #607d8b;
       border-color: white;

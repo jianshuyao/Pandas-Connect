@@ -7,10 +7,13 @@
          <section class="mt-lg-5">
             <mdb-row class="justify-content-start">
                <mdb-col col="3" class="align-self-center">
-                  <select class="custom-select custom-select-sm" @change="$router.push({ path: '/company/' + companyRef + '/' + major});" style="margin-left: 20px;" v-model="companyRef">
+                <div>
+                  <p @click="showCompany = !showCompany"class="text_bg_2" text.truncate style="font-size:14px;margin-left: 20px;">CLICK HERE to learn more about another company!</p> 
+                  <select v-show="showCompany" class="custom-select custom-select-sm" @change="$router.push({ path: '/company/' + companyRef + '/' + major});" style="margin-left: 20px;" v-model="companyRef">
                      <option disabled selected>Select Another Company of Interest</option>
                      <option v-for="comp in this.companyname">{{comp}}</option>
                   </select>
+                </div>
                </mdb-col>
                <mdb-col col="6">
                   <mdb-row center>
@@ -302,6 +305,7 @@
    },
    data () {
    return {
+    showCompany: false,
     companyname:[],
     backgroundColor: [
               'rgba(255, 99, 132, 0.4)',
@@ -474,6 +478,20 @@
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.text_bg_2
+   {
+   opacity: 0.7;
+   background-color: #81c784; 
+   border: 3px solid green;
+   color: black;
+   padding: 7px 10px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   margin: 5px 5px;
+   border-radius: 12px;
+   cursor: pointer;
+   }
    .carousel-item:after {
    content:"";
    display:block;
