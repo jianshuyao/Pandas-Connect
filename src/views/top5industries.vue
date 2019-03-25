@@ -124,7 +124,7 @@
                                  {{ row.value }}
                               </template>
                               <template slot="actions" slot-scope="row">
-                                 <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1" variant="test">
+                                 <b-button size="sm" @click="$router.push({ path: '/company/' + row.item['organisation'] + '/' + currentMajor});" class="mr-1" variant="test">
                                     Learn More
                                  </b-button>
                               </template>
