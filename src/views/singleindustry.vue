@@ -6,8 +6,8 @@
          <section class="mt-lg-5">
             <mdb-row class="justify-content-start">
                <mdb-col col="3" class="align-self-center">
-               <select class="custom-select custom-select-sm" style="margin-left: 20px;" @change="$router.push({ path: '/singleindustry/' + majorname + '/' +newInd });" v-model="newInd">
-                  <option selected>Select Another Industry of Interest</option>
+               <select id="newIndustry" class="custom-select custom-select-sm" style="margin-left: 20px;" @change="$router.push({ path: '/singleindustry/' + majorname + '/' + currname});" v-model="currname">
+                  <option disabled>Select Another Industry of Interest</option>
                   <option v-for="ind in this.industryname">{{ind}}</option>
                </select>
              </mdb-col>
@@ -21,7 +21,7 @@
              </mdb-col>
              <mdb-col col="3" class="align-self-center">
                   <mdb-row class="justify-content-end">
-                    <p class="text_bg" text.truncate style="font-size:18px; letter-spacing:2px">Current Major: {{this.majorname}}</p>
+                    <p class="text_bg" text.truncate style="font-size:16px; letter-spacing:2px">Major: {{this.majorname}}</p>
                   </mdb-row>
              </mdb-col>
             </mdb-row>
@@ -346,6 +346,8 @@
     this.tableData = [];
     this.currname = this.$route.params.indName;
     this.majorname = this.$route.params.currMaj;
+    this.industry = {},
+    this.major = {}
    },
 
    methods:{
@@ -515,7 +517,8 @@
       this.totalRowsSuggest = this.tableSuggestedData.length;
       this.recommended = true;
     }
-   },
+
+    },
    components: {
     IEcharts,
     mdbSelect,
@@ -720,7 +723,7 @@
         background-color: #00135b; 
         border: 2px solid grey;
         color: white;
-        padding: 15px 22px;
+        padding: 10px 12px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
