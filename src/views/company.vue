@@ -7,8 +7,8 @@
          <section class="mt-lg-5">
             <mdb-row class="justify-content-start">
                <mdb-col col="3" class="align-self-center">
-                  <select class="custom-select custom-select-sm" style="margin-left: 20px;">
-                     <option selected>Select Another Company of Interest</option>
+                  <select class="custom-select custom-select-sm" @change="$router.push({ path: '/company/' + companyRef + '/' + major});" style="margin-left: 20px;" v-model="companyRef">
+                     <option disabled selected>Select Another Company of Interest</option>
                      <option v-for="comp in this.companyname">{{comp}}</option>
                   </select>
                </mdb-col>
@@ -212,6 +212,13 @@
     this.companyRef = this.$route.params.companyName;
     this.major = this.$route.params.majName;
    },
+      watch:{
+      '$route' (to, from) {
+        this.$router.go()
+
+    }
+      }
+,
    methods:{
     getSelectValue(value, text) {
         console.log(value);
