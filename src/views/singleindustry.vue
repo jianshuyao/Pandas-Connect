@@ -348,9 +348,9 @@
     this.majorname = this.$route.params.currMaj;
    },
    watch:{
-
       '$route' (to, from) {
-          vm.$forceUpdate();
+        this.$router.go()
+
     }
    }
 ,
