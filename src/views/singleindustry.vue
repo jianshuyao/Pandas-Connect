@@ -129,7 +129,7 @@
                             </template>
 
                             <template slot="actions" slot-scope="row">
-                              <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
+                              <b-button size="sm" @click="$router.push({ path: '/company/' + row.item['organisation'] + '/' + majorname});" class="mr-1">
                                 Learn More
                               </b-button>
                             </template>
@@ -243,9 +243,11 @@
                             </template>
 
                             <template slot="actions" slot-scope="row">
-                              <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
+                                <a href=("https://nusmods.com/modules/" + row.item['modcode'])  target='_blank'>
+                              <b-button size="sm" class="mr-1">
                                 Learn More
                               </b-button>
+                                </a>
                             </template>
 
                             <template slot="row-details" slot-scope="row">
