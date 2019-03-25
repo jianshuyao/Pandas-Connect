@@ -173,7 +173,7 @@ export default new Router({
       }
     },
     {
-      path: "/singleindustry",
+      path: "/singleindustry/:currMaj/:indName",
       name: "singleindustry",
       components: { default: singleindustry, header: MainNavbar, footer: MainFooter },
       props: {

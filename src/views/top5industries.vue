@@ -5,7 +5,7 @@
          <section class="mt-lg-5">
             <mdb-row class="justify-content-start">
                <mdb-col col="3" class="align-self-center">
-               <select class="custom-select custom-select-sm" style="margin-left: 20px;">
+               <select class="custom-select custom-select-sm" style="margin-left: 20px;" @change="$router.push({ path: '/singleindustry/' + currentMajor + '/' +singleInd });" v-model="singleInd">
                   <option selected>Select Particular Industry of Interest</option>
                   <option v-for="ind in this.industyname">{{ind}}</option>
                </select>
@@ -343,6 +343,7 @@
    },
    data () {
    return {
+    singleInd:null,
 
     backgroundColor: [
               'rgba(255, 99, 132, 0.4)',

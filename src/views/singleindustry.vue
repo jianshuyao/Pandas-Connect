@@ -6,7 +6,7 @@
          <section class="mt-lg-5">
             <mdb-row class="justify-content-start">
                <mdb-col col="3" class="align-self-center">
-               <select class="custom-select custom-select-sm" style="margin-left: 20px;">
+               <select class="custom-select custom-select-sm" style="margin-left: 20px;" @change="$router.push({ path: '/singleindustry/' + majorname + '/' +newInd });" v-model="newInd">
                   <option selected>Select Another Industry of Interest</option>
                   <option v-for="ind in this.industryname">{{ind}}</option>
                </select>
@@ -344,6 +344,8 @@
     this.suggestref = db.ref('industrymod/'+this.currname);
     this.tableSuggestedData = [];
     this.tableData = [];
+    this.currname = this.$route.params.indName;
+    this.majorname = this.$route.params.currMaj;
    },
 
    methods:{
@@ -564,10 +566,11 @@
 
     wordclouddata:[],
     wordcloud: {},
-    majorname:'Accountacy',
+    majorname:null,
     major : {},
     suggestedmods:{},
-    currname: 'Accounting and Auditing',
+    newInd:null,
+    currname: null,
     industryname : [],
     loaded: false,
     recommended: false,
