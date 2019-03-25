@@ -129,7 +129,7 @@
                             </template>
 
                             <template slot="actions" slot-scope="row">
-                              <b-button size="sm" @click="$router.push({ path: '/company/' + row.item['organisation'] + '/' + majorname});" class="mr-1">
+                              <b-button size="sm" @click="$router.push({ path: '/company/' + row.item['organisation'] + '/' + majorname});" class="mr-1" variant="test">
                                 Learn More
                               </b-button>
                             </template>
@@ -246,7 +246,7 @@
                               <a v-bind:href= 
                                 "'https://nusmods.com/modules/'+row.item['modcode']+''"   target='_blank'>
 
-                              <b-button size="sm" class="mr-1">
+                              <b-button size="sm" class="mr-1" variant="test">
                                 Learn More
                               </b-button>
                                 </a>
@@ -749,6 +749,12 @@
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.btn-test {
+      background-color: #607d8b;
+      border-color: white;
+      color: white;
+      border-radius: 10px;
+   }
 .text_bg 
       {
       opacity: 0.7;
