@@ -24,7 +24,7 @@
                </mdb-col>
                <mdb-col col="3" class="align-self-center">
                   <mdb-row class="justify-content-end">
-                     <p class="text_bg" text.truncate style="font-size:16px; letter-spacing:2px">Current Major: {{this.major}}</p>
+                     <p class="text_bg" text.truncate style="font-size:16px; letter-spacing:2px">Major: {{this.major}}</p>
                   </mdb-row>
                </mdb-col>
             </mdb-row>

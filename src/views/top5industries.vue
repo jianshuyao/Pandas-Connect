@@ -23,7 +23,7 @@
                </mdb-col>
                <mdb-col col="3" class="align-self-center">
                   <mdb-row class="justify-content-end">
-                     <p class="text_bg" text.truncate style="font-size:16px; letter-spacing:2px">Current Major: {{this.currentMajor}}</p>
+                     <p class="text_bg" text.truncate style="font-size:16px; letter-spacing:2px">Major: {{this.currentMajor}}</p>
                   </mdb-row>
                </mdb-col>
             </mdb-row>
@@ -115,7 +115,7 @@
                                  {{ row.value }}
                               </template>
                               <template slot="actions" slot-scope="row">
-                                 <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
+                                 <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1" variant="test">
                                     Learn More
                                  </b-button>
                               </template>
@@ -385,8 +385,8 @@
     tableData: items,
      fields: [
       { key: 'organisation', label: 'Organisation', sortable: true, sortDirection: 'desc' },
-      { key: 'cap', label: 'CAP', sortable: true },
-      { key: 'sal', label: 'Salary', sortable: true, sortDirection: 'desc'},
+      { key: 'cap', label: 'Median CAP', sortable: true },
+      { key: 'sal', label: 'Median Salary', sortable: true, sortDirection: 'desc'},
       { key: 'industry', label: 'Industry',sortable: true, sortDirection: 'desc' },
       { key: 'numGrads', label: 'Number of Graduates',sortable: true, sortDirection: 'desc' },
       { key: 'actions', label: 'Actions', class: 'text-center' }
@@ -486,6 +486,12 @@
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+   .btn-test {
+      background-color: #607d8b;
+      border-color: white;
+      color: white;
+      border-radius: 10px;
+   }
    .text_bg_2
    {
    opacity: 0.7;
