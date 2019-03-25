@@ -1,5 +1,5 @@
 <template>
-   <div class="wrapper">
+   <div class="wrapper" style="min-height: 87.5vh;">
       <section id="module">
          <div><br/></div>
          <section class="mt-lg-5">
@@ -50,7 +50,6 @@
                         <input @change="$router.push({ path: '/company/' + car + '/' +maj});" autoComplete="on" list="suggestions" style="width:350px;height:40px" placeholder=" Choose Your Career" v-model="car"/> 
                      </div>
                   </mdb-row>
-                  <mdb-row md="6" center><br/><br/><br/><br/><br/><br/><br/><br/><br/></mdb-row>
          </section>
       </section>
    </div>

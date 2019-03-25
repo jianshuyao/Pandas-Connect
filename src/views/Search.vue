@@ -1,5 +1,5 @@
 <template>
-   <div class="wrapper">
+   <div class="wrapper" style="min-height: 87.5vh;">
       <section id="module">
          <div><br/></div>
          <section class="mt-lg-5">
@@ -41,7 +41,6 @@
                </select>
                <button class="button button5" v-on:click="$router.push({ path: '/top5industries/' + maj });"><i class="fas fa-book"></i> Find Industries!</button></a>
             </mdb-row>
-            <mdb-row md="6" center><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></mdb-row>
          </section>
       </section>
    </div>

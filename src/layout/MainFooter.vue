@@ -1,7 +1,8 @@
 <!-- Remember to route the footer here-->
 <template>
   <!-- Footer -->
-  <mdb-footer color="stylish-color-dark">
+  <mdb-footer color="stylish-color-dark" 
+    style="">
     <div class="text-center">
       <ul class="list-unstyled list-inline">
         <li class="list-inline-item"><a class="btn-floating btn-sm btn-fb mx-1"><i class="fab fa-facebook"> </i></a></li>
@@ -79,6 +80,7 @@
     </div>
   </footer>
 </template>
+
 <script>
 export default {
   props: {
@@ -92,6 +94,3 @@ export default {
   }
 };
 </script>
-<style>
-</style>
-
