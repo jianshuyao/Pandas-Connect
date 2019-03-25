@@ -1,3 +1,4 @@
+<!-- Shouldnt allow selection of company unless chosen major -->
 <template>
    <div class="wrapper">
       <section id="company">
