@@ -1,3 +1,5 @@
+<!-- Shouldnt allow selection of company unless chosen major -->
+<!-- Insert position dropdown hardcoded -->
 <template>
    <div class="wrapper">
       <section id="company">
