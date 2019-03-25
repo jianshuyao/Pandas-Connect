@@ -9,9 +9,7 @@
                <mdb-col col="3" class="align-self-center">
                   <select class="custom-select custom-select-sm" style="margin-left: 20px;">
                      <option selected>Select Another Company of Interest</option>
-                     <option value="1">One</option>
-                     <option value="2">Two</option>
-                     <option value="3">Three</option>
+                     <option v-for="comp in this.companyname">{{comp}}</option>
                   </select>
                </mdb-col>
                <mdb-col col="6">
@@ -126,10 +124,10 @@
                            <mdb-col>
                               <label>Interested Position</label>
                               <select class="custom-select custom-select-sm">
-                                 <option selected>Select 1 Position</option>
-                                 <option value="1">One</option>
-                                 <option value="2">Two</option>
-                                 <option value="3">Three</option>
+                                 <option selected>Select a Position</option>
+                                 <option 
+                                  v-for="pos in this.company['positions']['name']">{{pos}}
+                                </option>
                               </select>
                            </mdb-col>
                         </div>
@@ -192,12 +190,14 @@
    }
    },
    mounted: function(){
-    db.ref('major/'+this.major+'/company/'+this.companyRef)
+    db.ref('major/'+this.major+'/company')
     .once('value')
     .then(snapshot=>{
-      this.company = snapshot.val();
+      this.companylist = snapshot.val();
+      this.company = this.companylist[this.companyRef];
     })
     .then(()=>{
+        this.updateCompanies();
         this.renderChart();
     })
    },
@@ -222,6 +222,12 @@
       onSlideEnd(slide) {
         this.sliding = false
       },
+      updateCompanies(){
+      let newref = this.companylist;
+      for (let [ind, val] of Object.entries(newref)){
+        this.companyname.push(ind);
+      }
+    },
     renderChart(){
    
       let pos = this.company['positions'];
@@ -289,7 +295,7 @@
    },
    data () {
    return {
-   
+    companyname:[],
     backgroundColor: [
               'rgba(255, 99, 132, 0.4)',
               'rgba(54, 162, 235, 0.4)',
