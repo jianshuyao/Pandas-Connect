@@ -45,6 +45,10 @@
                         <div v-if='this.loaded' style="display: block" justify-content-center>
                            <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="300"/>
                         </div>
+                        <br/>
+                        <div>
+                          <highcharts class="chart" :options="chartOptions"></highcharts>
+                        </div>
                      </mdb-card-body>
                   </mdb-card>
                </mdb-col>
@@ -162,6 +166,9 @@
 <script>
    import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbSelect, mdbContainer } from 'mdbvue'
    
+   import {Chart} from 'highcharts-vue'
+   import Highcharts from 'highcharts'
+
    import {
      NavTabsCard
    } from '@/components'
@@ -313,6 +320,7 @@
     }
    },
    components: {
+    highcharts: Chart,
      mdbSelect,
       mdbContainer,
    NavTabsCard,
@@ -342,6 +350,68 @@
    },
    data () {
    return {
+    chartOptions: {
+
+    chart: {
+        type: 'boxplot',
+        inverted: true
+    },
+
+    title: {
+        text: 'Highcharts Box Plot Example'
+    },
+
+    legend: {
+        enabled: false
+    },
+
+    xAxis: {
+        categories: ['1', '2', '3', '4', '5'],
+        title: {
+            text: 'Experiment No.'
+        }
+    },
+
+    yAxis: {
+        title: {
+            text: 'Observations'
+        },
+
+    },
+
+    series: [{
+        name: 'Observations',
+        data: [
+            [760, 801, 848, 895, 965],
+            [733, 853, 939, 980, 1080],
+            [714, 762, 817, 870, 918],
+            [724, 802, 806, 871, 950],
+            [834, 836, 864, 882, 910]
+        ],
+        tooltip: {
+            headerFormat: '<em>Experiment No {point.key}</em><br/>'
+        }
+    }, {
+        name: 'Outlier',
+        color: Highcharts.getOptions().colors[0],
+        type: 'scatter',
+        data: [ // x, y positions where 0 is the first category
+            [0, 644],
+            [4, 718],
+            [4, 951],
+            [4, 969]
+        ],
+        marker: {
+            fillColor: 'white',
+            lineWidth: 1,
+            lineColor: Highcharts.getOptions().colors[0]
+        },
+        tooltip: {
+            pointFormat: 'Observation: {point.y}'
+        }
+    }]
+
+},
     showSingleIndustry: false,
     singleInd:null,
    

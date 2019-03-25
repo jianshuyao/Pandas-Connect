@@ -15,9 +15,18 @@ import MaterialKit from "./plugins/material-kit";
 import vueSmoothScroll from 'vue2-smooth-scroll'
 import VueSlider from 'vue-slider-component'
 import 'vue-slider-component/theme/default.css'
+import HighchartsVue from "highcharts-vue";
+import Highcharts from "highcharts";
+import dataModule from "highcharts/modules/data";
+import hcMore from "highcharts/highcharts-more";
+
+dataModule(Highcharts);
+hcMore(Highcharts);
+
 
 import VueParticles from 'vue-particles'
 Vue.use(VueParticles)
+Vue.use(HighchartsVue)
 
 
 Vue.config.productionTip = false;
