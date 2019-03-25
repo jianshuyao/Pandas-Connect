@@ -14,9 +14,9 @@
             <h2 class="text_bg" style="font-size:30px;font-family: 'Nunito'; font-weight:bold;color:white">
               <i>Professional Academics & Careers Advisory</i>
             </h2>
-            <a href="#/Search"><button class="button button5"><i class="fas fa-book"></i> Industries</button></a>
+            <a href="#/Search"><button class="button button5"><i class="fas fa-industry"></i></i> Industries</button></a>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#/search_careers"><button class="button button5"><i class="fas fa-graduation-cap"></i> Companies</button></a>
+            <a href="#/search_careers"><button class="button button5"><i class="far fa-building"></i></i> Companies</button></a>
           </div>
         </div>
       </div>

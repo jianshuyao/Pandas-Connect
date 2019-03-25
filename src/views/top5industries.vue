@@ -6,7 +6,7 @@
             <mdb-row class="justify-content-start">
                <mdb-col col="3" class="align-self-center">
                   <div>
-                  <p @click="showSingleIndustry = !showSingleIndustry"class="text_bg_2" text.truncate style="font-size:16px;margin-left: 20px;">Want to learn more about an industry? Click here!</p>  
+                  <p @click="showSingleIndustry = !showSingleIndustry"class="text_bg_2" text.truncate style="font-size:14px;margin-left: 20px;">Want to learn more about an industry? Click here!</p>  
                   <select v-show="showSingleIndustry" class="custom-select custom-select-sm" style="margin-left: 20px;" @change="$router.push({ path: '/singleindustry/' + currentMajor + '/' +singleInd });" v-model="singleInd">
                      <option selected>Select Particular Industry of Interest</option>
                      <option v-for="ind in this.industyname">{{ind}}</option>
@@ -23,7 +23,7 @@
                </mdb-col>
                <mdb-col col="3" class="align-self-center">
                   <mdb-row class="justify-content-end">
-                     <p class="text_bg" text.truncate style="font-size:18px; letter-spacing:2px">Current Major: {{this.currentMajor}}</p>
+                     <p class="text_bg" text.truncate style="font-size:16px; letter-spacing:2px">Current Major: {{this.currentMajor}}</p>
                   </mdb-row>
                </mdb-col>
             </mdb-row>
@@ -489,7 +489,7 @@
    .text_bg_2
    {
    opacity: 0.7;
-   background-color: #66bb6a; 
+   background-color: #81c784; 
    border: 3px solid green;
    color: black;
    padding: 7px 10px;
@@ -512,7 +512,7 @@
    background-color: #00135b; 
    border: 2px solid grey;
    color: white;
-   padding: 15px 22px;
+   padding: 10px 12px;
    text-align: center;
    text-decoration: none;
    display: inline-block;
