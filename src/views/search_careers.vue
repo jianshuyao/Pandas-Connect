@@ -32,23 +32,22 @@
                   </mdb-row>
                   <mdb-row md="6" center>
                      <p style="font-size:18px"><i>Advanced Analytics brought to you by The Pandas!</i></p>
-                     <br/>
+                     <br/><br/>
                   </mdb-row>
                   <mdb-row md="6" center>
+                     <mdb-col col="3">
                      <select @change="updateCareer" name="modselect" id="modselect" v-model="maj" style="width:350px; height:40px">
                         <option selected="selected" disabled class="placeholder" value=''> Choose Your Major</option>
                         <option v-for="industry in industry_list" :key="industry">{{industry}}</option>
                      </select>
-                     <br>
-                  </mdb-row>
-                  <br/>
-                  <mdb-row md="6" center>
-                     <div>
+                     </mdb-col>
+
+                     <mdb-col col="3">
                         <datalist id="suggestions" style="width:350px;">
                            <option v-for="career in career_list">{{career}}</option>
                         </datalist>
-                        <input @change="$router.push({ path: '/company/' + car + '/' +maj});" autoComplete="on" list="suggestions" style="width:350px;height:40px" placeholder=" Choose Your Career" v-model="car"/> 
-                     </div>
+                        <input @change="$router.push({ path: '/company/' + car + '/' +maj});" autoComplete="on" list="suggestions" style="width:350px;height:40px;" placeholder=" Choose Your Company of Interest" v-model="car"/> 
+                     </mdb-col>
                   </mdb-row>
          </section>
       </section>
