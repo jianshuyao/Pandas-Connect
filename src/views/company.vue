@@ -160,7 +160,8 @@
                               <div v-else>
                                 <b-progress :value="counter" variant="success" max=100 show-progress animated  style="height:35px"/>
                               </div>
-                              <h5 style="text-align:center">Your chance for the position is rated at {{counter}}%</h5>
+                              <h5 style="text-align:center">Based on past Employment Statistics of NUS students in this company,<br> your chance for the position is rated at:</h5>
+                              <h2 style="text-align:center"><strong>{{counter}}%</strong></h2>
                            </div>
                         </div>
                      </mdb-card-body>
