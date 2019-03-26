@@ -45,13 +45,22 @@
                         <div v-if='this.loaded' style="display: block" justify-content-center>
                            <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="300"/>
                         </div>
-                        <br/>
-                        <div>
+                        
+                     </mdb-card-body>
+                  </mdb-card>
+               </mdb-col>
+
+               <mdb-col md="2" lg="12">
+                  <mdb-card class="cascading-admin-card">
+                     <mdb-card-header> Salary Comparison by Industry </mdb-card-header>
+                     <mdb-card-body>
+                        <div v-if='this.loaded'>
                           <highcharts class="chart" :options="chartOptions"></highcharts>
                         </div>
                      </mdb-card-body>
                   </mdb-card>
                </mdb-col>
+
             </mdb-row>
             <mdb-row class="justify-content-center d-flex align-items-stretch">
                <mdb-col>
@@ -296,6 +305,16 @@
         })
         count++;
       };
+
+      count = 0;
+      for (let [ind, val] of Object.entries(top5)){
+        let salarynode = top5[ind]['overallsalarydist']['actual_sal'].sort();
+        salarynode.unshift(ind)
+        this.chartOptions['xAxis']['categories'].push(ind);
+        this.chartOptions['series'][0]['data'].push(salarynode);
+        count++;
+      };
+      console.log(this.chartOptions['xAxis']['categories'])
    
       let organisation = top_5['organisations'];
       let cap = organisation['cap'];
@@ -352,77 +371,43 @@
    return {
     chartOptions: {
 
-    chart: {
-        type: 'boxplot',
-        inverted: true
-    },
+		    chart: {
+		        type: 'boxplot',
+		        inverted: true
+		    },
 
-    title: {
-        text: 'Highcharts Box Plot Example'
-    },
+		    title: {
+		        text: null
+		    },
 
-    legend: {
-        enabled: false
-    },
+		    legend: {
+		        enabled: false
+		    },
 
-    xAxis: {
-        categories: ['1', '2', '3', '4', '5'],
-        title: {
-            text: 'Experiment No.'
-        }
-    },
+		    xAxis: {
+		    	type: "category",
+		        categories:  [],
+		        title: {
+		            text: 'Industry'
+		        }
+		    },
 
-    yAxis: {
-        title: {
-            text: 'Observations'
-        },
+		    yAxis: {
+		        title: {
+		            text: 'Salary'
+		        },
 
-    },
+		    },
 
-    series: [{
-        name: 'Observations',
-        data: [
-            [760, 801, 848, 895, 965],
-            [733, 853, 939, 980, 1080],
-            [714, 762, 817, 870, 918],
-            [724, 802, 806, 871, 950],
-            [834, 836, 864, 882, 910]
-        ],
-        tooltip: {
-            headerFormat: '<em>Experiment No {point.key}</em><br/>'
-        }
-    },
+		    series: [{
+		        name: 'Observations',
+		        data: [],
+		        tooltip: {
+		            headerFormat: '<em>Experiment No {point.key}</em><br/>'
+		        }
+		    }]
 
-    {
-      name: "Observations_2",
-      data: [
-          [100, 200, 300, 400, 500],
-
-      ],
-
-    }, 
-
-    {
-        name: 'Outlier',
-        color: Highcharts.getOptions().colors[5],
-        type: 'scatter',
-        data: [ // x, y positions where 0 is the first category
-            [0, 644],
-            [4, 718],
-            [4, 951],
-            [4, 969]
-        ],
-        marker: {
-            fillColor: 'grey',
-            lineWidth: 1,
-            lineColor: Highcharts.getOptions().colors[0]
-        },
-        tooltip: {
-            pointFormat: 'Observation: {point.y}'
-        }
-    }]
-
-},
+		},
     showSingleIndustry: false,
     singleInd:null,
    

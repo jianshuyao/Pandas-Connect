@@ -110,7 +110,7 @@
                </mdb-col>
                <mdb-col md="2" lg="6">
                   <mdb-card class="cascading-admin-card">
-                     <mdb-card-header> Chance Meter </mdb-card-header>
+                     <mdb-card-header style="background-color: #b3e5fc;" class="card-title">SPECIAL FEATURE: Rate your chance! </mdb-card-header>
                      <mdb-card-body>
                         <div class="justify-content-center d-flex align-items-stretch">
                            <mdb-col>
@@ -209,6 +209,9 @@
    return {
      backgroundImage: `url(${this.header})`
    };
+   },
+   counter(){
+    return Math.round(this.value_2*15+Math.floor((Math.random() * 20) + 1));
    }
    },
    created(){
@@ -334,7 +337,7 @@
     major: '',
     company:{},
     value_2: 3.5,
-    counter: 45,
+    //counter: 45,
     max: 100,
     wordcloud: {},
     industryname:'Accounting and Auditing',
