@@ -226,4 +226,24 @@
    a {
    text-decoration: none;
    }
+   a:link, a:visited {
+   color: white;
+   }
+   a:hover {
+   color: black;
+   }
+   opacity: 0.8;
+   background-color: #4CAF50; 
+   border: 2px solid white;
+   color: white;
+   padding: 5px 8px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 15px;
+   margin: 3px 5px;
+   cursor: pointer;
+   -webkit-transition-duration: 0.4s; /* Safari */
+   transition-duration: 0.4s;
+   }
 </style>
