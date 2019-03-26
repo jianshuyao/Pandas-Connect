@@ -12,7 +12,7 @@
             <h1 style ="font-size:60px;color:white;font-family: 'Monoton', cursive; letter-spacing: 10px;">PANDAS CONNECT</h1>
             <hr align="center" style="width:30%;height:2px;color:white;background-color:white;" />
             <h2 class="text_bg" style="font-size:30px;font-family: 'Nunito'; font-weight:bold;color:white">
-              <i>Professional Academics & Careers Advisory</i>
+              <i>Professional Careers Advisory</i>
             </h2>
             <a href="#/Search"><button class="button button5"><i class="fas fa-industry"></i></i> Industries</button></a>
             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -48,7 +48,7 @@
                   <hr align="left" style="width:15%;height:2px;color:#333;background-color:#333;" />
                   <h2 class="info-title" style="line-height:25px;font-size:30px">What is Pandas Connect?</h2>
                   <p>
-                    Pandas Connect is a joint project by the NUS Institution for Application of Learning Science and Educational Technology(ALSET) and Pandas. It is an academic and career guidance application designed BY students FOR students. Utilizing on the ALSET Educational Data Lake, key analytics insights are shared to aid student make more informed decisions in their University life in NUS.
+                    Pandas Connect is a joint project by the NUS Institution for Application of Learning Science and Educational Technology(ALSET) and Pandas. It is a career guidance application designed BY students FOR students. Utilizing on the ALSET Educational Data Lake, key analytics insights are shared to aid student make more informed decisions in their University life in NUS.
                   </p>
                   <div><br></div>
                   <h2 class="info-title" style="line-height:25px;font-size:30px">Our Mission</h2>
@@ -70,12 +70,39 @@
         </div>
       </div>
       <div class="about4">
+        <div id="why_us_tag">
       <div class="section text-center">
         <div class="container">
           <hr align="center" style="width:10%;height:2px;color:#333;background-color:#333;" />
           <h2 class="title" style="line-height:15px;">Why Pandas Connect?</h2>
+          <div class="row">
+            <div class="sigle-service col-lg-6 col-md-6">
+              <i class="far fa-frown mr-2 fa-3x"></i> <br />
+              <h4 class="card-title">Limited Access to Reliable Career Information</h4>
+              <p style='font-size:15px;'>
+                <ul style="list-style-type:circle; text-align: left;">
+                  <li>Few students are aware of the available platform to consult a CFG mentor</li>
+                  <li>No existing online resources that provide students with the necessary knowledge on careers.</li>
+                  <li>Information from seniors and external networking sessions may be unreliable and not representative!</li>
+                </ul>
+
+            </p>
+            </div>
+            <div class="sigle-service col-lg-6 col-md-6">
+              <i class="fas fa-laptop mr-2 fa-3x"></i> <br />
+              <h4 class="card-title">Lack of Proper Modules Planning</h4>
+              <p style='font-size:15px; text-align: left;'>
+                <ul style="list-style-type:circle;">
+                  <li>Clueless about what modules to take to meet their Career requirement</li>
+                  <li>Unsure of what skills are needed in the industry that they strive for</li>
+                </ul>
+
+            </p>
+            </div>
+          </div>
           </div>
       </div>
+    </div>
       </div>
       <div id = "team_tag">
       <div class="about">

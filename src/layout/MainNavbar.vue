@@ -70,6 +70,25 @@
               </li>
               <li class="md-list-item">
                 <a
+                  href="#why_us_tag"
+                  class="md-list-item-router md-list-item-container md-button-clean dropdown"
+                  v-smooth-scroll
+                >
+                  <div class="md-list-item-content">
+                    <drop-down direction="down">
+                      <md-button
+                        slot="title"
+                        class="md-button md-button-link md-white md-simple"
+                      >
+                        <i class="material-icons">verified_user</i>
+                        <p>Why Us?</p>
+                      </md-button>
+                    </drop-down>
+                  </div>
+                </a>
+              </li>
+              <li class="md-list-item">
+                <a
                   href="#/landing#team_tag"
                   class="md-list-item-router md-list-item-container md-button-clean dropdown"
                 >
