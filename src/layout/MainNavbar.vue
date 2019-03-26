@@ -220,7 +220,7 @@ export default {
       let navbarColor = document.getElementById("toolbar");
       this.currentScrollValue = scrollValue;
       if (this.colorOnScroll > 0 && scrollValue > this.colorOnScroll) {
-        this.extraNavClasses = `md-${this.type}`;
+        //this.extraNavClasses = `md-${this.type}`; 
         navbarColor.classList.remove("md-transparent");
       } else {
         if (this.extraNavClasses) {
