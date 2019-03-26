@@ -135,15 +135,17 @@
          .then(snapshot => {
            this.industry_list = snapshot.val();
          });
+       db.ref("/majwithcompany/")
+            .once("value")
+            .then(snapshot => {
+           this.career_list_all = snapshot.val();
+        });
        },
        methods:{
          updateCareer(){
-            db.ref("/majwithcompany/" + this.maj)
-            .once("value")
-            .then(snapshot => {
-           this.career_list = snapshot.val();
-           this.career_list.sort();
-         });
+            this.career_list = this.career_list_all[this.maj];
+            this.career_list.sort();
+            this.car = '';
          }
        }
     }
