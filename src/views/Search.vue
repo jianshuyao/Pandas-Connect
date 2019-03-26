@@ -39,7 +39,7 @@
                   <option selected="selected" disabled class="placeholder" value=''>Choose your Major</option>
                   <option v-for="industry in industry_list" :key="industry">{{industry}}</option>
                </select>
-               <button class="button button5" v-on:click="$router.push({ path: '/top5industries/' + maj });"><i class="fas fa-industry"></i> Find Industries!</button></a>
+               <button :disabled="maj==''" class="button button5" v-on:click="$router.push({ path: '/top5industries/' + maj });"><i class="fas fa-industry"></i> Find Industries!</button></a>
             </mdb-row>
          </section>
       </section>
