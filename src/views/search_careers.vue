@@ -213,15 +213,6 @@
    text-align: center;
    border-top: 1px solid #000000;
    }
-   .button5 {
-   background-color: #555555;
-   border-radius: 12px;
-   }
-   .button5:hover {
-   background-color: white;
-   color: black;
-   border-radius: 12px;
-   }
    .button {
    a {
    text-decoration: none;
@@ -245,5 +236,14 @@
    cursor: pointer;
    -webkit-transition-duration: 0.4s; /* Safari */
    transition-duration: 0.4s;
+   }
+   .button5 {
+   background-color: #555555;
+   border-radius: 12px;
+   }
+   .button5:hover {
+   background-color: white;
+   color: black;
+   border-radius: 12px;
    }
 </style>
