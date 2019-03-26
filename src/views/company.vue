@@ -8,7 +8,7 @@
             <mdb-row class="justify-content-start">
                <mdb-col col="3" class="align-self-center">
                 <div>
-                  <p @click="showCompany = !showCompany"class="text_bg_2" text.truncate style="font-size:14px;margin-left: 20px;">CLICK HERE to learn more about another company!</p> 
+                  <p @click="showCompany = !showCompany"class="text_bg_2" text.truncate style="font-size:14px;margin-left: 20px;">Want to learn more about another company? Click here!</p>
                   <select v-show="showCompany" class="custom-select custom-select-sm" @change="$router.push({ path: '/company/' + companyRef + '/' + major});" style="margin-left: 20px;" v-model="companyRef">
                      <option disabled selected>Select Another Company of Interest</option>
                      <option v-for="comp in this.companyname">{{comp}}</option>
