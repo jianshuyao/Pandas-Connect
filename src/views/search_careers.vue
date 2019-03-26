@@ -51,7 +51,7 @@
                   </mdb-row>
                   <br/>
             <mdb-row md="6" center v-if="maj!=''&&car!=''">
-               <button class="button button5" v-on:click="$router.push({ path: '/company/' + car + '/' +maj});"><i class="fas fa-industry"></i> Find Company</button>
+               <button class="button button5" v-on:click="$router.push({ path: '/company/' + car + '/' +maj});"><i class="far fa-building"></i> Find Company</button>
             </mdb-row>
          </section>
       </section>
