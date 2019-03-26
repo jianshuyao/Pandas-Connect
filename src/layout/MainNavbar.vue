@@ -98,7 +98,7 @@
                         class="md-button md-button-link md-white md-simple"
                       >
                         <i class="material-icons">people</i>
-                        <p>Team Contact</p>
+                        <p>Team</p>
                       </md-button>
                     </drop-down>
                   </div>
