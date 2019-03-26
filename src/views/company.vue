@@ -66,7 +66,7 @@
                         @sliding-end="onSlideEnd"
                         >
                         <!-- Slides with image only -->
-                        <a href="https://www.google.com" target='_blank'>
+                        <a v-bind:href="'https://www.google.com/search?q='+this.companyRef+''" target='_blank'>
                            <b-carousel-slide img-src="http://latestblogs.in/wp-content/uploads/2018/08/busy-modern-office.jpg" style="height:400px;">
                               <h2>Company Information</h2>
                               <br>
@@ -75,7 +75,7 @@
                            </b-carousel-slide>
                         </a>
                         <!-- Text slides with image -->
-                        <a href="https://www.google.com" target='_blank'>
+                        <a href="https://nus-csm.symplicity.com/" target='_blank'>
                            <b-carousel-slide
                               img-src="https://prodcmscdn.azureedge.net/careerconnectresources/p/MICRUS/en_us/mobile/assets/images/University_students_hero_1920x600.jpg" style="height:400px;">
                               <h2>Summer Internship Program</h2>
@@ -90,7 +90,7 @@
                            </b-carousel-slide>
                         </a>
                         <!-- Slides with custom text -->
-                        <a href="http://lebonheur.org/our-services/emergency-medicine/" target='_blank'>
+                        <a href="https://nus-csm.symplicity.com/" target='_blank'>
                            <b-carousel-slide img-src="https://www.symrise.com/fileadmin/symrise/corporate/your_career/students/Your-career-students-and-interns-how-to-apply02.jpg" style="height:400px;">
                               <h2>Graduate Program</h2>
                               <br><br>
