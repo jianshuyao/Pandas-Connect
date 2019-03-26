@@ -405,7 +405,14 @@
 		        tooltip: {
 		            headerFormat: '<em>{point.key}</em><br/>'
 		        }
-		    }]
+		    }],
+
+        plotOptions: {
+            series: {
+                colorByPoint: true,
+                fillColor: true,
+            }
+        }
 
 		},
     showSingleIndustry: false,
