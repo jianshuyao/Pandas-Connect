@@ -81,9 +81,9 @@
               <h4 class="card-title">Limited Access to Reliable Career Information</h4>
               <p style='font-size:15px;'>
                 <ul style="list-style-type:circle; text-align: left;">
-                  <li>Few students are aware of the available platform to consult a CFG mentor</li>
-                  <li>No existing online resources that provide students with the necessary knowledge on careers.</li>
-                  <li>Information from seniors and external networking sessions may be unreliable and not representative!</li>
+                  <li>Few students are aware of the available platforms to consult a CFG mentor</li>
+                  <li>No existing online resource that provides students with the necessary knowledge on careers</li>
+                  <li>Information from seniors and external networking sessions may be unreliable and not representative</li>
                 </ul>
 
             </p>
@@ -93,8 +93,8 @@
               <h4 class="card-title">Lack of Proper Modules Planning</h4>
               <p style='font-size:15px; text-align: left;'>
                 <ul style="list-style-type:circle;">
-                  <li>Clueless about what modules to take to meet their Career requirement</li>
-                  <li>Unsure of what skills are needed in the industry that they strive for</li>
+                  <li>Clueless about what modules to take to meet their career requirements</li>
+                  <li>Unsure of what skills are needed in the industry that they wish to enter</li>
                 </ul>
 
             </p>
@@ -264,7 +264,10 @@
                     </div>
               <h2 class="text-center title" style="line-height:20px;">Contact Us!</h2>
               <h4 class="text-center description" >
-                Feel free to drop any feedback or suggestions to improve our site! You can also drop us a message for collaboration work :)
+                Feel free to drop any feedback or suggestions to improve our site!
+              </h4>
+              <h4 class="text-center description" >
+                You can also drop us a message for collaboration work :)
               </h4>
               <form class="contact-form">
                 <div class="md-layout">
