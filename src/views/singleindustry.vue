@@ -50,6 +50,19 @@
                   </mdb-card>
                </mdb-col>
              </mdb-row>
+              <mdb-row class="justify-content-center d-flex align-items-stretch">
+                <mdb-col md="2" lg="12">
+                    <mdb-card class="cascading-admin-card">
+                       <mdb-card-header> Salary Comparison by Company </mdb-card-header>
+                       <mdb-card-body>
+                          <div v-if='this.loaded'>
+                            <highcharts class="chart" :options="chartOptions"></highcharts>
+                          </div>
+                       </mdb-card-body>
+                    </mdb-card>
+                 </mdb-col>
+               </mdb-row>
+
                <mdb-row class="justify-content-center d-flex align-items-stretch">
                 <mdb-col>
                   <mdb-card class="cascading-admin-card">
@@ -514,6 +527,13 @@
         count++;
       };
 
+      for (let [ind, val] of Object.entries(top5s)){
+        let salarynode = top5s[ind]['actual_sal'].sort();
+        salarynode.unshift(ind)
+        this.chartOptions['xAxis']['categories'].push(ind);
+        this.chartOptions['series'][0]['data'].push(salarynode);
+      };
+
       let organisation = top5c;
       let cap = organisation['cap'];
       let name = organisation['name'];
@@ -585,6 +605,54 @@
    },
    data () {
    return {
+
+    chartOptions: {
+
+        chart: {
+            type: 'boxplot',
+            inverted: true
+        },
+
+        title: {
+            text: null
+        },
+
+        legend: {
+            enabled: false
+        },
+
+        xAxis: {
+          type: "category",
+            categories:  [],
+            title: {
+                text: 'Company'
+            }
+        },
+
+        yAxis: {
+            title: {
+                text: 'Salary'
+            },
+
+        },
+
+        series: [{
+            name: 'Observations',
+            data: [],
+            tooltip: {
+                headerFormat: '<em>{point.key}</em><br/>'
+            }
+        }],
+
+        plotOptions: {
+            series: {
+                colorByPoint: true,
+                fillColor: true,
+            }
+        }
+
+      },
+
     showSingleIndustry: false,
     backgroundColor: [
               'rgba(255, 99, 132, 0.4)',
