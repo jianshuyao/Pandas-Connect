@@ -789,8 +789,8 @@ export default {
 
         plotOptions: {
           series: {
-            colorByPoint: true,
-            fillColor: true
+            fillColor: '#87CEFA',
+            lineWidth: 2,
           }
         }
       },
