@@ -65,13 +65,22 @@
                         @sliding-start="onSlideStart"
                         @sliding-end="onSlideEnd"
                         >
+                        <!-- Slides with image only -->
+                        <a href="https://www.google.com" target='_blank'>
+                           <b-carousel-slide img-src="http://latestblogs.in/wp-content/uploads/2018/08/busy-modern-office.jpg" style="height:400px;">
+                              <h2>Company Information</h2>
+                              <br>
+                              <p class="text_bg3">My name is Joel. I am 23 this year. I love to code websites. I want to be a full stack developer in the future. Thank you guys. </p>
+                              <br><br><br>
+                           </b-carousel-slide>
+                        </a>
                         <!-- Text slides with image -->
                         <a href="https://www.google.com" target='_blank'>
                            <b-carousel-slide
                               img-src="https://prodcmscdn.azureedge.net/careerconnectresources/p/MICRUS/en_us/mobile/assets/images/University_students_hero_1920x600.jpg" style="height:400px;">
                               <h2>Summer Internship Program</h2>
                               <br>
-                              <p class="text_bg3">My name is Joel. I am 23 this year. I love to code websites. I want to be a full stack developer in the future. Thank you guys.</p>
+                              <p class="text_bg3" style="text-align:left">1) Web Development Intern:<br>NUS TalentConnect Job ID: 27995<br>2) Mobile Development Intern:<br>NUS TalentConnect Job ID: 27998</p>
                               <br><br><br>
                            </b-carousel-slide>
                         </a>
@@ -79,15 +88,6 @@
                         <a href="http://lebonheur.org/our-services/emergency-medicine/" target='_blank'>
                            <b-carousel-slide img-src="https://www.symrise.com/fileadmin/symrise/corporate/your_career/students/Your-career-students-and-interns-how-to-apply02.jpg" style="height:400px;">
                               <h2>Graduate Program</h2>
-                              <br>
-                              <p class="text_bg3">My name is Joel. I am 23 this year. I love to code websites. I want to be a full stack developer in the future. Thank you guys.</p>
-                              <br><br><br>
-                           </b-carousel-slide>
-                        </a>
-                        <!-- Slides with image only -->
-                        <a href="https://www.google.com" target='_blank'>
-                           <b-carousel-slide img-src="http://latestblogs.in/wp-content/uploads/2018/08/busy-modern-office.jpg" style="height:400px;">
-                              <h2>Our Core Values</h2>
                               <br>
                               <p class="text_bg3">My name is Joel. I am 23 this year. I love to code websites. I want to be a full stack developer in the future. Thank you guys.</p>
                               <br><br><br>
