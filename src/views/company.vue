@@ -1,5 +1,3 @@
-<!-- Shouldnt allow selection of company unless chosen major -->
-<!-- Insert position dropdown hardcoded -->
 <template>
   <div class="wrapper">
     <section id="company">
@@ -63,27 +61,6 @@
         </mdb-row>
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col>
-            <!--
-                     <mdb-carousel class="cascading-admin-card" :interval="8000" showControls showIndicators style="height:400px">
-                       <mdb-carousel-item img src="https://prodcmscdn.azureedge.net/careerconnectresources/p/MICRUS/en_us/mobile/assets/images/University_students_hero_1920x600.jpg" mask="black-light" alt="First slide" href="www.google.com">
-                         <a href="https://www.google.com" target='_blank'>
-                         <mdb-carousel-caption title="Summer Internship Program" text="Click here to learn more!" content="Testing"></mdb-carousel-caption>
-                         </a>
-                       </mdb-carousel-item>
-                       <mdb-carousel-item img src="https://www.symrise.com/fileadmin/symrise/corporate/your_career/students/Your-career-students-and-interns-how-to-apply02.jpg" mask="black-light" alt="Second slide">
-                         <a href="http://lebonheur.org/our-services/emergency-medicine/" target='_blank'>
-                         <mdb-carousel-caption title="Graduate Program" text="Click here to learn more!">
-                           <a class="btn btn-large pull-right" href="http://lebonheur.org/our-services/emergency-medicine/">Emergency Medicine</a>
-                         </mdb-carousel-caption>
-                         </a>
-                       </mdb-carousel-item>
-                       <mdb-carousel-item img src="http://latestblogs.in/wp-content/uploads/2018/08/busy-modern-office.jpg" mask="black-light" alt="Third slide">
-                         <a href="https://www.google.com" target='_blank'>
-                         <mdb-carousel-caption title="Our Core Values" text="Click here to learn more!" href="www.google.com"></mdb-carousel-caption>
-                        </a> 
-                       </mdb-carousel-item>
-                     </mdb-carousel>
-                     -->
             <mdb-card class="cascading-admin-card">
               <b-carousel
                 id="carousel1"

@@ -25,9 +25,7 @@
                 "
                 v-model="singleInd"
               >
-                <option disabled selected
-                  >Select Particular Industry of Interest</option
-                >
+                <option disabled value="">Select Particular Industry of Interest</option>
                 <option v-for="ind in this.industyname">{{ ind }}</option>
               </select>
             </div>
@@ -516,7 +514,7 @@ export default {
         }
       },
       showSingleIndustry: false,
-      singleInd: null,
+      singleInd: '',
 
       backgroundColor: [
         "rgba(255, 99, 132, 0.4)",
