@@ -7,7 +7,7 @@
             <mdb-row class="justify-content-start">
                <mdb-col col="3" class="align-self-center">
                 <div>
-                  <p @click="showSingleIndustry = !showSingleIndustry"class="text_bg_2" text.truncate style="font-size:14px;margin-left: 20px;">CLICK HERE to learn more about another industry!</p> 
+                  <p @click="showSingleIndustry = !showSingleIndustry"class="text_bg_2" text.truncate style="font-size:14px;margin-left: 20px;">Other Industry's Information Here!</p> 
                <select v-show="showSingleIndustry" id="newIndustry" class="custom-select custom-select-sm" style="margin-left: 20px;" @change="$router.push({ path: '/singleindustry/' + majorname + '/' + currname});" v-model="currname">
                   <option disabled>Select Another Industry of Interest</option>
                   <option v-for="ind in this.industryname">{{ind}}</option>
@@ -53,7 +53,7 @@
               <mdb-row class="justify-content-center d-flex align-items-stretch">
                 <mdb-col md="2" lg="12">
                     <mdb-card class="cascading-admin-card">
-                       <mdb-card-header> Salary Comparison by Company </mdb-card-header>
+                       <mdb-card-header> Salary Range by Company </mdb-card-header>
                        <mdb-card-body>
                           <div v-if='this.loaded'>
                             <highcharts class="chart" :options="chartOptions"></highcharts>

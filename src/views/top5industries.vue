@@ -6,7 +6,7 @@
             <mdb-row class="justify-content-start">
                <mdb-col col="3" class="align-self-center">
                   <div>
-                  <p @click="showSingleIndustry = !showSingleIndustry"class="text_bg_2" text.truncate style="font-size:14px;margin-left: 20px;">Want to learn more about an industry? Click here!</p>  
+                  <p @click="showSingleIndustry = !showSingleIndustry"class="text_bg_2" text.truncate style="font-size:14px;margin-left: 20px;">Individual Industry Information Here!</p>  
                   <select v-show="showSingleIndustry" class="custom-select custom-select-sm" style="margin-left: 20px;" @change="$router.push({ path: '/singleindustry/' + currentMajor + '/' +singleInd });" v-model="singleInd">
                      <option disabled selected>Select Particular Industry of Interest</option>
                      <option v-for="ind in this.industyname">{{ind}}</option>
@@ -52,7 +52,7 @@
 
                <mdb-col md="2" lg="12">
                   <mdb-card class="cascading-admin-card">
-                     <mdb-card-header> Salary Comparison by Industry </mdb-card-header>
+                     <mdb-card-header> Salary Range by Industry</mdb-card-header>
                      <mdb-card-body>
                         <div v-if='this.loaded'>
                           <highcharts class="chart" :options="chartOptions"></highcharts>
