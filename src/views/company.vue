@@ -151,7 +151,15 @@
                            </div>
 
                            <div v-else>
-                              <b-progress :value="counter" :max="max" show-progress animated  style="height:35px"/>
+                              <div v-if="counter<=33">
+                                <b-progress :value="counter" variant="danger" max=100 show-progress animated  style="height:35px"/>
+                              </div>
+                              <div v-else-if="counter>33 && counter<=66">
+                                <b-progress :value="counter" variant="warning" max=100 show-progress animated  style="height:35px"/>
+                              </div>
+                              <div v-else>
+                                <b-progress :value="counter" variant="success" max=100 show-progress animated  style="height:35px"/>
+                              </div>
                               <h5 style="text-align:center">Your chance for the position is rated at {{counter}}%</h5>
                            </div>
                         </div>
@@ -358,8 +366,6 @@
     major: '',
     company:{},
     value_2: 3.5,
-    //counter: 45,
-    max: 100,
     wordcloud: {},
     industryname:'Accounting and Auditing',
     industry : {},
