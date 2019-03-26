@@ -136,8 +136,14 @@
                         </div>
                         <hr/>
                         <div>
-                           <b-progress :value="counter" :max="max" show-progress animated  style="height:35px"/>
-                           <h5 style="text-align:center">Your chance for the position is rated at {{counter}}%</h5>
+                           <div v-if="this.jobTit.length==0">
+                              <h4 style="text-align:center">Please select your CAP and desired job position!</h4>
+                           </div>
+
+                           <div v-else>
+                              <b-progress :value="counter" :max="max" show-progress animated  style="height:35px"/>
+                              <h5 style="text-align:center">Your chance for the position is rated at {{counter}}%</h5>
+                           </div>
                         </div>
                      </mdb-card-body>
                   </mdb-card>
