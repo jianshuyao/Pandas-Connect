@@ -14,9 +14,9 @@
             <h2 class="text_bg" style="font-size:30px;font-family: 'Nunito'; font-weight:bold;color:white">
               <i>Professional Careers Advisory</i>
             </h2>
-            <a href="#/Search"><button class="button button5"><i class="fas fa-industry"></i></i> Industries</button></a>
+            <a href="#/Search"><button class="button button5"><i class="fas fa-industry"></i> Industries</button></a>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#/search_careers"><button class="button button5"><i class="far fa-building"></i></i> Companies</button></a>
+            <a href="#/search_careers"><button class="button button5"><i class="far fa-building"></i> Companies</button></a>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@
                         alt="Thumbnail Image"
                       />
                       <div><br></div>
-                  <p> 
+                  <p align="justify"> 
                     <b>Professor Chris Boesch</b> is an Associate Professor at the NUS School of Computing and Deputy Director of the Translational Research Unit at ALSET. With over twenty years of experience in engineering and management roles at leading global technology firms, he oversees the ALSET Educational Data Lake and various translational research initiatives.
                   </p>
                 </div>
@@ -47,20 +47,19 @@
                 <div class="info mw-90">
                   <hr align="left" style="width:15%;height:2px;color:#333;background-color:#333;" />
                   <h2 class="info-title" style="line-height:25px;font-size:30px">What is Pandas Connect?</h2>
-                  <p>
+                  <p align="justify">
                     Pandas Connect is a joint project by the NUS Institution for Application of Learning Science and Educational Technology(ALSET) and Pandas. It is a career guidance application designed <strong>BY</strong> students <strong>FOR</strong> students. Utilizing the ALSET Educational Data Lake, key analytics insights are shared with students to help them make more informed decisions in their career choices.
                   </p>
                   <div><br></div>
                   <h2 class="info-title" style="line-height:25px;font-size:30px">Our Mission</h2>
-                  <p>
-                  To empower the students of NUS with the best information to make better decisions to realise their full potential.
+                  <p align="justify">
+                  To empower students of NUS by providing them with more career information for them to make better decisions to realise their full potential.
                   </p>
                     <div><br></div>
                     <h2 class="info-title" style="line-height:25px;font-size:30px">Our Vision</h2>
-                  <p>
+                  <p align="justify">
                   To organize the University’s data, process it, and make it more accessible and useful for students.
                   </p>
-                 <!-- <button class="button6">Read More</button> -->
                 </div>
               </div>
             </div>

@@ -12,7 +12,7 @@
         <h3 class="md-title" style="font-weight:bold; font-size:22px">PANDAS CONNECT</h3>
         <a href="#/Search"><button class="button button5"><i class="fas fa-industry"></i> Industries</button></a>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#/search_careers"><button class="button button5"><i class="far fa-building"></i></i> Companies</button></a>
+            <a href="#/search_careers"><button class="button button5"><i class="far fa-building"></i> Companies</button></a>
       </div>
       <div class="md-toolbar-section-end mw-100">
         <md-button

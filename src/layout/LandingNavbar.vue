@@ -8,8 +8,10 @@
   >
     <div class="md-toolbar-row md-collapse-lateral">
       <div class="md-toolbar-section-start mw-100">
-        <img src="Panda.png" style="width:60px;height:50px"> 
-        <h3 class="md-title" style="font-weight:bold; font-size:22px">PANDAS CONNECT</h3>
+        <img src="Panda.png" style="width:60px;height:50px" />
+        <h3 class="md-title" style="font-weight:bold; font-size:22px">
+          PANDAS CONNECT
+        </h3>
       </div>
       <div class="md-toolbar-section-end mw-100">
         <md-button
@@ -32,8 +34,9 @@
                 <a
                   href="#landing"
                   v-smooth-scroll
-                  class="md-list-item-router md-list-item-container md-button-clean dropdown">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  class="md-list-item-router md-list-item-container md-button-clean dropdown"
+                >
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <div class="md-list-item-content">
                     <drop-down direction="down">
                       <md-button
@@ -126,9 +129,9 @@
               <md-list-item
                 href="https://github.com/thepandas/Pandas-Connect"
                 target="_blank"
-                class ="md-simple"
+                class="md-simple"
               >
-                <i class="fab fa-github" ></i>
+                <i class="fab fa-github"></i>
                 <p class="hidden-lg">Github</p>
                 <md-tooltip md-direction="bottom"
                   >Check out our Github</md-tooltip
@@ -236,15 +239,19 @@ export default {
     scrollToElement() {
       let element_id = document.getElementById("about_tag");
       if (element_id) {
-        element_id.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+        element_id.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest"
+        });
       }
     },
     scrollMeTo(refName) {
       var element = this.$refs[refName];
       var top = element.offsetTop;
 
-    window.scrollTo(0, top);
-  }
+      window.scrollTo(0, top);
+    }
   },
   mounted() {
     document.addEventListener("scroll", this.scrollListener);

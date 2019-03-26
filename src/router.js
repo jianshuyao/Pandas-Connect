@@ -4,16 +4,15 @@ import Landing from "./views/Landing.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import LandingNavbar from "./layout/LandingNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
-import search from "./views/Search.vue"
-import search2 from "./views/search_careers.vue"
-import top5industries from "./views/top5industries.vue"
-import singleindustry from "./views/singleindustry.vue"
-import company from "./views/company.vue"
+import search from "./views/Search.vue";
+import search2 from "./views/search_careers.vue";
+import top5industries from "./views/top5industries.vue";
+import singleindustry from "./views/singleindustry.vue";
+import company from "./views/company.vue";
 
 Vue.use(Router);
 
 export default new Router({
-  
   routes: [
     {
       path: "/",
@@ -27,13 +26,17 @@ export default new Router({
     {
       path: "/landing",
       name: "landing",
-      components: { default: Landing, header: LandingNavbar, footer: MainFooter },
+      components: {
+        default: Landing,
+        header: LandingNavbar,
+        footer: MainFooter
+      },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
       }
     },
-    
+
     {
       path: "/search_careers",
       name: "search_careers",
@@ -55,7 +58,11 @@ export default new Router({
     {
       path: "/top5industries/:majorName",
       name: "top5industries",
-      components: { default: top5industries, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: top5industries,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
@@ -64,7 +71,11 @@ export default new Router({
     {
       path: "/singleindustry/:currMaj/:indName",
       name: "singleindustry",
-      components: { default: singleindustry, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: singleindustry,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
@@ -79,7 +90,6 @@ export default new Router({
         footer: { backgroundColor: "black" }
       }
     }
-    
   ],
   scrollBehavior: to => {
     if (to.hash) {
