@@ -126,8 +126,8 @@
                            </mdb-col>
                            <mdb-col>
                               <label>Interested Position</label>
-                              <select class="custom-select custom-select-sm">
-                                 <option selected>Select a Position</option>
+                              <select class="custom-select custom-select-sm" v-model="jobTit">
+                                 <option disabled value="">Select a Position</option>
                                  <option 
                                   v-for="pos in this.company['positions']['name']">{{pos}}
                                 </option>
@@ -211,7 +211,7 @@
    };
    },
    counter(){
-    return Math.round(this.value_2*15+Math.floor((Math.random() * 20) + 1));
+    return Math.round(this.value_2*15+this.jobTit.length%20);
    }
    },
    created(){
@@ -330,7 +330,7 @@
               'rgba(225, 170, 128, 1)'
             ],
     borderWidth: 1,
-    
+    jobTit:'',
     slide: 0,
     sliding: null,
     companyRef:null,
