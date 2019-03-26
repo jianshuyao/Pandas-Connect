@@ -8,7 +8,7 @@
             <mdb-row class="justify-content-start">
                <mdb-col col="3" class="align-self-center">
                 <div>
-                  <p @click="showCompany = !showCompany"class="text_bg_2" text.truncate style="font-size:14px;margin-left: 20px;">CLICK HERE to learn more about another company!</p> 
+                  <p @click="showCompany = !showCompany"class="text_bg_2" text.truncate style="font-size:14px;margin-left: 20px;">Want to learn more about another company? Click here!</p>
                   <select v-show="showCompany" class="custom-select custom-select-sm" @change="$router.push({ path: '/company/' + companyRef + '/' + major});" style="margin-left: 20px;" v-model="companyRef">
                      <option disabled selected>Select Another Company of Interest</option>
                      <option v-for="comp in this.companyname">{{comp}}</option>
@@ -70,7 +70,7 @@
                            <b-carousel-slide img-src="http://latestblogs.in/wp-content/uploads/2018/08/busy-modern-office.jpg" style="height:400px;">
                               <h2>Company Information</h2>
                               <br>
-                              <p class="text_bg3">My name is Joel. I am 23 this year. I love to code websites. I want to be a full stack developer in the future. Thank you guys. </p>
+                              <p class="text_bg3">{{info['information']}}</p>
                               <br><br><br>
                            </b-carousel-slide>
                         </a>
@@ -79,8 +79,13 @@
                            <b-carousel-slide
                               img-src="https://prodcmscdn.azureedge.net/careerconnectresources/p/MICRUS/en_us/mobile/assets/images/University_students_hero_1920x600.jpg" style="height:400px;">
                               <h2>Summer Internship Program</h2>
-                              <br>
-                              <p class="text_bg3" style="text-align:left">1) Web Development Intern:<br>NUS TalentConnect Job ID: 27995<br>2) Mobile Development Intern:<br>NUS TalentConnect Job ID: 27998</p>
+                              <br><br>
+                              <mdb-row class="justify-content-center d-flex align-items-stretch">
+                                <div v-for="item in info['positions']['intern']">
+                              <p class="text_bg4">{{item['name']}}<br>NUS TalentConnect Job ID: {{item['code']}}</p>
+                              &nbsp;&nbsp;
+                            </div>
+                            </mdb-row>
                               <br><br><br>
                            </b-carousel-slide>
                         </a>
@@ -88,8 +93,13 @@
                         <a href="http://lebonheur.org/our-services/emergency-medicine/" target='_blank'>
                            <b-carousel-slide img-src="https://www.symrise.com/fileadmin/symrise/corporate/your_career/students/Your-career-students-and-interns-how-to-apply02.jpg" style="height:400px;">
                               <h2>Graduate Program</h2>
-                              <br>
-                              <p class="text_bg3">My name is Joel. I am 23 this year. I love to code websites. I want to be a full stack developer in the future. Thank you guys.</p>
+                              <br><br>
+                              <mdb-row class="justify-content-center d-flex align-items-stretch">
+                                <div v-for="item in info['positions']['graduate']">
+                              <p class="text_bg4">{{item['name']}}<br>NUS TalentConnect Job ID: {{item['code']}}</p>
+                              &nbsp;&nbsp;
+                            </div>
+                            </mdb-row>
                               <br><br><br>
                            </b-carousel-slide>
                         </a>
@@ -208,6 +218,11 @@
     .then(()=>{
         this.updateCompanies();
         this.renderChart();
+    })
+    db.ref('companyinfo/' + this.companyRef)
+      .once('value')
+      .then(snapshot=>{
+      this.info = snapshot.val();
     })
    },
    computed: {
@@ -349,6 +364,7 @@
     industryname:'Accounting and Auditing',
     industry : {},
     loaded: false,
+    info:{},
    modal: false,
    showFrameModalTop: false,
    showFrameModalBottom: false,
@@ -542,6 +558,17 @@
    background-color: #757575; 
    width: 300px;
    height: 150px;
+   text-align: center;
+   display: inline-block;
+   }
+   .text_bg4
+   {
+   opacity: 0.75;
+   padding: 20px;
+   border-radius: 25px;
+   background-color: #757575; 
+   width: 300px;
+   height: 100px;
    text-align: center;
    display: inline-block;
    }
