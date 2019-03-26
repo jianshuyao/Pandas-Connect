@@ -116,7 +116,7 @@
                         class="md-button md-button-link md-white md-simple"
                       >
                         <i class="material-icons">email</i>
-                        <p>Contact</p>
+                        <p>Contact Us</p>
                       </md-button>
                     </drop-down>
                   </div>
