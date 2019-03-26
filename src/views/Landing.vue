@@ -316,7 +316,7 @@ export default {
     ,
     teamImg1: {
       type: String,
-      default: require("@/assets/img/faces/jeremy.jpg")
+      default: require("@/assets/img/faces/jeremy.png")
     },
     teamImg2: {
       type: String,
