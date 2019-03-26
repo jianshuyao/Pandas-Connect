@@ -48,7 +48,7 @@
                   <hr align="left" style="width:15%;height:2px;color:#333;background-color:#333;" />
                   <h2 class="info-title" style="line-height:25px;font-size:30px">What is Pandas Connect?</h2>
                   <p>
-                    Pandas Connect is a joint project by the NUS Institution for Application of Learning Science and Educational Technology(ALSET) and Pandas. It is a career guidance application designed BY students FOR students. Utilizing on the ALSET Educational Data Lake, key analytics insights are shared to aid student make more informed decisions in their University life in NUS.
+                    Pandas Connect is a joint project by the NUS Institution for Application of Learning Science and Educational Technology(ALSET) and Pandas. It is a career guidance application designed BY students FOR students. Utilizing on the ALSET Educational Data Lake, key analytics insights are shared to aid student make more informed decisions in their Career choices.
                   </p>
                   <div><br></div>
                   <h2 class="info-title" style="line-height:25px;font-size:30px">Our Mission</h2>
@@ -60,7 +60,7 @@
                   <p>
                   To organize the University’s data and make it universally accessible and useful.
                   </p>
-                  <button class="button6">Read More</button>
+                 <!-- <button class="button6">Read More</button> -->
                 </div>
               </div>
             </div>
@@ -316,7 +316,7 @@ export default {
     ,
     teamImg1: {
       type: String,
-      default: require("@/assets/img/faces/jeremy.jpg")
+      default: require("@/assets/img/faces/jeremy.png")
     },
     teamImg2: {
       type: String,
