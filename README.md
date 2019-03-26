@@ -43,12 +43,13 @@ The documentation for the Vue Material Kit is hosted at our [website](https://de
 Within the download you'll find the following directories and files:
 
 ```
-vue-material-kit/
+Pandas-Connect/
 
 ├── CHANGELOG.md
 ├── README.md
 ├── babel.config.js
 ├── package.json
+├── bt3103.json
 ├── public
 │   └── index.html
 ├── src
@@ -95,26 +96,15 @@ vue-material-kit/
 │           ├── SmallNavigationSection.vue
 │           ├── TabsSection.vue
 │           └── TypographyImagesSection.vue
+│       ├── company.vue
+│       ├── Landing.vue
+│       ├── Search.vue
+│       ├── search_careers.vue
+│       ├── singleindustry.vue
+│       └── top5industries.vue
 └── vue.config.js
 
 ```
-
-## Resources
-- [Live Preview](https://demos.creative-tim.com/vue-material-kit)
-- Download Page: https://www.creative-tim.com/product/vue-material-kit
-- Documentation is [here](https://demos.creative-tim.com/vue-material-kit/documentation)
-- License Agreement: https://www.creative-tim.com/license
-- Support: https://www.creative-tim.com/contact-us
-- Issues: [Github Issues Page](https://github.com/creativetimofficial/vue-material-kit/issues)
-- For Front End Development - [Material Kit](https://www.creative-tim.com/product/material-kit)
-
-| HTML | React | Vue  | Angular |
-| --- | --- | ---  | ---  |
-| [![Material Dashboard  HTML](https://github.com/creativetimofficial/public-assets/blob/master/material-dashboard-html/material-dashboard.jpeg?raw=true)](https://www.creative-tim.com/product/material-dashboard) | [![Material Dashboard  React](https://github.com/creativetimofficial/public-assets/blob/master/material-dashboard-react/material-dashboard-react.jpeg?raw=true)](https://www.creative-tim.com/product/material-dashboard-react) | [![Vue Material Dashboard](https://github.com/creativetimofficial/public-assets/blob/master/vue-material-dashboard/vue-material-dashboard.jpeg?raw=true)](https://www.creative-tim.com/product/vue-material-dashboard)  | [![ Material Dashboard Angular](https://github.com/creativetimofficial/public-assets/blob/master/material-dashboard-angular/material-dashboard-angular.jpg?raw=true)](https://www.creative-tim.com/product/material-dashboard-angular2)
-
-| HTML Dark | Vuetify  |
-| --- | --- |
-| [![Material Dashboard Dark](https://github.com/creativetimofficial/public-assets/blob/master/material-dashboard-dark/material-dashboard-dark.jpg?raw=true)](https://www.creative-tim.com/product/material-dashboard-dark) | [![Material Dashboard Vuetify](https://github.com/creativetimofficial/public-assets/blob/master/material-dashboard-vuetify/material-dashboard-vuetify.jpg?raw=true)](https://www.creative-tim.com/product/vuetify-material-dashboard)
 
 ## Reporting Issues
 We use GitHub Issues as the official bug tracker for Pandas-Connect. Feel free to [email us](the.pandas3103@gmail.com).
