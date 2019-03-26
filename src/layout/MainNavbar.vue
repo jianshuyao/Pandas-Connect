@@ -70,9 +70,8 @@
               </li>
               <li class="md-list-item">
                 <a
-                  href="#why_us_tag"
+                  href="#/landing#why_us_tag"
                   class="md-list-item-router md-list-item-container md-button-clean dropdown"
-                  v-smooth-scroll
                 >
                   <div class="md-list-item-content">
                     <drop-down direction="down">
