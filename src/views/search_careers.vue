@@ -46,7 +46,7 @@
                         <datalist id="suggestions" style="width:350px;">
                            <option v-for="career in career_list">{{career}}</option>
                         </datalist>
-                        <input @change="$router.push({ path: '/company/' + car + '/' +maj});" autoComplete="on" list="suggestions" style="width:350px;height:40px;" placeholder=" Choose Your Company of Interest" v-model="car"/> 
+                        <input :disabled="maj==''" @change="$router.push({ path: '/company/' + car + '/' +maj});" autoComplete="on" list="suggestions" style="width:350px;height:40px;" placeholder=" Choose Your Company of Interest" v-model="car"/> 
                      </mdb-col>
                   </mdb-row>
          </section>
