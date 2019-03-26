@@ -31,7 +31,7 @@
                </mdb-modal-title>
             </mdb-row>
             <mdb-row md="6" center>
-               <p style="font-size:18px"><i>Advanced Analytics brought to you by The Pandas!</i></p>
+               <p style="font-size:18px"><i>Advanced Analytics brought to you by The Pandas</i></p>
                <br/><br/>
             </mdb-row>
             <mdb-row md="6" center>
@@ -42,7 +42,7 @@
             </mdb-row>
             <br/>
             <mdb-row md="6" center v-if="maj!=''">
-               <button class="button button5" v-on:click="$router.push({ path: '/top5industries/' + maj });"><i class="fas fa-industry"></i> Find Industry</button>
+               <button class="button button5" v-on:click="$router.push({ path: '/top5industries/' + maj });"><i class="fas fa-industry"></i> Find Industries</button>
             </mdb-row>
          </section>
       </section>

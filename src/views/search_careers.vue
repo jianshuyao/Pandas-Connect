@@ -31,7 +31,7 @@
                      </mdb-modal-title>
                   </mdb-row>
                   <mdb-row md="6" center>
-                     <p style="font-size:18px"><i>Advanced Analytics brought to you by The Pandas!</i></p>
+                     <p style="font-size:18px"><i>Advanced Analytics brought to you by The Pandas</i></p>
                      <br/><br/>
                   </mdb-row>
                   <mdb-row md="6" center>
