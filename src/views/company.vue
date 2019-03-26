@@ -8,7 +8,7 @@
             <mdb-row class="justify-content-start">
                <mdb-col col="3" class="align-self-center">
                 <div>
-                  <p @click="showCompany = !showCompany"class="text_bg_2" text.truncate style="font-size:14px;margin-left: 20px;">Want to learn more about another company? Click here!</p>
+                  <p @click="showCompany = !showCompany"class="text_bg_2" text.truncate style="font-size:14px;margin-left: 20px;">Other Company's Information Here!</p>
                   <select v-show="showCompany" class="custom-select custom-select-sm" @change="$router.push({ path: '/company/' + companyRef + '/' + major});" style="margin-left: 20px;" v-model="companyRef">
                      <option disabled selected>Select Another Company of Interest</option>
                      <option v-for="comp in this.companyname">{{comp}}</option>
@@ -120,7 +120,7 @@
                </mdb-col>
                <mdb-col md="2" lg="6">
                   <mdb-card class="cascading-admin-card">
-                     <mdb-card-header style="background-color: #b3e5fc;" class="card-title">SPECIAL FEATURE: Rate your chance! </mdb-card-header>
+                     <mdb-card-header style="background-color: #b3e5fc;" class="card-title">Rate your chances</mdb-card-header>
                      <mdb-card-body>
                         <div class="justify-content-center d-flex align-items-stretch">
                            <mdb-col>
@@ -135,7 +135,7 @@
                                  ></vue-slider>
                            </mdb-col>
                            <mdb-col>
-                              <label>Interested Position</label>
+                              <label>Desired Job Position</label>
                               <select class="custom-select custom-select-sm" v-model="jobTit">
                                  <option disabled value="">Select a Position</option>
                                  <option 
@@ -209,8 +209,8 @@
    import {db} from '../firebase';
    
    export default {
-   name: 'Dashboard',
-   bodyClass: "landing-page",
+   name: 'Company',
+   bodyClass: "company-page",
    props: {
    header: {
    type: String,
@@ -311,7 +311,6 @@
     IEcharts,
      mdbSelect,
       mdbContainer,
-   NavTabsCard,
    mdbRow,
    mdbCol,
    mdbBtn,
@@ -368,34 +367,10 @@
     company:{},
     value_2: 3.5,
     wordcloud: {},
-    industryname:'Accounting and Auditing',
     industry : {},
     loaded: false,
     info:{},
-   modal: false,
-   showFrameModalTop: false,
-   showFrameModalBottom: false,
-   showSideModalTopRight: false,
-   showSideModalTopLeft: false,
-   showSideModalBottomRight: false,
-   showSideModalBottomLeft: false,
-   showCentralModalSmall: false,
-   showCentralModalMedium: false,
-   showCentralModalLarge: false,
-   showCentralModalFluid: false,
-   showFluidModalRight: false,
-   showFluidModalLeft: false,
-   showFluidModalTop: false,
-   showFluidModalBottom: false,
-   currentViz: "HiringTrend",
-   
-   vizs: [
-    'HiringTrend',
-    'SalaryDistribution',
-    'Organisations',
-    'CAPDistribution'
-   ],
-   
+   modal: false,   
    tableData: {
         columns: [
           {
@@ -488,16 +463,6 @@
                }
              }]
            }
-         },
-         radarChartData: {},
-         radarChartOptions: {
-           responsive: true,
-           maintainAspectRatio: false
-         },
-         doughnutChartData: {},
-         doughnutChartOptions: {
-           responsive: true,
-           maintainAspectRatio: false
          }
        }
      }

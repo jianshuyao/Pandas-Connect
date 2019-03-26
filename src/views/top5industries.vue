@@ -189,8 +189,8 @@
    const items = [];
    
    export default {
-   name: 'Dashboard',
-   bodyClass: "landing-page",
+   name: 'Top 5 Industries',
+   bodyClass: "top5industries-page",
    props: {
    header: {
    type: String,
@@ -342,7 +342,6 @@
     highcharts: Chart,
      mdbSelect,
       mdbContainer,
-   NavTabsCard,
    mdbRow,
    mdbCol,
    mdbBtn,
@@ -355,8 +354,6 @@
    mdbBarChart,
    mdbPieChart,
    mdbLineChart,
-   mdbRadarChart,
-   mdbDoughnutChart,
    mdbListGroup,
    mdbListGroupItem,
    mdbBadge,
@@ -447,21 +444,6 @@
     industyname : [],
     loaded: false,
    modal: false,
-   showFrameModalTop: false,
-   showFrameModalBottom: false,
-   showSideModalTopRight: false,
-   showSideModalTopLeft: false,
-   showSideModalBottomRight: false,
-   showSideModalBottomLeft: false,
-   showCentralModalSmall: false,
-   showCentralModalMedium: false,
-   showCentralModalLarge: false,
-   showCentralModalFluid: false,
-   showFluidModalRight: false,
-   showFluidModalLeft: false,
-   showFluidModalTop: false,
-   showFluidModalBottom: false,
-   currentViz: "HiringTrend",
    
    //TableData
     tableData: items,
@@ -482,14 +464,6 @@
     sortDirection: 'asc',
     filter: null,
     modalInfo: { title: '', content: '' },
-   
-   
-   vizs: [
-    'HiringTrend',
-    'SalaryDistribution',
-    'Organisations',
-    'CAPDistribution'
-   ],
    
           barChartData: {
           labels:[],
@@ -547,16 +521,6 @@
                }
              }]
            }
-         },
-         radarChartData: {},
-         radarChartOptions: {
-           responsive: true,
-           maintainAspectRatio: false
-         },
-         doughnutChartData: {},
-         doughnutChartOptions: {
-           responsive: true,
-           maintainAspectRatio: false
          }
        }
      }

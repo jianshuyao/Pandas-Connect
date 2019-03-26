@@ -57,8 +57,8 @@
       } from '@/components'
       
       export default {
-      name: 'Dashboard',
-      bodyClass: "landing-page",
+      name: 'Industry Search',
+      bodyClass: "industrySearch-page",
       props: {
       header: {
       type: String,
@@ -73,7 +73,6 @@
       }
       },
       components: {
-      NavTabsCard,
       mdbRow,
       mdbCol,
       mdbBtn,
@@ -83,11 +82,6 @@
       mdbCardText,
       mdbIcon,
       mdbTbl,
-      mdbBarChart,
-      mdbPieChart,
-      mdbLineChart,
-      mdbRadarChart,
-      mdbDoughnutChart,
       mdbListGroup,
       mdbListGroupItem,
       mdbBadge,
@@ -101,20 +95,6 @@
       return {
       maj:"",
       modal: false,
-      showFrameModalTop: false,
-      showFrameModalBottom: false,
-      showSideModalTopRight: false,
-      showSideModalTopLeft: false,
-      showSideModalBottomRight: false,
-      showSideModalBottomLeft: false,
-      showCentralModalSmall: false,
-      showCentralModalMedium: false,
-      showCentralModalLarge: false,
-      showCentralModalFluid: false,
-      showFluidModalRight: false,
-      showFluidModalLeft: false,
-      showFluidModalTop: false,
-      showFluidModalBottom: false,
       industry_list:{} 
       }
       },

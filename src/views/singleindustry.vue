@@ -331,8 +331,8 @@
    const items2 = []
    
    export default {
-   name: 'Dashboard',
-   bodyClass: "landing-page",
+   name: 'Single Industry',
+   bodyClass: "singleIndustry-page",
    props: {
    header: {
    type: String,
@@ -394,10 +394,8 @@
    watch:{
       '$route' (to, from) {
         this.$router.go()
-
-    }
       }
-,
+    },
    methods:{
 
     info(item, index, button) {
@@ -578,7 +576,6 @@
     IEcharts,
     mdbSelect,
     mdbContainer,
-   NavTabsCard,
    mdbRow,
    mdbCol,
    mdbBtn,
@@ -591,8 +588,6 @@
    mdbBarChart,
    mdbPieChart,
    mdbLineChart,
-   mdbRadarChart,
-   mdbDoughnutChart,
    mdbListGroup,
    mdbListGroupItem,
    mdbBadge,
@@ -681,28 +676,6 @@
     loaded: false,
     recommended: false,
    modal: false,
-   showFrameModalTop: false,
-   showFrameModalBottom: false,
-   showSideModalTopRight: false,
-   showSideModalTopLeft: false,
-   showSideModalBottomRight: false,
-   showSideModalBottomLeft: false,
-   showCentralModalSmall: false,
-   showCentralModalMedium: false,
-   showCentralModalLarge: false,
-   showCentralModalFluid: false,
-   showFluidModalRight: false,
-   showFluidModalLeft: false,
-   showFluidModalTop: false,
-   showFluidModalBottom: false,
-   currentViz: "HiringTrend",
-   
-   vizs: [
-    'HiringTrend',
-    'SalaryDistribution',
-    'Organisations',
-    'CAPDistribution'
-   ],
 
    //TableData
     tableData: items,
@@ -798,16 +771,6 @@
                }
              }]
            }
-         },
-         radarChartData: {},
-         radarChartOptions: {
-           responsive: true,
-           maintainAspectRatio: false
-         },
-         doughnutChartData: {},
-         doughnutChartOptions: {
-           responsive: true,
-           maintainAspectRatio: false
          }
        }
      }
