@@ -403,7 +403,7 @@
 		        name: 'Observations',
 		        data: [],
 		        tooltip: {
-		            headerFormat: '<em>Experiment No {point.key}</em><br/>'
+		            headerFormat: '<em>{point.key}</em><br/>'
 		        }
 		    }]
 
