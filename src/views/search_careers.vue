@@ -46,9 +46,13 @@
                         <datalist id="suggestions" style="width:350px;">
                            <option v-for="career in career_list">{{career}}</option>
                         </datalist>
-                        <input :disabled="maj==''" @change="$router.push({ path: '/company/' + car + '/' +maj});" autoComplete="on" list="suggestions" style="width:350px;height:40px;" placeholder=" Choose Your Company of Interest" v-model="car"/> 
+                        <input :disabled="maj==''" autoComplete="on" list="suggestions" style="width:350px;height:40px;" placeholder=" Choose Your Company of Interest" v-model="car"/> 
                      </mdb-col>
                   </mdb-row>
+                  <br/>
+            <mdb-row md="6" center v-if="maj!=''&&car!=''">
+               <button class="button button5" v-on:click="$router.push({ path: '/company/' + car + '/' +maj});"><i class="fas fa-industry"></i> Find Company</button>
+            </mdb-row>
          </section>
       </section>
    </div>
@@ -208,5 +212,14 @@
    padding: 10px;
    text-align: center;
    border-top: 1px solid #000000;
+   }
+   .button5 {
+   background-color: #555555;
+   border-radius: 12px;
+   }
+   .button5:hover {
+   background-color: white;
+   color: black;
+   border-radius: 12px;
    }
 </style>
