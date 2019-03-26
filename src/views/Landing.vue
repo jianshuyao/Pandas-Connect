@@ -48,7 +48,7 @@
                   <hr align="left" style="width:15%;height:2px;color:#333;background-color:#333;" />
                   <h2 class="info-title" style="line-height:25px;font-size:30px">What is Pandas Connect?</h2>
                   <p>
-                    Pandas Connect is a joint project by the NUS Institution for Application of Learning Science and Educational Technology(ALSET) and Pandas. It is a career guidance application designed BY students FOR students. Utilizing on the ALSET Educational Data Lake, key analytics insights are shared to aid student make more informed decisions in their Career choices.
+                    Pandas Connect is a joint project by the NUS Institution for Application of Learning Science and Educational Technology(ALSET) and Pandas. It is a career guidance application designed <strong>BY</strong> students <strong>FOR</strong> students. Utilizing the ALSET Educational Data Lake, key analytics insights are shared with students to help them make more informed decisions in their career choices.
                   </p>
                   <div><br></div>
                   <h2 class="info-title" style="line-height:25px;font-size:30px">Our Mission</h2>
@@ -58,7 +58,7 @@
                     <div><br></div>
                     <h2 class="info-title" style="line-height:25px;font-size:30px">Our Vision</h2>
                   <p>
-                  To organize the University’s data and make it universally accessible and useful.
+                  To organize the University’s data, process it, and make it more accessible and useful for students.
                   </p>
                  <!-- <button class="button6">Read More</button> -->
                 </div>
