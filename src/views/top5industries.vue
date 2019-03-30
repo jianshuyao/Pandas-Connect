@@ -61,7 +61,10 @@
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="1" lg="6">
             <mdb-card class="cascading-admin-card">
-              <mdb-card-header> Hiring Trend </mdb-card-header>
+              <mdb-card-header
+                class="card-title"
+                >Hiring Trend</mdb-card-header
+              >
               <mdb-card-body>
                 <div
                   v-if="this.loaded"
@@ -79,7 +82,10 @@
           </mdb-col>
           <mdb-col md="2" lg="6">
             <mdb-card class="cascading-admin-card">
-              <mdb-card-header> Salary Distribution </mdb-card-header>
+              <mdb-card-header
+                class="card-title"
+                >Salary Distribution</mdb-card-header
+              >
               <mdb-card-body>
                 <div
                   v-if="this.loaded"
@@ -98,7 +104,10 @@
 
           <mdb-col md="2" lg="12">
             <mdb-card class="cascading-admin-card">
-              <mdb-card-header> Salary Range by Industry</mdb-card-header>
+              <mdb-card-header
+                class="card-title"
+                >Salary Range by Industry</mdb-card-header
+              >
               <mdb-card-body>
                 <div v-if="this.loaded">
                   <highcharts
@@ -113,7 +122,8 @@
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col>
             <mdb-card class="cascading-admin-card">
-              <mdb-card-header> Companies </mdb-card-header>
+
+              <mdb-card-header class="card-title"> Companies </mdb-card-header>
               <mdb-card-body>
                 <div v-if="this.loaded" style="display: block">
                   <b-row>
@@ -509,12 +519,12 @@ export default {
 
         plotOptions: {
           series: {
-            fillColor: '#87CEFA',
+            fillColor: '#87CEFA', //box color
             lineWidth: 3,
-            upperQuartileColor: 'green',
+            upperQuartileColor: 'green', 
             lowerQuartileColor: 'green',
             medianColor: '#0C5DA5',
-            medianWidth: 3,
+            medianWidth: 3, //thickness of median line
             stemColor: '#A63400',
             stemDashStyle: 'solid',
             stemWidth: 3,
