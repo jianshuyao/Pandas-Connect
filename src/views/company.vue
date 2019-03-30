@@ -142,7 +142,7 @@
             <mdb-card class="cascading-admin-card">
               <mdb-card-header
                 class="card-title"
-                >Job Beakdown</mdb-card-header
+                >Job Breakdown</mdb-card-header
               >
               <mdb-card-body>
                 <div v-if="this.loaded" style="display: block">
@@ -246,7 +246,10 @@
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="1" lg="6">
             <mdb-card class="cascading-admin-card" style="height:100%">
-              <mdb-card-header> CAP Distribution </mdb-card-header>
+              <mdb-card-header
+                class="card-title"
+                >CAP Distribution</mdb-card-header
+              >
               <mdb-card-body>
                 <div v-if="this.loaded" style="display: block">
                   <mdb-bar-chart
@@ -260,7 +263,10 @@
           </mdb-col>
           <mdb-col md="2" lg="6">
             <mdb-card class="cascading-admin-card" style="height:100%">
-              <mdb-card-header> Salary Distribution </mdb-card-header>
+              <mdb-card-header
+                class="card-title"
+                >Salary Distribution</mdb-card-header
+              >
               <mdb-card-body>
                 <div v-if="this.loaded" style="display: block">
                   <mdb-bar-chart
