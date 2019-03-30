@@ -1,4 +1,4 @@
-<!--Remove the option in dropdown for the industry the page is currently showing-->
+<!--To reroute and fill in data from db-->
 <template>
   <div class="wrapper">
     <section id="module">
