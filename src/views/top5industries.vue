@@ -53,7 +53,7 @@
                 text.truncate
                 style="font-size:16px; letter-spacing:2px"
               >
-                Major: {{ this.currentMajor }}
+                <mdb-icon icon="graduation-cap" /> Major: {{ this.currentMajor }}
               </p>
             </mdb-row>
           </mdb-col>
