@@ -140,7 +140,10 @@
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="1" lg="6">
             <mdb-card class="cascading-admin-card">
-              <mdb-card-header> Pie chart </mdb-card-header>
+              <mdb-card-header
+                class="card-title"
+                >Job Beakdown</mdb-card-header
+              >
               <mdb-card-body>
                 <div v-if="this.loaded" style="display: block">
                   <mdb-pie-chart
@@ -288,8 +291,6 @@ import {
   mdbBarChart,
   mdbPieChart,
   mdbLineChart,
-  mdbRadarChart,
-  mdbDoughnutChart,
   mdbListGroup,
   mdbListGroupItem,
   mdbBadge,
@@ -442,8 +443,6 @@ export default {
     mdbBarChart,
     mdbPieChart,
     mdbLineChart,
-    mdbRadarChart,
-    mdbDoughnutChart,
     mdbListGroup,
     mdbListGroupItem,
     mdbBadge,
