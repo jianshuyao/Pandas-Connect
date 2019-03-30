@@ -198,8 +198,9 @@
             </mdb-card>
           </mdb-col>
         </mdb-row>
-        <mdb-row class="justify-content-center d-flex align-items-stretch">
-          <mdb-col md="1" lg="12">
+        <div style="height:40px"></div>
+        <mdb-row class="justify-content-center">
+          <mdb-col md="2" lg="10">
             <mdb-card class="cascading-admin-card">
               <mdb-card-header
                 style="background-color: #b3e5fc;"
