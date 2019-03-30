@@ -58,9 +58,9 @@
           </mdb-col>
           </mdb-row>
           <mdb-row class="justify-content-center">
-        <a href="#company_tag"><button class="button button5">Company Info & Programs</button></a>
-        <a href="#job_tag"><button class="button button5">Job Roles Statistics</button></a>
-        <a href="#chance_tag"><button class="button button5">Rate your Chance</button></a>
+        <a href="#company_tag" v-smooth-scroll><button class="button button5">Company Info & Programs</button></a>
+        <a href="#job_tag" v-smooth-scroll><button class="button button5">Job Roles Statistics</button></a>
+        <a href="#chance_tag" v-smooth-scroll><button class="button button5">Rate your Chance</button></a>
         </mdb-row>
           </mdb-card>
         </mdb-row>
