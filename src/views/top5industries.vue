@@ -387,9 +387,10 @@ export default {
         this.lineChartData["datasets"].push({
           label: ind,
           data: top5[ind]["overallhiringtrend"]["numhired"],
-          backgroundColor: this.backgroundColor[count],
+          backgroundColor: 'rgba(0,0,0,0)',//this.backgroundColor[count],
           borderColor: this.borderColor[count],
-          borderWidth: this.borderWidth
+          borderWidth: 2,//this.borderWidth,
+          lineTension:0 //makes the line straight
         });
         count++;
         console.log(this.lineChartData);
@@ -509,7 +510,16 @@ export default {
         plotOptions: {
           series: {
             fillColor: '#87CEFA',
-            lineWidth: 2,
+            lineWidth: 3,
+            upperQuartileColor: 'green',
+            lowerQuartileColor: 'green',
+            medianColor: '#0C5DA5',
+            medianWidth: 3,
+            stemColor: '#A63400',
+            stemDashStyle: 'solid',
+            stemWidth: 3,
+            whiskerColor: '#3D9200',
+            whiskerWidth: 3
           }
         }
       },
