@@ -13,7 +13,7 @@
                 text.truncate
                 style="font-size:14px;margin-left: 20px;"
               >
-                Other Industry's Information Here!
+                Other Industry's Information &nbsp<mdb-icon icon="mouse-pointer" />
               </p>
               <select
                 v-show="showSingleIndustry"
@@ -55,7 +55,7 @@
                 text.truncate
                 style="font-size:16px; letter-spacing:2px"
               >
-                Major: {{ this.majorname }}
+                <mdb-icon icon="graduation-cap" /> Major: {{ this.majorname }}
               </p>
             </mdb-row>
           </mdb-col>
