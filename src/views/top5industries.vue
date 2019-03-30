@@ -536,16 +536,17 @@ export default {
 
         plotOptions: {
           series: {
-            fillColor: '#87CEFA', //box color
+            fillColor: '#81D4FA', //box color
+            lineColor: '#81D4FA',
             lineWidth: 3,
-            upperQuartileColor: 'green', 
-            lowerQuartileColor: 'green',
-            medianColor: '#0C5DA5',
+            upperQuartileColor: '#81D4FA', 
+            lowerQuartileColor: '#81D4FA',
+            medianColor: '#FFFFFF',
             medianWidth: 3, //thickness of median line
-            stemColor: '#A63400',
+            stemColor: '#81D4FA',
             stemDashStyle: 'solid',
             stemWidth: 3,
-            whiskerColor: '#3D9200',
+            whiskerColor: '#ffffff00',
             whiskerWidth: 3
           }
         }
