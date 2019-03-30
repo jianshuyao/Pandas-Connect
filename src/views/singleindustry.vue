@@ -62,9 +62,14 @@
         <a href="#hiring_tag"><button class="button button5">Hiring Trend</button></a>
         <a href="#salary_tag"><button class="button button5">Salary Statistics</button></a>
         <a href="#company_tag"><button class="button button5">Compare Companies</button></a>
+        <a href="#recommend_tag"><button class="button button5">Recommends</button></a>
         </mdb-row>
         </mdb-card>
         </mdb-row>
+        <a name="myanchor">
+    <h1 style="padding-top: 95px; margin-top: -40px;">My anchor</h1>
+</a>
+<a class = "anchor" id="hiring_tag"></a>
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="1" lg="6">
             <mdb-card class="cascading-admin-card">
@@ -109,6 +114,7 @@
             </mdb-card>
           </mdb-col>
         </mdb-row>
+        <a class = "anchor2" id="salary_tag"></a>
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="2" lg="12">
             <mdb-card class="cascading-admin-card">
@@ -127,7 +133,7 @@
             </mdb-card>
           </mdb-col>
         </mdb-row>
-
+<a class="anchor3" id="company_tag"></a>
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col>
             <mdb-card class="cascading-admin-card">
@@ -291,6 +297,7 @@
             </mdb-card>
           </mdb-col>
         </mdb-row>
+        <a class="anchor4" id="recommend_tag"></a>
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="1" lg="7">
             <mdb-card class="cascading-admin-card" style="height:100%">
@@ -1137,5 +1144,36 @@ export default {
   border-color: #90a4ae;
   border-width: 2px;
   box-shadow: 20px 2px 9px 0 rgba(0, 0, 0, 0.2), 0 2px 13px 0 rgba(0, 0, 0, 0.19);
+}
+.fillColor {
+  background-color: #cfd8dc;
+}
+
+.anchor{
+  display: block;
+  position: relative;
+  top: -190px;
+  visibility: hidden;
+}
+
+.anchor2{
+  display: block;
+  position: relative;
+  top: -190px;
+  visibility: hidden;
+}
+
+.anchor3{
+  display: block;
+  position: relative;
+  top: -180px;
+  visibility: hidden;
+}
+
+.anchor4{
+  display: block;
+  position: relative;
+  top: -180px;
+  visibility: hidden;
 }
 </style>
