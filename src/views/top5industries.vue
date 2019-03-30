@@ -1,9 +1,9 @@
 <template>
   <div sticky-container lass="wrapper">
     <section id="module">
-      <div><br/></div>
-      <section class="mt-lg-5">
-        <div v-sticky sticky-offset="offset" sticky-side="both"  style="position: static; top: auto; bottom: auto; left: auto; width: auto;">
+      <div><br/><br/></div>
+      <section class="mt-lg-3">
+        <div class="sticky">
         <mdb-row class="justify-content-start">
           <mdb-col col="3" class="align-self-center">
             <div>
@@ -47,7 +47,7 @@
               </mdb-modal-title>
             </mdb-row>
           </mdb-col>
-          <mdb-col col="3" class="align-self-center">
+          <mdb-col col="3" class="justify-content-end">
             <mdb-row class="justify-content-end">
               <p
                 class="text_bg"
@@ -59,7 +59,15 @@
             </mdb-row>
           </mdb-col>
         </mdb-row>
+        <mdb-row class="justify-content-center">
+        <button class="button button5">Hiring Trend</button>
+        <button class="button button5">Salary Statistics</button>
+        <button class="button button5">Compare Companies</button>
+        </mdb-row>
       </div>
+      <mdb-row class="justify-content-start">
+        <br><br><br><br><br>
+      </mdb-row>
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="1" lg="6">
             <mdb-card class="cascading-admin-card">
@@ -273,6 +281,7 @@
             </mdb-card>
           </mdb-col>
         </mdb-row>
+      </mdb-bar-chart>
       </section>
     </section>
   </div>
@@ -836,8 +845,11 @@ export default {
 }
 
 .sticky {
+  background-color: #EEEEEE;
   position: fixed;
-  top: 0;
+  overflow: visible;
+  z-index: 999;
+  top: 20;
   width: 100%
 }
 
