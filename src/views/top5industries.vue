@@ -1,9 +1,10 @@
 <template>
   <div sticky-container lass="wrapper">
     <section id="module">
-      <div><br/><br/></div>
-      <section class="mt-lg-3">
-        <div class="sticky">
+      <div style="height: 56px;"></div>
+      <section class="mt-lg-1">
+        <mdb-row class="justify-content-center">
+        <mdb-card class="sticky">
         <mdb-row class="justify-content-start">
           <mdb-col col="3" class="align-self-center">
             <div>
@@ -60,14 +61,16 @@
           </mdb-col>
         </mdb-row>
         <mdb-row class="justify-content-center">
-        <button class="button button5">Hiring Trend</button>
-        <button class="button button5">Salary Statistics</button>
-        <button class="button button5">Compare Companies</button>
+        <a href="#hiring_tag"><button class="button button5">Hiring Trend</button></a>
+        <a href="#salary_tag"><button class="button button5">Salary Statistics</button></a>
+        <a href="#company_tag"><button class="button button5">Compare Companies</button></a>
         </mdb-row>
-      </div>
-      <mdb-row class="justify-content-start">
-        <br><br><br><br><br>
+      </mdb-card>
       </mdb-row>
+      <a name="myanchor">
+    <h1 style="padding-top: 95px; margin-top: -40px;">My anchor</h1>
+</a>
+      <a class = "anchor" id="hiring_tag" v-smooth-scroll></a>
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="1" lg="6">
             <mdb-card class="cascading-admin-card">
@@ -111,7 +114,9 @@
               </mdb-card-body>
             </mdb-card>
           </mdb-col>
-
+          </mdb-row>
+        <a class = "anchor2" id="salary_tag" v-smooth-scroll></a>
+<mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="2" lg="12">
             <mdb-card class="cascading-admin-card">
               <mdb-card-header
@@ -129,6 +134,7 @@
             </mdb-card>
           </mdb-col>
         </mdb-row>
+      <a class="anchor3" id="company_tag" v-smooth-scroll></a>
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col>
             <mdb-card class="cascading-admin-card">
@@ -818,7 +824,10 @@ export default {
   text-decoration: none;
   display: inline-block;
   font-size: 15px;
-  margin: 5px 3px;
+  margin-top: 0px;
+  margin-right:10px;
+  margin-left:10px;
+  margin-bottom: 5px;
   cursor: pointer;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
@@ -845,12 +854,41 @@ export default {
 }
 
 .sticky {
-  background-color: #EEEEEE;
+  background-color: #cfd8dc;
   position: fixed;
   overflow: visible;
   z-index: 999;
   top: 20;
-  width: 100%
+  width: 100%;
+  margin-bottom:20px;
+  padding: 5px;
+  border-color: #90a4ae;
+  border-width: 2px;
+  box-shadow: 20px 2px 9px 0 rgba(0, 0, 0, 0.2), 0 2px 13px 0 rgba(0, 0, 0, 0.19);
 }
 
+.fillColor {
+  background-color: #cfd8dc;
+}
+
+.anchor{
+  display: block;
+  position: relative;
+  top: -190px;
+  visibility: hidden;
+}
+
+.anchor2{
+  display: block;
+  position: relative;
+  top: -190px;
+  visibility: hidden;
+}
+
+.anchor3{
+  display: block;
+  position: relative;
+  top: -180px;
+  visibility: hidden;
+}
 </style>
