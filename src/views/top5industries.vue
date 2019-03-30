@@ -1,8 +1,9 @@
 <template>
-  <div class="wrapper">
+  <div sticky-container lass="wrapper">
     <section id="module">
-      <div><br /></div>
+      <div><br/></div>
       <section class="mt-lg-5">
+        <div v-sticky sticky-offset="offset" sticky-side="both"  style="position: static; top: auto; bottom: auto; left: auto; width: auto;">
         <mdb-row class="justify-content-start">
           <mdb-col col="3" class="align-self-center">
             <div>
@@ -39,10 +40,10 @@
                 >
                   Top 5 Industries Overview
                 </p>
-                <hr
+                <!-- <hr
                   align="center"
                   style="width:50%;height:2px;color:white;background-color:black;"
-                />
+                /> -->
               </mdb-modal-title>
             </mdb-row>
           </mdb-col>
@@ -58,6 +59,7 @@
             </mdb-row>
           </mdb-col>
         </mdb-row>
+      </div>
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="1" lg="6">
             <mdb-card class="cascading-admin-card">
@@ -787,4 +789,56 @@ export default {
   text-align: center;
   border-top: 1px solid #000000;
 }
+
+.button {
+  a {
+    text-decoration: none;
+  }
+  a:link, a:visited {
+    color: white;
+  }
+  a:hover {
+    color: black;
+  }
+  opacity: 0.8;
+  background-color: #4CAF50; 
+  border: 2px solid white;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 5px 3px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+.button5 {
+  background-color: #555555;
+  border-radius: 12px;
+}
+.button5:hover {
+  background-color: white;
+  color: black;
+  border-radius: 12px;
+}
+.button6{
+  background-color: #555555;
+  border: none;
+  color: white;
+  padding: 10px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 12px 2px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
 </style>

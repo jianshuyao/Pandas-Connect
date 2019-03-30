@@ -17,6 +17,7 @@ import Highcharts from "highcharts";
 import dataModule from "highcharts/modules/data";
 import hcMore from "highcharts/highcharts-more";
 import VueParticles from "vue-particles";
+import Sticky from 'vue-sticky-directive'
 
 Vue.config.productionTip = false;
 dataModule(Highcharts);
@@ -27,6 +28,7 @@ Vue.use(VueFire);
 Vue.use(BootstrapVue);
 Vue.use(MaterialKit);
 Vue.use(vueSmoothScroll);
+Vue.use(Sticky);
 Vue.component("VueSlider", VueSlider);
 
 const NavbarStore = {
