@@ -59,14 +59,15 @@
           </mdb-row>
           <mdb-row class="justify-content-center">
         <a href="#company_tag"><button class="button button5">Company Info & Programs</button></a>
-        <a href="#chance_tag"><button class="button button5">Rate your Chance</button></a>
         <a href="#job_tag"><button class="button button5">Job Roles Statistics</button></a>
+        <a href="#chance_tag"><button class="button button5">Rate your Chance</button></a>
         </mdb-row>
           </mdb-card>
         </mdb-row>
         <a name="myanchor">
     <h1 style="padding-top: 95px; margin-top: -40px;">My anchor</h1>
 </a>
+<a class = "anchor" id="company_tag"></a>
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col>
             <mdb-card class="cascading-admin-card">
@@ -145,6 +146,7 @@
             </mdb-card>
           </mdb-col>
         </mdb-row>
+        <a class = "anchor2" id="job_tag"></a>
                 <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="1" lg="4">
             <mdb-card class="cascading-admin-card" style="height:100%">
@@ -198,6 +200,7 @@
             </mdb-card>
           </mdb-col>
         </mdb-row>
+        <a class="anchor3" id="chance_tag"></a>
         <div style="height:40px"></div>
         <mdb-row class="justify-content-center">
           <mdb-col md="2" lg="10">
@@ -819,5 +822,25 @@ export default {
 }
 .fillColor {
   background-color: #cfd8dc;
+}
+.anchor{
+  display: block;
+  position: relative;
+  top: -190px;
+  visibility: hidden;
+}
+
+.anchor2{
+  display: block;
+  position: relative;
+  top: -190px;
+  visibility: hidden;
+}
+
+.anchor3{
+  display: block;
+  position: relative;
+  top: -180px;
+  visibility: hidden;
 }
 </style>
