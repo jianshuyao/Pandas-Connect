@@ -1,9 +1,11 @@
 <template>
   <div class="wrapper">
     <section id="company">
-      <div><br /></div>
-      <section class="mt-lg-5">
-        <mdb-row class="justify-content-start">
+      <div style="height: 56px;"></div>
+      <section class="mt-lg-1">
+        <mdb-row class="justify-content-center">
+          <mdb-card class="sticky">
+            <mdb-row class="justify-content-start">
           <mdb-col col="3" class="align-self-center">
             <div>
               <p
@@ -40,10 +42,6 @@
                 >
                   {{ this.companyRef }}
                 </p>
-                <hr
-                  align="center"
-                  style="width:50%;height:2px;color:white;background-color:black;"
-                />
               </mdb-modal-title>
             </mdb-row>
           </mdb-col>
@@ -58,7 +56,17 @@
               </p>
             </mdb-row>
           </mdb-col>
+          </mdb-row>
+          <mdb-row class="justify-content-center">
+        <a href="#company_tag"><button class="button button5">Company Info & Programs</button></a>
+        <a href="#chance_tag"><button class="button button5">Rate your Chance</button></a>
+        <a href="#job_tag"><button class="button button5">Job Roles Statistics</button></a>
         </mdb-row>
+          </mdb-card>
+        </mdb-row>
+        <a name="myanchor">
+    <h1 style="padding-top: 95px; margin-top: -40px;">My anchor</h1>
+</a>
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col>
             <mdb-card class="cascading-admin-card">
@@ -137,9 +145,9 @@
             </mdb-card>
           </mdb-col>
         </mdb-row>
-        <mdb-row class="justify-content-center d-flex align-items-stretch">
-          <mdb-col md="1" lg="6">
-            <mdb-card class="cascading-admin-card">
+                <mdb-row class="justify-content-center d-flex align-items-stretch">
+          <mdb-col md="1" lg="4">
+            <mdb-card class="cascading-admin-card" style="height:100%">
               <mdb-card-header
                 class="card-title"
                 >Job Breakdown</mdb-card-header
@@ -155,7 +163,43 @@
               </mdb-card-body>
             </mdb-card>
           </mdb-col>
-          <mdb-col md="2" lg="6">
+          <mdb-col md="2" lg="4">
+            <mdb-card class="cascading-admin-card" style="height:100%">
+              <mdb-card-header
+                class="card-title"
+                >CAP Distribution</mdb-card-header
+              >
+              <mdb-card-body>
+                <div v-if="this.loaded" style="display: block">
+                  <mdb-bar-chart
+                    :data="barChartCAP"
+                    :options="barChartOptions"
+                    :height="400"
+                  />
+                </div>
+              </mdb-card-body>
+            </mdb-card>
+          </mdb-col>
+          <mdb-col md="3" lg="4">
+            <mdb-card class="cascading-admin-card" style="height:100%">
+              <mdb-card-header
+                class="card-title"
+                >Salary Distribution</mdb-card-header
+              >
+              <mdb-card-body>
+                <div v-if="this.loaded" style="display: block">
+                  <mdb-bar-chart
+                    :data="barChartData"
+                    :options="barChartOptions"
+                    :height="400"
+                  />
+                </div>
+              </mdb-card-body>
+            </mdb-card>
+          </mdb-col>
+        </mdb-row>
+        <mdb-row class="justify-content-center d-flex align-items-stretch">
+          <mdb-col md="1" lg="12">
             <mdb-card class="cascading-admin-card">
               <mdb-card-header
                 style="background-color: #b3e5fc;"
@@ -238,42 +282,6 @@
                       <strong>{{ counter }}%</strong>
                     </h2>
                   </div>
-                </div>
-              </mdb-card-body>
-            </mdb-card>
-          </mdb-col>
-        </mdb-row>
-        <mdb-row class="justify-content-center d-flex align-items-stretch">
-          <mdb-col md="1" lg="6">
-            <mdb-card class="cascading-admin-card" style="height:100%">
-              <mdb-card-header
-                class="card-title"
-                >CAP Distribution</mdb-card-header
-              >
-              <mdb-card-body>
-                <div v-if="this.loaded" style="display: block">
-                  <mdb-bar-chart
-                    :data="barChartCAP"
-                    :options="barChartOptions"
-                    :height="400"
-                  />
-                </div>
-              </mdb-card-body>
-            </mdb-card>
-          </mdb-col>
-          <mdb-col md="2" lg="6">
-            <mdb-card class="cascading-admin-card" style="height:100%">
-              <mdb-card-header
-                class="card-title"
-                >Salary Distribution</mdb-card-header
-              >
-              <mdb-card-body>
-                <div v-if="this.loaded" style="display: block">
-                  <mdb-bar-chart
-                    :data="barChartData"
-                    :options="barChartOptions"
-                    :height="400"
-                  />
                 </div>
               </mdb-card-body>
             </mdb-card>
@@ -758,5 +766,57 @@ export default {
   padding: 10px;
   text-align: center;
   border-top: 1px solid #000000;
+}
+.button {
+  a {
+    text-decoration: none;
+  }
+  a:link, a:visited {
+    color: white;
+  }
+  a:hover {
+    color: black;
+  }
+  opacity: 0.8;
+  background-color: #4CAF50; 
+  border: 2px solid white;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin-top: 0px;
+  margin-right:10px;
+  margin-left:10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+.button5 {
+  background-color: #555555;
+  border-radius: 12px;
+}
+.button5:hover {
+  background-color: white;
+  color: black;
+  border-radius: 12px;
+}
+.sticky {
+  background-color: #cfd8dc;
+  position: fixed;
+  overflow: visible;
+  z-index: 999;
+  top: 20;
+  width: 100%;
+  margin-bottom:20px;
+  padding: 5px;
+  border-color: #90a4ae;
+  border-width: 2px;
+  box-shadow: 20px 2px 9px 0 rgba(0, 0, 0, 0.2), 0 2px 13px 0 rgba(0, 0, 0, 0.19);
+}
+.fillColor {
+  background-color: #cfd8dc;
 }
 </style>
