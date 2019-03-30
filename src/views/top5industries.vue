@@ -12,7 +12,7 @@
                 text.truncate
                 style="font-size:14px;margin-left: 20px;"
               >
-                Individual Industry Information Here!
+                Individual Industry Information  &nbsp<mdb-icon icon="mouse-pointer" />
               </p>
               <select
                 v-show="showSingleIndustry"
