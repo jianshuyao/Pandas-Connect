@@ -530,6 +530,12 @@ export default {
       },
       barChartOptions: {
         responsive: true,
+        legend: {
+		    display: false,
+		      labels: {
+		        display: false
+		      }
+		  },
         maintainAspectRatio: false,
         scales: {
           xAxes: [
@@ -577,6 +583,12 @@ export default {
       },
       lineChartOptions: {
         responsive: true,
+        legend: {
+		    display: false,
+		      labels: {
+		        display: false
+		      }
+		  },
         maintainAspectRatio: false,
         scales: {
           xAxes: [
