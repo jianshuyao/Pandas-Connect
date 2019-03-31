@@ -154,7 +154,7 @@
           <mdb-col md="1" lg="4">
             <mdb-card class="cascading-admin-card" style="height:100%">
               <mdb-tooltip :options="{placement: 'top'}">
-                <span slot="tip">FAP ONLY</span>
+                <span slot="tip">Hover over each segment of the pie chart to see how many seniors were hired for each role!</span>
                 <mdb-card-header
                   class="card-title"
                   slot="reference"
@@ -175,7 +175,7 @@
           <mdb-col md="2" lg="4">
             <mdb-card class="cascading-admin-card" style="height:100%">
               <mdb-tooltip :options="{placement: 'top'}">
-                <span slot="tip">FAP Again</span>
+                <span slot="tip">View the CAP distribution of graduates working in {{this.companyRef}}</span>
                 <mdb-card-header
                   class="card-title"
                   slot="reference"
@@ -196,7 +196,7 @@
           <mdb-col md="3" lg="4">
             <mdb-card class="cascading-admin-card" style="height:100%">
               <mdb-tooltip :options="{placement: 'top'}">
-                <span slot="tip">FAP More</span>
+                <span slot="tip">View the salary distribution of graduates working in {{this.companyRef}}</span>
                 <mdb-card-header
                   class="card-title"
                   slot="reference"
@@ -221,7 +221,7 @@
           <mdb-col md="2" lg="10">
             <mdb-card class="cascading-admin-card">
               <mdb-tooltip :options="{placement: 'top'}">
-                <span slot="tip">Honestly, what's there to rate when you already know you have no chance? Don't be deluded</span>
+                <span slot="tip">Enter your CAP and desired job position to rate your chances of getting your dream job!</span>
                 <mdb-card-header
                   style="background-color: #b3e5fc;"
                   class="card-title"
