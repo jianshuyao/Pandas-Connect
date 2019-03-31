@@ -13,7 +13,7 @@
                 text.truncate
                 style="font-size:14px;margin-left: 20px;"
               >
-                Other Industry's Information &nbsp<mdb-icon icon="mouse-pointer" />
+                Other Internship's Information &nbsp<mdb-icon icon="mouse-pointer" />
               </p>
               <select
                 v-show="showSingleIndustry"
@@ -22,13 +22,13 @@
                 style="margin-left: 20px;"
                 @change="
                   $router.push({
-                    path: '/singleindustry/' + majorname + '/' + currname
+                    path: '/internship/' + majorname + '/' + currRole
                   })
                 "
-                v-model="currname"
+                v-model="currRole"
               >
-                <option disabled>Select Another Industry of Interest</option>
-                <option v-for="ind in this.industryname">{{ ind }}</option>
+                <option disabled>Select Another Internship of Interest</option>
+                <option v-for="ind in this.internshipname">{{ ind }}</option>
               </select>
             </div>
           </mdb-col>
@@ -39,7 +39,7 @@
                   class="card-title"
                   style="font-size:30px;letter-spacing: 2px;"
                 >
-                  {{ this.currname }}
+                  {{ this.currRole }}
                 </p>
                 <hr
                   align="center"
@@ -397,9 +397,9 @@
                       ref="slider"
                       v-model="value_2"
                       v-bind="options"
-                      min="2.0"
-                      max="5.0"
-                      interval="0.01"
+                      min=2
+                      max=5
+                      interval=0.01
                     ></vue-slider>
                   </mdb-col>
                   <mdb-col>
@@ -510,22 +510,16 @@ export default {
     }
   },
   mounted: function() {
-    db.ref("major/" + this.majorname + "/industries")
+    db.ref("internship/" + this.majorname)
       .once("value")
       .then(snapshot => {
-        this.industry = snapshot.val();
-        this.major = this.industry[this.currname];
+        this.internship = snapshot.val();
+        this.modules = this.internship['modules'];
+        this.companies = this.internship['roles'][this.currRole];
       })
       .then(() => {
-        this.updateindustry();
+        this.updateinternship();
         this.renderChart();
-      });
-    db.ref("industrymod/" + this.currname)
-      .once("value")
-      .then(snapshot => {
-        this.suggestedmods = snapshot.val();
-      })
-      .then(() => {
         this.recommendmods();
       });
   },
@@ -556,12 +550,9 @@ export default {
     }
   },
   created() {
-    this.industryref = db.ref("industry/" + this.industryname);
-    this.suggestref = db.ref("industrymod/" + this.currname);
     this.tableSuggestedData = [];
     this.tableData = [];
-    this.currname = this.$route.params.indName;
-    this.majorname = this.$route.params.currMaj;
+    this.majorname = 'Accountacy'//this.$route.params.currMaj;
   },
   watch: {
     $route(to, from) {
@@ -600,12 +591,12 @@ export default {
     genCapCol(cap) {
       return cap < 3.75 ? "success" : cap < 4.5 ? "warning" : "danger";
     },
-    updateindustry() {
-      let newref = this.industry;
-      for (let [ind, val] of Object.entries(newref)) {
-        this.industryname.push(ind);
+    updateinternship() {
+      let newref = this.internship['roles'];
+      for (let [intern, val] of Object.entries(newref)) {
+        this.internshipname.push(intern);
       }
-      console.log(this.industryname);
+      console.log(this.internshipname);
     },
     onReady(instance, echarts) {
       const that = this;
@@ -657,83 +648,33 @@ export default {
       return res;
     },
     renderChart() {
-      let top5h = this.major["top5hiringtrend"];
-      let top5s = this.major["top5salarytrend"];
-      let top5c = this.major["top5companies"];
-
-      let wordcloudtext = this.major["wordcloud"];
-      let wordvalues = wordcloudtext["values"];
-      let words = wordcloudtext["words"];
-      for (let i in words) {
-        this.wordclouddata.push({
-          name: words[i],
-          value: wordvalues[i]
-        });
-      }
-      let count = 0;
-      for (let [ind, val] of Object.entries(top5h)) {
-        this.lineChartData["labels"] = top5h[ind]["year"];
-        this.lineChartData["datasets"].push({
-          label: ind,
-          data: top5h[ind]["numhired"],
-          backgroundColor: this.backgroundColor[count],
-          borderColor: this.borderColor[count],
-          borderWidth: this.borderWidth
-        });
-        count++;
-      }
-
-      count = 0;
-      for (let [ind, val] of Object.entries(top5s)) {
-        this.barChartData["labels"] = top5s[ind]["salary"];
-        this.barChartData["datasets"].push({
-          label: ind,
-          data: top5s[ind]["count"],
-          backgroundColor: this.backgroundColor[count],
-          borderColor: this.borderColor[count],
-          borderWidth: this.borderWidth
-        });
-        count++;
-      }
-
-      for (let [ind, val] of Object.entries(top5s)) {
-        let salarynode = top5s[ind]["actual_sal"].sort();
-        salarynode.unshift(ind);
-        this.chartOptions["xAxis"]["categories"].push(ind);
-        this.chartOptions["series"][0]["data"].push(salarynode);
-      }
-
-      let organisation = top5c;
-      let cap = organisation["cap"];
-      let name = organisation["name"];
-      let numgrads = organisation["numgrad"];
-      let sal = organisation["salary"];
-      for (let i in cap) {
+      for (let [name, val] of Object.entries(this.companies)) {
         let temp = {
-          organisation: name[i],
-          cap: cap[i],
-          sal: sal[i],
-          numGrads: numgrads[i],
-          _rowVariant: this.genCapCol(cap[i])
-        };
+          'organisation':name,
+          'cap':val["cap"],
+          'numGrads':val["numseniors"],
+          'sal':val["allowance"],
+          '_rowVariant': this.genCapCol(val["cap"])
+        }
         this.tableData.push(temp);
       }
       this.totalRows = this.tableData.length;
       this.loaded = true;
     },
     recommendmods() {
-      let mods = this.suggestedmods;
-      console.log(this.suggestedmods);
+      let mods = this.modules;
+      console.log(this.modules);
       let code = mods["modcode"];
       let mname = mods["modname"];
-      let nGrads = mods["numgrad"];
+      let nGrads = mods["numseniors"];
       for (let i in code) {
+        console.log(code[i]);
         let modlevel = code[i].split(/([0-9]+)/)[1];
         let temp = {
-          modcode: code[i],
-          modname: mname[i],
-          numgrad: nGrads[i],
-          _rowVariant: this.renderlevel(modlevel)
+          'modcode': code[i],
+          'modname': mname[i],
+          'numgrad': nGrads[i],
+          '_rowVariant': this.renderlevel(modlevel)
         };
         this.tableSuggestedData.push(temp);
       }
@@ -839,12 +780,12 @@ export default {
       majorname: null,
       major: {},
       suggestedmods: {},
-      newInd: null,
-      currname: null,
-      industryname: [],
+      newInternship: null,
+      internshipname: [],
       loaded: false,
       recommended: false,
       modal: false,
+      currRole:'Assessor Intern',
 
       //TableData
       tableData: items,
@@ -858,13 +799,13 @@ export default {
         { key: "cap", label: "Median CAP", sortable: true },
         {
           key: "sal",
-          label: "Median Salary",
+          label: "Median Allowance",
           sortable: true,
           sortDirection: "desc"
         },
         {
           key: "numGrads",
-          label: "Number of Graduates",
+          label: "Number of Seniors",
           sortable: true,
           sortDirection: "desc"
         },
