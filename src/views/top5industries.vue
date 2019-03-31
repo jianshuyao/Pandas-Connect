@@ -75,7 +75,7 @@
           <mdb-col md="1" lg="6">
             <mdb-card class="cascading-admin-card">
               <mdb-tooltip :options="{placement: 'top'}">
-                <span slot="tip">change</span>
+                <span slot="tip">Compare hiring statistics of all industries hiring students majoring in {{this.currentMajor}}!</span>
                 <mdb-card-header
                 class="card-title"
                 slot="reference"
@@ -100,7 +100,7 @@
           <mdb-col md="2" lg="6">
             <mdb-card class="cascading-admin-card">
               <mdb-tooltip :options="{placement: 'top'}">
-                <span slot="tip">change</span>
+                <span slot="tip">Analyse the salary distribution of all industries hiring students majoring in {{this.currentMajor}} and observe the difference in salary numbers for each interval bin.</span>
                 <mdb-card-header
                 class="card-title"
                 slot="reference"
@@ -128,7 +128,7 @@
           <mdb-col md="2" lg="12">
             <mdb-card class="cascading-admin-card">
               <mdb-tooltip :options="{placement: 'top'}">
-                <span slot="tip">change</span>
+                <span slot="tip">Want to know how salaries are spread in each industry? This visualisation shows the 25th 50th 75th percentiles of the salaries in each industry!</span>
                 <mdb-card-header
                 class="card-title"
                 slot="reference"
@@ -151,7 +151,7 @@
           <mdb-col>
             <mdb-card class="cascading-admin-card">
               <mdb-tooltip :options="{placement: 'top'}">
-                <span slot="tip">change</span>
+                <span slot="tip">This table allows you to compare companies in the same major '{{this.currentMajor}}' by Median Cap, Median Salary and Graduates. Table is colored by CAP intervals to give you a better sensing of the suitability of the company by cap intake! Want to know more about a company? Simply click 'learn more'!</span>
                 <mdb-card-header
                 class="card-title"
                 slot="reference"
