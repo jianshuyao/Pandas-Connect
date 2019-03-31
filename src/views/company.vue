@@ -35,16 +35,12 @@
           <mdb-col col="6">
             <mdb-row center>
               <mdb-modal-title>
-                <mdb-tooltip :options="{placement: 'left'}">
-                  <span slot="tip">KNN</span>
-                  <p
-                    class="card-title"
-                    style="font-size:30px;letter-spacing:2px;"
-                    slot="reference"
-                  >
-                    {{ this.companyRef }}
-                  </p>
-                </mdb-tooltip>
+                <p
+                  class="card-title"
+                  style="font-size:30px;letter-spacing:2px;"
+                >
+                  {{ this.companyRef }}
+                </p>
               </mdb-modal-title>
             </mdb-row>
           </mdb-col>
