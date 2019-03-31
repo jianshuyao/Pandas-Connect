@@ -73,10 +73,16 @@
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="1" lg="6">
             <mdb-card class="cascading-admin-card">
-              <mdb-card-header
-                class="card-title"
-                >Hiring Trend</mdb-card-header
-              >
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">
+                  Compare hiring statistics of all companies in {{this.currname}} across a 5-year period!
+              </span>
+                <mdb-card-header
+                  class="card-title"
+                  slot="reference"
+                  >Hiring Trend</mdb-card-header
+                >
+              </mdb-tooltip>
               <mdb-card-body>
                 <div
                   v-if="this.loaded"
@@ -94,10 +100,16 @@
           </mdb-col>
           <mdb-col md="2" lg="6">
             <mdb-card class="cascading-admin-card">
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">
+                  Analyse the salary distribution of all companies in {{this.currname}} and observe the difference in salary numbers for each interval bin. 
+                </span>
               <mdb-card-header
                 class="card-title"
+                slot="reference"
                 >Salary Distribution</mdb-card-header
               >
+            </mdb-tooltip>
               <mdb-card-body>
                 <div
                   v-if="this.loaded"
@@ -118,10 +130,16 @@
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="2" lg="12">
             <mdb-card class="cascading-admin-card">
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">
+                  Want to know how salaries are spread in each company? This visualisation shows the 25th 50th 75th percentiles of the salaries in each company! 
+                </span>
               <mdb-card-header
                 class="card-title"
+                slot="reference"
                 >Salary Range by Company</mdb-card-header
               >
+            </mdb-tooltip>
               <mdb-card-body>
                 <div v-if="this.loaded">
                   <highcharts
@@ -137,10 +155,16 @@
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col>
             <mdb-card class="cascading-admin-card">
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">
+                  This table allows you to compare companies in the same industry '{{this.currname}}' by Median Cap, Median Salary and Graduates. Table is colored by CAP intervals to give you a better sensing of the suitability of the company by cap intake! Want to know more about a company? Simply click 'learn more'!
+                </span>
               <mdb-card-header
                 class="card-title"
+                slot="reference"
                 >Compare Companies</mdb-card-header
               >
+            </mdb-tooltip>
               <mdb-card-body>
                 <div v-if="this.loaded" style="display: block">
                   <b-row>
@@ -301,10 +325,16 @@
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="1" lg="7">
             <mdb-card class="cascading-admin-card" style="height:100%">
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">
+                  This section allows you to know what modules to take that are highly relevant for the industry '{{this.currname}}' that you're interested in! Each module is colored by their level code, and can be sorted by the number of graduates who took the module. More information can be learnt from NUSmods!
+                </span>
               <mdb-card-header
                 class="card-title"
+                slot="reference"
                 >Recommended Modules</mdb-card-header
               >
+            </mdb-tooltip>
               <mdb-card-body class="align-items-center justify-content-center">
                 <div v-if="this.recommended" style="display: block">
                   <b-row>
@@ -457,10 +487,16 @@
           </mdb-col>
           <mdb-col md="2" lg="5">
             <mdb-card class="cascading-admin-card" style="height:100%">
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">
+                  Equipped with sophisticated Natural Language Processing, we identify skillsets that are more tailored-ready for the industry '{{this.currname}}'!
+                </span>
               <mdb-card-header
                 class="card-title"
+                slot="reference"
                 >Recommended Skillsets</mdb-card-header
               >
+            </mdb-tooltip>
               <mdb-card-body class="align-items-center justify-content-center">
                 <div style="display: block">
                   <IEcharts
@@ -479,6 +515,7 @@
 </template>
 <script>
 import {
+  mdbTooltip,
   mdbRow,
   mdbCol,
   mdbBtn,
@@ -753,6 +790,7 @@ export default {
     }
   },
   components: {
+    mdbTooltip,
     IEcharts,
     mdbSelect,
     mdbContainer,
