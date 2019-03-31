@@ -68,7 +68,7 @@
       </mdb-card>
       </mdb-row>
       <a name="myanchor">
-    <h1 style="padding-top: 95px; margin-top: -40px;">My anchor</h1>
+    <h1 style="padding-top: 95px; margin-top: -40px; opacity: 0">My anchor</h1>
 </a>
       <a class = "anchor" id="hiring_salary_tag"></a>
         <mdb-row class="justify-content-center d-flex align-items-stretch">
@@ -855,7 +855,7 @@ export default {
 }
 
 .sticky {
-  background-color: #cfd8dc;
+  background-color: #b0bec5;
   position: fixed;
   overflow: visible;
   z-index: 999;
@@ -866,6 +866,7 @@ export default {
   border-color: #90a4ae;
   border-width: 2px;
   box-shadow: 20px 2px 9px 0 rgba(0, 0, 0, 0.2), 0 2px 13px 0 rgba(0, 0, 0, 0.19);
+  opacity: 0.88;
 }
 
 .fillColor {
