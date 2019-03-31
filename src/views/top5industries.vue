@@ -15,7 +15,7 @@
                 style="font-size:14px;margin-left: 20px;"
               >
                 Individual Industry Information  &nbsp<mdb-icon icon="mouse-pointer" />
-              </p>
+              </p> 
               <select
                 v-show="showSingleIndustry"
                 class="custom-select custom-select-sm"
@@ -74,10 +74,14 @@
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="1" lg="6">
             <mdb-card class="cascading-admin-card">
-              <mdb-card-header
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">change</span>
+                <mdb-card-header
                 class="card-title"
+                slot="reference"
                 >Hiring Trend</mdb-card-header
               >
+              </mdb-tooltip>
               <mdb-card-body>
                 <div
                   v-if="this.loaded"
@@ -95,10 +99,14 @@
           </mdb-col>
           <mdb-col md="2" lg="6">
             <mdb-card class="cascading-admin-card">
-              <mdb-card-header
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">change</span>
+                <mdb-card-header
                 class="card-title"
+                slot="reference"
                 >Salary Distribution</mdb-card-header
               >
+              </mdb-tooltip>
               <mdb-card-body>
                 <div
                   v-if="this.loaded"
@@ -119,10 +127,14 @@
 <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="2" lg="12">
             <mdb-card class="cascading-admin-card">
-              <mdb-card-header
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">change</span>
+                <mdb-card-header
                 class="card-title"
+                slot="reference"
                 >Salary Range by Industry</mdb-card-header
               >
+              </mdb-tooltip>
               <mdb-card-body>
                 <div v-if="this.loaded">
                   <highcharts
@@ -138,8 +150,14 @@
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col>
             <mdb-card class="cascading-admin-card">
-
-              <mdb-card-header class="card-title"> Compare Companies </mdb-card-header>
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">change</span>
+                <mdb-card-header
+                class="card-title"
+                slot="reference"
+                >Compare Companies</mdb-card-header
+              >
+              </mdb-tooltip>
               <mdb-card-body>
                 <div v-if="this.loaded" style="display: block">
                   <b-row>
@@ -294,6 +312,7 @@
 </template>
 <script>
 import {
+  mdbTooltip,
   mdbRow,
   mdbCol,
   mdbBtn,
@@ -470,6 +489,7 @@ export default {
   },
   components: {
     highcharts: Chart,
+    mdbTooltip,
     mdbSelect,
     mdbContainer,
     mdbRow,
