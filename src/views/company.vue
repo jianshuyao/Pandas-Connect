@@ -35,13 +35,16 @@
           <mdb-col col="6">
             <mdb-row center>
               <mdb-modal-title>
-                <p
-                  v-b-popover.hover="'I am popover content!'"
-                  class="card-title"
-                  style="font-size:30px;letter-spacing:2px;"
-                >
-                  {{ this.companyRef }}
-                </p>
+                <mdb-tooltip :options="{placement: 'left'}">
+                  <span slot="tip">KNN</span>
+                  <p
+                    class="card-title"
+                    style="font-size:30px;letter-spacing:2px;"
+                    slot="reference"
+                  >
+                    {{ this.companyRef }}
+                  </p>
+                </mdb-tooltip>
               </mdb-modal-title>
             </mdb-row>
           </mdb-col>
@@ -150,10 +153,14 @@
                 <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="1" lg="4">
             <mdb-card class="cascading-admin-card" style="height:100%">
-              <mdb-card-header
-                class="card-title"
-                >Job Breakdown</mdb-card-header
-              >
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">FAP ONLY</span>
+                <mdb-card-header
+                  class="card-title"
+                  slot="reference"
+                  >Job Breakdown</mdb-card-header
+                >
+              </mdb-tooltip>
               <mdb-card-body>
                 <div v-if="this.loaded" style="display: block">
                   <mdb-pie-chart
@@ -167,10 +174,14 @@
           </mdb-col>
           <mdb-col md="2" lg="4">
             <mdb-card class="cascading-admin-card" style="height:100%">
-              <mdb-card-header
-                class="card-title"
-                >CAP Distribution</mdb-card-header
-              >
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">FAP Again</span>
+                <mdb-card-header
+                  class="card-title"
+                  slot="reference"
+                  >CAP Distribution</mdb-card-header
+                >
+              </mdb-tooltip>
               <mdb-card-body>
                 <div v-if="this.loaded" style="display: block">
                   <mdb-bar-chart
@@ -184,10 +195,14 @@
           </mdb-col>
           <mdb-col md="3" lg="4">
             <mdb-card class="cascading-admin-card" style="height:100%">
-              <mdb-card-header
-                class="card-title"
-                >Salary Distribution</mdb-card-header
-              >
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">FAP More</span>
+                <mdb-card-header
+                  class="card-title"
+                  slot="reference"
+                  >Salary Distribution</mdb-card-header
+                >
+              </mdb-tooltip>
               <mdb-card-body>
                 <div v-if="this.loaded" style="display: block">
                   <mdb-bar-chart
@@ -205,11 +220,15 @@
         <mdb-row class="justify-content-center">
           <mdb-col md="2" lg="10">
             <mdb-card class="cascading-admin-card">
-              <mdb-card-header
-                style="background-color: #b3e5fc;"
-                class="card-title"
-                >Rate Your Chances</mdb-card-header
-              >
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">Honestly, what's there to rate when you already know you have no chance? Don't be deluded</span>
+                <mdb-card-header
+                  style="background-color: #b3e5fc;"
+                  class="card-title"
+                  slot="reference"
+                  >Rate Your Chances</mdb-card-header
+                >
+              </mdb-tooltip>
               <mdb-card-body>
                 <div class="justify-content-center d-flex align-items-stretch">
                   <mdb-col>
@@ -297,6 +316,7 @@
 </template>
 <script>
 import {
+  mdbTooltip,
   mdbRow,
   mdbCol,
   mdbBtn,
@@ -442,6 +462,7 @@ export default {
     }
   },
   components: {
+    mdbTooltip,
     mdbPopover,
     mdbCarousel,
     mdbCarouselItem,
