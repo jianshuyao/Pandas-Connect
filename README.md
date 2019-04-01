@@ -11,6 +11,7 @@ Let us know what you think and what we can improve below!
 ## Table of Contents
 
 * [Documentation](#documentation)
+* [Features](#feature)
 * [File Structure](#file-structure)
 * [Video Resources](#video-resources)
 * [Reporting Issues](#reporting-issues)
@@ -20,6 +21,10 @@ Let us know what you think and what we can improve below!
 ## Documentation
 The documentation for Pandas Connect is hosted at on our drive at ~[website](https://www.google.com)~. (Apologies, the link will be up in the near future)
 
+## Features
+-
+-
+-
 
 ## File Structure
 
