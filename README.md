@@ -1,8 +1,12 @@
 # [Pandas Connect]
 
-We created it thinking about things you actually need to make well informed decisions for your career. Ultimately, the information contained in Pandas-Connect is handpicked and optimised based on surveys conducted by us, on NUS students. 
+For some time now, we have a burning desire to help students get reliable career information, as well as recommend modules to take based on their future career interests.
 
-Let us know what you think and what we can improve below. And good luck with development!
+We brainstormed about things you actually need to make well informed decisions for your career, and perfected the idea following feedback from your fellow NUS peers. Ultimately, information chosen are handpicked and optimised for you.
+
+With that, we present to you, a professional career advisory platform. Share our vision in connect students to a brighter future through Pandas Connect. 
+
+Let us know what you think and what we can improve below!
 
 ## Table of Contents
 
@@ -86,7 +90,7 @@ Pandas-Connect/
 ```
 
 ## Video Resources
-Stay tuned for video updates for our website...
+Stay tuned for video updates.
 
 ## Reporting Issues
 We use GitHub Issues as the official bug tracker for Pandas-Connect. Feel free to [email us](the.pandas3103@gmail.com).
