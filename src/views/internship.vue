@@ -403,15 +403,15 @@
                     ></vue-slider>
                   </mdb-col>
                   <mdb-col>
-                    <label>Desired Job Position</label>
-                    To be linked
+                    <label>Desired Company</label>
+                    <br/>To be linked
                   </mdb-col>
                 </div>
                 <hr />
                 <div>
                   <div v-if="this.jobTit.length == 0">
                     <h4 style="text-align:center">
-                      Please select your CAP and desired job position!
+                      Please select your CAP and desired company!
                     </h4>
                   </div>
 
