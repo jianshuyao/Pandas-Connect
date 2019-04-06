@@ -214,7 +214,7 @@
         <a class="anchor3" id="chance_tag"></a>
         <div style="height:40px"></div>
         <mdb-row class="justify-content-center">
-          <mdb-col md="2" lg="10">
+          <mdb-col md="2" lg="12">
             <mdb-card class="cascading-admin-card">
               <mdb-tooltip :options="{placement: 'top'}">
                 <span slot="tip">Enter your CAP and desired job position to rate your chances of getting your dream job!</span>
@@ -252,6 +252,10 @@
                       </option>
                     </select>
                   </mdb-col>
+                  <mdb-col>
+                  <label class="typo__label">Past Internship Roles</label>
+                  <multiselect v-model="value" tag-placeholder="Add this as new tag" placeholder="Select Past Role" label="name" track-by="code" :options="options" :multiple="true" :taggable="true" @tag="addTag"></multiselect>
+                </mdb-col>
                 </div>
                 <hr />
                 <div>
@@ -348,6 +352,8 @@ import { mdbDatatable } from "mdbvue";
 
 import { db } from "../firebase";
 
+import Multiselect from 'vue-multiselect';
+
 export default {
   name: "Company",
   bodyClass: "company-page",
@@ -394,6 +400,14 @@ export default {
     }
   },
   methods: {
+    addTag (newTag) {
+      const tag = {
+        name: newTag,
+        code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+      }
+      this.options.push(tag)
+      this.value.push(tag)
+    },
     getSelectValue(value, text) {
       console.log(value);
     },
@@ -458,6 +472,7 @@ export default {
     }
   },
   components: {
+    Multiselect,
     mdbTooltip,
     mdbPopover,
     mdbCarousel,
@@ -490,6 +505,14 @@ export default {
   },
   data() {
     return {
+      value: [
+        { name: 'Javascript', code: 'js' }
+      ],
+      options: [
+        { name: 'Vue.js', code: 'vu' },
+        { name: 'Javascript', code: 'js' },
+        { name: 'Open Source', code: 'os' }
+      ],
       showCompany: false,
       companyname: [],
       backgroundColor: [
@@ -643,6 +666,7 @@ export default {
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scoped>
 .text_bg_2 {
   opacity: 0.7;
@@ -860,5 +884,7 @@ export default {
   position: relative;
   top: -180px;
   visibility: hidden;
+
+
 }
 </style>
