@@ -60,6 +60,7 @@
             </mdb-row>
           </mdb-col>
         </mdb-row>
+
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col>
             <mdb-card class="cascading-admin-card">
@@ -382,7 +383,8 @@
             </mdb-card>
           </mdb-col>
           <mdb-col md="2" lg="5">
-            <mdb-card class="cascading-admin-card">
+            <mdb-row>
+              <mdb-card class="cascading-admin-card">
               <mdb-card-header
                 style="background-color: #b3e5fc;"
                 class="card-title"
@@ -459,10 +461,10 @@
                 </div>
               </mdb-card-body>
             </mdb-card>
-          </mdb-col>
-        </mdb-row>
-        <mdb-row class="justify-content-center d-flex align-items-stretch">
-          <mdb-card class="cascading-admin-card" style="height:100%">
+            </mdb-row>
+
+            <mdb-row>
+              <mdb-card class="cascading-admin-card" style="height:100%">
             <mdb-tooltip :options="{placement: 'top'}">
                 <span slot="tip">
                   Equipped with sophisticated Natural Language Processing, we identify skillsets that are more tailored-ready for the internship industry!
@@ -478,11 +480,12 @@
                 <IEcharts
                   :option="wordcloud"
                   @ready="onReady"
-                  style="height:450px"
                 />
               </div>
             </mdb-card-body>
           </mdb-card>
+            </mdb-row>
+          </mdb-col>
         </mdb-row>
       </section>
     </section>
@@ -511,7 +514,8 @@ import {
   mdbModalBody,
   mdbModalFooter,
   mdbSelect,
-  mdbContainer
+  mdbContainer,
+  mdbTooltip
 } from "mdbvue";
 
 import "echarts-wordcloud";
@@ -719,6 +723,7 @@ export default {
     mdbCardText,
     mdbIcon,
     mdbTbl,
+    mdbTooltip,
     mdbBarChart,
     mdbPieChart,
     mdbLineChart,
