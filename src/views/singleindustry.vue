@@ -344,7 +344,7 @@
                       >
                         <b-input-group>
                           <b-form-input
-                            v-model="filter"
+                            v-model="filterIntern"
                             placeholder="Type to Search"
                           />
                         </b-input-group>
@@ -416,7 +416,7 @@
                     :fixed="true"
                     :hover="true"
                     :small="true"
-                    @filtered="onFiltered"
+                    @filtered="onFilteredIntern"
                   >
                     <template slot="role" slot-scope="row">
                       {{ row.value }}
@@ -822,6 +822,11 @@ export default {
       this.totalRows = filteredItems.length;
       this.currentPage = 1;
     },
+    onFilteredIntern(filteredItems) {
+      // Trigger pagination to update the number of buttons/pages due to filtering
+      this.totalRowsIntern = filteredItems.length;
+      this.currentPageIntern = 1;
+    },
     onFilteredSuggest(filteredItems) {
       // Trigger pagination to update the number of buttons/pages due to filtering
       this.totalRowsSuggest = filteredItems.length;
@@ -1133,7 +1138,7 @@ export default {
       ],
       currentPageIntern: 1,
       perPageIntern: 5,
-      totalRows: itemsIntern.length,
+      totalRowsIntern: itemsIntern.length,
       pageOptions: [5, 10, 15],
       sortByIntern: null,
       sortDescIntern: false,
