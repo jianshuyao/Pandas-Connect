@@ -1,11 +1,13 @@
-<!--Todo tooltip-->
+<!--TODO: Chance meter DB-->
 <template>
   <div class="wrapper">
-    <section id="module">
-      <div><br /></div>
-      <section class="mt-lg-5">
-        <mdb-row class="justify-content-start">
-          <mdb-col col="3" class="align-self-center">
+      <section id="industry">
+        <div style="height: 56px;"></div>
+        <section class="mt-lg-1">
+          <mdb-row class="justify-content-center">
+            <mdb-card class="sticky">
+              <mdb-row class="justify-content-start">
+            <mdb-col col="3" class="align-self-center">
             <div>
               <p
                 @click="showSingleIndustry = !showSingleIndustry"
@@ -59,15 +61,31 @@
               </p>
             </mdb-row>
           </mdb-col>
+          </mdb-row>
+          <mdb-row class="justify-content-center">
+        <a href="#company_tag" v-smooth-scroll><button class="button button5">Company Info & Programs</button></a>
+        <a href="#chance_tag" v-smooth-scroll><button class="button button5">Rate your Chance</button></a>
+        <a href="#recommend_tag" v-smooth-scroll><button class="button button5">Recommendations</button></a>
         </mdb-row>
-
+          </mdb-card>
+        </mdb-row>
+        <a name="myanchor">
+    <h1 style="padding-top: 95px; margin-top: -40px; opacity:0">My anchor</h1>
+</a>
+<a class = "anchor" id="company_tag"></a>
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col>
             <mdb-card class="cascading-admin-card">
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">
+                  This table allows you to compare companies in the same industry '{{this.currname}}' by Median Cap, Median Salary and Graduates. Table is colored by CAP intervals to give you a better sensing of the suitability of the company by cap intake! Want to know more about a company? Simply click 'learn more'!
+                </span>
               <mdb-card-header
                 class="card-title"
-                >Companies</mdb-card-header
+                slot="reference"
+                >Compare Companies</mdb-card-header
               >
+            </mdb-tooltip>
               <mdb-card-body>
                 <div v-if="this.loaded" style="display: block">
                   <b-row>
@@ -224,178 +242,120 @@
             </mdb-card>
           </mdb-col>
         </mdb-row>
-
-        <mdb-row class="justify-content-center d-flex align-items-stretch">
+<a class = "anchor" id="chance_tag"></a>
+        <mdb-row class="justify-content-center">
           <mdb-col>
             <mdb-card class="cascading-admin-card">
-              <mdb-card-header
-                class="card-title"
-                >Companies</mdb-card-header
-              >
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">Enter your CAP and desired job position to rate your chances of getting your dream job!</span>
+                <mdb-card-header
+                  style="background-color: #b3e5fc;"
+                  class="card-title"
+                  slot="reference"
+                  >Rate Your Chances</mdb-card-header
+                >
+              </mdb-tooltip>
               <mdb-card-body>
-                <div v-if="this.loaded" style="display: block">
-                  <b-row>
-                    <b-col md="6" class="my-1">
-                      <b-form-group
-                        label-cols-sm="3"
-                        label="Filter"
-                        class="mb-0"
-                      >
-                        <b-input-group>
-                          <b-form-input
-                            v-model="filter"
-                            placeholder="Type to Search"
-                          />
-                        </b-input-group>
-                      </b-form-group>
-                    </b-col>
+                <div class="justify-content-center d-flex align-items-stretch">
+                  <mdb-col>
+                    <label for="customRange1"
+                      >Expected Cap: {{ this.value_2 }}</label
+                    >
+                    <vue-slider
+                      ref="slider"
+                      v-model="value_2"
+                      v-bind="options"
+                      min="2.0"
+                      max="5.0"
+                      interval="0.01"
+                    ></vue-slider>
+                  </mdb-col>
+                  <mdb-col>
+                    <label>Desired Company</label>
+                    <!--
+                    <select
+                      class="custom-select custom-select-sm"
+                      v-model="jobTit"
+                    >
+                      <option disabled value="">Select a Position</option>
+                      <option v-for="pos in this.company['positions']['name']"
+                        >{{ pos }}
+                      </option>
+                    </select>
+                    -->
+                  </mdb-col>
+                  <mdb-col>
+                  <label class="typo__label">Past Internship Roles</label>
+                  <multiselect class="mscol" v-model="value" tag-placeholder="Add this as new tag" placeholder="Select Past Role" label="name" track-by="code" :options="options" :multiple="true" :taggable="true" :style="" @tag="addTag"></multiselect>
+                </mdb-col>
+                </div>
+                <hr />
+                <div>
+                  <div v-if="this.jobTit.length == 0">
+                    <h4 style="text-align:center">
+                      Please select your CAP and desired company!
+                    </h4>
+                  </div>
 
-                    <b-col md="6" class="my-1">
-                      <b-form-group label-cols-sm="3" label="Sort" class="mb-0">
-                        <b-input-group>
-                          <b-form-select
-                            v-model="sortBy"
-                            :options="sortOptions"
-                          >
-                            <option slot="first" :value="null"
-                              >-- None --</option
-                            >
-                          </b-form-select>
-                          <b-form-select
-                            :disabled="!sortBy"
-                            v-model="sortDesc"
-                            slot="append"
-                          >
-                            <option :value="false">Asc</option>
-                            <option :value="true">Desc</option>
-                          </b-form-select>
-                        </b-input-group>
-                      </b-form-group>
-                    </b-col>
-
-                    <b-col md="6" class="my-1">
-                      <b-form-group
-                        label-cols-sm="3"
-                        label="Per page"
-                        class="mb-0"
-                      >
-                        <b-form-select
-                          :options="pageOptions"
-                          v-model="perPage"
-                        />
-                      </b-form-group>
-                    </b-col>
-
-                    <b-col md="6" class="my-1">
-                      <b-form-group
-                        label-cols-sm="3"
-                        label="Legend"
-                        class="mb-0"
-                      >
-                        <b-badge variant="success">Cap < 3.75</b-badge>
-                        <b-badge variant="warning">3.75 < Cap < 4.5</b-badge>
-                        <b-badge variant="danger">Cap > 4.5 </b-badge>
-                      </b-form-group>
-                    </b-col>
-                  </b-row>
-
-                  <!-- Main table element -->
-                  <b-table
-                    show-empty
-                    stacked="md"
-                    :items="tableData"
-                    :fields="fields"
-                    :current-page="currentPage"
-                    :per-page="perPage"
-                    :filter="filter"
-                    :sort-by.sync="sortBy"
-                    :sort-desc.sync="sortDesc"
-                    :sort-direction="sortDirection"
-                    :bordered="true"
-                    :fixed="true"
-                    :hover="true"
-                    :small="true"
-                    @filtered="onFiltered"
-                  >
-                    <template slot="organisation" slot-scope="row">
-                      {{ row.value }}
-                    </template>
-
-                    <template slot="cap" slot-scope="row">
-                      {{ row.value }}
-                    </template>
-
-                    <template slot="sal" slot-scope="row">
-                      {{ row.value }}
-                    </template>
-
-                    <template slot="numGrads" slot-scope="row">
-                      {{ row.value }}
-                    </template>
-
-                    <template slot="actions" slot-scope="row">
-                      <b-button
-                        size="sm"
-                        @click="
-                          $router.push({
-                            path:
-                              '/company/' +
-                              row.item['organisation'] +
-                              '/' +
-                              majorname
-                          })
-                        "
-                        class="mr-1"
-                        variant="test"
-                      >
-                        Learn More
-                      </b-button>
-                    </template>
-
-                    <template slot="row-details" slot-scope="row">
-                      <b-card>
-                        <ul>
-                          <li v-for="(value, key) in row.item" :key="key">
-                            {{ key }}: {{ value }}
-                          </li>
-                        </ul>
-                      </b-card>
-                    </template>
-                  </b-table>
-
-                  <b-row>
-                    <b-col md="6" class="my-1">
-                      <b-pagination
-                        :total-rows="totalRows"
-                        :per-page="perPage"
-                        v-model="currentPage"
-                        class="my-0"
+                  <div v-else>
+                    <div v-if="counter <= 33">
+                      <b-progress
+                        :value="counter"
+                        variant="danger"
+                        max="100"
+                        show-progress
+                        animated
+                        style="height:35px"
                       />
-                    </b-col>
-                  </b-row>
-
-                  <!-- Info modal -->
-                  <b-modal
-                    id="modalInfo"
-                    @hide="resetModal"
-                    :title="modalInfo.title"
-                    ok-only
-                  >
-                    <pre>{{ modalInfo.content }}</pre>
-                  </b-modal>
+                    </div>
+                    <div v-else-if="counter > 33 && counter <= 66">
+                      <b-progress
+                        :value="counter"
+                        variant="warning"
+                        max="100"
+                        show-progress
+                        animated
+                        style="height:35px"
+                      />
+                    </div>
+                    <div v-else>
+                      <b-progress
+                        :value="counter"
+                        variant="success"
+                        max="100"
+                        show-progress
+                        animated
+                        style="height:35px"
+                      />
+                    </div>
+                    <h5 style="text-align:center">
+                      Based on past Employment Statistics of NUS students in
+                      this company,<br />
+                      your chance for the position is rated at:
+                    </h5>
+                    <h2 style="text-align:center">
+                      <strong>{{ counter }}%</strong>
+                    </h2>
+                  </div>
                 </div>
               </mdb-card-body>
             </mdb-card>
           </mdb-col>
         </mdb-row>
-
+<a class = "anchor" id="recommend_tag"></a>
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="1" lg="7">
             <mdb-card class="cascading-admin-card" style="height:100%">
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">
+                  This section allows you to know what modules to take that are highly relevant for the industry '{{this.currname}}' that you're interested in! Each module is colored by their level code, and can be sorted by the number of graduates who took the module. More information can be learnt from NUSmods!
+                </span>
               <mdb-card-header
                 class="card-title"
+                slot="reference"
                 >Recommended Modules</mdb-card-header
               >
+            </mdb-tooltip>
               <mdb-card-body class="align-items-center justify-content-center">
                 <div v-if="this.recommended" style="display: block">
                   <b-row>
@@ -547,88 +507,6 @@
             </mdb-card>
           </mdb-col>
           <mdb-col md="2" lg="5">
-            <mdb-card class="cascading-admin-card">
-                <mdb-card-header
-                  style="background-color: #b3e5fc;"
-                  class="card-title"
-                  >Rate Your Chances</mdb-card-header
-                >
-                <mdb-card-body>
-                  <div class="justify-content-center d-flex align-items-stretch">
-                    <mdb-col>
-                      <label for="customRange1"
-                        >Expected Cap: {{ this.value_2 }}</label
-                      >
-                      <vue-slider
-                        ref="slider"
-                        v-model="value_2"
-                        v-bind="options"
-                        min=2
-                        max=5
-                        interval=0.01
-                      ></vue-slider>
-                    </mdb-col>
-                    <mdb-col>
-                      <label>Desired Company</label>
-                      <br/>To be linked
-                    </mdb-col>
-                  </div>
-                  <hr />
-                  <div>
-                    <div v-if="this.jobTit.length == 0">
-                      <h4 style="text-align:center">
-                        Please select your CAP and desired company!
-                      </h4>
-                    </div>
-
-                    <div v-else>
-                      <div v-if="counter <= 33">
-                        <b-progress
-                          :value="counter"
-                          variant="danger"
-                          max="100"
-                          show-progress
-                          animated
-                          style="height:35px"
-                        />
-                      </div>
-                      <div v-else-if="counter > 33 && counter <= 66">
-                        <b-progress
-                          :value="counter"
-                          variant="warning"
-                          max="100"
-                          show-progress
-                          animated
-                          style="height:35px"
-                        />
-                      </div>
-                      <div v-else>
-                        <b-progress
-                          :value="counter"
-                          variant="success"
-                          max="100"
-                          show-progress
-                          animated
-                          style="height:35px"
-                        />
-                      </div>
-                      <h5 style="text-align:center">
-                        Based on past Employment Statistics of NUS students in
-                        this company,<br />
-                        your chance for the position is rated at:
-                      </h5>
-                      <h2 style="text-align:center">
-                        <strong>{{ counter }}%</strong>
-                      </h2>
-                    </div>
-                  </div>
-                </mdb-card-body>
-              </mdb-card>
-          </mdb-col>
-        </mdb-row>
-
-        <mdb-row class="justify-content-center d-flex align-items-stretch">
-          <mdb-col md="1" lg="7">
             <mdb-card class="cascading-admin-card" style="height:100%">
                 <mdb-tooltip :options="{placement: 'top'}">
                     <span slot="tip">
@@ -688,6 +566,8 @@ import IEcharts from "vue-echarts-v3/src/lite.js";
 import { mdbDatatable } from "mdbvue";
 
 import { db } from "../firebase";
+
+import Multiselect from 'vue-multiselect';
 
 const items = [];
 const items2 = [];
@@ -752,6 +632,14 @@ export default {
     }
   },
   methods: {
+    addTag (newTag) {
+      const tag = {
+        name: newTag,
+        code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+      }
+      this.options.push(tag)
+      this.value.push(tag)
+    },
     info(item, index, button) {
       this.modalInfo.title = `Row index: ${index}`;
       this.modalInfo.content = JSON.stringify(item, null, 2);
@@ -899,10 +787,18 @@ export default {
     mdbModalTitle,
     mdbModalBody,
     mdbModalFooter,
-    mdbDatatable
+    mdbDatatable,
+    Multiselect
   },
   data() {
     return {
+      value: [
+      ],
+      options: [
+        { name: 'Vue.js', code: 'vu'},
+        { name: 'Javascript', code: 'js'},
+        { name: 'Open Source', code: 'os'}
+      ],
       value_2: 3.5,
       jobTit: "",
       chartOptions: {
@@ -1211,5 +1107,92 @@ export default {
   padding: 10px;
   text-align: center;
   border-top: 1px solid #000000;
+}
+.button {
+  a {
+    text-decoration: none;
+  }
+  a:link, a:visited {
+    color: white;
+  }
+  a:hover {
+    color: black;
+  }
+  opacity: 0.8;
+  background-color: #4CAF50; 
+  border: 2px solid white;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin-top: 0px;
+  margin-right:10px;
+  margin-left:10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+.button5 {
+  background-color: #555555;
+  border-radius: 12px;
+}
+.button5:hover {
+  background-color: white;
+  color: black;
+  border-radius: 12px;
+}
+.sticky {
+  background-color: #b0bec5;
+  position: fixed;
+  overflow: visible;
+  z-index: 999;
+  top: 20;
+  width: 100%;
+  margin-bottom:20px;
+  padding: 5px;
+  border-color: #90a4ae;
+  border-width: 2px;
+  box-shadow: 20px 2px 9px 0 rgba(0, 0, 0, 0.2), 0 2px 13px 0 rgba(0, 0, 0, 0.19);
+  opacity: 0.88;
+}
+.fillColor {
+  background-color: #cfd8dc;
+}
+
+.anchor{
+  display: block;
+  position: relative;
+  top: -190px;
+  visibility: hidden;
+}
+
+.anchor2{
+  display: block;
+  position: relative;
+  top: -190px;
+  visibility: hidden;
+}
+
+.anchor3{
+  display: block;
+  position: relative;
+  top: -180px;
+  visibility: hidden;
+}
+
+.anchor4{
+  display: block;
+  position: relative;
+  top: -180px;
+  visibility: hidden;
+}
+.mscol{ 
+  background: #b3e5fc;
+}
+.multiselect.multiselect__tag {
+  background: #b3e5fc;
 }
 </style>
