@@ -102,7 +102,7 @@
             <mdb-card class="cascading-admin-card">
               <mdb-tooltip :options="{placement: 'top'}">
                 <span slot="tip">
-                  Analyse the salary distribution of all companies in {{this.currname}} and observe the difference in salary numbers for each interval bin. 
+                  Analyse the salary distribution (%) of all companies in {{this.currname}} and observe the difference in salary numbers for each interval bin. 
                 </span>
               <mdb-card-header
                 class="card-title"

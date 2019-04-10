@@ -100,7 +100,7 @@
           <mdb-col md="2" lg="6">
             <mdb-card class="cascading-admin-card">
               <mdb-tooltip :options="{placement: 'top'}">
-                <span slot="tip">Analyse the salary distribution of all industries hiring students majoring in {{this.currentMajor}} and observe the difference in salary numbers for each interval bin.</span>
+                <span slot="tip">Analyse the salary distribution (%) of all industries hiring students majoring in {{this.currentMajor}} and observe the difference in salary numbers for each interval bin.</span>
                 <mdb-card-header
                 class="card-title"
                 slot="reference"
