@@ -153,7 +153,7 @@
         </mdb-row>
 <a class="anchor3" id="company_tag"></a>
         <mdb-row class="justify-content-center d-flex align-items-stretch">
-          <mdb-col>
+          <mdb-col md = '7'>
             <mdb-card class="cascading-admin-card">
               <mdb-tooltip :options="{placement: 'top'}">
                 <span slot="tip">
@@ -320,6 +320,167 @@
               </mdb-card-body>
             </mdb-card>
           </mdb-col>
+
+          <mdb-col md = '5'>
+            <mdb-card class="cascading-admin-card">
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">
+                  This table allows you to compare companies in the same industry '{{this.currname}}' by Median Cap, Median Salary and Graduates. Table is colored by CAP intervals to give you a better sensing of the suitability of the company by cap intake! Want to know more about a company? Simply click 'learn more'!
+                </span>
+              <mdb-card-header
+                class="card-title"
+                slot="reference"
+                >Compare Internships</mdb-card-header
+              >
+            </mdb-tooltip>
+              <mdb-card-body>
+                <div v-if="this.loaded" style="display: block">
+                  <b-row>
+                    <b-col md="6" class="my-1">
+                      <b-form-group
+                        label-cols-sm="3"
+                        label="Filter"
+                        class="mb-0"
+                      >
+                        <b-input-group>
+                          <b-form-input
+                            v-model="filter"
+                            placeholder="Type to Search"
+                          />
+                        </b-input-group>
+                      </b-form-group>
+                    </b-col>
+
+                    <b-col md="6" class="my-1">
+                      <b-form-group label-cols-sm="3" label="Sort" class="mb-0">
+                        <b-input-group>
+                          <b-form-select
+                            v-model="sortBy"
+                            :options="sortOptions"
+                          >
+                            <option slot="first" :value="null"
+                              >-- None --</option
+                            >
+                          </b-form-select>
+                          <b-form-select
+                            :disabled="!sortBy"
+                            v-model="sortDesc"
+                            slot="append"
+                          >
+                            <option :value="false">Asc</option>
+                            <option :value="true">Desc</option>
+                          </b-form-select>
+                        </b-input-group>
+                      </b-form-group>
+                    </b-col>
+
+                    <b-col md="6" class="my-1">
+                      <b-form-group
+                        label-cols-sm="3"
+                        label="Per page"
+                        class="mb-0"
+                      >
+                        <b-form-select
+                          :options="pageOptions"
+                          v-model="perPage"
+                        />
+                      </b-form-group>
+                    </b-col>
+
+                    <b-col md="6" class="my-1">
+                      <b-form-group
+                        label-cols-sm="3"
+                        label="Legend"
+                        class="mb-0"
+                      >
+                        <b-badge variant="success">Cap < 3.75</b-badge>
+                        <b-badge variant="warning">3.75 < Cap < 4.5</b-badge>
+                        <b-badge variant="danger">Cap > 4.5 </b-badge>
+                      </b-form-group>
+                    </b-col>
+                  </b-row>
+
+                  <!-- Main table element -->
+                  <b-table
+                    show-empty
+                    stacked="md"
+                    :items="tableDataIntern"
+                    :fields="fieldsIntern"
+                    :current-page="currentPageIntern"
+                    :per-page="perPageIntern"
+                    :filter="filterIntern"
+                    :sort-by.sync="sortByIntern"
+                    :sort-desc.sync="sortDescIntern"
+                    :sort-direction="sortDirectionIntern"
+                    :bordered="true"
+                    :fixed="true"
+                    :hover="true"
+                    :small="true"
+                    @filtered="onFiltered"
+                  >
+                    <template slot="role" slot-scope="row">
+                      {{ row.value }}
+                    </template>
+
+                    <template slot="cap" slot-scope="row">
+                      {{ row.value }}
+                    </template>
+
+                    <template slot="actions" slot-scope="row">
+                      <b-button
+                        size="sm"
+                        @click="
+                          $router.push({
+                            path:
+                              '/company/' +
+                              row.item['organisation'] +
+                              '/' +
+                              majorname
+                          })
+                        "
+                        class="mr-1"
+                        variant="test"
+                      >
+                        Learn More
+                      </b-button>
+                    </template>
+
+                    <template slot="row-details" slot-scope="row">
+                      <b-card>
+                        <ul>
+                          <li v-for="(value, key) in row.item" :key="key">
+                            {{ key }}: {{ value }}
+                          </li>
+                        </ul>
+                      </b-card>
+                    </template>
+                  </b-table>
+
+                  <b-row>
+                    <b-col md="6" class="my-1">
+                      <b-pagination
+                        :total-rows="totalRows"
+                        :per-page="perPage"
+                        v-model="currentPage"
+                        class="my-0"
+                      />
+                    </b-col>
+                  </b-row>
+
+                  <!-- Info modal -->
+                  <b-modal
+                    id="modalInfo"
+                    @hide="resetModal"
+                    :title="modalInfo.title"
+                    ok-only
+                  >
+                    <pre>{{ modalInfo.content }}</pre>
+                  </b-modal>
+                </div>
+              </mdb-card-body>
+            </mdb-card>
+          </mdb-col>
+
         </mdb-row>
         <a class="anchor4" id="recommend_tag"></a>
         <mdb-row class="justify-content-center d-flex align-items-stretch">
@@ -549,6 +710,28 @@ import { db } from "../firebase";
 
 const items = [];
 const items2 = [];
+const itemsIntern = [
+{
+  role: 'Data Science Intern',
+  cap: 4.87,
+},
+{
+  role: 'Banking Intern',
+  cap: 4.23,
+},
+{
+  role: 'Accounting Intern',
+  cap: 4.56,
+},
+{
+  role: 'Backend Engineer Intern',
+  cap: 4.34,
+},
+{
+  role: 'Frontend Engineer Intern',
+  cap: 4.34,
+}
+];
 
 export default {
   name: "Single Industry",
@@ -935,6 +1118,27 @@ export default {
       sortDesc: false,
       sortDirection: "asc",
       filter: null,
+      modalInfo: { title: "", content: "" },
+
+      tableDataIntern: itemsIntern,
+      fieldsIntern: [
+        {
+          key: "role",
+          label: "Role",
+          sortable: true,
+          sortDirection: "desc"
+        },
+        { key: "cap", label: "Median CAP", sortable: true },
+        { key: "actions", label: "Actions", class: "text-center" }
+      ],
+      currentPageIntern: 1,
+      perPageIntern: 5,
+      totalRows: itemsIntern.length,
+      pageOptions: [5, 10, 15],
+      sortByIntern: null,
+      sortDescIntern: false,
+      sortDirectionIntern: "asc",
+      filterIntern: null,
       modalInfo: { title: "", content: "" },
 
       //TableSuggestedData
