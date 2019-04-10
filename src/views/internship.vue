@@ -1,4 +1,4 @@
-<!--To reroute and fill in data from db-->
+<!--Todo tooltip-->
 <template>
   <div class="wrapper">
     <section id="module">
@@ -58,6 +58,170 @@
                 <mdb-icon icon="graduation-cap" /> Major: {{ this.majorname }}
               </p>
             </mdb-row>
+          </mdb-col>
+        </mdb-row>
+
+        <mdb-row class="justify-content-center d-flex align-items-stretch">
+          <mdb-col>
+            <mdb-card class="cascading-admin-card">
+              <mdb-card-header
+                class="card-title"
+                >Companies</mdb-card-header
+              >
+              <mdb-card-body>
+                <div v-if="this.loaded" style="display: block">
+                  <b-row>
+                    <b-col md="6" class="my-1">
+                      <b-form-group
+                        label-cols-sm="3"
+                        label="Filter"
+                        class="mb-0"
+                      >
+                        <b-input-group>
+                          <b-form-input
+                            v-model="filter"
+                            placeholder="Type to Search"
+                          />
+                        </b-input-group>
+                      </b-form-group>
+                    </b-col>
+
+                    <b-col md="6" class="my-1">
+                      <b-form-group label-cols-sm="3" label="Sort" class="mb-0">
+                        <b-input-group>
+                          <b-form-select
+                            v-model="sortBy"
+                            :options="sortOptions"
+                          >
+                            <option slot="first" :value="null"
+                              >-- None --</option
+                            >
+                          </b-form-select>
+                          <b-form-select
+                            :disabled="!sortBy"
+                            v-model="sortDesc"
+                            slot="append"
+                          >
+                            <option :value="false">Asc</option>
+                            <option :value="true">Desc</option>
+                          </b-form-select>
+                        </b-input-group>
+                      </b-form-group>
+                    </b-col>
+
+                    <b-col md="6" class="my-1">
+                      <b-form-group
+                        label-cols-sm="3"
+                        label="Per page"
+                        class="mb-0"
+                      >
+                        <b-form-select
+                          :options="pageOptions"
+                          v-model="perPage"
+                        />
+                      </b-form-group>
+                    </b-col>
+
+                    <b-col md="6" class="my-1">
+                      <b-form-group
+                        label-cols-sm="3"
+                        label="Legend"
+                        class="mb-0"
+                      >
+                        <b-badge variant="success">Cap < 3.75</b-badge>
+                        <b-badge variant="warning">3.75 < Cap < 4.5</b-badge>
+                        <b-badge variant="danger">Cap > 4.5 </b-badge>
+                      </b-form-group>
+                    </b-col>
+                  </b-row>
+
+                  <!-- Main table element -->
+                  <b-table
+                    show-empty
+                    stacked="md"
+                    :items="tableData"
+                    :fields="fields"
+                    :current-page="currentPage"
+                    :per-page="perPage"
+                    :filter="filter"
+                    :sort-by.sync="sortBy"
+                    :sort-desc.sync="sortDesc"
+                    :sort-direction="sortDirection"
+                    :bordered="true"
+                    :fixed="true"
+                    :hover="true"
+                    :small="true"
+                    @filtered="onFiltered"
+                  >
+                    <template slot="organisation" slot-scope="row">
+                      {{ row.value }}
+                    </template>
+
+                    <template slot="cap" slot-scope="row">
+                      {{ row.value }}
+                    </template>
+
+                    <template slot="sal" slot-scope="row">
+                      {{ row.value }}
+                    </template>
+
+                    <template slot="numGrads" slot-scope="row">
+                      {{ row.value }}
+                    </template>
+
+                    <template slot="actions" slot-scope="row">
+                      <b-button
+                        size="sm"
+                        @click="
+                          $router.push({
+                            path:
+                              '/company/' +
+                              row.item['organisation'] +
+                              '/' +
+                              majorname
+                          })
+                        "
+                        class="mr-1"
+                        variant="test"
+                      >
+                        Learn More
+                      </b-button>
+                    </template>
+
+                    <template slot="row-details" slot-scope="row">
+                      <b-card>
+                        <ul>
+                          <li v-for="(value, key) in row.item" :key="key">
+                            {{ key }}: {{ value }}
+                          </li>
+                        </ul>
+                      </b-card>
+                    </template>
+                  </b-table>
+
+                  <b-row>
+                    <b-col md="6" class="my-1">
+                      <b-pagination
+                        :total-rows="totalRows"
+                        :per-page="perPage"
+                        v-model="currentPage"
+                        class="my-0"
+                      />
+                    </b-col>
+                  </b-row>
+
+                  <!-- Info modal -->
+                  <b-modal
+                    id="modalInfo"
+                    @hide="resetModal"
+                    :title="modalInfo.title"
+                    ok-only
+                  >
+                    <pre>{{ modalInfo.content }}</pre>
+                  </b-modal>
+                </div>
+              </mdb-card-body>
+            </mdb-card>
           </mdb-col>
         </mdb-row>
 
@@ -383,108 +547,108 @@
             </mdb-card>
           </mdb-col>
           <mdb-col md="2" lg="5">
-            <mdb-row>
-              <mdb-card class="cascading-admin-card">
-              <mdb-card-header
-                style="background-color: #b3e5fc;"
-                class="card-title"
-                >Rate Your Chances</mdb-card-header
-              >
-              <mdb-card-body>
-                <div class="justify-content-center d-flex align-items-stretch">
-                  <mdb-col>
-                    <label for="customRange1"
-                      >Expected Cap: {{ this.value_2 }}</label
-                    >
-                    <vue-slider
-                      ref="slider"
-                      v-model="value_2"
-                      v-bind="options"
-                      min=2
-                      max=5
-                      interval=0.01
-                    ></vue-slider>
-                  </mdb-col>
-                  <mdb-col>
-                    <label>Desired Company</label>
-                    <br/>To be linked
-                  </mdb-col>
-                </div>
-                <hr />
-                <div>
-                  <div v-if="this.jobTit.length == 0">
-                    <h4 style="text-align:center">
-                      Please select your CAP and desired company!
-                    </h4>
+            <mdb-card class="cascading-admin-card">
+                <mdb-card-header
+                  style="background-color: #b3e5fc;"
+                  class="card-title"
+                  >Rate Your Chances</mdb-card-header
+                >
+                <mdb-card-body>
+                  <div class="justify-content-center d-flex align-items-stretch">
+                    <mdb-col>
+                      <label for="customRange1"
+                        >Expected Cap: {{ this.value_2 }}</label
+                      >
+                      <vue-slider
+                        ref="slider"
+                        v-model="value_2"
+                        v-bind="options"
+                        min=2
+                        max=5
+                        interval=0.01
+                      ></vue-slider>
+                    </mdb-col>
+                    <mdb-col>
+                      <label>Desired Company</label>
+                      <br/>To be linked
+                    </mdb-col>
                   </div>
+                  <hr />
+                  <div>
+                    <div v-if="this.jobTit.length == 0">
+                      <h4 style="text-align:center">
+                        Please select your CAP and desired company!
+                      </h4>
+                    </div>
 
-                  <div v-else>
-                    <div v-if="counter <= 33">
-                      <b-progress
-                        :value="counter"
-                        variant="danger"
-                        max="100"
-                        show-progress
-                        animated
-                        style="height:35px"
-                      />
-                    </div>
-                    <div v-else-if="counter > 33 && counter <= 66">
-                      <b-progress
-                        :value="counter"
-                        variant="warning"
-                        max="100"
-                        show-progress
-                        animated
-                        style="height:35px"
-                      />
-                    </div>
                     <div v-else>
-                      <b-progress
-                        :value="counter"
-                        variant="success"
-                        max="100"
-                        show-progress
-                        animated
-                        style="height:35px"
-                      />
+                      <div v-if="counter <= 33">
+                        <b-progress
+                          :value="counter"
+                          variant="danger"
+                          max="100"
+                          show-progress
+                          animated
+                          style="height:35px"
+                        />
+                      </div>
+                      <div v-else-if="counter > 33 && counter <= 66">
+                        <b-progress
+                          :value="counter"
+                          variant="warning"
+                          max="100"
+                          show-progress
+                          animated
+                          style="height:35px"
+                        />
+                      </div>
+                      <div v-else>
+                        <b-progress
+                          :value="counter"
+                          variant="success"
+                          max="100"
+                          show-progress
+                          animated
+                          style="height:35px"
+                        />
+                      </div>
+                      <h5 style="text-align:center">
+                        Based on past Employment Statistics of NUS students in
+                        this company,<br />
+                        your chance for the position is rated at:
+                      </h5>
+                      <h2 style="text-align:center">
+                        <strong>{{ counter }}%</strong>
+                      </h2>
                     </div>
-                    <h5 style="text-align:center">
-                      Based on past Employment Statistics of NUS students in
-                      this company,<br />
-                      your chance for the position is rated at:
-                    </h5>
-                    <h2 style="text-align:center">
-                      <strong>{{ counter }}%</strong>
-                    </h2>
                   </div>
-                </div>
-              </mdb-card-body>
-            </mdb-card>
-            </mdb-row>
+                </mdb-card-body>
+              </mdb-card>
+          </mdb-col>
+        </mdb-row>
 
-            <mdb-row>
-              <mdb-card class="cascading-admin-card" style="height:100%">
-            <mdb-tooltip :options="{placement: 'top'}">
-                <span slot="tip">
-                  Equipped with sophisticated Natural Language Processing, we identify skillsets that are more tailored-ready for the internship industry!
-                </span>
-              <mdb-card-header
-                class="card-title"
-                slot="reference"
-                >Recommended Skillsets</mdb-card-header
-              >
-            </mdb-tooltip>
-            <mdb-card-body class="align-items-center justify-content-center">
-              <div style="display: block">
-                <IEcharts
-                  :option="wordcloud"
-                  @ready="onReady"
-                />
-              </div>
-            </mdb-card-body>
-          </mdb-card>
-            </mdb-row>
+        <mdb-row class="justify-content-center d-flex align-items-stretch">
+          <mdb-col md="1" lg="7">
+            <mdb-card class="cascading-admin-card" style="height:100%">
+                <mdb-tooltip :options="{placement: 'top'}">
+                    <span slot="tip">
+                      Equipped with sophisticated Natural Language Processing, we identify skillsets that are more tailored-ready for the internship industry!
+                    </span>
+                  <mdb-card-header
+                    class="card-title"
+                    slot="reference"
+                    >Recommended Skillsets</mdb-card-header
+                  >
+                </mdb-tooltip>
+                <mdb-card-body class="align-items-center justify-content-center">
+                  <div style="display: block">
+                    <IEcharts
+                      :option="wordcloud"
+                      @ready="onReady"
+                    />
+                  </div>
+                </mdb-card-body>
+              </mdb-card>
           </mdb-col>
         </mdb-row>
       </section>
