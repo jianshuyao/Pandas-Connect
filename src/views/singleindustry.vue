@@ -489,7 +489,7 @@
             <mdb-card class="cascading-admin-card" style="height:100%">
               <mdb-tooltip :options="{placement: 'top'}">
                 <span slot="tip">
-                  Equipped with sophisticated Natural Language Processing, we identify skillsets that are more tailored-ready for the industry '{{this.currname}}'!
+                  Equipped with sophisticated Natural Language Processing, we identify skillsets that are more tailored for the industry '{{this.currname}}'!
                 </span>
               <mdb-card-header
                 class="card-title"

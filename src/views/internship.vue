@@ -223,6 +223,31 @@
             </mdb-card>
           </mdb-col>
         </mdb-row>
+
+        <mdb-row class="justify-content-center d-flex align-items-stretch">
+          <mdb-card class="cascading-admin-card" style="height:100%">
+            <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">
+                  Equipped with sophisticated Natural Language Processing, we identify skillsets that are more tailored-ready for the industry '{{this.currname}}'!
+                </span>
+              <mdb-card-header
+                class="card-title"
+                slot="reference"
+                >Recommended Skillsets</mdb-card-header
+              >
+            </mdb-tooltip>
+            <mdb-card-body class="align-items-center justify-content-center">
+              <div style="display: block">
+                <IEcharts
+                  :option="wordcloud"
+                  @ready="onReady"
+                  style="height:450px"
+                />
+              </div>
+            </mdb-card-body>
+          </mdb-card>
+        </mdb-row>
+
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col md="1" lg="7">
             <mdb-card class="cascading-admin-card" style="height:100%">
