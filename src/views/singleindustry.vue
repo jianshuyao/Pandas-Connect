@@ -355,16 +355,16 @@
                       <b-form-group label-cols-sm="3" label="Sort" class="mb-0">
                         <b-input-group>
                           <b-form-select
-                            v-model="sortBy"
-                            :options="sortOptions"
+                            v-model="sortByIntern"
+                            :options="sortOptionsIntern"
                           >
                             <option slot="first" :value="null"
                               >-- None --</option
                             >
                           </b-form-select>
                           <b-form-select
-                            :disabled="!sortBy"
-                            v-model="sortDesc"
+                            :disabled="!sortByIntern"
+                            v-model="sortDescIntern"
                             slot="append"
                           >
                             <option :value="false">Asc</option>
@@ -381,8 +381,8 @@
                         class="mb-0"
                       >
                         <b-form-select
-                          :options="pageOptions"
-                          v-model="perPage"
+                          :options="pageOptionsIntern"
+                          v-model="perPageIntern"
                         />
                       </b-form-group>
                     </b-col>
@@ -459,9 +459,9 @@
                   <b-row>
                     <b-col md="6" class="my-1">
                       <b-pagination
-                        :total-rows="totalRows"
-                        :per-page="perPage"
-                        v-model="currentPage"
+                        :total-rows="totalRowsIntern"
+                        :per-page="perPageIntern"
+                        v-model="currentPageIntern"
                         class="my-0"
                       />
                     </b-col>
@@ -710,28 +710,7 @@ import { db } from "../firebase";
 
 const items = [];
 const items2 = [];
-const itemsIntern = [
-{
-  role: 'Data Science Intern',
-  cap: 4.87,
-},
-{
-  role: 'Banking Intern',
-  cap: 4.23,
-},
-{
-  role: 'Accounting Intern',
-  cap: 4.56,
-},
-{
-  role: 'Backend Engineer Intern',
-  cap: 4.34,
-},
-{
-  role: 'Frontend Engineer Intern',
-  cap: 4.34,
-}
-];
+const itemsIntern = [];
 
 export default {
   name: "Single Industry",
@@ -779,6 +758,14 @@ export default {
     sortOptionsSuggest() {
       // Create an options list from our fields
       return this.fieldsSuggest
+        .filter(f => f.sortable)
+        .map(f => {
+          return { text: f.label, value: f.key };
+        });
+    },
+    sortOptionsIntern(){
+      // Create an options list from our fields
+      return this.fieldsIntern
         .filter(f => f.sortable)
         .map(f => {
           return { text: f.label, value: f.key };
@@ -895,7 +882,7 @@ export default {
       let top5h = this.major["top5hiringtrend"];
       let top5s = this.major["top5salarytrend"];
       let top5c = this.major["top5companies"];
-
+      let intern = this.major['intern'];
       let wordcloudtext = this.major["wordcloud"];
       let wordvalues = wordcloudtext["values"];
       let words = wordcloudtext["words"];
@@ -938,6 +925,16 @@ export default {
         this.chartOptions["xAxis"]["categories"].push(ind);
         this.chartOptions["series"][0]["data"].push(salarynode);
       }
+
+      for (let i of intern){
+        this.tableDataIntern.push({
+          'role': i['title'],
+          'cap':i['cap'],
+          _rowVariant: this.genCapCol(i['cap'])
+        })
+      }
+
+      this.totalRowsIntern = this.tableDataIntern.length;
 
       let organisation = top5c;
       let cap = organisation["cap"];
@@ -1139,7 +1136,7 @@ export default {
       currentPageIntern: 1,
       perPageIntern: 5,
       totalRowsIntern: itemsIntern.length,
-      pageOptions: [5, 10, 15],
+      pageOptionsIntern: [5, 10, 15],
       sortByIntern: null,
       sortDescIntern: false,
       sortDirectionIntern: "asc",
