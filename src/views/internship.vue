@@ -63,6 +63,7 @@
           </mdb-col>
           </mdb-row>
           <mdb-row class="justify-content-center">
+        <a href="#trajectory" v-smooth-scroll><button class="button button5">Future Trajectory</button></a>
         <a href="#company_tag" v-smooth-scroll><button class="button button5">Company Info & Programs</button></a>
         <a href="#chance_tag" v-smooth-scroll><button class="button button5">Rate your Chance</button></a>
         <a href="#recommend_tag" v-smooth-scroll><button class="button button5">Recommendations</button></a>
@@ -72,6 +73,41 @@
         <a name="myanchor">
     <h1 style="padding-top: 95px; margin-top: -40px; opacity:0">My anchor</h1>
 </a>
+
+<a class = "anchor" id="trajectory"></a>
+
+        <mdb-row class="justify-content-center d-flex align-items-stretch">
+          <mdb-col>
+            <mdb-card class="cascading-admin-card">
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">
+                  See the future paths taken by your senior after embarking on this internship! 
+                </span>
+              <mdb-card-header
+                class="card-title"
+                slot="reference"
+                >Future Trajectory</mdb-card-header
+              >
+            </mdb-tooltip>
+              <mdb-card-body>
+                <div
+                  v-if="this.loaded"
+                  style="display: block"
+                  justify-content-center
+                >
+                  <mdb-bar-chart
+                    :data="barChartData"
+                    :options="barChartOptions"
+                    :height="300"
+                  />
+                </div>
+              </mdb-card-body>
+            </mdb-card>
+          </mdb-col>
+        </mdb-row>
+
+
+
 <a class = "anchor" id="company_tag"></a>
         <mdb-row class="justify-content-center d-flex align-items-stretch">
           <mdb-col>
@@ -183,6 +219,10 @@
                       {{ row.value }}
                     </template>
 
+                    <template slot="ind" slot-scope="row">
+                      {{ row.value }}
+                    </template>
+
                     <template slot="numGrads" slot-scope="row">
                       {{ row.value }}
                     </template>
@@ -256,7 +296,7 @@
                 >
               </mdb-tooltip>
               <mdb-card-body>
-                <div class="justify-content-center d-flex align-items-stretch">
+                <div class="justify-content-center d-flex align-items-stretch" v-if='this.loaded'>
                   <mdb-col>
                     <label for="customRange1"
                       >Expected Cap: {{ this.value_2 }}</label
@@ -272,17 +312,15 @@
                   </mdb-col>
                   <mdb-col>
                     <label>Desired Company</label>
-                    <!--
                     <select
                       class="custom-select custom-select-sm"
                       v-model="jobTit"
                     >
                       <option disabled value="">Select a Position</option>
-                      <option v-for="pos in this.company['positions']['name']"
+                      <option v-for="pos in this.company"
                         >{{ pos }}
                       </option>
                     </select>
-                    -->
                   </mdb-col>
                   <mdb-col>
                   <label class="typo__label">Past Internship Roles</label>
@@ -508,25 +546,26 @@
           </mdb-col>
           <mdb-col md="2" lg="5">
             <mdb-card class="cascading-admin-card" style="height:100%">
-                <mdb-tooltip :options="{placement: 'top'}">
-                    <span slot="tip">
-                      Equipped with sophisticated Natural Language Processing, we identify skillsets that are more tailored-ready for the internship industry!
-                    </span>
-                  <mdb-card-header
-                    class="card-title"
-                    slot="reference"
-                    >Recommended Skillsets</mdb-card-header
-                  >
-                </mdb-tooltip>
-                <mdb-card-body class="align-items-center justify-content-center">
-                  <div style="display: block">
-                    <IEcharts
-                      :option="wordcloud"
-                      @ready="onReady"
-                    />
-                  </div>
-                </mdb-card-body>
-              </mdb-card>
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">
+                  Equipped with sophisticated Natural Language Processing, we identify skillsets that are more tailored for the '{{this.currname}}' industry!
+                </span>
+              <mdb-card-header
+                class="card-title"
+                slot="reference"
+                >Recommended Skillsets</mdb-card-header
+              >
+            </mdb-tooltip>
+              <mdb-card-body class="align-items-center justify-content-center">
+                <div style="display: block">
+                  <IEcharts
+                    :option="wordcloud"
+                    @ready="onReady"
+                    style="height:450px"
+                  />
+                </div>
+              </mdb-card-body>
+            </mdb-card>
           </mdb-col>
         </mdb-row>
       </section>
@@ -734,12 +773,44 @@ export default {
           'cap':val["cap"],
           'numGrads':val["numseniors"],
           'sal':val["allowance"],
+          'ind':val['industry'],
           '_rowVariant': this.genCapCol(val["cap"])
         }
         this.tableData.push(temp);
+        this.company.push(name);
       }
       this.totalRows = this.tableData.length;
+      
+
+      let wordcloudtext = this.internship["skills"];
+      let wordvalues = wordcloudtext["values"];
+      let words = wordcloudtext["words"];
+      for (let i in words) {
+        this.wordclouddata.push({
+          name: words[i],
+          value: wordvalues[i]
+        });
+      }
+
+      let prev = this.internship['previntern']
+      for (let i of prev){
+        this.options.push({name:i, code:i});
+      }
+
+
+
+      let trajectory = this.internship['trajectory'];
+      this.barChartData["labels"] = trajectory['job'];
+      this.barChartData["datasets"].push({
+        data: trajectory['num'],
+        label: 'Number Hired',
+        backgroundColor: this.backgroundColor,
+        borderColor: this.borderColor,
+        borderWidth: this.borderWidth
+      });
       this.loaded = true;
+      console.log(this.barChartData['labels'])
+
     },
     recommendmods() {
       let mods = this.modules;
@@ -794,11 +865,7 @@ export default {
     return {
       value: [
       ],
-      options: [
-        { name: 'Vue.js', code: 'vu'},
-        { name: 'Javascript', code: 'js'},
-        { name: 'Open Source', code: 'os'}
-      ],
+      options: [],
       value_2: 3.5,
       jobTit: "",
       chartOptions: {
@@ -853,9 +920,19 @@ export default {
         "rgba(54, 162, 235, 0.4)",
         "rgba(255, 206, 86, 0.4)",
         "rgba(75, 192, 192, 0.4)",
-        "rgba(153, 102, 255, 0.4)"
+        "rgba(153, 102, 255, 0.4)",
+        "rgba(255, 99, 132, 0.4)",
+        "rgba(54, 162, 235, 0.4)",
+        "rgba(255, 206, 86, 0.4)",
+        "rgba(75, 192, 192, 0.4)",
+        "rgba(153, 102, 255, 0.4)",
       ],
       borderColor: [
+        "rgba(255,99,132,1)",
+        "rgba(54, 162, 235, 1)",
+        "rgba(255, 206, 86, 1)",
+        "rgba(75, 192, 192, 1)",
+        "rgba(153, 102, 255, 1)",
         "rgba(255,99,132,1)",
         "rgba(54, 162, 235, 1)",
         "rgba(255, 206, 86, 1)",
@@ -875,6 +952,7 @@ export default {
       recommended: false,
       modal: false,
       currRole:'Assessor Intern',
+      company:[],
 
       //TableData
       tableData: items,
@@ -889,6 +967,11 @@ export default {
         {
           key: "sal",
           label: "Median Allowance",
+          sortable: true,
+          sortDirection: "desc"
+        },{
+          key: "ind",
+          label: "Industry",
           sortable: true,
           sortDirection: "desc"
         },
@@ -952,7 +1035,10 @@ export default {
               gridLines: {
                 display: true,
                 color: "rgba(0, 0, 0, 0.1)"
-              }
+              },
+              ticks: {
+                    display: false //this will remove only the label
+                }
             }
           ],
           yAxes: [
