@@ -10,6 +10,7 @@ import top5industries from "./views/top5industries.vue";
 import singleindustry from "./views/singleindustry.vue";
 import company from "./views/company.vue";
 import internship from "./views/internship.vue";
+import searchinternship from "./views/searchinternship.vue";
 
 Vue.use(Router);
 
@@ -42,6 +43,16 @@ export default new Router({
       path: "/search_careers",
       name: "search_careers",
       components: { default: search2, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+
+    {
+      path: "/search_intern",
+      name: "search_intern",
+      components: { default: searchinternship, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
