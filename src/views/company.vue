@@ -403,7 +403,9 @@ export default {
       };
     },
     counter() {
-      return Math.round(this.value_2 * 15 + (this.jobTit.length % 20));
+      var temp = this.value.map(this.nameTag).join('').length/10;
+      var internship = (temp>15) ? 15 : temp;
+      return Math.round(this.value_2 * 14 + (this.jobTit.length % 10) + internship);
     },
   },
   created() {
@@ -416,6 +418,9 @@ export default {
     }
   },
   methods: {
+    nameTag (tag){
+      return tag.name
+    },
     addTag (newTag) {
       const tag = {
         name: newTag,
