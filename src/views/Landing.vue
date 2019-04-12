@@ -18,7 +18,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#/search_careers"><button class="button button5"><i class="far fa-building"></i> Companies</button></a>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#/internship"><button class="button button5"><i class="material-icons">assignment_ind</i> Internship</button></a>
+            <a href="#/searchinternship"><button class="button button5"><i class="fas fa-chalkboard-teacher"></i> Internship</button></a>
           </div>
         </div>
       </div>

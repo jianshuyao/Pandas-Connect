@@ -78,9 +78,9 @@
         <mdb-row md="6" center v-if="maj != '' && car != ''">
           <button
             class="button button5"
-            v-on:click="$router.push({ path: '/company/' + car + '/' + maj })"
+            v-on:click="$router.push({ path: '/internship/' + car + '/' + maj })"
           >
-            <i class="far fa-building"></i> Find Internship
+            <i class="fas fa-chalkboard-teacher"></i> Find Internship
           </button>
         </mdb-row>
       </section>

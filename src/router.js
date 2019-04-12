@@ -68,6 +68,15 @@ export default new Router({
       }
     },
     {
+      path: "/searchinternship",
+      name: "searchinternship",
+      components: { default: searchinternship, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
       path: "/top5industries/:majorName",
       name: "top5industries",
       components: {
