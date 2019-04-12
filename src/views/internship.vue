@@ -43,10 +43,6 @@
                 >
                   {{ this.currRole }}
                 </p>
-                <hr
-                  align="center"
-                  style="width:50%;height:2px;color:white;background-color:black;"
-                />
               </mdb-modal-title>
             </mdb-row>
           </mdb-col>

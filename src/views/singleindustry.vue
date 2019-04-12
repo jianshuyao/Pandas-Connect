@@ -61,7 +61,7 @@
         <mdb-row class="justify-content-center">
         <a href="#hiring_salary_tag" v-smooth-scroll><button class="button button5">Overview Hiring & Salary</button></a>
         <a href="#salary_tag" v-smooth-scroll><button class="button button5">Salary Spread</button></a>
-        <a href="#company_tag" v-smooth-scroll><button class="button button5">Compare Companies</button></a>
+        <a href="#company_tag" v-smooth-scroll><button class="button button5">Companies & Internships</button></a>
         <a href="#recommend_tag" v-smooth-scroll><button class="button button5">Recommendations</button></a>
         </mdb-row>
         </mdb-card>
