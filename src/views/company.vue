@@ -521,9 +521,7 @@ export default {
   },
   data() {
     return {
-      value: [
-        { name: 'Javascript', code: 'js' }
-      ],
+      value: [],
       options: [
         { name: 'Vue.js', code: 'vu' },
         { name: 'Javascript', code: 'js' },
