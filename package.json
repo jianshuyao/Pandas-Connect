@@ -20,7 +20,7 @@
     "google-fonts-webpack-plugin": "^0.4.4",
     "highcharts": "^7.0.3",
     "highcharts-vue": "^1.2.0",
-    "mdbvue": "^5.1.1",
+    "mdbvue": "^5.1.2",
     "nouislider": "13.1.0",
     "v-tooltip": "2.0.0-rc.33",
     "vue": "^2.6.10",
