@@ -167,7 +167,7 @@
           <mdb-col>
             <mdb-card class="cascading-admin-card">
               <mdb-tooltip :options="{placement: 'top'}">
-                <span slot="tip">This table allows you to compare companies in the same major '{{this.currentMajor}}' by Median Cap, Median Salary and Graduates. Table is colored by CAP intervals to give you a better sensing of the suitability of the company by cap intake! Want to know more about a company? Simply click 'learn more'!</span>
+                <span slot="tip">This table allows you to compare companies for students majoring with {{this.currentMajor}}. Information is sorted by Median Cap, Median Salary and Number of Graduates. Table is colored by CAP intervals to give you a better sensing of the suitability of the company by cap intake! Want to know more about a company? Simply click 'Learn more'!</span>
                 <mdb-card-header
                 class="card-title"
                 slot="reference"
@@ -444,7 +444,6 @@ export default {
       let top5 = top_5["top_5"];
       let count = 0;
       for (let [ind, val] of Object.entries(top5)) {
-        console.log(ind);
         this.lineChartData["labels"] = top5[ind]["overallhiringtrend"]["year"];
         this.lineChartData["datasets"].push({
           label: ind,
@@ -455,12 +454,10 @@ export default {
           lineTension:0 //makes the line straight
         });
         count++;
-        console.log(this.lineChartData);
       }
 
       count = 0;
       for (let [ind, val] of Object.entries(top5)) {
-        console.log(ind);
         this.barChartData["labels"] = top5[ind]["overallsalarydist"]["salary"];
         this.barChartData["datasets"].push({
           label: ind,
@@ -480,7 +477,6 @@ export default {
         this.chartOptions["series"][0]["data"].push(salarynode);
         count++;
       }
-      console.log(this.chartOptions["xAxis"]["categories"]);
 
       let organisation = top_5["organisations"];
       let cap = organisation["cap"];

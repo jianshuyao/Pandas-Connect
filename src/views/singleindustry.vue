@@ -1,4 +1,3 @@
-<!--Remove the option in dropdown for the industry the page is currently showing-->
 <template>
   <div class="wrapper">
     <section id="module">
@@ -173,7 +172,7 @@
             <mdb-card class="cascading-admin-card">
               <mdb-tooltip :options="{placement: 'top'}">
                 <span slot="tip">
-                  This table allows you to compare companies in the same industry '{{this.currname}}' by Median Cap, Median Salary and Graduates. Table is colored by CAP intervals to give you a better sensing of the suitability of the company by cap intake! Want to know more about a company? Simply click 'learn more'!
+                  This table allows you to compare companies in the {{this.currname}} industry. Information is sorted by Median Cap, Median Salary and Graduates. Table is colored by CAP intervals to give you a better sensing of the suitability of the company by cap intake! Want to know more about a company? Simply click 'Learn more'!
                 </span>
               <mdb-card-header
                 class="card-title"
@@ -341,7 +340,7 @@
             <mdb-card class="cascading-admin-card">
               <mdb-tooltip :options="{placement: 'top'}">
                 <span slot="tip">
-                  This table allows you to compare companies in the same industry '{{this.currname}}' by Median Cap, Median Salary and Graduates. Table is colored by CAP intervals to give you a better sensing of the suitability of the company by cap intake! Want to know more about a company? Simply click 'learn more'!
+                  This table allows you to compare companies in the {{this.currname}} industry. Information is sorted by Median Cap, Median Salary and Graduates. Table is colored by CAP intervals to give you a better sensing of the suitability of the company by cap intake! Want to know more about a company? Simply click 'Learn more'!
                 </span>
               <mdb-card-header
                 class="card-title"
@@ -504,7 +503,7 @@
             <mdb-card class="cascading-admin-card" style="height:100%">
               <mdb-tooltip :options="{placement: 'top'}">
                 <span slot="tip">
-                  This section allows you to know what modules to take that are highly relevant for the industry '{{this.currname}}' that you're interested in! Each module is colored by their level code, and can be sorted by the number of graduates who took the module. More information can be learnt from NUSmods!
+                  This section allows you to know what modules to take that are highly relevant for the {{this.currname}} industry that you're interested in! Each module is colored by their level code, and can be sorted by the number of graduates who took the module. More information can be learnt from NUSmods!
                 </span>
               <mdb-card-header
                 class="card-title"
@@ -666,7 +665,7 @@
             <mdb-card class="cascading-admin-card" style="height:100%">
               <mdb-tooltip :options="{placement: 'top'}">
                 <span slot="tip">
-                  Equipped with sophisticated Natural Language Processing, we identify skillsets that are more tailored for the '{{this.currname}}' industry!
+                  Equipped with sophisticated Natural Language Processing, we identify skillsets that are more tailored for the {{this.currname}} industry!
                 </span>
               <mdb-card-header
                 class="card-title"
@@ -843,7 +842,6 @@ export default {
       for (let [ind, val] of Object.entries(newref)) {
         this.industryname.push(ind);
       }
-      console.log(this.industryname);
     },
     onReady(instance, echarts) {
       const that = this;
@@ -972,7 +970,6 @@ export default {
     },
     recommendmods() {
       let mods = this.suggestedmods;
-      console.log(this.suggestedmods);
       let code = mods["modcode"];
       let mname = mods["modname"];
       let nGrads = mods["numgrad"];

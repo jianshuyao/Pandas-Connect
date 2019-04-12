@@ -446,7 +446,6 @@ export default {
     },
     renderChart() {
       let pos = this.company["positions"];
-      console.log("pos" + pos);
       this.barChartData["labels"] = pos["salary_range"];
       this.barChartData["datasets"].push({
         data: pos["salary_count"],
@@ -489,7 +488,6 @@ export default {
         ]
       });
       let prev = pos['pastintern']
-      console.log('prev', prev)
       for (let i of prev){
         this.options.push({name:i, code:i});
       }

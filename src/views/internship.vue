@@ -1,4 +1,3 @@
-<!--TODO: Chance meter DB-->
 <template>
   <div class="wrapper">
       <section id="industry">
@@ -126,7 +125,7 @@
             <mdb-card class="cascading-admin-card">
               <mdb-tooltip :options="{placement: 'top'}">
                 <span slot="tip">
-                  This table allows you to compare companies in the same industry '{{ this.currRole }}' by Median Cap, Median Salary and Graduates. Table is colored by CAP intervals to give you a better sensing of the suitability of the company by cap intake! Want to know more about a company? Simply click 'learn more'!
+                  This table allows you to compare companies that offers the {{ this.currRole }} role. Information is sorted by Median Cap, Median Salary and Graduates. Table is colored by CAP intervals to give you a better sensing of the suitability of the company by cap intake! Want to know more about a company? Simply click 'Learn more'!
                 </span>
               <mdb-card-header
                 class="card-title"
@@ -398,7 +397,7 @@
             <mdb-card class="cascading-admin-card" style="height:100%">
               <mdb-tooltip :options="{placement: 'top'}">
                 <span slot="tip">
-                  This section allows you to know what modules to take that are highly relevant for the industry '{{ this.currRole }}' that you're interested in! Each module is colored by their level code, and can be sorted by the number of graduates who took the module. More information can be learnt from NUSmods!
+                  This section allows you to know what modules to take that are highly relevant for the {{ this.currRole }} role that you're interested in! Each module is colored by their level code, and can be sorted by the number of graduates who took the module. More information can be learnt from NUSmods!
                 </span>
               <mdb-card-header
                 class="card-title"
@@ -560,7 +559,7 @@
             <mdb-card class="cascading-admin-card" style="height:100%">
               <mdb-tooltip :options="{placement: 'top'}">
                 <span slot="tip">
-                  Equipped with sophisticated Natural Language Processing, we identify skillsets that are more tailored for the '{{ this.currRole }}' industry!
+                  Equipped with sophisticated Natural Language Processing, we identify skillsets that are more tailored for the {{ this.currRole }} role!
                 </span>
               <mdb-card-header
                 class="card-title"
@@ -638,9 +637,6 @@ export default {
       .then(snapshot => {
         this.internship = snapshot.val();
         this.modules = this.internship['modules'];
-        console.log(this.internship['roles']);
-        console.log(this.internship);
-        console.log(this.currRole);
         this.companies = this.internship['roles'][this.currRole];
       })
       .then(() => {
@@ -736,7 +732,6 @@ export default {
       for (let [intern, val] of Object.entries(newref)) {
         this.internshipname.push(intern);
       }
-      console.log(this.internshipname);
     },
     onReady(instance, echarts) {
       const that = this;
@@ -830,17 +825,13 @@ export default {
         borderWidth: this.borderWidth
       });
       this.loaded = true;
-      console.log(this.barChartData['labels'])
-
     },
     recommendmods() {
       let mods = this.modules;
-      console.log(this.modules);
       let code = mods["modcode"];
       let mname = mods["modname"];
       let nGrads = mods["numseniors"];
       for (let i in code) {
-        console.log(code[i]);
         let modlevel = code[i].split(/([0-9]+)/)[1];
         let temp = {
           'modcode': code[i],
