@@ -112,14 +112,14 @@ export default new Router({
       }
     },
     {
-      path: "/internship",
+      path: "/internship/:companyName/:majName",
       name: "internship",
       components: { default: internship, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
       }
-    }
+    },
   ],
   scrollBehavior: to => {
     if (to.hash) {
