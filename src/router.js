@@ -112,7 +112,7 @@ export default new Router({
       }
     },
     {
-      path: "/internship/:companyName/:majName",
+      path: "/internship/:internshipName/:majName",
       name: "internship",
       components: { default: internship, header: MainNavbar, footer: MainFooter },
       props: {

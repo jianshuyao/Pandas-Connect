@@ -24,7 +24,7 @@
                 style="margin-left: 20px;"
                 @change="
                   $router.push({
-                    path: '/internship/' + majorname + '/' + currRole
+                    path: '/internship/' + currRole + '/' + majorname
                   })
                 "
                 v-model="currRole"
@@ -299,7 +299,7 @@
           <mdb-col>
             <mdb-card class="cascading-admin-card">
               <mdb-tooltip :options="{placement: 'top'}">
-                <span slot="tip">Enter your CAP and desired job position to rate your chances of getting your dream job!</span>
+                <span slot="tip">Enter your CAP and desired company to rate your chances of getting your dream job!</span>
                 <mdb-card-header
                   style="background-color: #b3e5fc;"
                   class="card-title"
@@ -677,7 +677,8 @@ export default {
   created() {
     this.tableSuggestedData = [];
     this.tableData = [];
-    this.majorname = 'Accountacy'//this.$route.params.currMaj;
+    this.currRole = this.$route.params.internshipName;
+    this.majorname = this.$route.params.majName;
   },
   watch: {
     $route(to, from) {
@@ -960,7 +961,7 @@ export default {
 
       wordclouddata: [],
       wordcloud: {},
-      majorname: null,
+      majorname: "",
       major: {},
       suggestedmods: {},
       newInternship: null,
@@ -968,8 +969,8 @@ export default {
       loaded: false,
       recommended: false,
       modal: false,
-      currRole:'Assessor Intern',
-      company:[],
+      currRole: null,
+      company: [],
 
       //TableData
       tableData: items,
