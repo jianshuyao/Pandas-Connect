@@ -50,6 +50,22 @@
                 class="text_bg"
                 text.truncate
                 style="font-size:16px; letter-spacing:2px"
+                v-if="this.major.includes('with')"
+              >
+              <mdb-icon icon="graduation-cap" /> Major: {{ this.major.split('with')[0] }}
+              <mdb-tooltip :options="{placement: 'bottom'}">
+                <span slot="tip">With {{ this.major.split('with')[1] }}</span>
+                <mdb-icon 
+                  icon="plus"
+                  slot="reference"
+                />
+              </mdb-tooltip>
+              </p>
+              <p
+                class="text_bg"
+                text.truncate
+                style="font-size:16px; letter-spacing:2px"
+                v-else
               >
                 <mdb-icon icon="graduation-cap" /> Major: {{ this.major }}
               </p>
@@ -388,7 +404,7 @@ export default {
     },
     counter() {
       return Math.round(this.value_2 * 15 + (this.jobTit.length % 20));
-    }
+    },
   },
   created() {
     this.companyRef = this.$route.params.companyName;
