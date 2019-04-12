@@ -448,8 +448,8 @@
                         @click="
                           $router.push({
                             path:
-                              '/company/' +
-                              row.item['organisation'] +
+                              '/internship/' +
+                              row.item['role'] +
                               '/' +
                               majorname
                           })

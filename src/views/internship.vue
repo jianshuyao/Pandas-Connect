@@ -126,7 +126,7 @@
             <mdb-card class="cascading-admin-card">
               <mdb-tooltip :options="{placement: 'top'}">
                 <span slot="tip">
-                  This table allows you to compare companies in the same industry '{{this.currname}}' by Median Cap, Median Salary and Graduates. Table is colored by CAP intervals to give you a better sensing of the suitability of the company by cap intake! Want to know more about a company? Simply click 'learn more'!
+                  This table allows you to compare companies in the same industry '{{ this.currRole }}' by Median Cap, Median Salary and Graduates. Table is colored by CAP intervals to give you a better sensing of the suitability of the company by cap intake! Want to know more about a company? Simply click 'learn more'!
                 </span>
               <mdb-card-header
                 class="card-title"
@@ -398,7 +398,7 @@
             <mdb-card class="cascading-admin-card" style="height:100%">
               <mdb-tooltip :options="{placement: 'top'}">
                 <span slot="tip">
-                  This section allows you to know what modules to take that are highly relevant for the industry '{{this.currname}}' that you're interested in! Each module is colored by their level code, and can be sorted by the number of graduates who took the module. More information can be learnt from NUSmods!
+                  This section allows you to know what modules to take that are highly relevant for the industry '{{ this.currRole }}' that you're interested in! Each module is colored by their level code, and can be sorted by the number of graduates who took the module. More information can be learnt from NUSmods!
                 </span>
               <mdb-card-header
                 class="card-title"
@@ -560,7 +560,7 @@
             <mdb-card class="cascading-admin-card" style="height:100%">
               <mdb-tooltip :options="{placement: 'top'}">
                 <span slot="tip">
-                  Equipped with sophisticated Natural Language Processing, we identify skillsets that are more tailored for the '{{this.currname}}' industry!
+                  Equipped with sophisticated Natural Language Processing, we identify skillsets that are more tailored for the '{{ this.currRole }}' industry!
                 </span>
               <mdb-card-header
                 class="card-title"
@@ -638,6 +638,9 @@ export default {
       .then(snapshot => {
         this.internship = snapshot.val();
         this.modules = this.internship['modules'];
+        console.log(this.internship['roles']);
+        console.log(this.internship);
+        console.log(this.currRole);
         this.companies = this.internship['roles'][this.currRole];
       })
       .then(() => {
@@ -964,7 +967,7 @@ export default {
       majorname: "",
       major: {},
       suggestedmods: {},
-      newInternship: null,
+      //newInternship: null,
       internshipname: [],
       loaded: false,
       recommended: false,
