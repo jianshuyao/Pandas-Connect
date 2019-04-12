@@ -483,7 +483,11 @@ export default {
           "#da92db"
         ]
       });
-
+      let prev = pos['pastintern']
+      console.log('prev', prev)
+      for (let i of prev){
+        this.options.push({name:i, code:i});
+      }
       this.loaded = true;
     }
   },
@@ -522,11 +526,7 @@ export default {
   data() {
     return {
       value: [],
-      options: [
-        { name: 'Vue.js', code: 'vu' },
-        { name: 'Javascript', code: 'js' },
-        { name: 'Open Source', code: 'os' }
-      ],
+      options: [],
       showCompany: false,
       companyname: [],
       backgroundColor: [
