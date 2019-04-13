@@ -913,6 +913,11 @@ export default {
         chart: {
           zoomType: 'xy'
         },
+
+        title: {
+          text: null
+        },
+
         series: [{
             keys: ['from', 'to', 'weight'],
             data: [
