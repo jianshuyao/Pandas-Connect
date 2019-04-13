@@ -822,14 +822,7 @@ export default {
       for (let i in num){
       	this.chartOptions['series'][0]['data'].push([from, roles[i],num[i]])
       }
-      //this.barChartData["labels"] = trajectory['job'];
-      //this.barChartData["datasets"].push({
-        //data: trajectory['num'],
-        //label: 'Number Hired',
-        //backgroundColor: this.backgroundColor,
-        //borderColor: this.borderColor,
-        //borderWidth: this.borderWidth
-      //});
+      this.chartOptions['series'][0]['data'].sort((a, b)=>b[2]-a[2])
       this.loaded = true;
     },
     recommendmods() {
