@@ -116,7 +116,29 @@
             </mdb-card>
           </mdb-col>
         </mdb-row>
-
+        <mdb-row class="justify-content-center d-flex align-items-stretch">
+          <mdb-col>
+            <mdb-card class="cascading-admin-card">
+              <mdb-tooltip :options="{placement: 'top'}">
+                <span slot="tip">
+                  Job roles interns with this position end up joining in after they graduate.
+                </span>
+              <mdb-card-header
+                class="card-title"
+                slot="reference"
+                >Future Trajectory</mdb-card-header
+              >
+            </mdb-tooltip>
+              <mdb-card-body>
+                <div v-if="this.loaded">
+                  <highcharts
+                    :options="chartOptions"
+                  ></highcharts>
+                </div>
+              </mdb-card-body>
+            </mdb-card>
+          </mdb-col>
+        </mdb-row>
 
 
 <a class = "anchor" id="company_tag"></a>
@@ -618,6 +640,13 @@ import { mdbDatatable } from "mdbvue";
 import { db } from "../firebase";
 
 import Multiselect from 'vue-multiselect';
+import { Chart } from "highcharts-vue";
+import Highcharts from "highcharts";
+import exportingInit from "highcharts/modules/exporting";
+import sankey from "highcharts/modules/sankey";
+
+sankey(Highcharts);
+exportingInit(Highcharts);
 
 const items = [];
 const items2 = [];
@@ -882,48 +911,19 @@ export default {
       jobTit: "",
       chartOptions: {
         chart: {
-          type: "boxplot",
-          inverted: true
+          zoomType: 'xy'
         },
-
-        title: {
-          text: null
-        },
-
-        legend: {
-          enabled: false
-        },
-
-        xAxis: {
-          type: "category",
-          categories: [],
-          title: {
-            text: "Company"
-          }
-        },
-
-        yAxis: {
-          title: {
-            text: "Salary"
-          }
-        },
-
-        series: [
-          {
-            name: "Observations",
-            data: [],
-            tooltip: {
-              headerFormat: "<em>{point.key}</em><br/>"
-            }
-          }
-        ],
-
-        plotOptions: {
-          series: {
-            fillColor: '#87CEFA',
-            lineWidth: 2,
-          }
-        }
+        series: [{
+            keys: ['from', 'to', 'weight'],
+            data: [
+              ['Brazil', 'Portugal', 5],
+              ['Brazil', 'France', 1],
+              ['Brazil', 'Spain', 1],
+              ['Brazil', 'England', 1],
+            ],
+            type: 'sankey',
+            name: 'Future Trajectory'
+        }],
       },
 
       showSingleIndustry: false,

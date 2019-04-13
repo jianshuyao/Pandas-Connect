@@ -18,6 +18,7 @@ import dataModule from "highcharts/modules/data";
 import hcMore from "highcharts/highcharts-more";
 import VueParticles from "vue-particles";
 import Sticky from 'vue-sticky-directive'
+import highchartsMore from 'highcharts/highcharts-more'
 
 Vue.config.productionTip = false;
 dataModule(Highcharts);
