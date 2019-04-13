@@ -92,35 +92,6 @@
             <mdb-card class="cascading-admin-card">
               <mdb-tooltip :options="{placement: 'top'}">
                 <span slot="tip">
-                  See the future paths taken by your senior after embarking on this internship! 
-                </span>
-              <mdb-card-header
-                class="card-title"
-                slot="reference"
-                >Future Trajectory</mdb-card-header
-              >
-            </mdb-tooltip>
-              <mdb-card-body>
-                <div
-                  v-if="this.loaded"
-                  style="display: block"
-                  justify-content-center
-                >
-                  <mdb-bar-chart
-                    :data="barChartData"
-                    :options="barChartOptions"
-                    :height="300"
-                  />
-                </div>
-              </mdb-card-body>
-            </mdb-card>
-          </mdb-col>
-        </mdb-row>
-        <mdb-row class="justify-content-center d-flex align-items-stretch">
-          <mdb-col>
-            <mdb-card class="cascading-admin-card">
-              <mdb-tooltip :options="{placement: 'top'}">
-                <span slot="tip">
                   Job roles interns with this position end up joining in after they graduate.
                 </span>
               <mdb-card-header
@@ -845,14 +816,20 @@ export default {
 
 
       let trajectory = this.internship['trajectory'];
-      this.barChartData["labels"] = trajectory['job'];
-      this.barChartData["datasets"].push({
-        data: trajectory['num'],
-        label: 'Number Hired',
-        backgroundColor: this.backgroundColor,
-        borderColor: this.borderColor,
-        borderWidth: this.borderWidth
-      });
+      let roles = trajectory['job'];
+      let from = this.currRole;
+      let num = trajectory['num']
+      for (let i in num){
+      	this.chartOptions['series'][0]['data'].push([from, roles[i],num[i]])
+      }
+      //this.barChartData["labels"] = trajectory['job'];
+      //this.barChartData["datasets"].push({
+        //data: trajectory['num'],
+        //label: 'Number Hired',
+        //backgroundColor: this.backgroundColor,
+        //borderColor: this.borderColor,
+        //borderWidth: this.borderWidth
+      //});
       this.loaded = true;
     },
     recommendmods() {
@@ -913,14 +890,12 @@ export default {
         chart: {
           zoomType: 'xy'
         },
+        title: {
+          text: null
+        },
         series: [{
             keys: ['from', 'to', 'weight'],
-            data: [
-              ['Brazil', 'Portugal', 5],
-              ['Brazil', 'France', 1],
-              ['Brazil', 'Spain', 1],
-              ['Brazil', 'England', 1],
-            ],
+            data: [],
             type: 'sankey',
             name: 'Future Trajectory'
         }],
