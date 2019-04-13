@@ -890,7 +890,7 @@ export default {
             keys: ['from', 'to', 'weight'],
             data: [],
             type: 'sankey',
-            name: 'Future Trajectory'
+            name: 'Intern Role to Full-Time Role'
         }],
       },
 
