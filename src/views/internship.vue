@@ -1040,6 +1040,12 @@ export default {
       barChartOptions: {
         responsive: true,
         maintainAspectRatio: false,
+        legend: {
+		    display: false,
+		      labels: {
+		        display: false
+		      }
+		  },
         scales: {
           xAxes: [
             {
