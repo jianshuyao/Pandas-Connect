@@ -1,6 +1,6 @@
 # Pandas Connect
 
-For some time now, we have a burning desire within us to help students get reliable career information for their career planning.
+For some time now, we have a burning desire within us to help students get **reliable career information for their career planning**.
 
 We brainstormed about the essential information to include, and perfected the website following feedback from our fellow NUS peers. 
 
