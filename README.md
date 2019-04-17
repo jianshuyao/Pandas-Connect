@@ -2,11 +2,11 @@
 
 For some time now, we have a burning desire within us to help students get reliable career information for their career planning.
 
-We brainstormed about the critical information to include, and perfected the idea following feedback from our fellow NUS peers. 
+We brainstormed about the essential information to include, and perfected the website following feedback from our fellow NUS peers. 
 
 With that, we present to you, a professional career advisory platform - Pandas Connect. All information found on Pandas Connect are specially handpicked and optimised for you.
 
-Share our vision in connect students to a brighter future through Pandas Connect. 
+Share our vision in connect students to a bright future through Pandas Connect. 
 
 Let us know what you think and what we can improve below!
 
@@ -16,7 +16,6 @@ Let us know what you think and what we can improve below!
 * [Documentation](#documentation)
 * [Features](#feature)
 * [File Structure](#file-structure)
-* [Video Resources](#video-resources)
 * [Reporting Issues](#reporting-issues)
 * [Technical Support or Questions](#technical-support-or-questions)
 
@@ -56,7 +55,6 @@ The documentation for Pandas Connect is hosted at on our ~[drive](https://docs.g
 ## File Structure
 
 Within the download you'll find the following directories and files:
-
 ```
 Pandas-Connect/
 
@@ -118,11 +116,7 @@ Pandas-Connect/
 │       ├── singleindustry.vue
 │       └── top5industries.vue
 └── vue.config.js
-
 ```
-
-## Video Resources
-Stay tuned for video updates.
 
 ## Reporting Issues
 We use GitHub Issues as the official bug tracker for Pandas-Connect. Feel free to [email us](the.pandas3103@gmail.com).
