@@ -53,7 +53,6 @@ The documentation for Pandas Connect is hosted at on our [drive](https://docs.go
 - Internship Dashboard
 
 ## File Structure
-
 Within the download you'll find the following directories and files:
 ```
 Pandas-Connect/
