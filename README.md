@@ -1,10 +1,12 @@
 # [Pandas Connect]
 
-For some time now, we have a burning desire to help students get reliable career information, as well as recommend modules to take based on their future career interests.
+For some time now, we have a burning desire within us to help students get reliable career information for their career planning.
 
-We brainstormed about things you actually need to make well informed decisions for your career, and perfected the idea following feedback from your fellow NUS peers. Ultimately, information chosen are handpicked and optimised for you.
+We brainstormed about the critical information to include, and perfected the idea following feedback from our fellow NUS peers. 
 
-With that, we present to you, a professional career advisory platform. Share our vision in connect students to a brighter future through Pandas Connect. 
+With that, we present to you, a professional career advisory platform - Pandas Connect. All information found on Pandas Connect are specially handpicked and optimised for you.
+
+Share our vision in connect students to a brighter future through Pandas Connect. 
 
 Let us know what you think and what we can improve below!
 
@@ -40,16 +42,16 @@ npm run unit
 npm test
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and docs for [vue-loader](https://vue-loader-v14.vuejs.org/).
-
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/).
 
 ## Documentation
-The documentation for Pandas Connect is hosted at on our drive at ~[website](https://www.google.com)~. (Apologies, the link will be up in the near future)
+The documentation for Pandas Connect is hosted at on our ~[drive](https://docs.google.com/document/d/1DkhKp-ByeP5XSSAzqOGJdZN83EJfJiSboQy_ZCaWQNk/edit?usp=sharing)~.
 
 ## Features
--
--
--
+- Top 5 Industries Dashboard
+- Single Industries Dashboard
+- Company Dashboard 
+- Internship Dashboard
 
 ## File Structure
 
