@@ -15,9 +15,11 @@ Let us know what you think and what we can improve below!
 * [BuildSetup](#buildsetup) 
 * [Documentation](#documentation)
 * [Features](#feature)
+* [Videos](#videos)
 * [File Structure](#file-structure)
 * [Reporting Issues](#reporting-issues)
 * [Questions or Feedback](#technical-support-or-questions)
+* [Acknowledgements](#acknowledgements)
 
 
 ## BuildSetup
@@ -51,6 +53,10 @@ The documentation for Pandas Connect is hosted at on our [drive](https://docs.go
 - Single Industries Dashboard
 - Company Dashboard 
 - Internship Dashboard
+
+## Videos
+- [Product Overview Video](https://www.youtube.com/watch?v=ZokBV8FqoM4&feature=youtu.be)
+- [Process Overview Video](https://www.youtube.com/watch?v=qWCc-2L2oP8&t=9s)
 
 ## File Structure
 Within the download you'll find the following directories and files:
@@ -122,3 +128,9 @@ We use GitHub Issues as the official bug tracker for Pandas-Connect. Feel free t
 
 ## Questions or Feedback
 If you have questions or have any feedback, do [contact us](the.pandas3103@gmail.com).
+
+## Acknowledgements
+	* Andrew Tham
+	* Jeremy Lim
+	* Joel Sim
+	* Sung Zheng Jie
