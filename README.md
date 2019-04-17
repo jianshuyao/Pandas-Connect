@@ -10,12 +10,37 @@ Let us know what you think and what we can improve below!
 
 ## Table of Contents
 
+* [BuildSetup] (#buildsetup) 
 * [Documentation](#documentation)
 * [Features](#feature)
 * [File Structure](#file-structure)
 * [Video Resources](#video-resources)
 * [Reporting Issues](#reporting-issues)
 * [Technical Support or Questions](#technical-support-or-questions)
+
+
+## BuildSetup
+```
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
+
+# run unit tests
+npm run unit
+
+# run all tests
+npm test
+```
+
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and docs for [vue-loader](https://vue-loader-v14.vuejs.org/).
 
 
 ## Documentation
