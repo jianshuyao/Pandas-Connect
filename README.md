@@ -10,7 +10,7 @@ Let us know what you think and what we can improve below!
 
 ## Table of Contents
 
-* [BuildSetup] (#buildsetup) 
+* [BuildSetup](#buildsetup) 
 * [Documentation](#documentation)
 * [Features](#feature)
 * [File Structure](#file-structure)
