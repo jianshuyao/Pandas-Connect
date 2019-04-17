@@ -1,4 +1,4 @@
-# [Pandas Connect]
+# Pandas Connect
 
 For some time now, we have a burning desire within us to help students get reliable career information for their career planning.
 
