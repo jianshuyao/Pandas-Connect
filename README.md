@@ -17,7 +17,7 @@ Let us know what you think and what we can improve below!
 * [Features](#feature)
 * [File Structure](#file-structure)
 * [Reporting Issues](#reporting-issues)
-* [Technical Support or Questions](#technical-support-or-questions)
+* [Questions or Feedback](#technical-support-or-questions)
 
 
 ## BuildSetup
@@ -121,5 +121,5 @@ Pandas-Connect/
 ## Reporting Issues
 We use GitHub Issues as the official bug tracker for Pandas-Connect. Feel free to [email us](the.pandas3103@gmail.com).
 
-## Technical Support or Questions
-If you have questions or need help integrating the product please [contact us](the.pandas3103@gmail.com).
+## Questions or Feedback
+If you have questions or have any feedback, do [contact us](the.pandas3103@gmail.com).
