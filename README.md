@@ -130,7 +130,7 @@ We use GitHub Issues as the official bug tracker for Pandas-Connect. Feel free t
 If you have questions or have any feedback, do [contact us](the.pandas3103@gmail.com).
 
 ## Acknowledgements
-	* Andrew Tham
-	* Jeremy Lim
-	* Joel Sim
-	* Sung Zheng Jie
+- Andrew Tham
+- Jeremy Lim
+- Joel Sim
+- Sung Zheng Jie
