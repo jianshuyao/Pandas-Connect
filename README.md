@@ -44,7 +44,7 @@ npm test
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/).
 
 ## Documentation
-The documentation for Pandas Connect is hosted at on our ~[drive](https://docs.google.com/document/d/1DkhKp-ByeP5XSSAzqOGJdZN83EJfJiSboQy_ZCaWQNk/edit?usp=sharing)~.
+The documentation for Pandas Connect is hosted at on our [drive](https://docs.google.com/document/d/1DkhKp-ByeP5XSSAzqOGJdZN83EJfJiSboQy_ZCaWQNk/edit?usp=sharing).
 
 ## Features
 - Top 5 Industries Dashboard
